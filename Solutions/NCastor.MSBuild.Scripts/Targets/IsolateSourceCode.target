@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <IsolateSourceCodeDependsOn>
+      BeforeIsolateSourceCode;
+      CoreIsolateSourceCode;
+      AfterIsolateSourceCode;
+    </IsolateSourceCodeDependsOn>
+  </PropertyGroup>
+
+  <Target Name="IsolateSourceCode" DependsOnTargets="$(IsolateSourceCodeDependsOn)" />
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeIsolateSourceCode"  />
+  <Target Name="AfterIsolateSourceCode" />
+
+  <Target Name="CoreIsolateSourceCode" >
+
+    <ItemGroup>
+      <SourceFilesToCopy
+            Include=" $(SolutionsPath)\**\*.*;"
+            Exclude=" $(SolutionsPath)\**\bin\**;
+                      $(SolutionsPath)\**\.svn\**;
+                      $(SolutionsPath)\**\Logs\**;
+                      $(DropsPath)\**;
+                      $(WorkingDirectoryPath)\**;
+                      $(SolutionsPath)\**\Logs\**;
+                      $(SolutionsPath)\**\obj\**;
+                      $(SolutionsPath)\**\*.suo;
+                      $(SolutionsPath)\**\*.cache;
+                      $(SolutionsPath)\**\_ReSharper*\**;
+                      $(SolutionsPath)\**\*ReSharper*"/>
+    </ItemGroup>
+
+    <Error ContinueOnError="false" Text="The source code folder is not specified" Condition="$(SourceCodeTmpPath) == ''"></Error>
+    
+    <MakeDir Directories="$(SourceCodeTmpPath)" Condition="!Exists($(SourceCodeTmpPath))" />
+    
+    <Copy SourceFiles="@(SourceFilesToCopy)" DestinationFiles="@(SourceFilesToCopy->'$(SourceCodeTmpPath)\%(RecursiveDir)%(Filename)%(Extension)')" />
+    
+  </Target>
+  
+</Project>

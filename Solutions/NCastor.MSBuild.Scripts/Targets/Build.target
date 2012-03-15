@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <BuildDependsOn>
+      ValidateSettings;
+      CalculateBuildVersionNumber;
+      CalculateRevisionNumber;
+      CalculateSemanticVersion;
+      Clean;
+      CleanArtefactFolders;
+      CreateArtefactFolders;
+      SetAssemblyVersion;
+      SetAssemblyInfo;
+      CleanSourceCodeArtefacts;
+      IsolateSourceCode;
+      PackageSourceCode;
+      BeforeBuild;
+      CoreBuild;
+      AfterBuild;
+      SettingInstrumentationAssemblies;
+      SetCompiledFiles;
+      PackageBuild;
+    </BuildDependsOn>
+  </PropertyGroup>
+
+  <Target Name="Build" DependsOnTargets="$(BuildDependsOn);" />
+
+  <!-- Can be overriden by the user -->
+  <Target Name="BeforeBuild" />
+  <Target Name="AfterBuild" />
+  <Target Name="SettingInstrumentationAssemblies" />
+  <Target Name="SetCompiledFiles">
+    <ItemGroup>
+      <CompiledFiles Include="$(BuildingPath)\**.*" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CoreBuild">
+
+    <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(ForcedBuildProperties);" Targets="Build"/>
+    
+  </Target>
+  
+</Project>

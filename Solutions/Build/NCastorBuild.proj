@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+<copyright file=".cs" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  jupaoljpol@gmail.com
+  http://jupaol.blogspot.com/
+
+  Copyright (c) 2012, Juan Pablo Olmos Lara (Jupaol)
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without modification, 
+  are permitted provided that the following conditions are met:
+
+  * Redistributions of source code must retain the above copyright notice, 
+    this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright notice, 
+    this list of conditions and the following disclaimer in the documentation 
+    a/nd/or other materials provided with the distribution.
+  * Neither the name of the Juan Pablo Olmos Lara (Jupaol) nor the names of its contributors may be 
+    used to endorse or promote products derived from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED 
+  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A 
+  PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR 
+  ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+</copyright>
+-->
+
+<Project DefaultTargets="Package" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <GlobalRootPath>$(MSBuildProjectDirectory)\..\..</GlobalRootPath>
+    <SolutionsPath>$(GlobalRootPath)\Solutions</SolutionsPath>
+    <SolutionName>NCastor</SolutionName>
+
+    <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
+    <NCastorToolsPath>$(SolutionsPath)\NCastor.MSBuild.Scripts</NCastorToolsPath>
+
+    <MSTestRunner>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>
+    <OpenCoverRunner>$(NugetPackagesPath)\OpenCover.3.0.121\OpenCover.Console.exe</OpenCoverRunner>
+    <ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.6.0\ReportGenerator.exe</ReportGeneratorRunner>
+    <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.6.0\tools\NuGet.exe</NugetRunner>
+
+    <MajorVersion>1</MajorVersion>
+    <MinorVersion>1</MinorVersion>
+
+    <Platform>Any CPU</Platform>
+
+    <NugetPackageSpecificationFilePath>$(SolutionsPath)\Build\NCastor.nuspec</NugetPackageSpecificationFilePath>
+
+    <AssemblyTitle>NCastor</AssemblyTitle>
+    <AssemblyDescription>NCastor Console Application</AssemblyDescription>
+    <AssemblyCompany>Jupaol Systems</AssemblyCompany>
+    <AssemblyProduct>NCastor</AssemblyProduct>
+    <AssemblyCopyright>Copyright (c) 2012, Jupaol Systems</AssemblyCopyright>
+    <AssemblyTrademark>Jupaol Systems - NCastor, All Rights Reserved</AssemblyTrademark>
+  </PropertyGroup>
+
+  <!-- Importing NCastor Global properties -->
+  <Import Project="$(NCastorToolsPath)\GlobalProperties.import"/>
+
+  <!-- Importing third party tasks -->
+  <Import Project="$(NCastorToolsPath)\GlobalTasks.import"/>
+
+  <!-- IUmporting NCastor targets -->
+  <Import Project="$(NCastorToolsPath)\GlobalTargets.import"/>
+
+  <!-- TODO: Place your custom settings here -->
+
+  <PropertyGroup>
+    <RunTestsDependsOn>
+      Build;
+      BeforeRunTests;
+
+      CleanMSTestArtefactFolders;
+      SettingMSTestTestingAssemblies;
+      RunMSTestsCodeCoverage;
+      CreateOpenCoverMSTestCodeCoverageReport;
+
+      CoreRunTests;
+      AfterRunTests;
+    </RunTestsDependsOn>
+  </PropertyGroup>
+
+  <!-- TODO: Place your custom targets here -->
+
+  <Target Name="CoreCalculateBuildVersionNumber">
+    <PropertyGroup>
+      <!-- To be injected by Hudson -->
+      <BuildVersion>$(BUILD_NUMBER)</BuildVersion>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="CoreCalculateRevisionNumber">
+    <PropertyGroup>
+      <!-- To be injected by the svn revision vis Hudson -->
+      <RevisionVersion>$(SVN_REVISION)</RevisionVersion>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="SettingInstrumentationAssemblies">
+    <ItemGroup>
+      <AssembliesToInstrument Include="
+                                        $(TestAssembliesPath)\NCastor.Console.exe;" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CoreSettingMSTestTestingAssemblies">
+    <ItemGroup>
+      <MSTestContainers Include="
+                          $(TestAssembliesPath)\NCastor.Console.Tests.dll;
+                          $(TestAssembliesPath)\NCastor.Console.Integration.Tests.dll;" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="PrepareNugetPackage">
+
+    <ItemGroup>
+      <_FilesToExcludeFromNugetPackage 
+        Include="
+                  $(WorkingNugetPackagePath)\NCastor.MSBuild.Scripts.*;" />
+    </ItemGroup>
+    <Delete Files="@(_FilesToExcludeFromNugetPackage)" ContinueOnError="false" />
+
+    <MakeDir Directories="$(WorkingNugetPackagePath)\Tools\ScriptCreator" ContinueOnError="false" Condition="!Exists('$(WorkingNugetPackagePath)\Tools\ScriptCreator')" />
+    
+    <Move 
+      SourceFiles="
+          $(WorkingNugetPackagePath)\Template.dll;
+          $(WorkingNugetPackagePath)\NCastor.Console.exe;
+          $(WorkingNugetPackagePath)\NCastor.Console.exe.config;" 
+      DestinationFolder="$(WorkingNugetPackagePath)\Tools\ScriptCreator" />
+
+  </Target>
+
+</Project>

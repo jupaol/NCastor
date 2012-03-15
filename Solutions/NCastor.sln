@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.MSBuild.Scripts", "NCastor.MSBuild.Scripts\NCastor.MSBuild.Scripts.csproj", "{4A0D623E-CBE2-4446-A9DC-FF32EAF219D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{8772106C-6838-4B40-9C9D-91D26A4F9122}"
+	ProjectSection(SolutionItems) = preProject
+		Build\Build.cmd = Build\Build.cmd
+		Build\NCastor.nuspec = Build\NCastor.nuspec
+		Build\NCastorBuild.proj = Build\NCastorBuild.proj
+		Build\NCastorDeployLocally.proj = Build\NCastorDeployLocally.proj
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.Console", "NCastor.Console\NCastor.Console.csproj", "{EB10FEA4-D307-44FC-A912-8E852515B1D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.Console.Tests", "NCastor.Console.Tests\NCastor.Console.Tests.csproj", "{3823CEF7-CA6B-4A97-AB00-D6C3D1C58100}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F5C9BD34-63AF-4115-99B1-9849E38663F0}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		NCastor.vsmdi = NCastor.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.Console.Integration.Tests", "NCastor.Console.Integration.Tests\NCastor.Console.Integration.Tests.csproj", "{7F7447AE-32B4-48A9-A27A-A2E60586E8D8}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = NCastor.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A0D623E-CBE2-4446-A9DC-FF32EAF219D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A0D623E-CBE2-4446-A9DC-FF32EAF219D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A0D623E-CBE2-4446-A9DC-FF32EAF219D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A0D623E-CBE2-4446-A9DC-FF32EAF219D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB10FEA4-D307-44FC-A912-8E852515B1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB10FEA4-D307-44FC-A912-8E852515B1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB10FEA4-D307-44FC-A912-8E852515B1D0}.Release|Any CPU.ActiveCfg = Release|x86
+		{3823CEF7-CA6B-4A97-AB00-D6C3D1C58100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3823CEF7-CA6B-4A97-AB00-D6C3D1C58100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3823CEF7-CA6B-4A97-AB00-D6C3D1C58100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3823CEF7-CA6B-4A97-AB00-D6C3D1C58100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F7447AE-32B4-48A9-A27A-A2E60586E8D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F7447AE-32B4-48A9-A27A-A2E60586E8D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F7447AE-32B4-48A9-A27A-A2E60586E8D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F7447AE-32B4-48A9-A27A-A2E60586E8D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

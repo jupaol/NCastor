@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <RunNUnitTestsCodeCoverageDependsOn>
+      BeforeRunNUnitTestsCodeCoverage;
+      CoreRunNUnitTestsCodeCoverage;
+      AfterRunNUnitTestsCodeCoverage;
+    </RunNUnitTestsCodeCoverageDependsOn>
+  </PropertyGroup>
+
+  <Target Name="RunNUnitTestsCodeCoverage" DependsOnTargets="$(RunNUnitTestsCodeCoverageDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeRunNUnitTestsCodeCoverage" />
+  <Target Name="AfterRunNUnitTestsCodeCoverage" />
+
+  <Target Name="CoreRunNUnitTestsCodeCoverage" >
+
+    <Error ContinueOnError="false" Text="The NUnit assemblies were not specified" Condition="@(NUnitAssemblies) == ''" />
+    <Error ContinueOnError="false" Text="The NUnit test assembly was not found: &quot;%(NUnitAssemblies.Identity)&quot;" Condition="!Exists(%(NUnitAssemblies.Identity))" />
+    <Error ContinueOnError="false" Text="The OpenCover runner path does not exist" Condition="!Exists($(OpenCoverRunner))" />
+    <Error ContinueOnError="false" Text="The OpenCover results file was not specified" Condition="$(OpenCoverNUnit_ReportFilePath) == ''" />
+    <Error ContinueOnError="false" Text="The NUnit runner does not exist" Condition="!Exists($(NUnitRunner))" />
+    
+    <ItemGroup>
+      <_NUnitAssemblies Include="@(NUnitAssemblies->'\&quot;%(Identity)\&quot;')" />
+      <_AssembliesToInstrumentWithOpenCoverNUnit Include="@(AssembliesToInstrument->'+[%(FileName)]*')"></_AssembliesToInstrumentWithOpenCoverNUnit>
+    </ItemGroup>
+
+    <PropertyGroup>
+      <_NunitArgs>@(_NUnitAssemblies, ' ') /noshadow</_NunitArgs>
+
+      <_OpenCoverNUnitArgs>-target:&quot;$(NUnitRunner)&quot; -targetargs:&quot;$(_NunitArgs)&quot;</_OpenCoverNUnitArgs>
+
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -register:user -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverNUnit, ' ')&quot; -output:&quot;$(OpenCoverNUnit_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+    </PropertyGroup>
+
+    <Exec Command="$(_CommonOpenCoverArgs) $(_OpenCoverNUnitArgs)" />
+
+  </Target>
+  
+</Project>

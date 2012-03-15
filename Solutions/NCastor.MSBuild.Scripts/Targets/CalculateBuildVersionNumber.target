@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CalculateBuildVersionNumberDependsOn>
+      BeforeCalculateBuildVersionNumber;
+      CoreCalculateBuildVersionNumber;
+      AfterCalculateBuildVersionNumber;
+    </CalculateBuildVersionNumberDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CalculateBuildVersionNumber" DependsOnTargets="$(CalculateBuildVersionNumberDependsOn)"/>
+  
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCalculateBuildVersionNumber" />
+  <Target Name="AfterCalculateBuildVersionNumber" />
+
+  <Target Name="CoreCalculateBuildVersionNumber" />
+  
+</Project>

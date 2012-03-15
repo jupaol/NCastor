@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <SetAssemblyInfoDependsOn>
+      BeforeSetAssemblyInfo;
+      CoreSetAssemblyInfo;
+      AfterSetAssemblyInfo;
+    </SetAssemblyInfoDependsOn>
+  </PropertyGroup>
+
+  <Target Name="SetAssemblyInfo" DependsOnTargets="$(SetAssemblyInfoDependsOn)" />
+
+  <!-- To be ovewritten by the user -->
+  <Target Name="BeforeSetAssemblyInfo" />
+  <Target Name="AfterSetAssemblyInfo" />
+
+  <Target Name="CoreSetAssemblyInfo">
+
+    <Error ContinueOnError="false" Text="The assembly title is nto specified (AssemblyTitle)" Condition="$(AssemblyTitle) == ''" />
+    <Error ContinueOnError="false" Text="The assembly to store the common info was nto specified" Condition="$(AssemblyCommonInfo) == ''" />
+
+    <MSBuild.Community.tasks.AssemblyInfo OutputFile="$(AssemblyCommonInfo)"
+                                          CodeLanguage="C#"
+                                          AssemblyTitle="$(AssemblyTitle)"
+                                          AssemblyDescription="$(AssemblyDescription)"
+                                          AssemblyCompany="$(AssemblyCompany)"
+                                          AssemblyProduct="$(AssemblyProduct)"
+                                          AssemblyCopyright="$(AssemblyCopyright)"
+                                          AssemblyTrademark="$(AssemblyTrademark)"/>
+
+  </Target>
+  
+</Project>

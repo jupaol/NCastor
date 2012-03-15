@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateOpenCoverMSpecCodeCoverageReportDependsOn>
+      BeforeCreateOpenCoverMSpecCodeCoverageReport;
+      CoreCreateOpenCoverMSpecCodeCoverageReport;
+      AfterCreateOpenCoverMSpecCodeCoverageReport;
+    </CreateOpenCoverMSpecCodeCoverageReportDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateOpenCoverMSpecCodeCoverageReport" DependsOnTargets="$(CreateOpenCoverMSpecCodeCoverageReportDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateOpenCoverMSpecCodeCoverageReport" />
+  <Target Name="AfterCreateOpenCoverMSpecCodeCoverageReport" />
+
+  <Target Name="CoreCreateOpenCoverMSpecCodeCoverageReport" >
+
+    <Error ContinueOnError="false" Text="The report generator runner was not specified" Condition="$(ReportGeneratorRunner) == ''" />
+    <Error ContinueOnError="false" Text="The report generator runner was not found" Condition="!Exists($(ReportGeneratorRunner))" />
+    <Error ContinueOnError="false" Text="The MSpec report path was not specified" Condition="$(ReportGeneratorMSpecReportPath) == ''" />
+
+    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(ReportGeneratorMSpecReportPath)" ContinueOnError="false" Condition="Exists($(ReportGeneratorMSpecReportPath))" />
+    <RemoveDir ContinueOnError="false" Directories="$(ReportGeneratorMSpecReportPath)" Condition="Exists($(ReportGeneratorMSpecReportPath))" />
+
+    <MakeDir ContinueOnError="false" Directories="$(ReportGeneratorMSpecReportPath)" Condition="!Exists($(ReportGeneratorMSpecReportPath))" />
+
+    <Exec ContinueOnError="false" Command='"$(ReportGeneratorRunner)" "$(OpenCoverMSpec_ReportFilePath)" "$(ReportGeneratorMSpecReportPath)"' />
+
+  </Target>
+  
+</Project>

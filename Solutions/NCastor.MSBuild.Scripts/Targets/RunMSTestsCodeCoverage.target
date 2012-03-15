@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <RunMSTestsCodeCoverageDependsOn>
+      BeforeRunMSTestsCodeCoverage;
+      CoreRunMSTestsCodeCoverage;
+      AfterRunMSTestsCodeCoverage;
+    </RunMSTestsCodeCoverageDependsOn>
+  </PropertyGroup>
+
+  <Target Name="RunMSTestsCodeCoverage" DependsOnTargets="$(RunMSTestsCodeCoverageDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeRunMSTestsCodeCoverage" />
+  <Target Name="AfterRunMSTestsCodeCoverage" />
+
+  <Target Name="CoreRunMSTestsCodeCoverage" >
+
+    <Error ContinueOnError="false" Text="The MSTest results path is not specified" Condition="$(MSTestResultsPath) == ''"></Error>
+    <Error ContinueOnError="false" Text="The MSTest results file is not specified" Condition="$(MSTestReportFilePath) == ''"></Error>
+    <Error ContinueOnError="false" Text="The MSTest runner was not specified" Condition="$(MSTestRunner) == ''"></Error>
+    <Error ContinueOnError="false" Text="The MSTest runner was not found" Condition="!Exists($(MSTestRunner))"/>
+    <Error ContinueOnError="false" Text="The MSTest containers are not specified" Condition="@(MSTestContainers) == ''"></Error>
+    <Error ContinueOnError="false" Text="The MSTest dll was not found: &quot;%(MSTestContainers.Identity)&quot;" Condition="!Exists(%(MSTestContainers.Identity))" />
+
+    <MakeDir Directories="$(MSTestResultsPath)" Condition="!Exists($(MSTestResultsPath))" />
+
+    <ItemGroup>
+      <_MSTestContainersToRunCodeCoverage Include="@(MSTestContainers->'/testcontainer:\&quot;%(Identity)\&quot;')" />
+      <_AssembliesToInstrumentWithOpenCoverMSTest Include="@(AssembliesToInstrument->'+[%(FileName)]*')" />
+    </ItemGroup>
+
+    <PropertyGroup>
+      <_OpenCoverMSTestCommand>-target:"$(MSTestRunner)"  -targetargs:"@(_MSTestContainersToRunCodeCoverage, ' ') /detail:errormessage /detail:errorstacktrace /resultsfile:\"$(MSTestReportFilePath)\""</_OpenCoverMSTestCommand>
+
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register:user -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSTest, ' ')&quot; -output:&quot;$(OpenCoverMSTest_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+    </PropertyGroup>
+
+    <Exec Command="$(_CommonOpenCoverArgs) $(_OpenCoverMSTestCommand)" />
+
+  </Target>
+  
+</Project>

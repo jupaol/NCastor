@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanArtefactFoldersDependsOn>
+      BeforeCleanArtefactFolders;
+      CoreCleanArtefactFolders;
+      AfterCleanArtefactFolders;
+    </CleanArtefactFoldersDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanArtefactFolders" DependsOnTargets="$(CleanArtefactFoldersDependsOn)" />
+  
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCleanArtefactFolders" />
+  <Target Name="AfterCleanArtefactFolders" />
+
+  <Target Name="CoreCleanArtefactFolders">
+
+    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(WorkingDirectoryPath)" ContinueOnError="false" Condition="Exists($(WorkingDirectoryPath))" />
+    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(DropsPath)" ContinueOnError="false" Condition="Exists($(DropsPath))" />
+
+    <RemoveDir ContinueOnError="false" Directories="$(WorkingDirectoryPath)" Condition="Exists($(WorkingDirectoryPath))" />
+    <RemoveDir ContinueOnError="false" Directories="$(DropsPath)" Condition="Exists($(DropsPath))" />
+
+  </Target>
+  
+</Project>

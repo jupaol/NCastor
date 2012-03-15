@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <RunMSpecCodeCoverageDependsOn>
+      BeforeRunMSpecCodeCoverage;
+      CoreRunMSpecCodeCoverage;
+      AfterRunMSpecCodeCoverage;
+    </RunMSpecCodeCoverageDependsOn>
+  </PropertyGroup>
+
+  <Target Name="RunMSpecCodeCoverage" DependsOnTargets="$(RunMSpecCodeCoverageDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeRunMSpecCodeCoverage" />
+  <Target Name="AfterRunMSpecCodeCoverage" />
+
+  <Target Name="CoreRunMSpecCodeCoverage" >
+
+    <Error ContinueOnError="false" Text="The MSpec results path was not specified" Condition="$(MSpecResultsPath) == ''" />
+    <Error ContinueOnError="false" Text="The MSpec assemblies were not specified" Condition="@(MSpecAssemblies) == ''" />
+    <Error ContinueOnError="false" Text="The MSpec xml report file was not specified" Condition="$(MSpecXmlReportFilePath) == ''" />
+    <Error ContinueOnError="false" Text="The MSpec html report file was not specied" Condition="$(MSpecHtmlReporthFilePath) == ''" />
+    <Error ContinueOnError="false" Text="The MSpec runner was not found in the tools path specified" Condition="!Exists($(MSPecRunner))" />
+    <Error ContinueOnError="false" Text="The MSpec test assembly was not found: &quot;%(MSpecAssemblies.Identity)&quot;" Condition="!Exists(%(MSpecAssemblies.Identity))" />
+
+    <ItemGroup>
+      <_AssembliesToInstrumentWithOpenCoverMSpec Include="@(AssembliesToInstrument->'+[%(FileName)]*')" />
+      <_MSpecAssembliesToRunCodeCoverage Include="@(MSpecAssemblies->'\&quot;%(Identity)\&quot;')" />
+    </ItemGroup>
+
+    <PropertyGroup>
+      <_MSpecCommand>-target:"$(MSPecRunner)" -targetargs:"@(_MSpecAssembliesToRunCodeCoverage, ' ')"</_MSpecCommand>
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -register:user -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSpec, ' ')&quot; -output:&quot;$(OpenCoverMSpec_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+    </PropertyGroup>
+
+    <Exec Command="$(_CommonOpenCoverArgs) $(_MSpecCommand)" />
+
+  </Target>
+  
+</Project>

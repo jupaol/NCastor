@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <TargetsPath>Targets</TargetsPath>
+  </PropertyGroup>
+  
+  <!--Importing targets-->
+  <Import Project="$(TargetsPath)\ValidateSettings.target"/>
+  <Import Project="$(TargetsPath)\CalculateBuildVersionNumber.target"/>
+  <Import Project="$(TargetsPath)\CalculateRevisionNumber.target"/>
+  <Import Project="$(TargetsPath)\CalculateSemanticVersion.target"/>
+  <Import Project="$(TargetsPath)\CleanArtefactFolders.targeet"/>
+  <Import Project="$(TargetsPath)\Clean.target"/>
+  <Import Project="$(TargetsPath)\CreateArtefactFolders.target"/>
+  <Import Project="$(TargetsPath)\SetAssemblyVersion.target" />
+  <Import Project="$(TargetsPath)\SetAssemblyInfo.target" />
+  <Import Project="$(TargetsPath)\CleanSourceCodeArtefacts.target" />
+  <Import Project="$(TargetsPath)\IsolateSourceCode.target"/>
+  <Import Project="$(TargetsPath)\PackageSourceCode.target"/>
+  <Import Project="$(TargetsPath)\Build.target"/>
+  <Import Project="$(TargetsPath)\PackageBuild.target"/>
+
+  <Import Project="$(TargetsPath)\RunTests.target"/>
+  
+  <Import Project="$(TargetsPath)\CleanNUnitArtefactFolders.target"/>
+  <Import Project="$(TargetsPath)\RunNUnitTests.target"/>
+  <Import Project="$(TargetsPath)\CleanMSTestArtefactFolders.target"/>
+  <Import Project="$(TargetsPath)\SettingMSTestTestingAssemblies.target"/>
+  <Import Project="$(TargetsPath)\RunMSTests.target"/>
+  <Import Project="$(TargetsPath)\CleanMSpecArtefactFolders.target"/>
+  <Import Project="$(TargetsPath)\RunMSpecTests.target"/>
+  <Import Project="$(TargetsPath)\TransformMSpecReportIntoJUnit.target"/>
+
+  <Import Project="$(TargetsPath)\RunNUnitTestsCodeCoverage.target"/>
+  <Import Project="$(TargetsPath)\RunMSTestsCodeCoverage.target"/>
+  <Import Project="$(TargetsPath)\RunMSpecCodeCoverage.target"/>
+
+  <Import Project="$(TargetsPath)\CreateOpenCoverNUnitCodeCoverageReport.target"/>
+  <Import Project="$(TargetsPath)\CreateOpenCoverMSTestCodeCoverageReport.target"/>
+  <Import Project="$(TargetsPath)\CreateOpenCoverMSpecCodeCoverageReport.target"/>
+
+  <Import Project="$(TargetsPath)\CreateMSTestReport.target"/>
+
+  <Import Project="$(TargetsPath)\Package.target"/>
+  <Import Project="$(TargetsPath)\CreateNugetPackage.target"/>
+
+</Project>

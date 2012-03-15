@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <RunMSTestsDependsOn>
+      BeforeRunMSTests;
+      CoreRunMSTests;
+      AfterRunMSTests;
+    </RunMSTestsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="RunMSTests" DependsOnTargets="$(RunMSTestsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeRunMSTests" />
+  <Target Name="AfterRunMSTests" />
+
+  <Target Name="CoreRunMSTests" >
+
+    <Error ContinueOnError="false" Text="The MSTest results path is not specified" Condition="$(MSTestResultsPath) == ''"></Error>
+    <Error ContinueOnError="false" Text="The MSTest results file is not specified" Condition="$(MSTestReportFilePath) == ''"></Error>
+    <Error ContinueOnError="false" Text="The MSTest runner was not specified" Condition="$(MSTestRunner) == ''"></Error>
+    <Error ContinueOnError="false" Text="The MSTest runner was not found" Condition="!Exists($(MSTestRunner))"/>
+    <Error ContinueOnError="false" Text="The MSTest containers are not specified" Condition="@(MSTestContainers) == ''"></Error>
+    <Error ContinueOnError="false" Text="The MSTest dll was not found: &quot;%(MSTestContainers.Identity)&quot;" Condition="!Exists(%(MSTestContainers.Identity))" />
+
+    <MakeDir Directories="$(MSTestResultsPath)" Condition="!Exists($(MSTestResultsPath))" />
+
+    <ItemGroup>
+      <_MSTestContainers Include="@(MSTestContainers->'/testcontainer:&quot;%(Identity)&quot;')" />
+    </ItemGroup>
+
+    <PropertyGroup>
+      <_MSTestCommand>"$(MSTestRunner)" @(_MSTestContainers, ' ') /detail:errormessage /detail:errorstacktrace /resultsfile:"$(MSTestReportFilePath)"</_MSTestCommand>
+    </PropertyGroup>
+
+    <Exec Command='$(_MSTestCommand)'></Exec>
+
+  </Target>
+  
+</Project>

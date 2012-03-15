@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <RunTestsDependsOn>
+      Build;
+      BeforeRunTests;
+
+      CleanNUnitArtefactFolders;
+      RunNUnitTests;
+
+      CleanMSTestArtefactFolders;
+      SettingMSTestTestingAssemblies;
+      RunMSTests;
+
+      CleanMSpecArtefactFolders;
+      RunMSpecTests;
+      TransformMSpecXmlReporttToJUnitXmlReport;
+
+      RunNUnitTestsCodeCoverage;
+      RunMSTestsCodeCoverage;
+      RunMSpecCodeCoverage;
+
+      CreateOpenNUnitCodeCoverageReport;
+      CreateOpenCoverMSTestCodeCoverageReport;
+      CreateOpenCoverMSpecCodeCoverageReport;
+
+      CoreRunTests;
+      AfterRunTests;
+    </RunTestsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="RunTests" DependsOnTargets="$(RunTestsDependsOn)" />
+  
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeRunTests" />
+  <Target Name="AfterRunTests" />
+
+  <Target Name="CoreRunTests" />
+  
+</Project>

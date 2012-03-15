@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanDependsOn>
+      BeforeClean;
+      CoreClean;
+      AfterClean;
+    </CleanDependsOn>
+  </PropertyGroup>
+
+  <Target Name="Clean" DependsOnTargets="$(CleanDependsOn)" />
+  
+  <!--Can be overriden by the user-->
+  <Target Name="BeforeClean" />
+  <Target Name="AfterClean" />
+
+  <Target Name="CoreClean">
+
+    <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(ForcedBuildProperties)" Targets="Clean" />
+    
+  </Target>
+  
+</Project>
