@@ -68,6 +68,8 @@ namespace NCastor.Console
                 Console.Error.WriteLine(exc.Message);
                 Environment.Exit(1);
             }
+
+            Environment.Exit(0);
         }
     }
 }

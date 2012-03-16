@@ -122,7 +122,7 @@ namespace NCastor.Console.Integration.Tests
             var config = cont.ProcessSolutionTemplate();
 
             config.Should().NotBeNull();
-            File.Exists(config.Processor.FinalTemplateFileName);
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
@@ -139,7 +139,7 @@ namespace NCastor.Console.Integration.Tests
             var config = cont.ProcessPropertiesCustomPropertiesTemplate();
 
             config.Should().NotBeNull();
-            File.Exists(config.Processor.FinalTemplateFileName);
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
@@ -155,7 +155,7 @@ namespace NCastor.Console.Integration.Tests
             var config = cont.ProcessPropertiesInitPropertiesTemplate();
 
             config.Should().NotBeNull();
-            File.Exists(config.Processor.FinalTemplateFileName);
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);

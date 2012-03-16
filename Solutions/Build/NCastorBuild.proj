@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-<copyright file=".cs" company="Juan Pablo Olmos Lara (Jupaol)">
+<copyright file="NCastorBuild.proj" company="Juan Pablo Olmos Lara (Jupaol)">
 
   jupaol@hotmail.com
   jupaoljpol@gmail.com
@@ -125,7 +125,12 @@
     <ItemGroup>
       <_FilesToExcludeFromNugetPackage 
         Include="
-                  $(WorkingNugetPackagePath)\NCastor.MSBuild.Scripts.*;" />
+                  $(WorkingNugetPackagePath)\NCastor.MSBuild.Scripts.*;
+                  $(WorkingNugetPackagePath)\*.pdb;
+                  $(WorkingNugetPackagePath)\*.xml;
+                  $(WorkingNugetPackagePath)\*.Tests.dll;
+                  $(WorkingNugetPackagePath)\Moq.dll;
+                  $(WorkingNugetPackagePath)\FluentAssertions.dll;" />
       <_ExtraFilesToInclude 
         Include="
                   $(GlobalRootPath)\Readme.txt;
@@ -134,16 +139,13 @@
     </ItemGroup>
     <Delete Files="@(_FilesToExcludeFromNugetPackage)" ContinueOnError="false" />
 
-    <Copy SourceFiles="@(_ExtraFilesToInclude)" DestinationFolder="$(WorkingNugetPackagePath)" />
-
-    <MakeDir Directories="$(WorkingNugetPackagePath)\Tools\ScriptCreator" ContinueOnError="false" Condition="!Exists('$(WorkingNugetPackagePath)\Tools\ScriptCreator')" />
+    <MSBuild.ExtensionPack.FileSystem.RoboCopy 
+      Source="$(WorkingNugetPackagePath)" 
+      Destination="$(WorkingNugetPackagePath)\Tools\ScriptCreator" 
+      Files="*.dll;*.exe;*.config;"
+      Options="/Mov"/>
     
-    <Move 
-      SourceFiles="
-          $(WorkingNugetPackagePath)\Template.dll;
-          $(WorkingNugetPackagePath)\NCastor.Console.exe;
-          $(WorkingNugetPackagePath)\NCastor.Console.exe.config;" 
-      DestinationFolder="$(WorkingNugetPackagePath)\Tools\ScriptCreator" />
+    <Copy SourceFiles="@(_ExtraFilesToInclude)" DestinationFolder="$(WorkingNugetPackagePath)" />
 
   </Target>
 
