@@ -150,7 +150,7 @@ namespace NCastor.Console
         }
 
         /// <summary>
-        /// Processes the Properties.Custom.Properties template.
+        /// Processes the Custom Properties template.
         /// </summary>
         /// <returns>
         /// The TemplateConfigurator object used to process the template
@@ -166,7 +166,7 @@ namespace NCastor.Console
         }
 
         /// <summary>
-        /// Processes the Properties.Init.Properties template.
+        /// Processes Init Properties template.
         /// </summary>
         /// <returns>
         /// The TemplateConfigurator object used to process the template
@@ -180,6 +180,38 @@ namespace NCastor.Console
                 {
                     x.Set(TemplateTokenConstants.ProductName, y.ProductName);
                     x.Set(TemplateTokenConstants.SolutionName, y.SolutionName);
+                });
+        }
+
+        /// <summary>
+        /// Processes Custom Tasks template.
+        /// </summary>
+        /// <returns>
+        /// The TemplateConfigurator object used to process the template
+        /// </returns>
+        public TemplateConfigurator ProcessTasksCustomTasksTemplate()
+        {
+            return this.ProcessTemplate(
+                TemplateConstants.CustomTasks,
+                "NCastor.Console.Templates.Tasks",
+                (x, y, z) =>
+                {
+                });
+        }
+
+        /// <summary>
+        /// Processes Custom Targets template.
+        /// </summary>
+        /// <returns>
+        /// The TemplateConfigurator object used to process the template
+        /// </returns>
+        public TemplateConfigurator ProcessTargetsCustomTargetsTemplate()
+        {
+            return this.ProcessTemplate(
+                TemplateConstants.CustomTargets,
+                "NCastor.Console.Templates.Targets",
+                (x, y, z) =>
+                {
                 });
         }
     }

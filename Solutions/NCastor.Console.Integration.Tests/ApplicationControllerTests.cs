@@ -97,21 +97,6 @@ namespace NCastor.Console.Integration.Tests
                 .WithMessage("The command line arguments must be valid before calling the ProcessTemplate method", FluentAssertions.Assertions.ComparisonMode.Substring);
         }
 
-        [TestMethod]
-        public void calling_Processtemplate_for_the_Solution_template_it_should_save_the_template()
-        {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
-
-            var config = cont.ProcessTemplate(TemplateConstants.Solution, "NCastor.Console.Templates", (x, y, z) =>
-            {
-                x.Set(TemplateTokenConstants.ProductName, y.ProductName);
-            });
-
-            config.Should().NotBeNull();
-            config.Processor.FinalTemplateFileName.Should().NotBeNullOrEmpty().And.NotBeBlank();
-            File.Exists(config.Processor.FinalTemplateFileName);
-        }
-
         #endregion
 
         [TestMethod]
@@ -165,6 +150,38 @@ namespace NCastor.Console.Integration.Tests
             templateRes.CountOcurrences(config.Context.CurrentOptions.SolutionName).Should().Be(1);
 
             templateRes.Should().NotContain("{{ SolutionName }}");
+        }
+
+        [TestMethod]
+        public void calling_ProcessTasksCustomTasksTemplate_should_save_the_template()
+        {
+            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+
+            var config = cont.ProcessTasksCustomTasksTemplate();
+
+            config.Should().NotBeNull();
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+            //testing that the template tokens were substituted correctly
+            var templateRes = this.GetContentFromPersistedTemplate(config);
+
+            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
+        }
+
+        [TestMethod]
+        public void calling_ProcessTargetsCustomTargetsTemplate_should_save_the_template_on_disk()
+        {
+            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+
+            var config = cont.ProcessTargetsCustomTargetsTemplate();
+
+            config.Should().NotBeNull();
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+            //testing that the template tokens were substituted correctly
+            var templateRes = this.GetContentFromPersistedTemplate(config);
+
+            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
         }
 
         private string GetContentFromPersistedTemplate(TemplateConfigurator config)

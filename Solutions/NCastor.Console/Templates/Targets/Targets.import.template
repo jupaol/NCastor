@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <!--
 <copyright file="{{ FileName }}" company="Juan Pablo Olmos Lara (Jupaol)">
@@ -33,37 +33,14 @@
 </copyright>
 -->
 
-<!--
-"Your Stuff"
+<!-->
+"Your stuff"
 
-This file is the entry point of your build process, this file imports "Your Stuff" the auto generated MSBuild scripts.
-
-Remember that MSBuild scripts are evaluated sequentially so the order in which you import the projects it's important
-because some properties declared in nested MSBuild scripts totally depend on the properties declared in the 
-preceding scripts
+Your custom targets
 -->
 
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!-- Importing {{ ProductName }} Initial properties -->
-  <Import Project="Properties\{{ ProductName }}.Init.properties"/>
-
-  <!-- Importing NCastor Global properties -->
-  <Import Project="$(NCastorToolsPath)\GlobalProperties.import"/>
-
-  <!-- Importing third party tasks -->
-  <Import Project="$(NCastorToolsPath)\GlobalTasks.import"/>
-
-  <!-- IUmporting NCastor targets -->
-  <Import Project="$(NCastorToolsPath)\GlobalTargets.import"/>
-
-  <!-- Importing {{ ProductName }} Custom properties  -->
-  <Import Project="Properties\{{ ProductName }}.Custom.properties"/>
-
-  <!-- Importing {{ ProductName }} Custom tasks -->
-  <Import Project="Tasks\{{ ProductName }}.Custom.tasks"/>
-
-  <!-- Importing {{ ProductName }} Custom targets -->
-  <Import Project="Targets\{{ ProductName }}.Custom.targets"/>
+  <!-- TODO: Place your custom targets here -->
 
 </Project>

@@ -117,9 +117,11 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <EmbeddedResource Include="Templates\Solution.proj.template" />
-    <EmbeddedResource Include="Templates\Properties\Init.properties.template" />
-    <EmbeddedResource Include="Templates\Properties\Custom.properties.template" />
+    <EmbeddedResource Include="Templates\BuildSolution.proj.template" />
+    <EmbeddedResource Include="Templates\Properties\InitProperties.import.template" />
+    <EmbeddedResource Include="Templates\Properties\Properties.import.template" />
+    <EmbeddedResource Include="Templates\Targets\Targets.import.template" />
+    <EmbeddedResource Include="Templates\Tasks\Tasks.import.template" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

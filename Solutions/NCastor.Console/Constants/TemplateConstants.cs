@@ -44,18 +44,28 @@ namespace NCastor.Console.Constants
     public static class TemplateConstants
     {
         /// <summary>
-        /// Represents the Solution.template file name embedded into the assembly
+        /// Represents the BuildSolution.template file name embedded into the assembly
         /// </summary>
-        public const string Solution = "Solution.proj.template";
+        public const string Solution = "BuildSolution.proj.template";
 
         /// <summary>
-        /// Represents the Init.properties.template file name embedded into the assembly
+        /// Represents the InitProperties.import.template file name embedded into the assembly
         /// </summary>
-        public const string InitProperties = "Init.properties.template";
+        public const string InitProperties = "InitProperties.import.template";
 
         /// <summary>
-        /// Represents the Custom.properties.template file name embedded into the assembly
+        /// Represents the Properties.import.template file name embedded into the assembly
         /// </summary>
-        public const string CustomProperties = "Custom.properties.template";
+        public const string CustomProperties = "Properties.import.template";
+
+        /// <summary>
+        /// /// Represents the Targets.import.template file name embedded into the assembly
+        /// </summary>
+        public const string CustomTargets = "Targets.import.template";
+
+        /// <summary>
+        /// Represents the Tasks.import.template file name embedded into the assembly
+        /// </summary>
+        public const string CustomTasks = "Tasks.import.template";
     }
 }
