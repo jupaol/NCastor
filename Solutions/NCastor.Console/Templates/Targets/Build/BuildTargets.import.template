@@ -46,8 +46,6 @@ Your custom build targets
   <!--<PropertyGroup>
     <BuildDependsOn>
       ValidateSettings;
-      CalculateBuildVersionNumber;
-      CalculateRevisionNumber;
       CalculateSemanticVersion;
       Clean;
       CleanArtefactFolders;
@@ -69,8 +67,6 @@ Your custom build targets
   <PropertyGroup>
     <BuildDependsOn>
       ValidateSettings;
-      CalculateBuildVersionNumber;
-      CalculateRevisionNumber;
       CalculateSemanticVersion;
       Clean;
       CleanArtefactFolders;

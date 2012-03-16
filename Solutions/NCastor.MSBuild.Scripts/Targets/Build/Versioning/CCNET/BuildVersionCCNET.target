@@ -2,9 +2,9 @@
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Target Name="BuildVersionHudsonSvn">
+  <Target Name="BuildVersionCCNET">
     <PropertyGroup>
-      <!-- To be injected by Hudson -->
+      <!-- To be injected by CCNET -->
       <BuildVersion>$(BUILD_NUMBER)</BuildVersion>
     </PropertyGroup>
   </Target>

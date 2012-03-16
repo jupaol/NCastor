@@ -91,20 +91,9 @@
 
   <!-- TODO: Place your custom targets here -->
 
-  <Target Name="CoreCalculateBuildVersionNumber">
-    <PropertyGroup>
-      <!-- To be injected by Hudson -->
-      <BuildVersion>$(BUILD_NUMBER)</BuildVersion>
-    </PropertyGroup>
-  </Target>
-
-  <Target Name="CoreCalculateRevisionNumber">
-    <PropertyGroup>
-      <!-- To be injected by the svn revision vis Hudson -->
-      <RevisionVersion>$(SVN_REVISION)</RevisionVersion>
-    </PropertyGroup>
-  </Target>
-
+  <Target Name="CoreCalculateBuildVersionNumber" DependsOnTargets="BuildVersionHudson;" />
+  <Target Name="CoreCalculateRevisionNumber" DependsOnTargets="RevisionVersionHudsonSvn" />
+    
   <Target Name="SettingInstrumentationAssemblies">
     <ItemGroup>
       <AssembliesToInstrument Include="

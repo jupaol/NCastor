@@ -11,8 +11,10 @@
   
   <Import Project="$(TargetsPath)\Build\Versioning\CalculateBuildVersion.target"/>
   <Import Project="$(TargetsPath)\Build\Versioning\CalculateRevisionVersion.target"/>
-  <Import Project="$(TargetsPath)\Build\Versioning\Hudson\Svn\BuildVersionHudsonSvn.target"/>
+  <Import Project="$(TargetsPath)\Build\Versioning\Hudson\BuildVersionHudson.target"/>
   <Import Project="$(TargetsPath)\Build\Versioning\Hudson\Svn\RevisionVersionHudsonSvn.target"/>
+  <Import Project="$(TargetsPath)\Build\Versioning\TFS\BuildVersionTFS.target"/>
+  <Import Project="$(TargetsPath)\Build\Versioning\CCNET\BuildVersionCCNET.target"/>
   <Import Project="$(TargetsPath)\Build\Versioning\CalculateSemanticVersion.target"/>
   
   <Import Project="$(TargetsPath)\CleanArtefactFolders.targeet"/>

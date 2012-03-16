@@ -33,6 +33,7 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
+    <Folder Include="Targets\Build\Versioning\CCNET\SVN\" />
     <Folder Include="Targets\Build\Versioning\Hudson\Git\" />
     <Folder Include="Targets\Build\Versioning\Hudson\TFS\" />
   </ItemGroup>
@@ -122,11 +123,19 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\Hudson\SVN\BuildVersionHudsonSvn.target">
+    <Content Include="Targets\Build\Versioning\Hudson\BuildVersionHudson.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Targets\Build\Versioning\Hudson\SVN\RevisionVersionHudsonSvn.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\TFS\BuildVersionTFS.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\CCNET\BuildVersionCCNET.target">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Targets\CleanArtefactFolders.targeet">
