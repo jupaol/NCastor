@@ -2,7 +2,7 @@
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Target Name="CalculateRevisionVersionForHudson" >
+  <Target Name="RevisionVersionHudsonSvn" >
     <PropertyGroup>
       <!-- To be injected by the svn revision vis Hudson -->
       <RevisionVersion>$(SVN_REVISION)</RevisionVersion>
