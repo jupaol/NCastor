@@ -18,7 +18,7 @@
 
   <Target Name="CreateArtefactFolders">
 
-    <Exec IgnoreExitCode="true"  ContinueOnError="true" Command='ping 1.1.1.1 -n 1 -w 3000 > nul'></Exec>
+    <MSBuild.Community.Tasks.Sleep Milliseconds="2000" />
     
     <MakeDir ContinueOnError="false" Directories="$(DropsPath)" Condition="!Exists($(DropsPath))" />
     <MakeDir ContinueOnError="false" Directories="$(AssemblyInfoPath)" Condition="!Exists($(AssemblyInfoPath))" />
