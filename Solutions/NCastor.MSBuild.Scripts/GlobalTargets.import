@@ -7,10 +7,14 @@
   </PropertyGroup>
   
   <!--Importing targets-->
-  <Import Project="$(TargetsPath)\ValidateSettings.target"/>
-  <Import Project="$(TargetsPath)\CalculateBuildVersionNumber.target"/>
-  <Import Project="$(TargetsPath)\CalculateRevisionNumber.target"/>
-  <Import Project="$(TargetsPath)\CalculateSemanticVersion.target"/>
+  <Import Project="$(TargetsPath)\Common\ValidateSettings.target"/>
+  
+  <Import Project="$(TargetsPath)\Build\Versioning\CalculateBuildVersion.target"/>
+  <Import Project="$(TargetsPath)\Build\Versioning\CalculateRevisionVersion.target"/>
+  <Import Project="$(TargetsPath)\Build\Versioning\Hudson\Svn\BuildVersionHudsonSvn.target"/>
+  <Import Project="$(TargetsPath)\Build\Versioning\Hudson\Svn\RevisionVersionHudsonSvn.target"/>
+  <Import Project="$(TargetsPath)\Build\Versioning\CalculateSemanticVersion.target"/>
+  
   <Import Project="$(TargetsPath)\CleanArtefactFolders.targeet"/>
   <Import Project="$(TargetsPath)\Clean.target"/>
   <Import Project="$(TargetsPath)\CreateArtefactFolders.target"/>
@@ -19,7 +23,9 @@
   <Import Project="$(TargetsPath)\CleanSourceCodeArtefacts.target" />
   <Import Project="$(TargetsPath)\IsolateSourceCode.target"/>
   <Import Project="$(TargetsPath)\PackageSourceCode.target"/>
-  <Import Project="$(TargetsPath)\Build.target"/>
+  
+  <Import Project="$(TargetsPath)\Build\Build.target"/>
+  
   <Import Project="$(TargetsPath)\PackageBuild.target"/>
 
   <Import Project="$(TargetsPath)\RunTests.target"/>

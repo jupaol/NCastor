@@ -184,6 +184,22 @@ namespace NCastor.Console.Integration.Tests
             templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
         }
 
+        [TestMethod]
+        public void calling_ProcessTargetsBuildTargetsTemplate_should_save_the_template_on_disk()
+        {
+            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+
+            var config = cont.ProcessTargetsBuildTargetsTemplate();
+
+            config.Should().NotBeNull();
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+            //testing that the template tokens were substituted correctly
+            var templateRes = this.GetContentFromPersistedTemplate(config);
+
+            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
+        }
+
         private string GetContentFromPersistedTemplate(TemplateConfigurator config)
         {
             var templateRes = string.Empty;

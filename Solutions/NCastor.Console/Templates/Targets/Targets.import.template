@@ -43,4 +43,6 @@ Your custom targets
 
   <!-- TODO: Place your custom targets here -->
 
+  <Import Project="Properties\{{ ProductName }}.BuildTargets.import"/>
+
 </Project>

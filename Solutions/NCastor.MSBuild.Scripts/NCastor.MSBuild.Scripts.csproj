@@ -33,6 +33,8 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
+    <Folder Include="Targets\Build\Versioning\Hudson\Git\" />
+    <Folder Include="Targets\Build\Versioning\Hudson\TFS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Common.properties">
@@ -47,7 +49,7 @@
     <Content Include="GlobalProperties.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build.target">
+    <Content Include="Targets\Build\Build.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
@@ -62,10 +64,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Tasks\MSBuild.Community\MSBuild.Community.Tasks.Targets">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Tasks\MSBuild.Community\MSBuild.Community.Tasks.xsd">
-      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\CreateArtefactFolders.target">
@@ -124,10 +122,17 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Build\Versioning\Hudson\SVN\BuildVersionHudsonSvn.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Targets\Build\Versioning\Hudson\SVN\RevisionVersionHudsonSvn.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\CleanArtefactFolders.targeet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Targets\CalculateSemanticVersion.target">
+    <Content Include="Targets\Build\Versioning\CalculateSemanticVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\RunTests.target">
@@ -136,10 +141,10 @@
     <Content Include="Targets\RunNUnitTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\CalculateBuildVersionNumber.target">
+    <Content Include="Targets\Build\Versioning\CalculateBuildVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\CalculateRevisionNumber.target">
+    <Content Include="Targets\Build\Versioning\CalculateRevisionVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\CleanSourceCodeArtefacts.target">
@@ -210,7 +215,7 @@
     <Content Include="GlobalTargets.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\ValidateSettings.target">
+    <Content Include="Targets\Common\ValidateSettings.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tasks\MSBuild Extension Pack\Interop.COMAdmin.dll">

@@ -5,8 +5,6 @@
   <PropertyGroup>
     <BuildDependsOn>
       ValidateSettings;
-      CalculateBuildVersionNumber;
-      CalculateRevisionNumber;
       CalculateSemanticVersion;
       Clean;
       CleanArtefactFolders;

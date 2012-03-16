@@ -214,5 +214,23 @@ namespace NCastor.Console
                 {
                 });
         }
+
+        /// <summary>
+        /// Processes Build Targets template.
+        /// </summary>
+        /// <returns>
+        /// The TemplateConfigurator object used to process the template
+        /// </returns>
+        public TemplateConfigurator ProcessTargetsBuildTargetsTemplate()
+        {
+            return this.ProcessTemplate(
+                TemplateConstants.BuildTargets,
+                "NCastor.Console.Templates.Targets.Build",
+                (x, y, z) =>
+                {
+                });
+
+
+        }
     }
 }

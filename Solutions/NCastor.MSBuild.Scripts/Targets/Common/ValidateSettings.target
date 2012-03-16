@@ -20,24 +20,23 @@
   <Target Name="CoreValidateSettings">
 
     <Error ContinueOnError="false" Text="The global root path was not defined" Condition="$(GlobalRootPath) == ''" />
-    <Error ContinueOnError="false" Text="The global root path was not found (&quot;$(GlobalRootPath)&quot;)" Condition="!Exists($(GlobalRootPath))"></Error>
+    <Error ContinueOnError="false" Text="The global root path was not found" Condition="!Exists($(GlobalRootPath))"></Error>
     <Error ContinueOnError="false" Text="The solutions path was not defined" Condition="$(SolutionsPath) == ''" />
-    <Error ContinueOnError="false" Text="The solution path was not found (&quot;$(SolutionsPath)&quot;)" Condition="!Exists($(SolutionsPath))"></Error>
+    <Error ContinueOnError="false" Text="The solution path was not found" Condition="!Exists($(SolutionsPath))"></Error>
     <Error ContinueOnError="false" Text="The Nuget packages path was not defined" Condition="$(NugetPackagesPath) == ''" />
     
     <Error ContinueOnError="false" Text="The solution name was not defined" Condition="$(SolutionName) == ''" />
     <Error ContinueOnError="false" Text="The solution path was not defined" Condition="$(FullSolutionFilePath) == ''" />
-    <Error ContinueOnError="false" Text="The solution path was not found (&quot;$(FullSolutionFilePath)&quot;)" Condition="!Exists($(FullSolutionFilePath))" />
+    <Error ContinueOnError="false" Text="The solution path was not found" Condition="!Exists($(FullSolutionFilePath))" />
 
     <Error ContinueOnError="false" Text="The drops path was not defined" Condition="$(DropsPath) == ''" />
-    <Error ContinueOnError="false" Text="The assembly info path was not defined" Condition="$(AssemblyInfoPath) == ''" />
     <Error ContinueOnError="false" Text="The working directory path was not defined" Condition="$(WorkingDirectoryPath) == ''" />
 
-    <Error ContinueOnError="false" Text="The NCastor tools path was not specified" Condition="$(NCastorToolsPath) == ''" />
-    <Error ContinueOnError="false" Text="The NCastor tools path was not found (&quot;$(NCastorToolsPath)&quot;)" Condition="!Exists($(NCastorToolsPath))" />
+    <Error ContinueOnError="false" Text="The NCastor path was not specified" Condition="$(NCastorPath) == ''" />
+    <Error ContinueOnError="false" Text="The NCastor path was not found" Condition="!Exists($(NCastorPath))" />
 
-    <Error ContinueOnError="false" Text="The NCastor tools path was not specified" Condition="$(ToolsPath) == ''" />
-    <Error ContinueOnError="false" Text="The NCastor tools path was not found" Condition="!Exists($(ToolsPath))" />
+    <Error ContinueOnError="false" Text="The NCastor tools path was not specified" Condition="$(NCastorToolsPath) == ''" />
+    <Error ContinueOnError="false" Text="The NCastor tools path was not found" Condition="!Exists($(NCastorToolsPath))" />
 
   </Target>
   

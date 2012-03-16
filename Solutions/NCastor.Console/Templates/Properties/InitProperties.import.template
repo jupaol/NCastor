@@ -45,12 +45,12 @@ Initial settings
   
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..</GlobalRootPath>
-    <SolutionsPath>$(GlobalRootPath)\src</SolutionsPath>
+    <SolutionsPath>$(GlobalRootPath)\Solutions</SolutionsPath>
     <SolutionName>{{ SolutionName }}</SolutionName>
 
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
     <!--TODO: Update the NCastor path if different from the following path-->
-    <NCastorToolsPath>$(NugetPackagesPath)\NCastor.1.1.0</NCastorToolsPath>
+    <NCastorPath>$(NugetPackagesPath)\NCastor.1.1.0</NCastorPath>
 
     <!--TODO: Version properties-->
     <MajorVersion>1</MajorVersion>

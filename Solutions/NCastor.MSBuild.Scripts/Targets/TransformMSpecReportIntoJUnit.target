@@ -19,7 +19,7 @@
   <Target Name="CoreTransformMSpecXmlReporttToJUnitXmlReport" >
 
     <PropertyGroup>
-      <_MSpec_JUnit_XSD>$(ToolsPath)\MSpecToJUnit.xslt</_MSpec_JUnit_XSD>
+      <_MSpec_JUnit_XSD>$(NCastorToolsPath)\MSpecToJUnit.xslt</_MSpec_JUnit_XSD>
     </PropertyGroup>
     
     <Error ContinueOnError="false" Text="The JUnit report file path representing the MSpec results  was not specified" Condition="$(MspecReportInJUnitFormatFilePath) == ''" />

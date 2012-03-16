@@ -51,7 +51,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Template, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\External References\Template.dll</HintPath>
+      <HintPath>..\..\ExternalReferences\Template.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

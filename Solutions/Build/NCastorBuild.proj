@@ -33,7 +33,7 @@
 </copyright>
 -->
 
-<Project DefaultTargets="Package" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..</GlobalRootPath>
@@ -41,7 +41,7 @@
     <SolutionName>NCastor</SolutionName>
 
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
-    <NCastorToolsPath>$(SolutionsPath)\NCastor.MSBuild.Scripts</NCastorToolsPath>
+    <NCastorPath>$(SolutionsPath)\NCastor.MSBuild.Scripts</NCastorPath>
 
     <MSTestRunner>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>
     <OpenCoverRunner>$(NugetPackagesPath)\OpenCover.3.0.121\OpenCover.Console.exe</OpenCoverRunner>
@@ -64,13 +64,13 @@
   </PropertyGroup>
 
   <!-- Importing NCastor Global properties -->
-  <Import Project="$(NCastorToolsPath)\GlobalProperties.import"/>
+  <Import Project="$(NCastorPath)\GlobalProperties.import"/>
 
   <!-- Importing third party tasks -->
-  <Import Project="$(NCastorToolsPath)\GlobalTasks.import"/>
+  <Import Project="$(NCastorPath)\GlobalTasks.import"/>
 
   <!-- IUmporting NCastor targets -->
-  <Import Project="$(NCastorToolsPath)\GlobalTargets.import"/>
+  <Import Project="$(NCastorPath)\GlobalTargets.import"/>
 
   <!-- TODO: Place your custom settings here -->
 

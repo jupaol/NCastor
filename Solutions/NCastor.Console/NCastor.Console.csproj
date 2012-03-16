@@ -82,7 +82,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Template, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\External References\Template.dll</HintPath>
+      <HintPath>..\..\ExternalReferences\Template.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +122,7 @@
     <EmbeddedResource Include="Templates\Properties\Properties.import.template" />
     <EmbeddedResource Include="Templates\Targets\Targets.import.template" />
     <EmbeddedResource Include="Templates\Tasks\Tasks.import.template" />
+    <EmbeddedResource Include="Templates\Targets\Build\BuildTargets.import.template" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

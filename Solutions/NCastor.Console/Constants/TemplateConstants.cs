@@ -64,6 +64,11 @@ namespace NCastor.Console.Constants
         public const string CustomTargets = "Targets.import.template";
 
         /// <summary>
+        /// /// Represents the BuildTargets.import.template file name embedded into the assembly
+        /// </summary>
+        public const string BuildTargets = "BuildTargets.import.template";
+
+        /// <summary>
         /// Represents the Tasks.import.template file name embedded into the assembly
         /// </summary>
         public const string CustomTasks = "Tasks.import.template";

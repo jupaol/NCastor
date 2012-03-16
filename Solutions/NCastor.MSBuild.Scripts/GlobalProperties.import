@@ -9,13 +9,17 @@
   <!-- Importing properties -->
   <Import Project="$(PropertiesPath)\Common.properties"/>
   <Import Project="$(PropertiesPath)\AssemblyInfo.properties"/>
+  
   <Import Project="$(PropertiesPath)\Build.properties"/>
   <Import Project="$(PropertiesPath)\IsolateSourceCode.properties"/>
   <Import Project="$(PropertiesPath)\Packing.properties"/>
+  
   <Import Project="$(PropertiesPath)\UnitTests.properties"/>
+  
   <Import Project="$(PropertiesPath)\NUnitTests.properties"/>
   <Import Project="$(PropertiesPath)\MSTest.properties"/>
   <Import Project="$(PropertiesPath)\MSpecTests.properties"/>
+  
   <Import Project="$(PropertiesPath)\OpenCover.properties"/>
   <Import Project="$(PropertiesPath)\ReportGenerator.properties"/>
   <Import Project="$(PropertiesPath)\Nuget.properties"/>
