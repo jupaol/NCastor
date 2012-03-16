@@ -95,6 +95,6 @@ Your custom build targets
       CoreBuild;
     </LiteBuildDependsOn>
   </PropertyGroup>
-  <Target Name="LiteBuild" DependsOnTargets="$(LiteBuildDependsOn)" />
+  <Target Name="BuildLite" DependsOnTargets="$(LiteBuildDependsOn)" />
 
 </Project>
