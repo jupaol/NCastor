@@ -134,10 +134,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\CCNET\BuildVersionCCNET.target">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Targets\CleanArtefactFolders.targeet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
