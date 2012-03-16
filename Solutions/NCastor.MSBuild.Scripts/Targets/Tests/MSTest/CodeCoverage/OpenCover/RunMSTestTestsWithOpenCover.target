@@ -5,11 +5,13 @@
   <PropertyGroup>
     <RunMSTestTestsWithOpenCoverDependsOn>
       SettingMSTestTestingAssemblies;
+      SettingInstrumentationAssemblies;
       CleanMSTestArtefactFolders;
       CreateMSTestArtefactFolders;
       BeforeRunMSTestTestsWithOpenCover;
       CoreRunMSTestTestsWithOpenCover;
       AfterRunMSTestTestsWithOpenCover;
+      CreateMSTestReport;
       ReportMSTestOpenCoverWithReportGenerator;
     </RunMSTestTestsWithOpenCoverDependsOn>
   </PropertyGroup>

@@ -33,7 +33,7 @@
 </copyright>
 -->
 
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="RunTests" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..</GlobalRootPath>
@@ -76,16 +76,10 @@
 
   <PropertyGroup>
     <RunTestsDependsOn>
-      Build;
-      BeforeRunTests;
-
-      CleanMSTestArtefactFolders;
-      SettingMSTestTestingAssemblies;
+      $(RunTestsRequiredActions);
       RunMSTestTestsWithOpenCover;
-      ReportMSTestOpenCoverWithReportGenerator;
-
       CoreRunTests;
-      AfterRunTests;
+      $(RunTestsExpectedActions);
     </RunTestsDependsOn>
   </PropertyGroup>
 
@@ -94,7 +88,7 @@
   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
   <Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />
     
-  <Target Name="SettingInstrumentationAssemblies">
+  <Target Name="CoreSettingInstrumentationAssemblies">
     <ItemGroup>
       <AssembliesToInstrument Include="
                                         $(TestAssembliesPath)\NCastor.Console.exe;" />

@@ -19,7 +19,7 @@
   <Target Name="CoreCreateMSTestArtefactFolders" >
 
     <MakeDir ContinueOnError="false" Directories="$(MSTestResultsPath)" Condition="!Exists($(MSTestResultsPath))" />
-    
+
   </Target>
   
 </Project>

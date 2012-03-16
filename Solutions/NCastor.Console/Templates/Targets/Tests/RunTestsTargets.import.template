@@ -47,8 +47,101 @@ Your custom tests targets
   This is the full dependency tree for the tests action, you can customize it but just remember there are some actions
   that dependent from others.
   
-  The dependencies that can be safetly removed are:
+    <PropertyGroup>
+    <RunTestsDependsOn>
+      $(RunTestsRequiredActions);
+      BeforeRunTests;
 
+      RunNUnitTests;
+      RunMSTests;
+      RunMSpecTests;
+
+      RunNUnitTestsWithOpenCover;
+      RunMSTestTestsWithOpenCover;
+      RunMSpecTestsWithOpenCover;
+
+      CoreRunTests;
+      AfterRunTests;
+      $(RunTestsExpectedActions);
+    </RunTestsDependsOn>
+  </PropertyGroup>
+  
+  The dependencies that can be safetly removed are:
+  
+      RunNUnitTests;
+      RunMSTests;
+      RunMSpecTests;
+
+      RunNUnitTestsWithOpenCover;
+      RunMSTestTestsWithOpenCover;
+      RunMSpecTestsWithOpenCover;
+      
+      Note these tests, should be run mutually exclusive, which meand that if you want to run NUnit tests you need 
+      to specify "RunNUnitTests" or "RunNUnitTestsWithOpenCover" bit not both
+      
+      If you specify both, the results of the previous tests will be deleted
+      
+      On the other hand you can specify one type of tests for each technology.
+      
+      *** Running tests:*** 
+      To run tests you need to override the following targets:
+      
+      "CorerSettingInstrumentationAssemblies"
+      This target is executed as part of the required actions, in this target you specify the assemblies you want to 
+      instrument (only if you want to run code coverage with your tests, otherwise you do not need to override this target)
+      
+      Example
+
+      <Target Name="CorerSettingInstrumentationAssemblies">
+        <ItemGroup>
+          <AssembliesToInstrument Include="$(TestAssembliesPath)\NCastor.Console.exe;" />
+        </ItemGroup>
+      </Target>
+      
+      - Running NUnit Tests -
+      To run your NUnit tests you need to override the following target:
+      
+      "CoreSettingNUnitTestingAssemblies"
+      
+      Example:
+      
+      <Target Name="CoreSettingNUnitTestingAssemblies">
+        <ItemGroup>
+          <NUnitAssemblies Include="
+                              $(TestAssembliesPath)\NCastor.Console.Tests.dll;
+                              $(TestAssembliesPath)\NCastor.Console.Integration.Tests.dll;" />
+        </ItemGroup>
+      </Target>
+
+      - Runing MSTest Tests -
+      To run MStest tests you need to override the following target:
+      
+      "CoreSettingMSTestTestingAssemblies"
+      
+      Example:
+      
+      <Target Name="CoreSettingMSTestTestingAssemblies">
+        <ItemGroup>
+          <MSTestContainers Include="
+                              $(TestAssembliesPath)\NCastor.Console.Tests.dll;
+                              $(TestAssembliesPath)\NCastor.Console.Integration.Tests.dll;" />
+        </ItemGroup>
+      </Target>
+      
+      - Runing MSpec Tests -
+      To run MStest tests you need to override the following target:
+      
+      "CoreSettingMSpecTestingAssemblies"
+      
+      Example:
+      
+      <Target Name="CoreSettingMSpecTestingAssemblies">
+        <ItemGroup>
+          <MSpecAssemblies Include="
+                              $(TestAssembliesPath)\NCastor.Console.Tests.dll;
+                              $(TestAssembliesPath)\NCastor.Console.Integration.Tests.dll;" />
+        </ItemGroup>
+      </Target>
 
   -->
 
@@ -56,8 +149,37 @@ Your custom tests targets
   Here we are overriding the default tests actions. This is to show you how you can control all the steps being executed
   -->
 
+  <PropertyGroup>
+    <RunTestsDependsOn>
+      $(RunTestsRequiredActions);
+      BeforeRunTests;
+
+      RunNUnitTests;
+      RunMSTests;
+      RunMSpecTests;
+
+      RunNUnitTestsWithOpenCover;
+      RunMSTestTestsWithOpenCover;
+      RunMSpecTestsWithOpenCover;
+
+      CoreRunTests;
+      AfterRunTests;
+      $(RunTestsExpectedActions);
+    </RunTestsDependsOn>
+  </PropertyGroup>
+  <Target Name="RunTests" DependsOnTargets="$(RunTestsDependsOn)" />
   <!--
-  This is a custom tests target using the minimum actions required
+  This is a custom tests target using the minimum actions required, in this case it actually just creates folders,
+  you need to specify at least one type of test to execute
   -->
+
+  <PropertyGroup>
+    <RunTestsLiteDependsOn>
+      $(RunTestsRequiredActions);
+      CoreRunTests;
+      $(RunTestsExpectedActions);
+    </RunTestsLiteDependsOn>
+  </PropertyGroup>
+  <Target Name="RunTestsLite" DependsOnTargets="$(RunTestsLiteDependsOn)" />
 
 </Project>

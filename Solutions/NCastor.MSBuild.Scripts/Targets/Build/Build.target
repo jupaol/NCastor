@@ -3,11 +3,21 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <BuildDependsOn>
+    <BuildRequiredActions>
       ValidateSettings;
       CalculateSemanticVersion;
       Clean;
       CreateArtefactFolders;
+    </BuildRequiredActions>
+    
+    <BuildExpectedActions>
+      
+    </BuildExpectedActions>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <BuildDependsOn>
+      $(BuildRequiredActions);
       SetAssemblyVersion;
       SetAssemblyInfo;
       PackageSourceCode;
@@ -15,6 +25,7 @@
       CoreBuild;
       AfterBuild;
       PackageBuild;
+      $(BuildEExpectedActions);
     </BuildDependsOn>
   </PropertyGroup>
 

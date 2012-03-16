@@ -47,6 +47,20 @@ Your custom build targets
   This is the full dependency tree for the Build action, you can customize it but just remember there are some actions
   that dependent from others.
   
+    <PropertyGroup>
+    <BuildDependsOn>
+      $(BuildRequiredActions);
+      SetAssemblyVersion;
+      SetAssemblyInfo;
+      PackageSourceCode;
+      BeforeBuild;
+      CoreBuild;
+      AfterBuild;
+      PackageBuild;
+      $(BuildEExpectedActions);
+    </BuildDependsOn>
+  </PropertyGroup>
+  
   The dependencies that can be safetly removed are:
   
     SetAssemblyVersion;
@@ -56,22 +70,31 @@ Your custom build targets
     
   Howver the SetAssembly* targets should be used in order to set the version of the assembly but if you do not need this
   feature you can remove them 
+  
+  *** Setting assembly version ***
+  
+  To setup a custom assembly version (build version and revision version), you need to override the following targets:
+  
+  "CoreCalculateBuildVersion"
+  "CoreCalculateRevisionVersion"
+  
+  You can calculate the version numbers using any MSBuild valid task, or executing an exe file.
+  There are several pre-build actions in order to fill this numbers for you
+  Currently the supported targets are: (More comming soon)
+  
+  Hudson
+    BuildVersionHudson
+    SVN
+      RevisionVersionHudsonSvn
+  TFS
+    BuildVersionTFS
+  
+  Example:
+  
+   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
+   <Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />
+
   -->
-  <!--<PropertyGroup>
-    <BuildDependsOn>
-      ValidateSettings;
-      CalculateSemanticVersion;
-      Clean;
-      CreateArtefactFolders;
-      SetAssemblyVersion;
-      SetAssemblyInfo;
-      PackageSourceCode;
-      BeforeBuild;
-      CoreBuild;
-      AfterBuild;
-      PackageBuild;
-    </BuildDependsOn>
-  </PropertyGroup>-->
 
   <!--
   Here we are overriding the default build actions. This is to show you how you can control all the steps being executed
@@ -87,14 +110,12 @@ Your custom build targets
   This is a custom build target using the minimum actions required
   -->
   <PropertyGroup>
-    <LiteBuildDependsOn>
-      ValidateSettings;
-      CalculateSemanticVersion;
-      Clean;
-      CreateArtefactFolders;
+    <BuildLiteDependsOn>
+      $(BuildRequiredActions);
       CoreBuild;
-    </LiteBuildDependsOn>
+      $(BuildExpectedActions);
+    </BuildLiteDependsOn>
   </PropertyGroup>
-  <Target Name="BuildLite" DependsOnTargets="$(LiteBuildDependsOn)" />
+  <Target Name="BuildLite" DependsOnTargets="$(BuildLiteDependsOn)" />
 
 </Project>

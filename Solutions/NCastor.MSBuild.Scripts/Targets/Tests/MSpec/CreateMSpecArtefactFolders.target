@@ -19,7 +19,7 @@
   <Target Name="CoreCreateMSpecArtefactFolders" >
 
     <MakeDir ContinueOnError="false" Directories="$(MSpecResultsPath)" Condition="!Exists($(MSpecResultsPath))" />
-    
+
   </Target>
   
 </Project>

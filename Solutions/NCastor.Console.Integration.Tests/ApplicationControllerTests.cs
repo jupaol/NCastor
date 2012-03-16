@@ -220,7 +220,7 @@ namespace NCastor.Console.Integration.Tests
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
             templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
-            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\RunTests\My App.RunTestsTargets.import");
+            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Tests\My App.RunTestsTargets.import");
         }
 
         private string GetContentFromPersistedTemplate(TemplateConfigurator config)

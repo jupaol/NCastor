@@ -62,6 +62,10 @@ namespace NCastor.Console
                 controller.ProcessSolutionTemplate();
                 controller.ProcessPropertiesCustomPropertiesTemplate();
                 controller.ProcessPropertiesInitPropertiesTemplate();
+                controller.ProcessTasksCustomTasksTemplate();
+                controller.ProcessTargetsCustomTargetsTemplate();
+                controller.ProcessTargetsBuildTargetsTemplate();
+                controller.ProcessTargetsRunTestsTargetsTemplate();
             }
             catch (Exception exc)
             {

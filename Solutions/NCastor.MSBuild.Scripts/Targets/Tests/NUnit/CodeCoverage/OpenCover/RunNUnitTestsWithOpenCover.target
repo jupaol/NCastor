@@ -5,6 +5,7 @@
   <PropertyGroup>
     <RunNUnitTestsCodeCoverageDependsOn>
       SettingNUnitTestingAssemblies;
+      SettingInstrumentationAssemblies;
       CleanNUnitArtefactFolders;
       CreateNUnitArtefactFolders;
       BeforeRunNUnitTestsCodeCoverage;

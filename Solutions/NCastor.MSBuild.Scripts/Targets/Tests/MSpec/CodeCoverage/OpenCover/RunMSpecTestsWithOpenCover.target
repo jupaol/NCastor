@@ -5,6 +5,7 @@
   <PropertyGroup>
     <RunMSpecTestsWithOpenCoverDependsOn>
       SettingMSpecTestingAssemblies;
+      SettingInstrumentationAssemblies;
       CleanMSpecArtefactFolders;
       CreateMSpecArtefactFolders;
       BeforeRunMSpecTestsWithOpenCover;

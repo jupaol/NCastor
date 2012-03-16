@@ -19,7 +19,7 @@
   <Target Name="CoreCreateNUnitArtefactFolders" >
 
     <MakeDir ContinueOnError="false" Directories="$(NUnitReportsPath)" Condition="!Exists($(NUnitReportsPath))" />
-    
+
   </Target>
   
 </Project>
