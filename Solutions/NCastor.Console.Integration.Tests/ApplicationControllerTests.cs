@@ -108,6 +108,7 @@ namespace NCastor.Console.Integration.Tests
 
             config.Should().NotBeNull();
             File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+            config.Persistence.OutputTemplatePath.Should().Be(@".\My App.BuildSolution.proj");
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
@@ -125,6 +126,7 @@ namespace NCastor.Console.Integration.Tests
 
             config.Should().NotBeNull();
             File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+            config.Persistence.OutputTemplatePath.Should().Be(@".\Properties\My App.Properties.import");
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
@@ -141,6 +143,7 @@ namespace NCastor.Console.Integration.Tests
 
             config.Should().NotBeNull();
             File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+            config.Persistence.OutputTemplatePath.Should().Be(@".\Properties\My App.InitProperties.import");
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
@@ -161,6 +164,7 @@ namespace NCastor.Console.Integration.Tests
 
             config.Should().NotBeNull();
             File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+            config.Persistence.OutputTemplatePath.Should().Be(@".\Tasks\My App.Tasks.import");
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
@@ -177,6 +181,7 @@ namespace NCastor.Console.Integration.Tests
 
             config.Should().NotBeNull();
             File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\My App.Targets.import");
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
@@ -193,11 +198,29 @@ namespace NCastor.Console.Integration.Tests
 
             config.Should().NotBeNull();
             File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.BuildTargets.import");
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
             templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
+        }
+
+        [TestMethod]
+        public void calling_ProcessTargetsRunTestsTargetsTemplate_should_save_the_template_on_disk()
+        {
+            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+
+            var config = cont.ProcessTargetsRunTestsTargetsTemplate();
+
+            config.Should().NotBeNull();
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+            //testing that the template tokens were substituted correctly
+            var templateRes = this.GetContentFromPersistedTemplate(config);
+
+            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
+            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\RunTests\My App.RunTestsTargets.import");
         }
 
         private string GetContentFromPersistedTemplate(TemplateConfigurator config)

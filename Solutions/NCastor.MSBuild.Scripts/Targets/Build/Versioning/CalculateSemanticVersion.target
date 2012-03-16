@@ -4,8 +4,8 @@
 
   <PropertyGroup>
     <CalculateSemanticVersionDependsOn>
-      CalculateBuildVersionNumber;
-      CalculateRevisionNumber;
+      CalculateBuildVersion;
+      CalculateRevisionVersion;
       BeforeCalculateSemanticVersion;
       CoreCalculateSemanticVersion;
       AfterCalculateSemanticVersion;

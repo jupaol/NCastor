@@ -3,19 +3,19 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <CalculateBuildVersionNumberDependsOn>
-      BeforeCalculateBuildVersionNumber;
-      CoreCalculateBuildVersionNumber;
-      AfterCalculateBuildVersionNumber;
-    </CalculateBuildVersionNumberDependsOn>
+    <CalculateBuildVersionDependsOn>
+      BeforeCalculateBuildVersion;
+      CoreCalculateBuildVersion;
+      AfterCalculateBuildVersion;
+    </CalculateBuildVersionDependsOn>
   </PropertyGroup>
 
-  <Target Name="CalculateBuildVersionNumber" DependsOnTargets="$(CalculateBuildVersionNumberDependsOn)"/>
+  <Target Name="CalculateBuildVersion" DependsOnTargets="$(CalculateBuildVersionDependsOn)"/>
   
   <!-- To be overriden by the user -->
-  <Target Name="BeforeCalculateBuildVersionNumber" />
-  <Target Name="AfterCalculateBuildVersionNumber" />
+  <Target Name="BeforeCalculateBuildVersion" />
+  <Target Name="AfterCalculateBuildVersion" />
 
-  <Target Name="CoreCalculateBuildVersionNumber" />
+  <Target Name="CoreCalculateBuildVersion" />
   
 </Project>

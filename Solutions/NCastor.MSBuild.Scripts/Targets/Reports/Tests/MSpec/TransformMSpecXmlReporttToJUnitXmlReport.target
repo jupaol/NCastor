@@ -27,11 +27,6 @@
     <Error ContinueOnError="false" Text="The MSpec XML report was not found" Condition="!Exists($(MSpecXmlReportFilePath))" />
     <Error ContinueOnError="false" Text="The XSD file used to transform the MSpec results in a JUnit format was not found" Condition="!Exists($(_MSpec_JUnit_XSD))" />
     
-    <!--<XslTransformation
-      XmlInputPaths="$(MSpecXmlReportFilePath)"
-      XslInputPath="$(_MSpec_JUnit_XSD)"
-      OutputPaths="$(MspecReportInJUnitFormatFilePath)"/>-->
-
     <Microsoft.Sdc.Tasks.Xml.XslTransform 
       XslFile="$(_MSpec_JUnit_XSD)" 
       XmlFile="$(MSpecXmlReportFilePath)" 

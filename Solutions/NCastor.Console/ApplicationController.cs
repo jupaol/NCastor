@@ -229,8 +229,22 @@ namespace NCastor.Console
                 (x, y, z) =>
                 {
                 });
+        }
 
-
+        /// <summary>
+        /// Processes Run Tests Targets template.
+        /// </summary>
+        /// <returns>
+        /// The TemplateConfigurator object used to process the template
+        /// </returns>
+        public TemplateConfigurator ProcessTargetsRunTestsTargetsTemplate()
+        {
+            return this.ProcessTemplate(
+                TemplateConstants.RunTestsTargets,
+                "NCastor.Console.Templates.Targets.Tests",
+                (x, y, z) =>
+                {
+                });
         }
     }
 }

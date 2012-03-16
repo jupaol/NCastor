@@ -3,26 +3,30 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <RunMSpecCodeCoverageDependsOn>
-      BeforeRunMSpecCodeCoverage;
-      CoreRunMSpecCodeCoverage;
-      AfterRunMSpecCodeCoverage;
-    </RunMSpecCodeCoverageDependsOn>
+    <RunMSpecTestsWithOpenCoverDependsOn>
+      SettingMSpecTestingAssemblies;
+      CleanMSpecArtefactFolders;
+      CreateMSpecArtefactFolders;
+      BeforeRunMSpecTestsWithOpenCover;
+      CoreRunMSpecTestsWithOpenCover;
+      AfterRunMSpecTestsWithOpenCover;
+      TransformMSpecXmlReporttToJUnitXmlReport;
+      ReportMSpecOpenCoverWithReportGenerator;
+    </RunMSpecTestsWithOpenCoverDependsOn>
   </PropertyGroup>
 
-  <Target Name="RunMSpecCodeCoverage" DependsOnTargets="$(RunMSpecCodeCoverageDependsOn)"/>
+  <Target Name="RunMSpecTestsWithOpenCover" DependsOnTargets="$(RunMSpecTestsWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->
-  <Target Name="BeforeRunMSpecCodeCoverage" />
-  <Target Name="AfterRunMSpecCodeCoverage" />
+  <Target Name="BeforeRunMSpecTestsWithOpenCover" />
+  <Target Name="AfterRunMSpecTestsWithOpenCover" />
 
-  <Target Name="CoreRunMSpecCodeCoverage" >
+  <Target Name="CoreRunMSpecTestsWithOpenCover" >
 
-    <Error ContinueOnError="false" Text="The MSpec results path was not specified" Condition="$(MSpecResultsPath) == ''" />
     <Error ContinueOnError="false" Text="The MSpec assemblies were not specified" Condition="@(MSpecAssemblies) == ''" />
     <Error ContinueOnError="false" Text="The MSpec xml report file was not specified" Condition="$(MSpecXmlReportFilePath) == ''" />
     <Error ContinueOnError="false" Text="The MSpec html report file was not specied" Condition="$(MSpecHtmlReporthFilePath) == ''" />
-    <Error ContinueOnError="false" Text="The MSpec runner was not found in the tools path specified" Condition="!Exists($(MSPecRunner))" />
+    <Error ContinueOnError="false" Text="The MSpec runner was not found" Condition="!Exists($(MSPecRunner))" />
     <Error ContinueOnError="false" Text="The MSpec test assembly was not found: &quot;%(MSpecAssemblies.Identity)&quot;" Condition="!Exists(%(MSpecAssemblies.Identity))" />
 
     <ItemGroup>

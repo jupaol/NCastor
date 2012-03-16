@@ -35,8 +35,7 @@
                       $(SolutionsPath)\**\*ReSharper*"/>
     </ItemGroup>
 
-    <MakeDir Directories="$(SourceCodeTmpPath)" Condition="!Exists($(SourceCodeTmpPath))" />
-    <Error ContinueOnError="false" Text="There was a problem while creating the source code tmp directory. Please try again" Condition="!Exists($(SourceCodeTmpPath))" />
+    <MakeDir ContinueOnError="false" Directories="$(SourceCodeTmpPath)" Condition="!Exists($(SourceCodeTmpPath))" />
 
     <Copy SourceFiles="@(SourceFilesToCopy)" DestinationFiles="@(SourceFilesToCopy->'$(SourceCodeTmpPath)\%(RecursiveDir)%(Filename)%(Extension)')" />
     

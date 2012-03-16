@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <ReportMSTestOpenCoverWithReportGeneratorDependsOn>
+      CleanReportMSTestOpenCoverWithReportGeneratorArtefacts;
+      CreateReportMSTestOpenCoverWithReportGeneratorArtefacts;
+      BeforeReportMSTestOpenCoverWithReportGenerator;
+      CoreReportMSTestOpenCoverWithReportGenerator;
+      AfterReportMSTestOpenCoverWithReportGenerator;
+    </ReportMSTestOpenCoverWithReportGeneratorDependsOn>
+  </PropertyGroup>
+
+  <Target Name="ReportMSTestOpenCoverWithReportGenerator" DependsOnTargets="$(ReportMSTestOpenCoverWithReportGeneratorDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeReportMSTestOpenCoverWithReportGenerator" />
+  <Target Name="AfterReportMSTestOpenCoverWithReportGenerator" />
+
+  <Target Name="CoreReportMSTestOpenCoverWithReportGenerator" >
+
+    <Error ContinueOnError="false" Text="The report generator runner was not specified" Condition="$(ReportGeneratorRunner) == ''" />
+    <Error ContinueOnError="false" Text="The report generator runner was not found" Condition="!Exists($(ReportGeneratorRunner))" />
+
+    <Exec ContinueOnError="false" Command='"$(ReportGeneratorRunner)" "$(OpenCoverMSTest_ReportFilePath)" "$(ReportGeneratorMSTestReportPath)"' />
+
+  </Target>
+
+</Project>

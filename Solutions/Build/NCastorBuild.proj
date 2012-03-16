@@ -81,8 +81,8 @@
 
       CleanMSTestArtefactFolders;
       SettingMSTestTestingAssemblies;
-      RunMSTestsCodeCoverage;
-      CreateOpenCoverMSTestCodeCoverageReport;
+      RunMSTestTestsWithOpenCover;
+      ReportMSTestOpenCoverWithReportGenerator;
 
       CoreRunTests;
       AfterRunTests;
@@ -91,8 +91,8 @@
 
   <!-- TODO: Place your custom targets here -->
 
-  <Target Name="CoreCalculateBuildVersionNumber" DependsOnTargets="BuildVersionHudson;" />
-  <Target Name="CoreCalculateRevisionNumber" DependsOnTargets="RevisionVersionHudsonSvn" />
+  <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
+  <Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />
     
   <Target Name="SettingInstrumentationAssemblies">
     <ItemGroup>

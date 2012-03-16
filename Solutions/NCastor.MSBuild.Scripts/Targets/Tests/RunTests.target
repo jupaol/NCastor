@@ -5,27 +5,17 @@
   <PropertyGroup>
     <RunTestsDependsOn>
       Build;
+      SettingInstrumentationAssemblies;
       BeforeRunTests;
 
-      CleanNUnitArtefactFolders;
       RunNUnitTests;
-
-      CleanMSTestArtefactFolders;
-      SettingMSTestTestingAssemblies;
       RunMSTests;
-
-      CleanMSpecArtefactFolders;
       RunMSpecTests;
-      TransformMSpecXmlReporttToJUnitXmlReport;
 
-      RunNUnitTestsCodeCoverage;
-      RunMSTestsCodeCoverage;
-      RunMSpecCodeCoverage;
-
-      CreateOpenNUnitCodeCoverageReport;
-      CreateOpenCoverMSTestCodeCoverageReport;
-      CreateOpenCoverMSpecCodeCoverageReport;
-
+      RunNUnitTestsWithOpenCover;
+      RunMSTestTestsWithOpenCover;
+      RunMSpecTestsWithOpenCover;
+      
       CoreRunTests;
       AfterRunTests;
     </RunTestsDependsOn>

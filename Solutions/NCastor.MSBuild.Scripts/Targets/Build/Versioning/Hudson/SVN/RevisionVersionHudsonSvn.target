@@ -4,7 +4,7 @@
 
   <Target Name="RevisionVersionHudsonSvn" >
     <PropertyGroup>
-      <!-- To be injected by the svn revision vis Hudson -->
+      <!-- To be injected by the svn revision via Hudson -->
       <RevisionVersion>$(SVN_REVISION)</RevisionVersion>
     </PropertyGroup>
   </Target>

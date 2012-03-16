@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Target Name='CleanReportMSpecOpenCoverWithReportGeneratorArtefacts'>
+
+    <Error ContinueOnError="false" Text="The MSpec report path was not specified" Condition="$(ReportGeneratorMSpecReportPath) == ''" />
+
+    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(ReportGeneratorMSpecReportPath)" ContinueOnError="false" Condition="Exists($(ReportGeneratorMSpecReportPath))" />
+    <RemoveDir ContinueOnError="false" Directories="$(ReportGeneratorMSpecReportPath)" Condition="Exists($(ReportGeneratorMSpecReportPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
+
+    <Error ContinueOnError="false" Text="There was a problem when cleaning the MSpec code coverage reports directory (MSpec-OpenCover-ReportGenerator)" Condition="Exists($(ReportGeneratorMSpecReportPath))" />
+
+  </Target>
+
+</Project>

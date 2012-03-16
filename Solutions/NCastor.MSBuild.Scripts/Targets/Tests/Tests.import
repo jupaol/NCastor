@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="RunTests.target"/>
+  <Import Project="SettingInstrumentationAssemblies.target"/>
+
+  <Import Project="MSpec\MSpecTests.import"/>
+  <Import Project="MSTest\MSTestTests.import"/>
+  <Import Project="NUnit\NUnitTests.import"/>
+
+</Project>

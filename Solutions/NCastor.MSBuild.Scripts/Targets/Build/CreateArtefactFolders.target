@@ -22,10 +22,6 @@
     <MakeDir ContinueOnError="false" Directories="$(AssemblyInfoPath)" Condition="!Exists($(AssemblyInfoPath))" />
     <MakeDir ContinueOnError="false" Directories="$(WorkingDirectoryPath)" Condition="!Exists($(WorkingDirectoryPath))" />
 
-    <Error ContinueOnError="false" Text="There was a problem creating the drops directory" Condition="!Exists($(DropsPath))" />
-    <Error ContinueOnError="false" Text="There was a problem creating the assembly info directory" Condition="!Exists($(AssemblyInfoPath))" />
-    <Error ContinueOnError="false" Text="There was a problem creating the working directory" Condition="!Exists($(WorkingDirectoryPath))" />
-
   </Target>
   
 </Project>

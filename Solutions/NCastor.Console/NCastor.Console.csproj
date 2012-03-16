@@ -123,6 +123,7 @@
     <EmbeddedResource Include="Templates\Targets\Targets.import.template" />
     <EmbeddedResource Include="Templates\Tasks\Tasks.import.template" />
     <EmbeddedResource Include="Templates\Targets\Build\BuildTargets.import.template" />
+    <EmbeddedResource Include="Templates\Targets\Tests\RunTestsTargets.import.template" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

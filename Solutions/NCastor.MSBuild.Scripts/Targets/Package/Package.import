@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="SourceCode\CleanSourceCodeArtefacts.target" />
+  <Import Project="SourceCode\IsolateSourceCode.target"/>
+  <Import Project="SourceCode\PackageSourceCode.target"/>
+  <Import Project="Build\PackageBuild.target"/>
+
+</Project>

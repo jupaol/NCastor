@@ -38,6 +38,14 @@
     <Folder Include="Targets\Build\Versioning\CCNET\TFS\" />
     <Folder Include="Targets\Build\Versioning\Hudson\Git\" />
     <Folder Include="Targets\Build\Versioning\Hudson\TFS\" />
+    <Folder Include="Targets\Build\Versioning\TeamCity\" />
+    <Folder Include="Targets\Reports\Tests\NUnit\" />
+    <Folder Include="Targets\Tests\MSpec\CodeCoverage\NCover\" />
+    <Folder Include="Targets\Tests\MSpec\CodeCoverage\PartCover\" />
+    <Folder Include="Targets\Tests\MSTest\CodeCoverage\NCover\" />
+    <Folder Include="Targets\Tests\MSTest\CodeCoverage\PartCover\" />
+    <Folder Include="Targets\Tests\NUnit\CodeCoverage\NCover\" />
+    <Folder Include="Targets\Tests\NUnit\CodeCoverage\PartCover\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Common.properties">
@@ -142,10 +150,10 @@
     <Content Include="Targets\Build\Versioning\CalculateSemanticVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\RunTests.target">
+    <Content Include="Targets\Tests\RunTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\RunNUnitTests.target">
+    <Content Include="Targets\Tests\NUnit\RunNUnitTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Build\Versioning\CalculateBuildVersion.target">
@@ -157,46 +165,104 @@
     <Content Include="Targets\Package\SourceCode\CleanSourceCodeArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\CleanNUnitArtefactFolders.target">
+    <None Include="Targets\Build\Build.import">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Targets\RunMSTests.target">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="Targets\CleanMSTestArtefactFolders.target">
+    <None Include="Targets\Common\Common.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Targets\CleanMSpecArtefactFolders.target">
+    <None Include="Targets\Package\Package.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Targets\RunMSpecTests.target">
+    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CreateReportMSpecOpenCoverWithReportGeneratorArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\TransformMSpecReportIntoJUnit.target">
+    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CleanReportMSpecOpenCoverWithReportGeneratorArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\RunNUnitTestsCodeCoverage.target">
+    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CreateReportMSTestOpenCoverWithReportGeneratorArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\RunMSTestsCodeCoverage.target">
+    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CleanReportMSTestOpenCoverWithReportGeneratorArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\RunMSpecCodeCoverage.target">
+    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CreateReportNUnitOpenCoverWithReportGeneratorArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\CreateOpenCoverNUnitCodeCoverageReport.target">
+    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CleanReportNUnitOpenCoverWithReportGeneratorArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\CreateOpenCoverMSTestCodeCoverageReport.target">
+    <None Include="Targets\Reports\Reports.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\MSpec\CreateMSpecArtefactFolders.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\MSpec\SettingMSpecTestingAssemblies.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\MSpec\MSpecTests.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\MSTest\CreateMSTestArtefactFolders.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\MSTest\MSTestTests.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\NUnit\CreateNUnitArtefactFolders.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\NUnit\SettingNUnitTestingAssemblies.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\NUnit\NUnitTests.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\Tests.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\NUnit\CleanNUnitArtefactFolders.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Targets\Tests\MSTest\RunMSTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\CreateOpenCoverMSpecCodeCoverageReport.target">
+    <None Include="Targets\Tests\MSTest\CleanMSTestArtefactFolders.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Tests\MSpec\CleanMSpecArtefactFolders.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Targets\Tests\MSpec\RunMSpecTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\CreateMSTestReport.target">
+    <Content Include="Targets\Reports\Tests\MSpec\TransformMSpecXmlReporttToJUnitXmlReport.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\SettingMSTestTestingAssemblies.target">
+    <Content Include="Targets\Tests\NUnit\CodeCoverage\OpenCover\RunNUnitTestsWithOpenCover.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\MSTest\CodeCoverage\OpenCover\RunMSTestTestsWithOpenCover.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\MSpec\CodeCoverage\OpenCover\RunMSpecTestsWithOpenCover.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\ReportNUnitOpenCoverWithReportGenerator.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\ReportMSTestOpenCoverWithReportGenerator.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\ReportMSpecOpenCoverWithReportGenerator.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Reports\Tests\MSTest\CreateMSTestReport.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\MSTest\SettingMSTestTestingAssemblies.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\CreateNugetPackage.target">
@@ -216,7 +282,13 @@
     <Content Include="Tasks\SDC Tasks\Microsoft.Sdc.Common.tasks">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Tests\SettingInstrumentationAssemblies.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Tasks\MSBuild.Community\License.rtf" />
+    <Content Include="Tools\init.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="GlobalTargets.import">

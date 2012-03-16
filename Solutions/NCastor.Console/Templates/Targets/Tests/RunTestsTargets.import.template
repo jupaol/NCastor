@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <!--
-<copyright file="NCastorDeployLocally.proj" company="Juan Pablo Olmos Lara (Jupaol)">
+<copyright file="{{ FileName }}" company="Juan Pablo Olmos Lara (Jupaol)">
 
   jupaol@hotmail.com
   jupaoljpol@gmail.com
@@ -33,39 +33,31 @@
 </copyright>
 -->
 
-<Project DefaultTargets="DeployToTestLocally" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<!-->
+"Your stuff"
 
-  <!-- Drops path -->
-  <PropertyGroup>
-    <DropsPath>$(MSBuildProjectDirectory)\..\..\Drops</DropsPath>
-  </PropertyGroup>
+Your custom tests targets
+-->
 
-  <Target Name="DeployToTestLocally">
-    
-    <ItemGroup>
-      <NCastorPackage Include='$(DropsPath)\*.nupkg'></NCastorPackage>
-    </ItemGroup>
-    
-    <PropertyGroup>
-      <NugetLocalServer>c:\00\nuget</NugetLocalServer>
-      <NugetPackagesPath>C:\Users\Jupaol\Documents\Visual Studio 2010\Projects\ConsoleApplication1\packages</NugetPackagesPath>
-      <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.6.0\tools\NuGet.exe</NugetRunner>
-    </PropertyGroup>
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-    <ItemGroup>
-      <DirsToRemove
-        Include='
-          
-          $(NugetPackagesPath)\NCastor.1.1.0.0;' />
-    </ItemGroup>
-    <RemoveDir ContinueOnError='false' Directories='@(DirsToRemove)' />
+  <!-- TODO: Place your custom tests targets here -->
 
-    <Copy SourceFiles='@(NCastorPackage)' DestinationFiles='$(NugetLocalServer)\%(NCastorPackage.FileName).%(NCastorPackage.Extension)' />
-
-    <MakeDir ContinueOnError="false" Directories='$(NugetPackagesPath)' Condition='!Exists($(NugetPackagesPath))'></MakeDir>
-
-    <Exec Command='"$(NugetRunner)" install NCastor -s c:\00\nuget -o "$(NugetPackagesPath)"'></Exec>
+  <!--
+  This is the full dependency tree for the tests action, you can customize it but just remember there are some actions
+  that dependent from others.
   
-  </Target>
+  The dependencies that can be safetly removed are:
+
+
+  -->
+
+  <!--
+  Here we are overriding the default tests actions. This is to show you how you can control all the steps being executed
+  -->
+
+  <!--
+  This is a custom tests target using the minimum actions required
+  -->
 
 </Project>

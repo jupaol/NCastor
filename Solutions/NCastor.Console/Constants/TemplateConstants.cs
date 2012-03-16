@@ -59,14 +59,19 @@ namespace NCastor.Console.Constants
         public const string CustomProperties = "Properties.import.template";
 
         /// <summary>
-        /// /// Represents the Targets.import.template file name embedded into the assembly
+        /// Represents the Targets.import.template file name embedded into the assembly
         /// </summary>
         public const string CustomTargets = "Targets.import.template";
 
         /// <summary>
-        /// /// Represents the BuildTargets.import.template file name embedded into the assembly
+        /// Represents the BuildTargets.import.template file name embedded into the assembly
         /// </summary>
         public const string BuildTargets = "BuildTargets.import.template";
+
+        /// <summary>
+        /// Represents the RunTestsTargets.import.template file name embedded into the assembly
+        /// </summary>
+        public const string RunTestsTargets = "RunTestsTargets.import.template";
 
         /// <summary>
         /// Represents the Tasks.import.template file name embedded into the assembly

@@ -3,19 +3,19 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <CalculateRevisionNumberDependsOn>
-      BeforeCalculateRevisionNumber;
-      CoreCalculateRevisionNumber;
-      AfterCalculateRevisionNumber;
-    </CalculateRevisionNumberDependsOn>
+    <CalculateRevisionVersionDependsOn>
+      BeforeCalculateRevisionVersion;
+      CoreCalculateRevisionVersion;
+      AfterCalculateRevisionVersion;
+    </CalculateRevisionVersionDependsOn>
   </PropertyGroup>
 
-  <Target Name="CalculateRevisionNumber" DependsOnTargets="$(CalculateRevisionNumberDependsOn)"/>
+  <Target Name="CalculateRevisionVersion" DependsOnTargets="$(CalculateRevisionVersionDependsOn)"/>
 
   <!-- To be overriden by the user -->
-  <Target Name="BeforeCalculateRevisionNumber" />
-  <Target Name="AfterCalculateRevisionNumber" />
+  <Target Name="BeforeCalculateRevisionVersion" />
+  <Target Name="AfterCalculateRevisionVersion" />
 
-  <Target Name="CoreCalculateRevisionNumber" />
+  <Target Name="CoreCalculateRevisionVersion" />
   
 </Project>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="SettingNUnitTestingAssemblies.target"/>
+  <Import Project="CleanNUnitArtefactFolders.target"/>
+  <Import Project="CreateNUnitArtefactFolders.target"/>
+  <Import Project="RunNUnitTests.target"/>
+  
+  <Import Project="CodeCoverage\OpenCover\RunNUnitTestsWithOpenCover.target"/>
+
+</Project>

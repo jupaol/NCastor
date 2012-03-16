@@ -4,9 +4,13 @@
 
   <PropertyGroup>
     <RunNUnitTestsCodeCoverageDependsOn>
+      SettingNUnitTestingAssemblies;
+      CleanNUnitArtefactFolders;
+      CreateNUnitArtefactFolders;
       BeforeRunNUnitTestsCodeCoverage;
       CoreRunNUnitTestsCodeCoverage;
       AfterRunNUnitTestsCodeCoverage;
+      ReportNUnitOpenCoverWithReportGenerator;
     </RunNUnitTestsCodeCoverageDependsOn>
   </PropertyGroup>
 
@@ -20,9 +24,9 @@
 
     <Error ContinueOnError="false" Text="The NUnit assemblies were not specified" Condition="@(NUnitAssemblies) == ''" />
     <Error ContinueOnError="false" Text="The NUnit test assembly was not found: &quot;%(NUnitAssemblies.Identity)&quot;" Condition="!Exists(%(NUnitAssemblies.Identity))" />
-    <Error ContinueOnError="false" Text="The OpenCover runner path does not exist" Condition="!Exists($(OpenCoverRunner))" />
+    <Error ContinueOnError="false" Text="The OpenCover runner path was not found" Condition="!Exists($(OpenCoverRunner))" />
     <Error ContinueOnError="false" Text="The OpenCover results file was not specified" Condition="$(OpenCoverNUnit_ReportFilePath) == ''" />
-    <Error ContinueOnError="false" Text="The NUnit runner does not exist" Condition="!Exists($(NUnitRunner))" />
+    <Error ContinueOnError="false" Text="The NUnit runner was not found" Condition="!Exists($(NUnitRunner))" />
     
     <ItemGroup>
       <_NUnitAssemblies Include="@(NUnitAssemblies->'\&quot;%(Identity)\&quot;')" />

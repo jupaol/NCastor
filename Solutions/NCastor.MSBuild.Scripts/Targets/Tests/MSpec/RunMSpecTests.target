@@ -5,9 +5,12 @@
   <PropertyGroup>
     <RunMSpecTestsDependsOn>
       SettingMSpecTestingAssemblies;
+      CleanMSpecArtefactFolders;
+      CreateMSpecArtefactFolders;
       BeforeRunMSpecTests;
       CoreRunMSpecTests;
       AfterRunMSpecTests;
+      TransformMSpecXmlReporttToJUnitXmlReport;
     </RunMSpecTestsDependsOn>
   </PropertyGroup>
 
@@ -16,18 +19,14 @@
   <!-- To be overriden by the user -->
   <Target Name="BeforeRunMSpecTests" />
   <Target Name="AfterRunMSpecTests" />
-  <Target Name="SettingMSpecTestingAssemblies" />
 
   <Target Name="CoreRunMSpecTests" >
 
-    <Error ContinueOnError="false" Text="The MSpec results path was not specified" Condition="$(MSpecResultsPath) == ''" />
     <Error ContinueOnError="false" Text="The MSpec assemblies were not specified" Condition="@(MSpecAssemblies) == ''" />
     <Error ContinueOnError="false" Text="The MSpec xml report file was not specified" Condition="$(MSpecXmlReportFilePath) == ''" />
     <Error ContinueOnError="false" Text="The MSpec html report file was not specied" Condition="$(MSpecHtmlReporthFilePath) == ''" />
     <Error ContinueOnError="false" Text="The MSpec runner was not found in the tools path specified" Condition="!Exists($(MSPecRunner))" />
     <Error ContinueOnError="false" Text="The MSpec test assembly was not found: &quot;%(MSpecAssemblies.Identity)&quot;" Condition="!Exists(%(MSpecAssemblies.Identity))" />
-    
-    <MakeDir Directories="$(MSpecResultsPath)" Condition="!Exists($(MSpecResultsPath))" />
 
     <ItemGroup>
       <_MSpecAssemblies Include="@(MSpecAssemblies->'&quot;%(Identity)&quot;')" />
