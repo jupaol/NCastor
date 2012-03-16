@@ -116,7 +116,7 @@
                   $(WorkingNugetPackagePath)\FluentAssertions.dll;" />
       <_ExtraFilesToInclude 
         Include="
-                  $(GlobalRootPath)\Readme.txt;
+                  $(GlobalRootPath)\Readme.md;
                   $(GlobalRootPath)\Licence.txt;
         " />
     </ItemGroup>
