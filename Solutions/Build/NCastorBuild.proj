@@ -117,7 +117,7 @@
       <_ExtraFilesToInclude 
         Include="
                   $(GlobalRootPath)\Readme.md;
-                  $(GlobalRootPath)\Licence.txt;
+                  $(GlobalRootPath)\Licence.md;
         " />
     </ItemGroup>
     <Delete Files="@(_FilesToExcludeFromNugetPackage)" ContinueOnError="false" />
