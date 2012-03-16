@@ -126,8 +126,15 @@
       <_FilesToExcludeFromNugetPackage 
         Include="
                   $(WorkingNugetPackagePath)\NCastor.MSBuild.Scripts.*;" />
+      <_ExtraFilesToInclude 
+        Include="
+                  $(GlobalRootPath)\Readme.txt;
+                  $(GlobalRootPath)\Licence.txt;
+        " />
     </ItemGroup>
     <Delete Files="@(_FilesToExcludeFromNugetPackage)" ContinueOnError="false" />
+
+    <Copy SourceFiles="@(_ExtraFilesToInclude)" DestinationFolder="$(WorkingNugetPackagePath)" />
 
     <MakeDir Directories="$(WorkingNugetPackagePath)\Tools\ScriptCreator" ContinueOnError="false" Condition="!Exists('$(WorkingNugetPackagePath)\Tools\ScriptCreator')" />
     

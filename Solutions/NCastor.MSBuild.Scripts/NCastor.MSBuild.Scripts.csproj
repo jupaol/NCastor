@@ -35,9 +35,6 @@
     <Folder Include="Lib\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Licence.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Properties\Common.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -207,6 +204,7 @@
     <Content Include="Tasks\SDC Tasks\Microsoft.Sdc.Common.tasks">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Tasks\MSBuild.Community\License.rtf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GlobalTargets.import">
