@@ -60,10 +60,10 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\AssemblyCommonInfo.cs">
+    <Compile Include="..\..\CommonAssemblyProperties\AssemblyCommonInfo.cs">
       <Link>Properties\AssemblyCommonInfo.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\AssemblyVersion.cs">
+    <Compile Include="..\..\CommonAssemblyProperties\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
     <Compile Include="ApplicationControllerTests.cs" />

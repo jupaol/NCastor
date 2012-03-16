@@ -4,6 +4,7 @@
 
   <PropertyGroup>
     <IsolateSourceCodeDependsOn>
+      CleanSourceCodeArtefacts;
       BeforeIsolateSourceCode;
       CoreIsolateSourceCode;
       AfterIsolateSourceCode;
@@ -34,10 +35,9 @@
                       $(SolutionsPath)\**\*ReSharper*"/>
     </ItemGroup>
 
-    <Error ContinueOnError="false" Text="The source code folder is not specified" Condition="$(SourceCodeTmpPath) == ''"></Error>
-    
     <MakeDir Directories="$(SourceCodeTmpPath)" Condition="!Exists($(SourceCodeTmpPath))" />
-    
+    <Error ContinueOnError="false" Text="There was a problem while creating the source code tmp directory. Please try again" Condition="!Exists($(SourceCodeTmpPath))" />
+
     <Copy SourceFiles="@(SourceFilesToCopy)" DestinationFiles="@(SourceFilesToCopy->'$(SourceCodeTmpPath)\%(RecursiveDir)%(Filename)%(Extension)')" />
     
   </Target>

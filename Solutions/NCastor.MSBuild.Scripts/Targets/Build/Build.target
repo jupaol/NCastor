@@ -7,18 +7,13 @@
       ValidateSettings;
       CalculateSemanticVersion;
       Clean;
-      CleanArtefactFolders;
       CreateArtefactFolders;
       SetAssemblyVersion;
       SetAssemblyInfo;
-      CleanSourceCodeArtefacts;
-      IsolateSourceCode;
       PackageSourceCode;
       BeforeBuild;
       CoreBuild;
       AfterBuild;
-      SettingInstrumentationAssemblies;
-      SetCompiledFiles;
       PackageBuild;
     </BuildDependsOn>
   </PropertyGroup>
@@ -28,12 +23,6 @@
   <!-- Can be overriden by the user -->
   <Target Name="BeforeBuild" />
   <Target Name="AfterBuild" />
-  <Target Name="SettingInstrumentationAssemblies" />
-  <Target Name="SetCompiledFiles">
-    <ItemGroup>
-      <CompiledFiles Include="$(BuildingPath)\**.*" />
-    </ItemGroup>
-  </Target>
 
   <Target Name="CoreBuild">
 

@@ -4,6 +4,8 @@
 
   <PropertyGroup>
     <PackageSourceCodeDependsOn>
+      CleanSourceCodeArtefacts;
+      IsolateSourceCode;
       BeforePackageSourceCode;
       CorePackageSourceCode;
       AfterPackageSourceCode;
@@ -17,8 +19,6 @@
   
   <Target Name="CorePackageSourceCode" >
 
-    <Error ContinueOnError="false" Text="The source code tmp path was not specified" Condition="$(SourceCodeTmpPath) == ''" />
-    
     <PropertyGroup>
       <SourceCodePackageFilePath Condition="$(SourceCodePackageFilePath) == ''">$(DropsPath)\$(PackageName).Source.v$(SemanticVersion).zip</SourceCodePackageFilePath>
     </PropertyGroup>

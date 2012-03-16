@@ -18,8 +18,8 @@
 
   <Target Name="CoreSetAssemblyInfo">
 
-    <Error ContinueOnError="false" Text="The assembly title is nto specified (AssemblyTitle)" Condition="$(AssemblyTitle) == ''" />
-    <Error ContinueOnError="false" Text="The assembly to store the common info was nto specified" Condition="$(AssemblyCommonInfo) == ''" />
+    <Error ContinueOnError="false" Text="The assembly title was not specified (AssemblyTitle)" Condition="$(AssemblyTitle) == ''" />
+    <Error ContinueOnError="false" Text="The assembly to store the common info was not specified" Condition="$(AssemblyCommonInfo) == ''" />
 
     <MSBuild.Community.tasks.AssemblyInfo OutputFile="$(AssemblyCommonInfo)"
                                           CodeLanguage="C#"

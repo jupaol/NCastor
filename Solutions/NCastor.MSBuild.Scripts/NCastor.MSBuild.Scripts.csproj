@@ -33,7 +33,9 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
+    <Folder Include="Targets\Build\Versioning\CCNET\Git\" />
     <Folder Include="Targets\Build\Versioning\CCNET\SVN\" />
+    <Folder Include="Targets\Build\Versioning\CCNET\TFS\" />
     <Folder Include="Targets\Build\Versioning\Hudson\Git\" />
     <Folder Include="Targets\Build\Versioning\Hudson\TFS\" />
   </ItemGroup>
@@ -67,16 +69,16 @@
     <Content Include="Tasks\MSBuild.Community\MSBuild.Community.Tasks.Targets">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\CreateArtefactFolders.target">
+    <Content Include="Targets\Build\CreateArtefactFolders.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\IsolateSourceCode.target">
+    <Content Include="Targets\Package\SourceCode\IsolateSourceCode.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\PackageBuild.target">
+    <Content Include="Targets\Package\Build\PackageBuild.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\PackageSourceCode.target">
+    <Content Include="Targets\Package\SourceCode\PackageSourceCode.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Properties\AssemblyInfo.properties">
@@ -134,7 +136,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\CleanArtefactFolders.targeet">
+    <None Include="Targets\Build\Cleaning\CleanArtefactFolders.targeet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Targets\Build\Versioning\CalculateSemanticVersion.target">
@@ -152,7 +154,7 @@
     <Content Include="Targets\Build\Versioning\CalculateRevisionVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\CleanSourceCodeArtefacts.target">
+    <Content Include="Targets\Package\SourceCode\CleanSourceCodeArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Targets\CleanNUnitArtefactFolders.target">
@@ -203,11 +205,11 @@
     <Content Include="Targets\Package.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\SetAssemblyInfo.target">
+    <None Include="Targets\Build\Versioning\SetAssemblyInfo.target">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Targets\SetAssemblyVersion.target">
+    <None Include="Targets\Build\Versioning\SetAssemblyVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
@@ -344,7 +346,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tools\install.ps1" />
-    <Content Include="Targets\Clean.target">
+    <Content Include="Targets\Build\Cleaning\Clean.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tools\MSTestReportGenerator\Assembly.dll" />

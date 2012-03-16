@@ -14,21 +14,23 @@
   <Import Project="$(TargetsPath)\Build\Versioning\Hudson\BuildVersionHudson.target"/>
   <Import Project="$(TargetsPath)\Build\Versioning\Hudson\Svn\RevisionVersionHudsonSvn.target"/>
   <Import Project="$(TargetsPath)\Build\Versioning\TFS\BuildVersionTFS.target"/>
-  <Import Project="$(TargetsPath)\Build\Versioning\CCNET\BuildVersionCCNET.target"/>
   <Import Project="$(TargetsPath)\Build\Versioning\CalculateSemanticVersion.target"/>
   
-  <Import Project="$(TargetsPath)\CleanArtefactFolders.targeet"/>
-  <Import Project="$(TargetsPath)\Clean.target"/>
-  <Import Project="$(TargetsPath)\CreateArtefactFolders.target"/>
-  <Import Project="$(TargetsPath)\SetAssemblyVersion.target" />
-  <Import Project="$(TargetsPath)\SetAssemblyInfo.target" />
-  <Import Project="$(TargetsPath)\CleanSourceCodeArtefacts.target" />
-  <Import Project="$(TargetsPath)\IsolateSourceCode.target"/>
-  <Import Project="$(TargetsPath)\PackageSourceCode.target"/>
+  <Import Project="$(TargetsPath)\Build\Cleaning\CleanArtefactFolders.targeet"/>
+  <Import Project="$(TargetsPath)\Build\Cleaning\Clean.target"/>
+  
+  <Import Project="$(TargetsPath)\Build\CreateArtefactFolders.target"/>
+  
+  <Import Project="$(TargetsPath)\Build\Versioning\SetAssemblyVersion.target" />
+  <Import Project="$(TargetsPath)\Build\Versioning\SetAssemblyInfo.target" />
+  
+  <Import Project="$(TargetsPath)\Package\SourceCode\CleanSourceCodeArtefacts.target" />
+  <Import Project="$(TargetsPath)\Package\SourceCode\IsolateSourceCode.target"/>
+  <Import Project="$(TargetsPath)\Package\SourceCode\PackageSourceCode.target"/>
   
   <Import Project="$(TargetsPath)\Build\Build.target"/>
   
-  <Import Project="$(TargetsPath)\PackageBuild.target"/>
+  <Import Project="$(TargetsPath)\Package\Build\PackageBuild.target"/>
 
   <Import Project="$(TargetsPath)\RunTests.target"/>
   

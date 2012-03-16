@@ -19,10 +19,19 @@
   <Target Name="CoreCleanArtefactFolders">
 
     <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(WorkingDirectoryPath)" ContinueOnError="false" Condition="Exists($(WorkingDirectoryPath))" />
-    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(DropsPath)" ContinueOnError="false" Condition="Exists($(DropsPath))" />
-
     <RemoveDir ContinueOnError="false" Directories="$(WorkingDirectoryPath)" Condition="Exists($(WorkingDirectoryPath))" />
+    
+    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(DropsPath)" ContinueOnError="false" Condition="Exists($(DropsPath))" />
     <RemoveDir ContinueOnError="false" Directories="$(DropsPath)" Condition="Exists($(DropsPath))" />
+
+    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(AssemblyInfoPath)" ContinueOnError="false" Condition="Exists($(AssemblyInfoPath))" />
+    <RemoveDir ContinueOnError="false" Directories="$(AssemblyInfoPath)" Condition="Exists($(AssemblyInfoPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
+
+    <Error ContinueOnError="false" Text="There was a problem when cleaning the Drops directory" Condition="Exists($(DropsPath))" />
+    <Error ContinueOnError="false" Text="There was a problem when deleting the Working directory" Condition="Exists($(WorkingDirectoryPath))" />
+    <Error ContinueOnError="false" Text="There was a problem when deleting the Common assembly info directory" Condition="Exists($(AssemblyInfoPath))" />
 
   </Target>
   

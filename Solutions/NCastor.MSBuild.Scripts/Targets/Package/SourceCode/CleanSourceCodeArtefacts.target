@@ -18,11 +18,14 @@
 
   <Target Name="CoreCleanSourceCodeArtefacts" >
 
-    <Error ContinueOnError="false" Text="The source code tmp path wasa not specified" Condition="$(SourceCodeTmpPath) == ''" />
+    <Error ContinueOnError="false" Text="The source code tmp path was not specified" Condition="$(SourceCodeTmpPath) == ''" />
     
     <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(SourceCodeTmpPath)" ContinueOnError="false" Condition="Exists('$(SourceCodeTmpPath)')" />
-
     <RemoveDir ContinueOnError="false" Directories="$(SourceCodeTmpPath)" Condition="Exists($(SourceCodeTmpPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
+    
+    <Error ContinueOnError="false" Text="There was a problem while deleting the source code tmp directory. Please try again" Condition="Exists($(SourceCodeTmpPath))" />
 
   </Target>
 

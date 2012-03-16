@@ -43,46 +43,58 @@ Your custom build targets
 
   <!-- TODO: Place your custom build targets here -->
 
+  <!--
+  This is the full dependency tree for the Build action, you can customize it but just remember there are some actions
+  that dependent from others.
+  
+  The dependencies that can be safetly removed are:
+  
+    SetAssemblyVersion;
+    SetAssemblyInfo;
+    PackageSourceCode;
+    PackageBuild;
+    
+  Howver the SetAssembly* targets should be used in order to set the version of the assembly but if you do not need this
+  feature you can remove them 
+  -->
   <!--<PropertyGroup>
     <BuildDependsOn>
       ValidateSettings;
       CalculateSemanticVersion;
       Clean;
-      CleanArtefactFolders;
       CreateArtefactFolders;
       SetAssemblyVersion;
       SetAssemblyInfo;
-      CleanSourceCodeArtefacts;
-      IsolateSourceCode;
       PackageSourceCode;
       BeforeBuild;
       CoreBuild;
       AfterBuild;
-      SettingInstrumentationAssemblies;
-      SetCompiledFiles;
       PackageBuild;
     </BuildDependsOn>
   </PropertyGroup>-->
 
+  <!--
+  Here we are overriding the default build actions. This is to show you how you can control all the steps being executed
+  -->
   <PropertyGroup>
     <BuildDependsOn>
+      $(BuildDependsOn);
+    </BuildDependsOn>
+  </PropertyGroup>
+  <Target Name="Build" DependsOnTargets="$(BuildDependsOn);" />
+
+  <!--
+  This is a custom build target using the minimum actions required
+  -->
+  <PropertyGroup>
+    <LiteBuildDependsOn>
       ValidateSettings;
       CalculateSemanticVersion;
       Clean;
-      CleanArtefactFolders;
       CreateArtefactFolders;
-      SetAssemblyVersion;
-      SetAssemblyInfo;
-      CleanSourceCodeArtefacts;
-      IsolateSourceCode;
-      PackageSourceCode;
-      BeforeBuild;
       CoreBuild;
-      AfterBuild;
-      SettingInstrumentationAssemblies;
-      SetCompiledFiles;
-      PackageBuild;
-    </BuildDependsOn>
+    </LiteBuildDependsOn>
   </PropertyGroup>
+  <Target Name="LiteBuild" DependsOnTargets="$(LiteBuildDependsOn)" />
 
 </Project>
