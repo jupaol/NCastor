@@ -87,8 +87,8 @@ Your custom tests targets
       To run tests you need to override the following targets:
       
       "CorerSettingInstrumentationAssemblies"
-      This target is executed as part of the required actions, in this target you specify the assemblies you want to 
-      instrument (only if you want to run code coverage with your tests, otherwise you do not need to override this target)
+      In this target you specify the assemblies you want to instrument 
+      (only if you want to run code coverage with your tests, otherwise you do not need to override this target)
       
       Example
 

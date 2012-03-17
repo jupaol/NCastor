@@ -93,8 +93,22 @@ Your custom build targets
   
    <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
    <Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />
+   
+   Custom calculation example:
+   
+   <Target Name="CoreCalculateBuildVersion">
+    <PropertyGroup>
+      <BuildVersion>$(MyCalculatedBuildVersion)</BuildVersion>
+    </PropertyGroup>
+   </Target>
 
-  -->
+   <Target Name="CoreCalculateRevisionVersion">
+    <PropertyGroup>
+      <RevisionVersion>$(MyCalculatedRevisionVersion)</RevisionVersion>
+    </PropertyGroup>
+   </Target>
+
+-->
 
   <!--
   Here we are overriding the default build actions. This is to show you how you can control all the steps being executed
