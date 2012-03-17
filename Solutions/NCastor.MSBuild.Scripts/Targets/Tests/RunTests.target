@@ -28,6 +28,8 @@
 
       CoreRunTests;
       AfterRunTests;
+
+      PackageTestAssemblies;
       $(RunTestsExpectedActions);
     </RunTestsDependsOn>
   </PropertyGroup>

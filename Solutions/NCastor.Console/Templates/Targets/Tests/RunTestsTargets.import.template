@@ -62,6 +62,8 @@ Your custom tests targets
 
       CoreRunTests;
       AfterRunTests;
+      
+      PackageTestAssemblies;
       $(RunTestsExpectedActions);
     </RunTestsDependsOn>
   </PropertyGroup>
@@ -75,6 +77,8 @@ Your custom tests targets
       RunNUnitTestsWithOpenCover;
       RunMSTestTestsWithOpenCover;
       RunMSpecTestsWithOpenCover;
+      
+      PackageTestAssemblies;
       
       Note these tests, should be run mutually exclusive, which meand that if you want to run NUnit tests you need 
       to specify "RunNUnitTests" or "RunNUnitTestsWithOpenCover" bit not both
@@ -164,6 +168,8 @@ Your custom tests targets
 
       CoreRunTests;
       AfterRunTests;
+
+      PackageTestAssemblies;
       $(RunTestsExpectedActions);
     </RunTestsDependsOn>
   </PropertyGroup>

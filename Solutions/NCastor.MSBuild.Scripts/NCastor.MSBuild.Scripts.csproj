@@ -193,6 +193,12 @@
     <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CleanReportNUnitOpenCoverWithReportGeneratorArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Package\TestAssemblies\PackageTestAssemblies.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Package\TestsReports\PackageTestReports.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\Reports\Reports.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

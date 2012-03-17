@@ -7,4 +7,7 @@
   <Import Project="SourceCode\PackageSourceCode.target"/>
   <Import Project="Build\PackageBuild.target"/>
 
+  <Import Project="TestAssemblies\PackageTestAssemblies.target"/>
+  <Import Project="TestsReports\PackageTestReports.target"/>
+
 </Project>
