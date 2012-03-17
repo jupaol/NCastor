@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FluentAssertions;
-using NCastor.Console.FluentConfiguration;
-using Moq;
-using NCastor.Console.Services;
 using System.IO;
+using System.Linq;
+using System.Text;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using NCastor.Console.Constants;
+using NCastor.Console.FluentConfiguration;
+using NCastor.Console.Services;
 
 namespace NCastor.Console.Tests.FluentConfiguration
 {

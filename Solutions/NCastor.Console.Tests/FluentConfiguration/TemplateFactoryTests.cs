@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using CuttingEdge.Conditions;
 using FluentAssertions;
-using TemplateEngine;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using NCastor.Console.Constants;
 using NCastor.Console.FluentConfiguration;
 using NCastor.Console.Services;
-using Moq;
-using System.Reflection;
-using CuttingEdge.Conditions;
-using NCastor.Console.Constants;
+using TemplateEngine;
 
 namespace NCastor.Console.Tests.FluentConfiguration
 {

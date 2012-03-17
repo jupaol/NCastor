@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FluentAssertions;
-using NCastor.Console.Constants;
 using System.IO;
+using System.Linq;
+using System.Text;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NCastor.Console.Constants;
 using NCastor.Console.FluentConfiguration;
 
 namespace NCastor.Console.Integration.Tests

@@ -1,11 +1,11 @@
-﻿using NCastor.Console.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using FluentAssertions;
-using System.Reflection;
+﻿using System;
 using System.IO;
+using System.Reflection;
 using CuttingEdge.Conditions;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NCastor.Console.Constants;
+using NCastor.Console.Services;
 
 namespace NCastor.Console.Tests.Services
 {

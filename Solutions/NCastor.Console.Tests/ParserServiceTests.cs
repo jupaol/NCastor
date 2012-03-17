@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FluentAssertions;
-using CommandLine.Text;
 using System.Reflection;
+using System.Text;
 using CommandLine;
+using CommandLine.Text;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace NCastor.Console.Tests
 {
