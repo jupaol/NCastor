@@ -35,6 +35,8 @@
       PackageMSTestTestReports;
       PackageMSpecTestReports;
       $(RunTestsExpectedActions);
+
+      CheckForTestsErrors;
     </RunTestsDependsOn>
   </PropertyGroup>
 

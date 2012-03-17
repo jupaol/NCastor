@@ -69,6 +69,8 @@ Your custom tests targets
       PackageMSTestTestReports;
       PackageMSpecTestReports;
       $(RunTestsExpectedActions);
+      
+      CheckForTestsErrors;
     </RunTestsDependsOn>
   </PropertyGroup>
   
@@ -87,6 +89,8 @@ Your custom tests targets
       PackageNUnitTestReports;
       PackageMSTestTestReports;
       PackageMSpecTestReports;
+      
+      CheckForTestsErrors;
       
       Note these tests, should be run mutually exclusive, which meand that if you want to run NUnit tests you need 
       to specify "RunNUnitTests" or "RunNUnitTestsWithOpenCover" bit not both
@@ -161,6 +165,52 @@ Your custom tests targets
   Here we are overriding the default tests actions. This is to show you how you can control all the steps being executed
   -->
 
+  <!--
+  ******* Note: *******
+  
+  Pay special attention to the following target:
+  
+  "*** CheckForTestsErrors ***"
+  
+  When the tests run, they are allowed to continue executing even if an error ocurred (usually because a test failed),
+  therefore we need a way to inform about the error at the end of the WHOLE EXECUTION OF THE BUILD which means, that this
+  target must be specified as the last task of the whole process to ensure to throw the exception to let the user know 
+  the build failed. 
+  
+  Example:
+  
+  <PropertyGroup>
+    <RunTestsLiteDependsOn>
+      $(RunTestsRequiredActions);
+      CoreRunTests;
+      $(RunTestsExpectedActions);
+      
+      CheckForTestsErrors;
+      
+    </RunTestsLiteDependsOn>
+  </PropertyGroup>
+  
+  If you have a custom task:
+  
+  <PropertyGroup>
+    <MyCustomFinalTaskDependsOn>
+      $(SomethingCustom);
+      CoreRunTests;
+      $(MoreCustomTargets);
+      
+      CheckForTestsErrors;
+      
+    </MyCustomFinalTaskDependsOn>
+  </PropertyGroup>  
+  <Target Name="CoreSettingMSTestTestingAssemblies" DependsOnTargets="MyCustomFinalTaskDependsOn" />
+  
+  As you can see the last task should be always the "CheckForTestsErrors" in order to inform correctly about the errors
+  ocurred.
+  The direct consecuence if you do not specify this target: simply the whole build process will end without informing
+  about any tests failed
+  
+  -->
+  
   <PropertyGroup>
     <RunTestsDependsOn>
       $(RunTestsRequiredActions);
