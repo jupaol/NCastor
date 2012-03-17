@@ -80,13 +80,13 @@
     <Content Include="Targets\Build\CreateArtefactFolders.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\SourceCode\IsolateSourceCode.target">
+    <Content Include="Targets\Package\Zip\SourceCode\IsolateSourceCode.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\Build\PackageBuild.target">
+    <Content Include="Targets\Package\Zip\Build\PackageBuild.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\SourceCode\PackageSourceCode.target">
+    <Content Include="Targets\Package\Zip\SourceCode\PackageSourceCode.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Properties\AssemblyInfo.properties">
@@ -162,16 +162,25 @@
     <Content Include="Targets\Build\Versioning\CalculateRevisionVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\SourceCode\CleanSourceCodeArtefacts.target">
+    <Content Include="Targets\Package\Zip\SourceCode\CleanSourceCodeArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Targets\Build\Build.import">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Targets\Build\Versioning\CreateAssemblyInfoArtefacts.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\CleanAssemblyInfoArtefacts.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\Common\Common.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Targets\Package\Nuget\PackageNugets.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\Package\Package.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -193,16 +202,16 @@
     <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CleanReportNUnitOpenCoverWithReportGeneratorArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\TestAssemblies\PackageTestAssemblies.target">
+    <Content Include="Targets\Package\Zip\TestAssemblies\PackageTestAssemblies.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\TestsReports\NUnit\PackageNUnitTestReports.target">
+    <Content Include="Targets\Package\Zip\TestsReports\NUnit\PackageNUnitTestReports.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\TestsReports\MSTest\PackageMSTestTestReports.target">
+    <Content Include="Targets\Package\Zip\TestsReports\MSTest\PackageMSTestTestReports.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\TestsReports\MSpec\PackageMSpecTestReports.target">
+    <Content Include="Targets\Package\Zip\TestsReports\MSpec\PackageMSpecTestReports.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Targets\Reports\Reports.import">
@@ -304,9 +313,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Tasks\MSBuild.Community\License.rtf" />
-    <Content Include="Tools\init.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Tools\init.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GlobalTargets.import">

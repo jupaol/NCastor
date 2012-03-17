@@ -14,6 +14,8 @@
 
   <Import Project="CreateArtefactFolders.target"/>
 
+  <Import Project="Versioning\CleanAssemblyInfoArtefacts.target" />
+  <Import Project="Versioning\CreateAssemblyInfoArtefacts.target" />
   <Import Project="Versioning\SetAssemblyVersion.target" />
   <Import Project="Versioning\SetAssemblyInfo.target" />
 

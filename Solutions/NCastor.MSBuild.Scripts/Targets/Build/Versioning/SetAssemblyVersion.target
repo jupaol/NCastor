@@ -4,6 +4,8 @@
 
   <PropertyGroup>
     <SetAssemblyVersionDependsOn>
+      CleanAssemblyInfoArtefacts;
+      CreateAssemblyInfoArtefacts;
       BeforeSetAssemblyVersion;
       CoreSetAssemblyVersion;
       AfterSetAssemblyVersion;

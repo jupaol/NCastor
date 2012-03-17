@@ -40,7 +40,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       NCastor contains a set of pre-defined MSBuild scripts to allow you quickly INTEGRATE your
-      application with a CI server, allowing you to set assembly information to your files, auto increment build and
+      application with a CI server, using free popular third-party tools, 
+      allowing you to set assembly information to your files, auto increment build and
       revision version, run "NUnit", "MSTest" or "MSpec" tests with code coverage results
       using "OpenCover" generate reports from the results using "Report Generator", run code analysis using "StyleCop" 
       run assembly analysis using "FxCop", generate reports for the "StyleCop" and "FxCop" results, generate zip files 
@@ -57,7 +58,7 @@
     </summary>
     <tags>
       NCastor Auto Build Deploy Jupaol Castor MSBuild script unit test run NUnit MSTest MSPec OpenCover Report Generator
-      Hudson CI Continous Integration ClickOnce WXI Package Installer Nuget FxCop StyleCop "Windoes XML Installer"
+      Hudson CI Continous Integration ClickOnce WXI Package Installer Nuget FxCop StyleCop "Windoes XML Installer" installer
     </tags>
     <id>NCastor</id>
     <title>NCastor</title>

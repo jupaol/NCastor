@@ -58,7 +58,7 @@ namespace NCastor.Console
         /// The output path to place the auto generated scripts
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = JustificationForTheFieldsMustBePrivate)]
-        [Option("o", null, HelpText = @"-o <OutputPath> output path to place the scripts, accepts relative path (commonly: ..\..\Solutions\Build)", Required = true)]
+        [Option("o", null, HelpText = @"-o <OutputPath> output path to place the scripts, accepts relative path (usually: ..\..\..\..\Build)", Required = true)]
         public string OutputPath;
 
         /// <summary>

@@ -57,10 +57,10 @@
 
     <AssemblyTitle>NCastor</AssemblyTitle>
     <AssemblyDescription>NCastor Console Application</AssemblyDescription>
-    <AssemblyCompany>Jupaol Systems</AssemblyCompany>
+    <AssemblyCompany>Juan Pablo Olmos Lara (Jupaol)</AssemblyCompany>
     <AssemblyProduct>NCastor</AssemblyProduct>
-    <AssemblyCopyright>Copyright (c) 2012, Jupaol Systems</AssemblyCopyright>
-    <AssemblyTrademark>Jupaol Systems - NCastor, All Rights Reserved</AssemblyTrademark>
+    <AssemblyCopyright>Copyright (c) 2012, Juan Pablo Olmos Lara (Jupaol) All rights reserved.</AssemblyCopyright>
+    <AssemblyTrademark>NCastor, All Rights Reserved</AssemblyTrademark>
   </PropertyGroup>
 
   <!-- Importing NCastor Global properties -->
@@ -77,9 +77,11 @@
   <PropertyGroup>
     <RunTestsDependsOn>
       $(RunTestsRequiredActions);
-      RunMSTestTestsWithOpenCover;
+      RunMSTests;
       CoreRunTests;
       $(RunTestsExpectedActions);
+
+      CreateNugetPackage;
 
       CheckForTestsErrors;
     </RunTestsDependsOn>

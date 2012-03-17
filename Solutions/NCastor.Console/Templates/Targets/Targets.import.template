@@ -43,6 +43,7 @@ Your custom targets
 
   <!-- TODO: Place your custom targets here -->
 
-  <Import Project="Properties\{{ ProductName }}.BuildTargets.import"/>
+  <Import Project="Build\{{ ProductName }}.BuildTargets.import"/>
+  <Import Project="Tests\{{ ProductName }}.RunTestsTargets.import"/>
 
 </Project>

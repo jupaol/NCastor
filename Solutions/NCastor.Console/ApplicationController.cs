@@ -212,6 +212,7 @@ namespace NCastor.Console
                 "NCastor.Console.Templates.Targets",
                 (x, y, z) =>
                 {
+                    x.Set(TemplateTokenConstants.ProductName, y.ProductName);
                 });
         }
 

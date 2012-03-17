@@ -187,6 +187,7 @@ namespace NCastor.Console.Integration.Tests
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
             templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
+            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(3);
         }
 
         [TestMethod]

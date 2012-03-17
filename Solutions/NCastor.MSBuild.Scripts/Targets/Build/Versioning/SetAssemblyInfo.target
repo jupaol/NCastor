@@ -4,6 +4,8 @@
 
   <PropertyGroup>
     <SetAssemblyInfoDependsOn>
+      CleanAssemblyInfoArtefacts;
+      CreateAssemblyInfoArtefacts;
       BeforeSetAssemblyInfo;
       CoreSetAssemblyInfo;
       AfterSetAssemblyInfo;
