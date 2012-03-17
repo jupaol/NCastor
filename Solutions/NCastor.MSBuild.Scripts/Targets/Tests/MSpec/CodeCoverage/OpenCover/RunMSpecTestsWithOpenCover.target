@@ -37,7 +37,7 @@
 
     <PropertyGroup>
       <_MSpecCommand>-target:"$(MSPecRunner)" -targetargs:"@(_MSpecAssembliesToRunCodeCoverage, ' ')"</_MSpecCommand>
-      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -register:user -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSpec, ' ')&quot; -output:&quot;$(OpenCoverMSpec_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -register:user -mergebyhash -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSpec, ' ')&quot; -output:&quot;$(OpenCoverMSpec_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
     <Exec Command="$(_CommonOpenCoverArgs) $(_MSpecCommand)" />

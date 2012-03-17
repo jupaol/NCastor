@@ -430,6 +430,9 @@
     <Content Include="Tools\MSTestReportGenerator\DataTransfer.dll" />
     <Content Include="Tools\MSTestReportGenerator\Domain.dll" />
     <Content Include="Tools\MSTestReportGenerator\Library.dll" />
+    <Content Include="Tools\MSTestReportGenerator\Readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tools\MSTestReportGenerator\Services.dll" />
     <Content Include="Tools\uninstall.ps1" />
   </ItemGroup>
