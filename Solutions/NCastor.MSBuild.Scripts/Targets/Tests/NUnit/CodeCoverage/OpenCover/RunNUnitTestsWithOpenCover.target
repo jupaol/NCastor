@@ -39,10 +39,12 @@
 
       <_OpenCoverNUnitArgs>-target:&quot;$(NUnitRunner)&quot; -targetargs:&quot;$(_NunitArgs)&quot;</_OpenCoverNUnitArgs>
 
-      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -register:user -mergebyhash -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverNUnit, ' ')&quot; -output:&quot;$(OpenCoverNUnit_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -register:user -mergebyhash -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverNUnit, ' ')&quot; -output:&quot;$(OpenCoverNUnit_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
-    <Exec Command="$(_CommonOpenCoverArgs) $(_OpenCoverNUnitArgs)" />
+    <Exec Command="$(_CommonOpenCoverArgs) $(_OpenCoverNUnitArgs)">
+      <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningNUnitTests"/>
+    </Exec>
 
   </Target>
   

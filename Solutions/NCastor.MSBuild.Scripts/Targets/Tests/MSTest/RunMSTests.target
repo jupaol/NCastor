@@ -33,10 +33,12 @@
     </ItemGroup>
 
     <PropertyGroup>
-      <_MSTestCommand>"$(MSTestRunner)" @(_MSTestContainers, ' ') /detail:errormessage /detail:errorstacktrace /resultsfile:"$(MSTestReportFilePath)"</_MSTestCommand>
+      <_MSTestCommand>"$(MSTestRunner)" @(_MSTestContainers, ' ') /detail:errormessage /detail:errorstacktrace /detail:stderr /resultsfile:"$(MSTestReportFilePath)"</_MSTestCommand>
     </PropertyGroup>
 
-    <Exec Command='$(_MSTestCommand)'></Exec>
+    <Exec ContinueOnError="true" Command='$(_MSTestCommand)'>
+      <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningMSTestTests"/>
+    </Exec>
 
   </Target>
   

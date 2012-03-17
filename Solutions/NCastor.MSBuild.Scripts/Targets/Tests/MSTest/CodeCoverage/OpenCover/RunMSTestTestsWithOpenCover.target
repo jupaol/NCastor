@@ -36,12 +36,14 @@
     </ItemGroup>
 
     <PropertyGroup>
-      <_OpenCoverMSTestCommand>-target:"$(MSTestRunner)"  -targetargs:"@(_MSTestContainersToRunCodeCoverage, ' ') /detail:errormessage /detail:errorstacktrace /resultsfile:\"$(MSTestReportFilePath)\""</_OpenCoverMSTestCommand>
+      <_OpenCoverMSTestCommand>-target:"$(MSTestRunner)"  -targetargs:"@(_MSTestContainersToRunCodeCoverage, ' ') /detail:errormessage /detail:errorstacktrace /detail:stderr /resultsfile:\"$(MSTestReportFilePath)\""</_OpenCoverMSTestCommand>
 
       <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register:user -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSTest, ' ')&quot; -output:&quot;$(OpenCoverMSTest_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
-    <Exec Command="$(_CommonOpenCoverArgs) $(_OpenCoverMSTestCommand)" />
+    <Exec ContinueOnError="true" Command="$(_CommonOpenCoverArgs) $(_OpenCoverMSTestCommand)">
+      <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningMSTestTests"/>
+    </Exec>
 
   </Target>
   

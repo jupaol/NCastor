@@ -26,9 +26,13 @@
     <Error ContinueOnError="false" Text="The NUnit assemblies were not specified" Condition="@(NUnitAssemblies) == ''" />
     <Error ContinueOnError="false" Text="The NUnit test assembly was not found: &quot;%(NUnitAssemblies.Identity)&quot;" Condition="!Exists(%(NUnitAssemblies.Identity))" />
 
+    <!--TODO: check this-->
     <MSBuild.Community.Tasks.NUnit Assemblies="@(NUnitAssemblies)"
                                    ToolPath="$([System.IO.Directory]::GetParent($(NUnitRunner)))"
-                                   OutputXmlFile="$(NUnitXmlReportFilePath)" />
+                                   OutputXmlFile="$(NUnitXmlReportFilePath)"
+                                   ContinueOnError="true">
+      <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningNUnitTests"/>
+    </MSBuild.Community.Tasks.NUnit>
 
   </Target>
   

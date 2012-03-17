@@ -211,6 +211,9 @@
     <Content Include="Targets\Tests\SettingTestingAssemblies.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Targets\Tests\CheckForTestsErrors.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Targets\Tests\MSpec\CreateMSpecArtefactFolders.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

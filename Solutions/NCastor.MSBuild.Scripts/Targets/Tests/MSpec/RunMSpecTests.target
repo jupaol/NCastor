@@ -37,7 +37,9 @@
       <_MSpecCommand>"$(MSPecRunner)" $(_MSpecOptions) @(_MSpecAssemblies, ' ')</_MSpecCommand>
     </PropertyGroup>
 
-    <Exec Command="$(_MSpecCommand)" />
+    <Exec ContinueOnError="true" Command="$(_MSpecCommand)">
+      <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningMSpecTests"/>
+    </Exec>
     
   </Target>  
   

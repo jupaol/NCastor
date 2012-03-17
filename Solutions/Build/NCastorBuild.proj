@@ -80,6 +80,8 @@
       RunMSTestTestsWithOpenCover;
       CoreRunTests;
       $(RunTestsExpectedActions);
+
+      CheckForTestsErrors;
     </RunTestsDependsOn>
   </PropertyGroup>
 

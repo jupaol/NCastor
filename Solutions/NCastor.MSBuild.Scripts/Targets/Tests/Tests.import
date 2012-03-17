@@ -10,4 +10,6 @@
   <Import Project="MSTest\MSTestTests.import"/>
   <Import Project="NUnit\NUnitTests.import"/>
 
+  <Import Project="CheckForTestsErrors.target"/>
+
 </Project>
