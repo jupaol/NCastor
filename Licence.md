@@ -4,7 +4,7 @@
 
 [http://jupaol.blogspot.com/](http://jupaol.blogspot.com/)
 
-# NCover Licence #
+# NCastor Licence #
 
 Copyright (c) 2012, Juan Pablo Olmos Lara (Jupaol)
 All rights reserved.
