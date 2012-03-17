@@ -30,6 +30,10 @@
       AfterRunTests;
 
       PackageTestAssemblies;
+
+      PackageNUnitTestReports;
+      PackageMSTestTestReports;
+      PackageMSpecTestReports;
       $(RunTestsExpectedActions);
     </RunTestsDependsOn>
   </PropertyGroup>

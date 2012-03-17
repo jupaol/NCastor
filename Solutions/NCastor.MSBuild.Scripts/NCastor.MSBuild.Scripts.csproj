@@ -196,7 +196,13 @@
     <Content Include="Targets\Package\TestAssemblies\PackageTestAssemblies.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\TestsReports\PackageTestReports.target">
+    <Content Include="Targets\Package\TestsReports\NUnit\PackageNUnitTestReports.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Package\TestsReports\MSTest\PackageMSTestTestReports.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Package\TestsReports\MSpec\PackageMSpecTestReports.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Targets\Reports\Reports.import">
