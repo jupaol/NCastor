@@ -9,6 +9,7 @@
 # Build results
 [Dd]rops/
 [Ww]orking[Dd]irectory/
+[Cc]ommon[Aa]ssembly[Pp]roperties/
 [Dd]ebug/
 [Rr]elease/
 *_i.c
