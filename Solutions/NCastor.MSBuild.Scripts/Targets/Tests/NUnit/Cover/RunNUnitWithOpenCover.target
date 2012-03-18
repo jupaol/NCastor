@@ -11,7 +11,7 @@
       BeforeRunNUnitWithOpenCover;
       CoreRunNUnitWithOpenCover;
       AfterRunNUnitWithOpenCover;
-      ReportNUnitOpenCoverWithReportGenerator;
+      ReportNUnitOpenCoverWithRG;
     </RunNUnitWithOpenCoverDependsOn>
   </PropertyGroup>
 

@@ -12,7 +12,7 @@
       CoreRunMSTestWithOpenCover;
       AfterRunMSTestWithOpenCover;
       CreateMSTestReport;
-      ReportMSTestOpenCoverWithReportGenerator;
+      ReportMSTestOpenCoverWithRG;
     </RunMSTestWithOpenCoverDependsOn>
   </PropertyGroup>
 

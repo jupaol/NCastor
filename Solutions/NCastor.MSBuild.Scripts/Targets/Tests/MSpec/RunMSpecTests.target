@@ -10,7 +10,7 @@
       BeforeRunMSpecTests;
       CoreRunMSpecTests;
       AfterRunMSpecTests;
-      TransformMSpecXmlReporttToJUnitXmlReport;
+      TransformMSpecXmlToJUnitXml;
     </RunMSpecTestsDependsOn>
   </PropertyGroup>
 

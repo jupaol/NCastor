@@ -2,7 +2,7 @@
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Target Name='CleanReportMSpecOpenCoverWithReportGeneratorArtefacts'>
+  <Target Name='CleanMSpecOpenCoverWithRGArtefacts'>
 
     <Error ContinueOnError="false" Text="The MSpec report path was not specified" Condition="$(ReportGeneratorMSpecReportPath) == ''" />
 

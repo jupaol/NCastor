@@ -181,22 +181,22 @@
     <Content Include="Targets\Package\Package.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CreateReportMSpecOpenCoverWithReportGeneratorArtefacts.target">
+    <Content Include="Targets\Reports\Cover\CreateMSpecOpenCoverWithRGArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CleanReportMSpecOpenCoverWithReportGeneratorArtefacts.target">
+    <Content Include="Targets\Reports\Cover\CleanMSpecOpenCoverWithRGArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CreateReportMSTestOpenCoverWithReportGeneratorArtefacts.target">
+    <Content Include="Targets\Reports\Cover\CreateMSTestOpenCoverWithRGArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CleanReportMSTestOpenCoverWithReportGeneratorArtefacts.target">
+    <Content Include="Targets\Reports\Cover\CleanMSTestOpenCoverWithRGArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CreateReportNUnitOpenCoverWithReportGeneratorArtefacts.target">
+    <Content Include="Targets\Reports\Cover\CreateNUnitOpenCoverWithRGArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CleanReportNUnitOpenCoverWithReportGeneratorArtefacts.target">
+    <Content Include="Targets\Reports\Cover\CleanNUnitOpenCoverWithRGArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Package\Zip\TestAssemblies\PackageTestAssemblies.target">
@@ -262,7 +262,7 @@
     <Content Include="Targets\Tests\MSpec\RunMSpecTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Tests\MSpec\TransformMSpecXmlReporttToJUnitXmlReport.target">
+    <Content Include="Targets\Reports\Tests\MSpec\TransformMSpecXmlToJUnitXml.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Tests\NUnit\Cover\RunNUnitWithOpenCover.target">
@@ -274,13 +274,13 @@
     <Content Include="Targets\Tests\MSpec\Cover\RunMSpecWithOpenCover.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\ReportNUnitOpenCoverWithReportGenerator.target">
+    <Content Include="Targets\Reports\Cover\ReportNUnitOpenCoverWithRG.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\ReportMSTestOpenCoverWithReportGenerator.target">
+    <Content Include="Targets\Reports\Cover\ReportMSTestOpenCoverWithRG.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\ReportMSpecOpenCoverWithReportGenerator.target">
+    <Content Include="Targets\Reports\Cover\ReportMSpecOpenCoverWithRG.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Reports\Tests\MSTest\CreateMSTestReport.target">

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <ReportNUnitOpenCoverWithRGDependsOn>
+      CleanNUnitOpenCoverWithRGArtefacts;
+      CreateNUnitOpenCoverWithRGArtefacts;
+      BeforeReportNUnitOpenCoverWithRG;
+      CoreReportNUnitOpenCoverWithRG;
+      AfterReportNUnitOpenCoverWithRG;
+    </ReportNUnitOpenCoverWithRGDependsOn>
+  </PropertyGroup>
+
+  <Target Name="ReportNUnitOpenCoverWithRG" DependsOnTargets="$(ReportNUnitOpenCoverWithRGDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeReportNUnitOpenCoverWithRG" />
+  <Target Name="AfterReportNUnitOpenCoverWithRG" />
+
+  <Target Name="CoreReportNUnitOpenCoverWithRG" >
+
+    <Error ContinueOnError="false" Text="The report generator runner was not specified" Condition="$(ReportGeneratorRunner) == ''" />
+    <Error ContinueOnError="false" Text="The report generator runner was not found" Condition="!Exists($(ReportGeneratorRunner))" />
+
+    <Exec ContinueOnError="false" Command='"$(ReportGeneratorRunner)" "$(OpenCoverNUnit_ReportFilePath)" "$(ReportGeneratorNUnitReportPath)"' />
+
+  </Target>
+  
+</Project>

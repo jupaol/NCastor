@@ -2,18 +2,18 @@
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Import Project="Tests\MSpec\TransformMSpecXmlReporttToJUnitXmlReport.target"/>
-  <Import Project="CodeCoverage\ReportGenerator\CleanReportMSpecOpenCoverWithReportGeneratorArtefacts.target"/>
-  <Import Project="CodeCoverage\ReportGenerator\CreateReportMSpecOpenCoverWithReportGeneratorArtefacts.target"/>
-  <Import Project="CodeCoverage\ReportGenerator\ReportMSpecOpenCoverWithReportGenerator.target"/>
+  <Import Project="Tests\MSpec\TransformMSpecXmlToJUnitXml.target"/>
+  <Import Project="Cover\CleanMSpecOpenCoverWithRGArtefacts.target"/>
+  <Import Project="Cover\CreateMSpecOpenCoverWithRGArtefacts.target"/>
+  <Import Project="Cover\ReportMSpecOpenCoverWithRG.target"/>
   
   <Import Project="Tests\MSTest\CreateMSTestReport.target"/>
-  <Import Project="CodeCoverage\ReportGenerator\CleanReportMSTestOpenCoverWithReportGeneratorArtefacts.target"/>
-  <Import Project="CodeCoverage\ReportGenerator\CreateReportMSTestOpenCoverWithReportGeneratorArtefacts.target"/>
-  <Import Project="CodeCoverage\ReportGenerator\ReportMSTestOpenCoverWithReportGenerator.target"/>
+  <Import Project="Cover\CleanMSTestOpenCoverWithRGArtefacts.target"/>
+  <Import Project="Cover\CreateMSTestOpenCoverWithRGArtefacts.target"/>
+  <Import Project="Cover\ReportMSTestOpenCoverWithRG.target"/>
 
-  <Import Project="CodeCoverage\ReportGenerator\CleanReportNUnitOpenCoverWithReportGeneratorArtefacts.target"/>
-  <Import Project="CodeCoverage\ReportGenerator\CreateReportNUnitOpenCoverWithReportGeneratorArtefacts.target"/>
-  <Import Project="CodeCoverage\ReportGenerator\ReportNUnitOpenCoverWithReportGenerator.target"/>
+  <Import Project="Cover\CleanNUnitOpenCoverWithRGArtefacts.target"/>
+  <Import Project="Cover\CreateNUnitOpenCoverWithRGArtefacts.target"/>
+  <Import Project="Cover\ReportNUnitOpenCoverWithRG.target"/>
 
 </Project>

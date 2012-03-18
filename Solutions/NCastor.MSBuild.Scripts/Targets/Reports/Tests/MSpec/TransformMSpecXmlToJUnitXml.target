@@ -3,20 +3,20 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <TransformMSpecXmlReporttToJUnitXmlReportDependsOn>
-      BeforeTransformMSpecXmlReporttToJUnitXmlReport;
-      CoreTransformMSpecXmlReporttToJUnitXmlReport;
-      AfterTransformMSpecXmlReporttToJUnitXmlReport;
-    </TransformMSpecXmlReporttToJUnitXmlReportDependsOn>
+    <TransformMSpecXmlToJUnitXmlDependsOn>
+      BeforeTransformMSpecXmlToJUnitXml;
+      CoreTransformMSpecXmlToJUnitXml;
+      AfterTransformMSpecXmlToJUnitXml;
+    </TransformMSpecXmlToJUnitXmlDependsOn>
   </PropertyGroup>
 
-  <Target Name="TransformMSpecXmlReporttToJUnitXmlReport" DependsOnTargets="$(TransformMSpecXmlReporttToJUnitXmlReportDependsOn)"/>
+  <Target Name="TransformMSpecXmlToJUnitXml" DependsOnTargets="$(TransformMSpecXmlToJUnitXmlDependsOn)"/>
 
   <!-- To be overriden by the user -->
-  <Target Name="BeforeTransformMSpecXmlReporttToJUnitXmlReport" />
-  <Target Name="AfterTransformMSpecXmlReporttToJUnitXmlReport" />
+  <Target Name="BeforeTransformMSpecXmlToJUnitXml" />
+  <Target Name="AfterTransformMSpecXmlToJUnitXml" />
 
-  <Target Name="CoreTransformMSpecXmlReporttToJUnitXmlReport" >
+  <Target Name="CoreTransformMSpecXmlToJUnitXml" >
 
     <PropertyGroup>
       <_MSpec_JUnit_XSD>$(NCastorToolsPath)\MSpecToJUnit.xslt</_MSpec_JUnit_XSD>

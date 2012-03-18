@@ -11,8 +11,8 @@
       BeforeRunMSpecWithOpenCover;
       CoreRunMSpecWithOpenCover;
       AfterRunMSpecWithOpenCover;
-      TransformMSpecXmlReporttToJUnitXmlReport;
-      ReportMSpecOpenCoverWithReportGenerator;
+      TransformMSpecXmlToJUnitXml;
+      ReportMSpecOpenCoverWithRG;
     </RunMSpecWithOpenCoverDependsOn>
   </PropertyGroup>
 
