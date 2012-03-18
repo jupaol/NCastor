@@ -33,7 +33,7 @@
 </copyright>
 -->
 
-<Project DefaultTargets="RunTests" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="PackageNCastor" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..</GlobalRootPath>
@@ -92,31 +92,23 @@
     </SpecialProjects>
   </ItemGroup>
 
-
-  <PropertyGroup>
-    <BuildDependsOn>
-      $(BuildRequiredActions);
-      SetAssemblyVersion;
-      SetAssemblyInfo;
-      CoreBuild;
-      $(BuildExpectedActions);
-    </BuildDependsOn>
-  </PropertyGroup>
-
-
   <PropertyGroup>
     <RunTestsDependsOn>
       $(RunTestsRequiredActions);
+      RunMSTestTestsWithOpenCover;
       CoreRunTests;
       $(RunTestsExpectedActions);
-
-      PackageNugets;
-
-      CheckForTestsErrors;
     </RunTestsDependsOn>
-  </PropertyGroup>
+    <PackageNCastorDependsOn>
+      $(RunTestsDependsOn);
+      PackageNugets;
+      CheckForTestsErrors;
+    </PackageNCastorDependsOn>
+</PropertyGroup>
 
   <!-- TODO: Place your custom targets here -->
+
+  <Target Name="PackageNCastor" DependsOnTargets="$(PackageNCastorDependsOn)" />
 
   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
   <Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />
