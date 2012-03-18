@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <BuildSpecialProjectsDependsOn>
+      CleanBuildSpecialProjectsArtefacts;
+      CreateBuildSpecialProjectsArtefacts;
+      BeforeBuildSpecialProjects;
+      CoreBuildSpecialProjects;
+      AfterBuildSpecialProjects;
+    </BuildSpecialProjectsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="BuildSpecialProjects" DependsOnTargets="$(BuildSpecialProjectsDependsOn)" Condition="@(SpecialProjects) != ''"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeBuildSpecialProjects" />
+  <Target Name="AfterBuildSpecialProjects" />
+
+  <Target Name="CoreBuildSpecialProjects" >
+
+    <MSBuild 
+      Projects="%(SpecialProjects.Identity)" 
+      Properties="$(ForcedBuildPropertiesWithoutOutput); OutputPath=%(SpecialProjects.DestinationPath);"
+      Targets="ReBuild"/>
+    
+  </Target>
+  
+</Project>

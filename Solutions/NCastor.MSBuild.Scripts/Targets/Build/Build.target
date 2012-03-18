@@ -11,7 +11,7 @@
     </BuildRequiredActions>
     
     <BuildExpectedActions>
-      
+      BuildSpecialProjects;
     </BuildExpectedActions>
   </PropertyGroup>
   
@@ -25,7 +25,7 @@
       CoreBuild;
       AfterBuild;
       PackageBuild;
-      $(BuildEExpectedActions);
+      $(BuildExpectedActions);
     </BuildDependsOn>
   </PropertyGroup>
 
@@ -37,7 +37,7 @@
 
   <Target Name="CoreBuild">
 
-    <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(ForcedBuildProperties);" Targets="Build"/>
+    <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(ForcedBuildProperties);" Targets="ReBuild"/>
     
   </Target>
   

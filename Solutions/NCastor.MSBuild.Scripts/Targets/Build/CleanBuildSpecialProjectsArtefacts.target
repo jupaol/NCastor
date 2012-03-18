@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanBuildSpecialProjectsArtefactsDependsOn>
+      BeforeCleanBuildSpecialProjectsArtefacts;
+      CoreCleanBuildSpecialProjectsArtefacts;
+      AfterCleanBuildSpecialProjectsArtefacts;
+    </CleanBuildSpecialProjectsArtefactsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanBuildSpecialProjectsArtefacts" DependsOnTargets="$(CleanBuildSpecialProjectsArtefactsDependsOn)" Condition="@(SpecialProjects) != ''"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCleanBuildSpecialProjectsArtefacts" />
+  <Target Name="AfterCleanBuildSpecialProjectsArtefacts" />
+
+  <Target Name="CoreCleanBuildSpecialProjectsArtefacts" >
+
+    <Error ContinueOnError="false" Text="For at least one special projects, the special project destination path was not specified" Condition="%(SpecialProjects.Identity) == ''" />
+    <Error ContinueOnError="false" Text="At least one special project path was not found" Condition="!Exists(%(SpecialProjects.Identity))" />
+    <Error ContinueOnError="false" Text="If you specify special projects, you need to specify the DestinationPath for each one of them" Condition="%(SpecialProjects.DestinationPath) == ''" />
+    
+    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="%(SpecialProjects.DestinationPath)" ContinueOnError="false" Condition="Exists(%(SpecialProjects.DestinationPath))" />
+    <RemoveDir ContinueOnError="false" Directories="%(SpecialProjects.DestinationPath)" Condition="Exists(%(SpecialProjects.DestinationPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
+
+    <Error ContinueOnError="false" Text="There was a problem when cleaning some of the special project destination directories" Condition="Exists(%(SpecialProjects.DestinationPath))" />
+
+  </Target>
+  
+</Project>

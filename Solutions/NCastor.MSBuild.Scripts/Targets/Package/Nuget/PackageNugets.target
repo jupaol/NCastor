@@ -40,7 +40,7 @@
       ContinueOnError="false"
       WorkingDirectory="%(NugetPackages.SourcePath)"
       Command='"$(NugetRunner)" pack "%(NugetPackages.Identity)" -Verbose -Version %(NugetPackages.Version) -OutputDirectory "$(DropsPath)" %(NugetPackages.ExtraOptions)' />
-
+    
   </Target>
   
 </Project>

@@ -2,6 +2,8 @@
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <Import Project="CleanTestAssembliesArtefacts.target"/>
+  <Import Project="CreateTestAssembliesArtefacts.target"/>
   <Import Project="SettingTestingAssemblies.target"/>
   <Import Project="SettingInstrumentationAssemblies.target"/>
   <Import Project="RunTests.target"/>

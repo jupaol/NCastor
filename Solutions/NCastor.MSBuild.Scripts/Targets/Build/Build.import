@@ -20,5 +20,8 @@
   <Import Project="Versioning\SetAssemblyInfo.target" />
 
   <Import Project="Build.target"/>
+  <Import Project="CleanBuildSpecialProjectsArtefacts.target"/>
+  <Import Project="CreateBuildSpecialProjectsArtefacts.target"/>
+  <Import Project="BuildSpecialProjects.target"/>
 
 </Project>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateBuildSpecialProjectsArtefactsDependsOn>
+      BeforeCreateBuildSpecialProjectsArtefacts;
+      CoreCreateBuildSpecialProjectsArtefacts;
+      AfterCreateBuildSpecialProjectsArtefacts;
+    </CreateBuildSpecialProjectsArtefactsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateBuildSpecialProjectsArtefacts" DependsOnTargets="$(CreateBuildSpecialProjectsArtefactsDependsOn)" Condition="@(SpecialProjects) != ''" />
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateBuildSpecialProjectsArtefacts" />
+  <Target Name="AfterCreateBuildSpecialProjectsArtefacts" />
+
+  <Target Name="CoreCreateBuildSpecialProjectsArtefacts" >
+
+    <MakeDir ContinueOnError="false" Directories="%(SpecialProjects.DestinationPath)" Condition="!Exists(%(SpecialProjects.DestinationPath))" />
+    
+  </Target>
+  
+</Project>

@@ -75,9 +75,38 @@
   <!-- TODO: Place your custom settings here -->
 
   <PropertyGroup>
+    <NCastorMSBuildScripts>$(WorkingDirectoryPath)\NCastorToolsAndBaseScripts</NCastorMSBuildScripts>
+    <NCastorMSBuildScriptsPersonalized>$(WorkingDirectoryPath)\NCastorPersonalizedScripts</NCastorMSBuildScriptsPersonalized>
+    <NCastorConsole>$(WorkingDirectoryPath)\NCastorConsoleApp</NCastorConsole>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SpecialProjects Include="$(SolutionsPath)\NCastor.MSBuild.Scripts\NCastor.MSBuild.Scripts.csproj">
+      <DestinationPath>$(NCastorMSBuildScripts)</DestinationPath>
+    </SpecialProjects>
+    <SpecialProjects Include="$(SolutionsPath)\NCastor.MSBuild.Scripts.Personalized\NCastor.MSBuild.Scripts.Personalized.csproj">
+      <DestinationPath>$(NCastorMSBuildScriptsPersonalized)</DestinationPath>
+    </SpecialProjects>
+    <SpecialProjects Include="$(SolutionsPath)\NCastor.Console\NCastor.Console.csproj">
+      <DestinationPath>$(NCastorConsole)</DestinationPath>
+    </SpecialProjects>
+  </ItemGroup>
+
+
+  <PropertyGroup>
+    <BuildDependsOn>
+      $(BuildRequiredActions);
+      SetAssemblyVersion;
+      SetAssemblyInfo;
+      CoreBuild;
+      $(BuildExpectedActions);
+    </BuildDependsOn>
+  </PropertyGroup>
+
+
+  <PropertyGroup>
     <RunTestsDependsOn>
       $(RunTestsRequiredActions);
-      RunMSTests;
       CoreRunTests;
       $(RunTestsExpectedActions);
 
@@ -87,7 +116,6 @@
     </RunTestsDependsOn>
   </PropertyGroup>
 
-  
   <!-- TODO: Place your custom targets here -->
 
   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
@@ -108,54 +136,39 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="CorePrepareNugetPackages">
-
-    <PropertyGroup>
-      <__NCastorToolsAndScriptsPath>$(WorkingDirectoryPath)\NCastorTS</__NCastorToolsAndScriptsPath>
-    </PropertyGroup>
-
-    <MakeDir ContinueOnError="false" Directories="$(__NCastorToolsAndScriptsPath)"/>
+  <Target Name="PrepareNCastorMSBuildScriptsNuget">
+    
+    <Delete Files="$(NCastorMSBuildScripts)\NCastor.MSBuild.Scripts.dll;$(NCastorMSBuildScripts)\NCastor.MSBuild.Scripts.pdb;" />
 
     <MSBuild.ExtensionPack.FileSystem.RoboCopy
-      Source="$(BuildingPath)"
-      Destination="$(__NCastorToolsAndScriptsPath)"
-      Files="*.*"
-      Options="/MIR"/>
-
-    <ItemGroup>
-      <_FilesToExcludeFromNugetPackage
-        Include="
-                  $(__NCastorToolsAndScriptsPath)\NCastor.MSBuild.Scripts.*;
-                  $(__NCastorToolsAndScriptsPath)\*.pdb;
-                  $(__NCastorToolsAndScriptsPath)\*.xml;
-                  $(__NCastorToolsAndScriptsPath)\*.Tests.dll;
-                  $(__NCastorToolsAndScriptsPath)\Moq.dll;
-                  $(__NCastorToolsAndScriptsPath)\FluentAssertions.dll;" />
-      <_ExtraFilesToInclude
-        Include="
-                  $(GlobalRootPath)\Readme.md;
-                  $(GlobalRootPath)\Licence.md;
-                  $(MSBuildProjectDirectory)\NCastor.nuspec;
-        " />
-    </ItemGroup>
-    <Delete Files="@(_FilesToExcludeFromNugetPackage)" ContinueOnError="false" />
-
-    <MSBuild.ExtensionPack.FileSystem.RoboCopy
-      Source="$(__NCastorToolsAndScriptsPath)"
-      Destination="$(__NCastorToolsAndScriptsPath)\Tools\ScriptCreator"
-      Files="*.dll;*.exe;*.config;"
-      Options="/Mov"/>
-
-    <Copy SourceFiles="@(_ExtraFilesToInclude)" DestinationFolder="$(__NCastorToolsAndScriptsPath)" />
+      Source="$(NCastorConsole)"
+      Destination="$(NCastorMSBuildScripts)\Tools\ScriptCreator"
+      Files="*.dll;*.exe;*.config;"/>
 
     <ItemGroup>
       <NugetPackages Include="NCastor.nuspec">
-        <SourcePath>$(__NCastorToolsAndScriptsPath)</SourcePath>
+        <SourcePath>$(NCastorMSBuildScripts)</SourcePath>
+        <ExtraOptions></ExtraOptions>
+        <Version>$(SemanticVersion)</Version>
+      </NugetPackages>
+    </ItemGroup>
+    
+  </Target>
+
+  <Target Name="PrepareNCastorMSBuildScriptsPersonalizedNuget">
+
+    <Delete Files="$(NCastorMSBuildScriptsPersonalized)\NCastor.MSBuild.Scripts.Personalized.dll;$(NCastorMSBuildScriptsPersonalized)\NCastor.MSBuild.Scripts.Personalized.pdb;" />
+
+    <ItemGroup>
+      <NugetPackages Include="NCastorPersonalizedScripts.nuspec">
+        <SourcePath>$(NCastorMSBuildScriptsPersonalized)</SourcePath>
         <ExtraOptions></ExtraOptions>
         <Version>$(SemanticVersion)</Version>
       </NugetPackages>
     </ItemGroup>
 
   </Target>
+
+  <Target Name="CorePrepareNugetPackages" DependsOnTargets="PrepareNCastorMSBuildScriptsNuget;PrepareNCastorMSBuildScriptsPersonalizedNuget;" />
 
 </Project>
