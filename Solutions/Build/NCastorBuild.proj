@@ -81,12 +81,13 @@
       CoreRunTests;
       $(RunTestsExpectedActions);
 
-      CreateNugetPackage;
+      PackageNugets;
 
       CheckForTestsErrors;
     </RunTestsDependsOn>
   </PropertyGroup>
 
+  
   <!-- TODO: Place your custom targets here -->
 
   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
@@ -107,32 +108,53 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="PrepareNugetPackage">
+  <Target Name="CorePrepareNugetPackages">
+
+    <PropertyGroup>
+      <__NCastorToolsAndScriptsPath>$(WorkingDirectoryPath)\NCastorTS</__NCastorToolsAndScriptsPath>
+    </PropertyGroup>
+
+    <MakeDir ContinueOnError="false" Directories="$(__NCastorToolsAndScriptsPath)"/>
+
+    <MSBuild.ExtensionPack.FileSystem.RoboCopy
+      Source="$(BuildingPath)"
+      Destination="$(__NCastorToolsAndScriptsPath)"
+      Files="*.*"
+      Options="/MIR"/>
 
     <ItemGroup>
-      <_FilesToExcludeFromNugetPackage 
+      <_FilesToExcludeFromNugetPackage
         Include="
-                  $(WorkingNugetPackagePath)\NCastor.MSBuild.Scripts.*;
-                  $(WorkingNugetPackagePath)\*.pdb;
-                  $(WorkingNugetPackagePath)\*.xml;
-                  $(WorkingNugetPackagePath)\*.Tests.dll;
-                  $(WorkingNugetPackagePath)\Moq.dll;
-                  $(WorkingNugetPackagePath)\FluentAssertions.dll;" />
-      <_ExtraFilesToInclude 
+                  $(__NCastorToolsAndScriptsPath)\NCastor.MSBuild.Scripts.*;
+                  $(__NCastorToolsAndScriptsPath)\*.pdb;
+                  $(__NCastorToolsAndScriptsPath)\*.xml;
+                  $(__NCastorToolsAndScriptsPath)\*.Tests.dll;
+                  $(__NCastorToolsAndScriptsPath)\Moq.dll;
+                  $(__NCastorToolsAndScriptsPath)\FluentAssertions.dll;" />
+      <_ExtraFilesToInclude
         Include="
                   $(GlobalRootPath)\Readme.md;
                   $(GlobalRootPath)\Licence.md;
+                  $(MSBuildProjectDirectory)\NCastor.nuspec;
         " />
     </ItemGroup>
     <Delete Files="@(_FilesToExcludeFromNugetPackage)" ContinueOnError="false" />
 
-    <MSBuild.ExtensionPack.FileSystem.RoboCopy 
-      Source="$(WorkingNugetPackagePath)" 
-      Destination="$(WorkingNugetPackagePath)\Tools\ScriptCreator" 
+    <MSBuild.ExtensionPack.FileSystem.RoboCopy
+      Source="$(__NCastorToolsAndScriptsPath)"
+      Destination="$(__NCastorToolsAndScriptsPath)\Tools\ScriptCreator"
       Files="*.dll;*.exe;*.config;"
       Options="/Mov"/>
-    
-    <Copy SourceFiles="@(_ExtraFilesToInclude)" DestinationFolder="$(WorkingNugetPackagePath)" />
+
+    <Copy SourceFiles="@(_ExtraFilesToInclude)" DestinationFolder="$(__NCastorToolsAndScriptsPath)" />
+
+    <ItemGroup>
+      <NugetPackages Include="NCastor.nuspec">
+        <SourcePath>$(__NCastorToolsAndScriptsPath)</SourcePath>
+        <ExtraOptions></ExtraOptions>
+        <Version>$(SemanticVersion)</Version>
+      </NugetPackages>
+    </ItemGroup>
 
   </Target>
 

@@ -3,74 +3,43 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <CreateNugetPackageDependsOn>
-      AddBuildFilesToNugetPackageWorkingDirectory;
-      PrepareNugetPackage;
-      BeforeCreateNugetPackage;
-      CoreCreateNugetPackage;
-      AfterCreateNugetPackage;
-    </CreateNugetPackageDependsOn>
+    <PackageNugetsDependsOn>
+      PrepareNugetPackages;
+      BeforePackageNugets;
+      CorePackageNugets;
+      AfterPackageNugets;
+    </PackageNugetsDependsOn>
   </PropertyGroup>
 
-  <Target Name="CreateNugetPackage" DependsOnTargets="$(CreateNugetPackageDependsOn)"/>
+  <Target Name="PackageNugets" DependsOnTargets="$(PackageNugetsDependsOn)"/>
 
   <!-- To be overriden by the user -->
-  <Target Name="BeforeCreateNugetPackage" />
-  <Target Name="AfterCreateNugetPackage" />
-  <Target Name="PrepareNugetPackage" />
-  <Target Name="AddBuildFilesToNugetPackageWorkingDirectory" >
+  <Target Name="BeforePackageNugets" />
+  <Target Name="AfterPackageNugets" />
+  
+  <Target Name="CorePackageNugets" >
 
-    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(WorkingNugetPackagePath)" ContinueOnError="false" Condition="Exists($(WorkingNugetPackagePath))" />
-    <RemoveDir ContinueOnError="false" Directories="$(WorkingNugetPackagePath)" Condition="Exists($())" />
+    <Error ContinueOnError="false" Text="You need to specify at least one nuget package to process" Condition="@(NugetPackages) == ''" />
+    <Error ContinueOnError="false" Text="The Nuget runner was not specified" Condition="$(NugetRunner) == ''" />
+    <Error ContinueOnError="false" Text="The Nuget runner was not found" Condition="!Exists($(NugetRunner))" />
 
-    <MakeDir ContinueOnError="false" Directories="$(WorkingNugetPackagePath)" Condition="!Exists($(WorkingNugetPackagePath))" />
-
-    <MSBuild.ExtensionPack.FileSystem.RoboCopy 
-      Source="$(BuildingPath)" 
-      Destination="$(WorkingNugetPackagePath)" 
-      Files="*.*"
-      Options="/MIR"/>
-  </Target>
-
-  <Target Name="CoreCreateNugetPackage" >
-
-    <Error ContinueOnError="false" Text="The Nuget spec file was not specified" Condition="$(NugetPackageSpecificationFilePath) == ''" />
-    <Error ContinueOnError="false" Text="The Nuget spec file was not found" Condition="!Exists($(NugetPackageSpecificationFilePath))" />
-    <Error ContinueOnError="false" Text="The Semantic version was not specified (did you skip the CalculateSemanticVersion task?)" Condition="$(SemanticVersion) == ''" />
-
-    <Copy SourceFiles="$(NugetPackageSpecificationFilePath)" DestinationFolder="$(WorkingNugetPackagePath)" />
-
-    <ItemGroup>
-      <_NugetSpecFile Include="$(NugetPackageSpecificationFilePath)" />
-    </ItemGroup>
-
-    <PropertyGroup>
-      <_NugetSpecFilePath>$(WorkingNugetPackagePath)\%(_NugetSpecFile.FileName)%(_NugetSpecFile.Extension)</_NugetSpecFilePath>
-    </PropertyGroup>
-
-    <MSBuild.Community.Tasks.XmlUpdate
-      Prefix="nu"
-      Namespace="$(NugetPackageNamespace)"
-      XmlFileName="$(_NugetSpecFilePath)"
-      XPath="//nu:package/nu:metadata/nu:version"
-      Value="$(SemanticVersion)" />
-
-    <MSBuild.ExtensionPack.Xml.XmlFile
-      File="$(_NugetSpecFilePath)"
-      XPath="/package/metadata/dependencies/dependency[@id='SampleDependency']"
-      TaskAction="RemoveElement" />
-
-    <Exec WorkingDirectory='$(WorkingNugetPackagePath)' Command='"$(NugetRunner)" pack -Verbose -Prop Configuration=Release"' />
-
-    <MSBuild.Community.Tasks.XmlRead
-      Prefix="nu"
-      Namespace="$(NugetPackageNamespace)"
-      XmlFileName="$(_NugetSpecFilePath)"
-      XPath="//nu:package/nu:metadata/nu:id">
-      <Output PropertyName="_GeneratedNugetPackageName" TaskParameter="Value"/>
-    </MSBuild.Community.Tasks.XmlRead>
-
-    <Copy SourceFiles='$(WorkingNugetPackagePath)\$(_GeneratedNugetPackageName).$(SemanticVersion).nupkg' DestinationFolder='$(DropsPath)' />
+    <Error
+      ContinueOnError="false"
+      Text="For every nuget package to process, you need to specify the nuspec or project in the include NugetPackages.Include"
+      Condition="%(NugetPackages.Identity) == ''" />
+    <Error
+      ContinueOnError="false"
+      Text="For every nuget package to process, you need to specify its SourcePath property"
+      Condition="%(NugetPackages.SourcePath) == ''" />
+    <Error
+      ContinueOnError="false"
+      Text="For every nuget package to process, you need to specify its Version property"
+      Condition="%(NugetPackages.Version) == ''" />
+    
+    <Exec 
+      ContinueOnError="false"
+      WorkingDirectory="%(NugetPackages.SourcePath)"
+      Command='"$(NugetRunner)" pack "%(NugetPackages.Identity)" -Verbose -Version %(NugetPackages.Version) -OutputDirectory "$(DropsPath)" %(NugetPackages.ExtraOptions)' />
 
   </Target>
   

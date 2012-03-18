@@ -144,9 +144,9 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\Build\Cleaning\CleanArtefactFolders.targeet">
+    <Content Include="Targets\Build\Cleaning\CleanArtefactFolders.targeet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Targets\Build\Versioning\CalculateSemanticVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -165,25 +165,28 @@
     <Content Include="Targets\Package\Zip\SourceCode\CleanSourceCodeArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\Build\Build.import">
+    <Content Include="Targets\Build\Build.import">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Targets\Build\Versioning\CreateAssemblyInfoArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Build\Versioning\CleanAssemblyInfoArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\Common\Common.import">
+    <Content Include="Targets\Common\Common.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Targets\Package\Nuget\PackageNugets.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\Package\Package.import">
+    <Content Include="Targets\Package\Nuget\PrepareNugetPackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="Targets\Package\Package.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\CreateReportMSpecOpenCoverWithReportGeneratorArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -214,54 +217,54 @@
     <Content Include="Targets\Package\Zip\TestsReports\MSpec\PackageMSpecTestReports.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\Reports\Reports.import">
+    <Content Include="Targets\Reports\Reports.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Targets\Tests\SettingTestingAssemblies.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\Tests\CheckForTestsErrors.target">
+    <Content Include="Targets\Tests\CheckForTestsErrors.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\MSpec\CreateMSpecArtefactFolders.target">
+    </Content>
+    <Content Include="Targets\Tests\MSpec\CreateMSpecArtefactFolders.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\MSpec\SettingMSpecTestingAssemblies.target">
+    </Content>
+    <Content Include="Targets\Tests\MSpec\SettingMSpecTestingAssemblies.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\MSpec\MSpecTests.import">
+    </Content>
+    <Content Include="Targets\Tests\MSpec\MSpecTests.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\MSTest\CreateMSTestArtefactFolders.target">
+    </Content>
+    <Content Include="Targets\Tests\MSTest\CreateMSTestArtefactFolders.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\MSTest\MSTestTests.import">
+    </Content>
+    <Content Include="Targets\Tests\MSTest\MSTestTests.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\NUnit\CreateNUnitArtefactFolders.target">
+    </Content>
+    <Content Include="Targets\Tests\NUnit\CreateNUnitArtefactFolders.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\NUnit\SettingNUnitTestingAssemblies.target">
+    </Content>
+    <Content Include="Targets\Tests\NUnit\SettingNUnitTestingAssemblies.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\NUnit\NUnitTests.import">
+    </Content>
+    <Content Include="Targets\Tests\NUnit\NUnitTests.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\Tests.import">
+    </Content>
+    <Content Include="Targets\Tests\Tests.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\NUnit\CleanNUnitArtefactFolders.target">
+    </Content>
+    <Content Include="Targets\Tests\NUnit\CleanNUnitArtefactFolders.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Targets\Tests\MSTest\RunMSTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\Tests\MSTest\CleanMSTestArtefactFolders.target">
+    <Content Include="Targets\Tests\MSTest\CleanMSTestArtefactFolders.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Tests\MSpec\CleanMSpecArtefactFolders.target">
+    </Content>
+    <Content Include="Targets\Tests\MSpec\CleanMSpecArtefactFolders.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <Content Include="Targets\Tests\MSpec\RunMSpecTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -292,27 +295,24 @@
     <Content Include="Targets\Tests\MSTest\SettingMSTestTestingAssemblies.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\CreateNugetPackage.target">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Targets\Package.target">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="Targets\Build\Versioning\SetAssemblyInfo.target">
+    <Content Include="Targets\CreateNugetPackage.target" />
+    <Content Include="Targets\Build\Versioning\SetAssemblyInfo.target">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Targets\Build\Versioning\SetAssemblyVersion.target">
+    </Content>
+    <Content Include="Targets\Build\Versioning\SetAssemblyVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <Content Include="Tasks\SDC Tasks\Microsoft.Sdc.Common.tasks">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Tests\SettingInstrumentationAssemblies.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Tasks\MSBuild.Community\License.rtf" />
+    <Content Include="Tasks\MSBuild.Community\License.rtf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tools\init.ps1" />
   </ItemGroup>
   <ItemGroup>
@@ -446,16 +446,30 @@
     <Content Include="Targets\Build\Cleaning\Clean.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\MSTestReportGenerator\Assembly.dll" />
-    <Content Include="Tools\MSTestReportGenerator\CommandLineGenerator.exe" />
-    <Content Include="Tools\MSTestReportGenerator\Dao.dll" />
-    <Content Include="Tools\MSTestReportGenerator\DataTransfer.dll" />
-    <Content Include="Tools\MSTestReportGenerator\Domain.dll" />
-    <Content Include="Tools\MSTestReportGenerator\Library.dll" />
+    <Content Include="Tools\MSTestReportGenerator\Assembly.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\MSTestReportGenerator\CommandLineGenerator.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\MSTestReportGenerator\Dao.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\MSTestReportGenerator\DataTransfer.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\MSTestReportGenerator\Domain.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\MSTestReportGenerator\Library.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tools\MSTestReportGenerator\Readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\MSTestReportGenerator\Services.dll" />
+    <Content Include="Tools\MSTestReportGenerator\Services.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tools\uninstall.ps1" />
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,4 @@
   <Import Project="$(TargetsPath)\Tests\Tests.import" />
   <Import Project="$(TargetsPath)\Reports\Reports.import" />
 
-  <Import Project="$(TargetsPath)\Package.target"/>
-  <Import Project="$(TargetsPath)\CreateNugetPackage.target"/>
-
 </Project>

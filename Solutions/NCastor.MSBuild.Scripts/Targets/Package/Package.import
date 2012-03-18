@@ -14,6 +14,7 @@
   <Import Project="Zip\TestsReports\MSTest\PackageMSTestTestReports.target"/>
   <Import Project="Zip\TestsReports\NUnit\PackageNUnitTestReports.target"/>
 
-  <!--<Import Project="Nuget\PackageNugets.target"/>-->
+  <Import Project="Nuget\PrepareNugetPackages.target"/>
+  <Import Project="Nuget\PackageNugets.target"/>
 
 </Project>
