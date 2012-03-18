@@ -62,11 +62,11 @@ namespace NCastor.Console
         public string OutputPath;
 
         /// <summary>
-        /// The solution path argument used to update your solution and to use your solution name to update the templates
+        /// The solution name
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = JustificationForTheFieldsMustBePrivate)]
-        [Option("s", null, HelpText = "[-s <SolutionPath>] your solution path", Required = false)]
-        public string SolutionPath;
+        [Option("s", null, HelpText = "[-s <SolutionName>] your solution name", Required = false)]
+        public string SolutionName;
 
         /// <summary>
         /// Justification for the supress message attributes
@@ -74,30 +74,13 @@ namespace NCastor.Console
         private const string JustificationForTheFieldsMustBePrivate = "Required by the Command Line Parser framework";
 
         /// <summary>
-        /// Gets the name of the solution.
-        /// </summary>
-        /// <value>
-        /// The name of the solution.
-        /// </value>
-        public string SolutionName { get; private set; }
-
-        /// <summary>
         /// Processes the options.
         /// </summary>
         public void ProcessOptions()
         {
-            var path = this.SolutionPath ?? string.Empty;
+            // To peocess options if needed
 
-            if (!string.IsNullOrWhiteSpace(path))
-            {
-                if (!File.Exists(path))
-                {
-                    throw new FileNotFoundException("The solution path was not found", path);
-                }
-
-                this.SolutionName = Path.GetFileNameWithoutExtension(path);
-            }
-            else
+            if (this.SolutionName == null)
             {
                 this.SolutionName = string.Empty;
             }

@@ -16,33 +16,18 @@ namespace NCastor.Console.Tests
         {
             var opt = new CommandLineOptions();
 
-            opt.SolutionPath = null;
+            opt.SolutionName = null;
             opt.ProcessOptions();
 
             opt.SolutionName.Should().NotBeNull().And.BeEmpty();
         }
 
         [TestMethod]
-        public void calling_ProcessOptions_when_the_solution_path_does_not_exists_it_should_throw_a_FileNotFoundException()
+        public void calling_ProcesOptions_when_the_SolutionName_was_specified_the_solution_name_should_return_the_SolutionName()
         {
             var opt = new CommandLineOptions();
 
-            opt.SolutionPath = "invalid value";
-
-            opt.Invoking(x =>
-                {
-                    x.ProcessOptions();
-                })
-                .ShouldThrow<FileNotFoundException>()
-                .WithMessage("The solution path was not found", FluentAssertions.Assertions.ComparisonMode.Substring);
-        }
-
-        [TestMethod]
-        public void calling_ProcesOptions_when_the_SolutionPath_exists_the_SolutionName_should_return_the_SolutionName_without_extension()
-        {
-            var opt = new CommandLineOptions();
-
-            opt.SolutionPath = this.GetType().Assembly.Location;
+            opt.SolutionName = "NCastor.Console.Tests";
 
             opt.ProcessOptions();
 
