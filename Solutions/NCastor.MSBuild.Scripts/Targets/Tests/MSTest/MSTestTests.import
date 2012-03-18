@@ -7,6 +7,6 @@
   <Import Project="CreateMSTestArtefactFolders.target"/>
   <Import Project="RunMSTests.target"/>
 
-  <Import Project="CodeCoverage\OpenCover\RunMSTestTestsWithOpenCover.target"/>
+  <Import Project="Cover\RunMSTestWithOpenCover.target"/>
 
 </Project>

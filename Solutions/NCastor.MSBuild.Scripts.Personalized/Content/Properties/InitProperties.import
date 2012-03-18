@@ -44,8 +44,9 @@ Initial settings
   <!--TODO: Update the paths if needed-->
   
   <PropertyGroup>
-    <GlobalRootPath>$(MSBuildProjectDirectory)\..</GlobalRootPath>
+    <GlobalRootPath>$(MSBuildProjectDirectory)\..\..</GlobalRootPath>
     <SolutionsPath>$(GlobalRootPath)\Solutions</SolutionsPath>
+    <!--TODO: Set the name of your solution-->
     <SolutionName></SolutionName>
 
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
@@ -58,9 +59,10 @@ Initial settings
 
     <!--TODO: Build properties-->
     <Platform>Any CPU</Platform>
-    
-    <AssemblyTitle></AssemblyTitle>
-    <AssemblyProduct></AssemblyProduct>
+
+    <!--TODO: Set the assembly title-->
+    <AssemblyTitle>$RootNamespace$</AssemblyTitle>
+    <AssemblyProduct>$RootNamespace$</AssemblyProduct>
     
     <!--TODO: Assembly info properties-->
     <AssemblyDescription></AssemblyDescription>

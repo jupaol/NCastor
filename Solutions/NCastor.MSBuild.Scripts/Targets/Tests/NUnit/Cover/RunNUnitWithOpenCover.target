@@ -3,25 +3,25 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <RunNUnitTestsCodeCoverageDependsOn>
+    <RunNUnitWithOpenCoverDependsOn>
       SettingNUnitTestingAssemblies;
       SettingInstrumentationAssemblies;
       CleanNUnitArtefactFolders;
       CreateNUnitArtefactFolders;
-      BeforeRunNUnitTestsCodeCoverage;
-      CoreRunNUnitTestsCodeCoverage;
-      AfterRunNUnitTestsCodeCoverage;
+      BeforeRunNUnitWithOpenCover;
+      CoreRunNUnitWithOpenCover;
+      AfterRunNUnitWithOpenCover;
       ReportNUnitOpenCoverWithReportGenerator;
-    </RunNUnitTestsCodeCoverageDependsOn>
+    </RunNUnitWithOpenCoverDependsOn>
   </PropertyGroup>
 
-  <Target Name="RunNUnitTestsCodeCoverage" DependsOnTargets="$(RunNUnitTestsCodeCoverageDependsOn)"/>
+  <Target Name="RunNUnitWithOpenCover" DependsOnTargets="$(RunNUnitWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->
-  <Target Name="BeforeRunNUnitTestsCodeCoverage" />
-  <Target Name="AfterRunNUnitTestsCodeCoverage" />
+  <Target Name="BeforeRunNUnitWithOpenCover" />
+  <Target Name="AfterRunNUnitWithOpenCover" />
 
-  <Target Name="CoreRunNUnitTestsCodeCoverage" >
+  <Target Name="CoreRunNUnitWithOpenCover" >
 
     <Error ContinueOnError="false" Text="The NUnit assemblies were not specified" Condition="@(NUnitAssemblies) == ''" />
     <Error ContinueOnError="false" Text="The NUnit test assembly was not found: &quot;%(NUnitAssemblies.Identity)&quot;" Condition="!Exists(%(NUnitAssemblies.Identity))" />

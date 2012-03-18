@@ -95,7 +95,7 @@
   <PropertyGroup>
     <RunTestsDependsOn>
       $(RunTestsRequiredActions);
-      RunMSTestTestsWithOpenCover;
+      RunMSTestWithOpenCover;
       CoreRunTests;
       $(RunTestsExpectedActions);
     </RunTestsDependsOn>

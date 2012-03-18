@@ -7,6 +7,6 @@
   <Import Project="CreateMSpecArtefactFolders.target"/>
   <Import Project="RunMSpecTests.target"/>
 
-  <Import Project="CodeCoverage\OpenCover\RunMSpecTestsWithOpenCover.target"/>
+  <Import Project="Cover\RunMSpecWithOpenCover.target"/>
 
 </Project>

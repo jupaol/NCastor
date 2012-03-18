@@ -7,6 +7,6 @@
   <Import Project="CreateNUnitArtefactFolders.target"/>
   <Import Project="RunNUnitTests.target"/>
   
-  <Import Project="CodeCoverage\OpenCover\RunNUnitTestsWithOpenCover.target"/>
+  <Import Project="Cover\RunNUnitWithOpenCover.target"/>
 
 </Project>

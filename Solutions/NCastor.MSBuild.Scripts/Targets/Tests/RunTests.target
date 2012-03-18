@@ -22,9 +22,9 @@
       RunMSTests;
       RunMSpecTests;
 
-      RunNUnitTestsWithOpenCover;
-      RunMSTestTestsWithOpenCover;
-      RunMSpecTestsWithOpenCover;
+      RunNUnitWithOpenCover;
+      RunMSTestWithOpenCover;
+      RunMSpecWithOpenCover;
 
       CoreRunTests;
       AfterRunTests;

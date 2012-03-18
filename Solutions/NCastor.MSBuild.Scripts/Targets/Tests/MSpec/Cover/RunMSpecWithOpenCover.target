@@ -3,26 +3,26 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <RunMSpecTestsWithOpenCoverDependsOn>
+    <RunMSpecWithOpenCoverDependsOn>
       SettingMSpecTestingAssemblies;
       SettingInstrumentationAssemblies;
       CleanMSpecArtefactFolders;
       CreateMSpecArtefactFolders;
-      BeforeRunMSpecTestsWithOpenCover;
-      CoreRunMSpecTestsWithOpenCover;
-      AfterRunMSpecTestsWithOpenCover;
+      BeforeRunMSpecWithOpenCover;
+      CoreRunMSpecWithOpenCover;
+      AfterRunMSpecWithOpenCover;
       TransformMSpecXmlReporttToJUnitXmlReport;
       ReportMSpecOpenCoverWithReportGenerator;
-    </RunMSpecTestsWithOpenCoverDependsOn>
+    </RunMSpecWithOpenCoverDependsOn>
   </PropertyGroup>
 
-  <Target Name="RunMSpecTestsWithOpenCover" DependsOnTargets="$(RunMSpecTestsWithOpenCoverDependsOn)"/>
+  <Target Name="RunMSpecWithOpenCover" DependsOnTargets="$(RunMSpecWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->
-  <Target Name="BeforeRunMSpecTestsWithOpenCover" />
-  <Target Name="AfterRunMSpecTestsWithOpenCover" />
+  <Target Name="BeforeRunMSpecWithOpenCover" />
+  <Target Name="AfterRunMSpecWithOpenCover" />
 
-  <Target Name="CoreRunMSpecTestsWithOpenCover" >
+  <Target Name="CoreRunMSpecWithOpenCover" >
 
     <Error ContinueOnError="false" Text="The MSpec assemblies were not specified" Condition="@(MSpecAssemblies) == ''" />
     <Error ContinueOnError="false" Text="The MSpec xml report file was not specified" Condition="$(MSpecXmlReportFilePath) == ''" />

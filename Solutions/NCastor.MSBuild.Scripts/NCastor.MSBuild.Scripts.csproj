@@ -40,12 +40,6 @@
     <Folder Include="Targets\Build\Versioning\Hudson\TFS\" />
     <Folder Include="Targets\Build\Versioning\TeamCity\" />
     <Folder Include="Targets\Reports\Tests\NUnit\" />
-    <Folder Include="Targets\Tests\MSpec\CodeCoverage\NCover\" />
-    <Folder Include="Targets\Tests\MSpec\CodeCoverage\PartCover\" />
-    <Folder Include="Targets\Tests\MSTest\CodeCoverage\NCover\" />
-    <Folder Include="Targets\Tests\MSTest\CodeCoverage\PartCover\" />
-    <Folder Include="Targets\Tests\NUnit\CodeCoverage\NCover\" />
-    <Folder Include="Targets\Tests\NUnit\CodeCoverage\PartCover\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Common.properties">
@@ -271,13 +265,13 @@
     <Content Include="Targets\Reports\Tests\MSpec\TransformMSpecXmlReporttToJUnitXmlReport.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Tests\NUnit\CodeCoverage\OpenCover\RunNUnitTestsWithOpenCover.target">
+    <Content Include="Targets\Tests\NUnit\Cover\RunNUnitWithOpenCover.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Tests\MSTest\CodeCoverage\OpenCover\RunMSTestTestsWithOpenCover.target">
+    <Content Include="Targets\Tests\MSTest\Cover\RunMSTestWithOpenCover.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Tests\MSpec\CodeCoverage\OpenCover\RunMSpecTestsWithOpenCover.target">
+    <Content Include="Targets\Tests\MSpec\Cover\RunMSpecWithOpenCover.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Reports\CodeCoverage\ReportGenerator\ReportNUnitOpenCoverWithReportGenerator.target">

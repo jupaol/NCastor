@@ -61,7 +61,7 @@
       Hudson CI Continous Integration ClickOnce WXI Package Installer Nuget FxCop StyleCop "Windoes XML Installer" installer
     </tags>
     <id>NCastor.Scripts</id>
-    <title>NCastor</title>
+    <title>NCastor.Scripts</title>
     <version>1.0.0.0</version>
     <releaseNotes />
     <copyright>Copyright (c) 2012, Juan Pablo Olmos Lara (Jupaol)</copyright>

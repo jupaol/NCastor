@@ -56,9 +56,9 @@ Your custom tests targets
       RunMSTests;
       RunMSpecTests;
 
-      RunNUnitTestsWithOpenCover;
-      RunMSTestTestsWithOpenCover;
-      RunMSpecTestsWithOpenCover;
+      RunNUnitWithOpenCover;
+      RunMSTestWithOpenCover;
+      RunMSpecWithOpenCover;
 
       CoreRunTests;
       AfterRunTests;
@@ -78,9 +78,9 @@ Your custom tests targets
       RunMSTests;
       RunMSpecTests;
 
-      RunNUnitTestsWithOpenCover;
-      RunMSTestTestsWithOpenCover;
-      RunMSpecTestsWithOpenCover;
+      RunNUnitWithOpenCover;
+      RunMSTestWithOpenCover;
+      RunMSpecWithOpenCover;
       
       PackageTestAssemblies;
       
@@ -91,7 +91,7 @@ Your custom tests targets
       CheckForTestsErrors;
       
       Note these tests, should be run mutually exclusive, which meand that if you want to run NUnit tests you need 
-      to specify "RunNUnitTests" or "RunNUnitTestsWithOpenCover" bit not both
+      to specify "RunNUnitTests" or "RunNUnitWithOpenCover" bit not both
       
       If you specify both, the results of the previous tests will be deleted
       
@@ -218,9 +218,9 @@ Your custom tests targets
       RunMSTests;
       RunMSpecTests;
 
-      RunNUnitTestsWithOpenCover;
-      RunMSTestTestsWithOpenCover;
-      RunMSpecTestsWithOpenCover;
+      RunNUnitWithOpenCover;
+      RunMSTestWithOpenCover;
+      RunMSpecWithOpenCover;
 
       CoreRunTests;
       AfterRunTests;

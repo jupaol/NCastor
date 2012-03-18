@@ -64,6 +64,6 @@ preceding scripts
   <Import Project="Tasks\Tasks.import"/>
 
   <!-- Importing Custom targets -->
-  <Import Project="Targets\ProductTargets.import"/>
+  <Import Project="Targets\Targets.import"/>
 
 </Project>
