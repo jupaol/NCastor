@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreatePackagesDependsOn>
+      RunTests;
+      
+      BeforeCreatePackages;
+
+      PackageSourceCode;
+      PackageBuild;
+      PackageTestAssemblies;
+
+      PackageNUnitTestReports;
+      PackageMSTestTestReports;
+      PackageMSpecTestReports;
+
+      CoreCreatePackages;
+      AfterCreatePackages;
+    </CreatePackagesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreatePackages" DependsOnTargets="$(CreatePackagesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreatePackages" />
+  <Target Name="AfterCreatePackages" />
+
+  <Target Name="CoreCreatePackages" />
+
+</Project>

@@ -499,6 +499,9 @@
     <Content Include="Targets\Tests\ValidateOpenCoverProperties.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Targets\Package\CreatePackages.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Targets\Tests\CreateTestAssembliesArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

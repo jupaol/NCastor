@@ -23,13 +23,7 @@
 
       CoreRunTests;
       AfterRunTests;
-
-      PackageTestAssemblies;
-
-      PackageNUnitTestReports;
-      PackageMSTestTestReports;
-      PackageMSpecTestReports;
-
+      
       CheckForTestsErrors;
     </RunTestsDependsOn>
   </PropertyGroup>

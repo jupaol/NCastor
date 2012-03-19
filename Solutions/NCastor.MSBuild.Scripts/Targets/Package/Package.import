@@ -2,6 +2,8 @@
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <Import Project="CreatePackages.target"/>
+  
   <Import Project="Zip\SourceCode\CleanSourceCodeArtefacts.target" />
   <Import Project="Zip\SourceCode\IsolateSourceCode.target"/>
   <Import Project="Zip\SourceCode\PackageSourceCode.target"/>

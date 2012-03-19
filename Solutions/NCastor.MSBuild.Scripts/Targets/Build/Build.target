@@ -11,11 +11,10 @@
 
       SetAssemblyVersion;
       SetAssemblyInfo;
-      PackageSourceCode;
+      
       BeforeBuild;
       CoreBuild;
       AfterBuild;
-      PackageBuild;
       
       BuildSpecialProjects;
     </BuildDependsOn>
