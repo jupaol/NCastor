@@ -52,6 +52,7 @@ Your custom settings
     <!--<MSPecRunner>$(NugetPackagesPath)\Machine.Specifications.0.5.5.0\tools\mspec-clr4.exe</MSPecRunner>-->
     <!--<OpenCoverRunner>$(NugetPackagesPath)\OpenCover.3.0.121\OpenCover.Console.exe</OpenCoverRunner>-->
     <!--<ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.6.0\ReportGenerator.exe</ReportGeneratorRunner>-->
+    <!--<NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.6.0\tools\NuGet.exe</NugetRunner>-->
 
   </PropertyGroup>
 

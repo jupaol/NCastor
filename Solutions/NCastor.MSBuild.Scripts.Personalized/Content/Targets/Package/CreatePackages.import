@@ -85,5 +85,6 @@ Your CreatePackages custom dependencies
       AfterCreatePackages;
     </CreatePackagesDependsOn>
   </PropertyGroup>
+  <Target Name="CreatePackages" DependsOnTargets="$(CreatePackagesDependsOn)" />
 
 </Project>
