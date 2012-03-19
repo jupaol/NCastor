@@ -61,6 +61,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Targets\Build\BuildSpecialProjectsTargets.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Targets\Package\CustomPackages.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

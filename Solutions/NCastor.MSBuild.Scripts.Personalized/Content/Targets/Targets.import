@@ -45,6 +45,7 @@ Your targets imports
 
   <Import Project="Build\VersioningTargets.import"/>
   <Import Project="Build\BuildTargets.import"/>
+  <Import Project="Build\BuildSpecialProjectsTargets.import"/>
   <Import Project="Build\CustomBuildTargets.import"/>
 
   <Import Project="Tests\MSpecTargets.import"/>
