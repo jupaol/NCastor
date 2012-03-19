@@ -19,6 +19,10 @@ The build process in every project is a boring task, and usually takes more time
 - Allowing you to set assembly information to your assemblies
 - Auto increment build and revision version (if using Hudson)
 
+### Building Special Projects (the output of a special project is usually all the files you want to package like a Windows App proj) ###
+
+- You can specify individual building paths for special projects 
+
 ### Running tests with: ###
 
 - NUnit
@@ -40,6 +44,10 @@ The build process in every project is a boring task, and usually takes more time
 - Source code
 - Test results and reports
 - Build result
+- Testing assemblies
+
+### Automatically package (Nuget format) ###
+
 
  
 
@@ -59,5 +67,7 @@ The build process in every project is a boring task, and usually takes more time
 
 **Pack your application using WXI (Windows XML Installer)**
 
-**Pack your application using Nuget**
-      
+**Create XML Documentation with**
+
+- SandCastle
+- NDoc
