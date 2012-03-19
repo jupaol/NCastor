@@ -58,6 +58,7 @@ Your Build special projects targets
   <!--<PropertyGroup>
     <MyWindowsApplicationOutputPath>$(WorkingDirectoryPath)\MyWindowsApplicationBuild</MyWindowsApplicationOutputPath>
     <MyNugetPackageOutputPath>$(WorkingDirectoryPath)\MyNugetPackageBuild</MyNugetPackageOutputPath>
+    <AnotherNugetPackageOutputPath>$(WorkingDirectoryPath)\AnotherNugetPackageBuild</AnotherNugetPackageOutputPath>
     <MyWIXInstallerOfMyWinAppOutputPath>$(WorkingDirectoryPath)\MyWIXInstallerOfMyWinApp</MyWIXInstallerOfMyWinAppOutputPath>
   </PropertyGroup>-->
 
@@ -71,6 +72,9 @@ Your Build special projects targets
     </SpecialProjects>
     <SpecialProjects Include="$(SolutionsPath)\My.WIX.Installer\My.WIX.Installer.csproj">
       <DestinationPath>$(MyWIXInstallerOfMyWinAppOutputPath)</DestinationPath>
+    </SpecialProjects>
+    <SpecialProjects Include="$(SolutionsPath)\Another.Nuget.Package\Another.Nuget.Package.csproj">
+      <DestinationPath>$(AnotherNugetPackageOutputPath)</DestinationPath>
     </SpecialProjects>
   </ItemGroup>-->
 

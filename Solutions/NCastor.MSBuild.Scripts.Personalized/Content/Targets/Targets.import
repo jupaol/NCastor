@@ -54,6 +54,7 @@ Your targets imports
   <Import Project="Tests\CustomTestTargets.import"/>
   <Import Project="Tests\RunTestsTargets.import"/>
 
+  <Import Project="Package\PrepareNugetPackages.import"/>
   <Import Project="Package\CreatePackages.import"/>
   <Import Project="Package\CustomPackages.import"/>
 
