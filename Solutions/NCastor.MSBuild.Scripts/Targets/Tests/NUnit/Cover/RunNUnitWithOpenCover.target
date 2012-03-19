@@ -6,12 +6,13 @@
     <RunNUnitWithOpenCoverDependsOn>
       SettingNUnitTestingAssemblies;
       SettingInstrumentationAssemblies;
+      ValidateNUnitProperties;
+      ValidateOpenCoverProperties;
       CleanNUnitArtefactFolders;
       CreateNUnitArtefactFolders;
       BeforeRunNUnitWithOpenCover;
       CoreRunNUnitWithOpenCover;
       AfterRunNUnitWithOpenCover;
-      ReportNUnitOpenCoverWithRG;
     </RunNUnitWithOpenCoverDependsOn>
   </PropertyGroup>
 
@@ -23,26 +24,22 @@
 
   <Target Name="CoreRunNUnitWithOpenCover" >
 
-    <Error ContinueOnError="false" Text="The NUnit assemblies were not specified" Condition="@(NUnitAssemblies) == ''" />
-    <Error ContinueOnError="false" Text="The NUnit test assembly was not found: &quot;%(NUnitAssemblies.Identity)&quot;" Condition="!Exists(%(NUnitAssemblies.Identity))" />
-    <Error ContinueOnError="false" Text="The OpenCover runner path was not found" Condition="!Exists($(OpenCoverRunner))" />
-    <Error ContinueOnError="false" Text="The OpenCover results file was not specified" Condition="$(OpenCoverNUnit_ReportFilePath) == ''" />
-    <Error ContinueOnError="false" Text="The NUnit runner was not found" Condition="!Exists($(NUnitRunner))" />
-    
+    <Error ContinueOnError="false" Text="The OpenCover NUnit results file was not specified" Condition="$(OpenCoverNUnit_ReportFilePath) == ''" />
+
     <ItemGroup>
       <_NUnitAssemblies Include="@(NUnitAssemblies->'\&quot;%(Identity)\&quot;')" />
       <_AssembliesToInstrumentWithOpenCoverNUnit Include="@(AssembliesToInstrument->'+[%(FileName)]*')"></_AssembliesToInstrumentWithOpenCoverNUnit>
     </ItemGroup>
 
     <PropertyGroup>
-      <_NunitArgs>@(_NUnitAssemblies, ' ') /noshadow</_NunitArgs>
+      <_NunitArgs>@(_NUnitAssemblies, ' ') /noshadow /result=\&quot;$(NUnitXmlReportFilePath)\&quot;</_NunitArgs>
 
       <_OpenCoverNUnitArgs>-target:&quot;$(NUnitRunner)&quot; -targetargs:&quot;$(_NunitArgs)&quot;</_OpenCoverNUnitArgs>
 
-      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -register:user -mergebyhash -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverNUnit, ' ')&quot; -output:&quot;$(OpenCoverNUnit_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register:user -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverNUnit, ' ')&quot; -output:&quot;$(OpenCoverNUnit_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
-    <Exec Command="$(_CommonOpenCoverArgs) $(_OpenCoverNUnitArgs)">
+    <Exec ContinueOnError="true" Command="$(_CommonOpenCoverArgs) $(_OpenCoverNUnitArgs)">
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningNUnitTests"/>
     </Exec>
 

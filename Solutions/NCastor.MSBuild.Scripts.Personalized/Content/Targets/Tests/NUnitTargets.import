@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <!--
-<copyright file="Properties.import" company="Juan Pablo Olmos Lara (Jupaol)">
+<copyright file="NUnitTargets.import" company="Juan Pablo Olmos Lara (Jupaol)">
 
   jupaol@hotmail.com
   jupaoljpol@gmail.com
@@ -36,23 +36,19 @@
 <!-->
 "Your stuff"
 
-Your custom settings
+Your custom NUnit targets
 -->
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!-- TODO: Place your custom settings here -->
+  <!--TODO: Place here your custom NUnit targets-->
 
-  <PropertyGroup>
-
-    <!--Uncoment according to the tools you want to use-->
-    
-    <!--<NUnitRunner>$(NugetPackagesPath)\NUnit.Runners.2.6.0.12051\tools\nunit-console.exe</NUnitRunner>-->
-    <!--<MSTestRunner>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>-->
-    <!--<MSPecRunner>$(NugetPackagesPath)\Machine.Specifications.0.5.5.0\tools\mspec-clr4.exe</MSPecRunner>-->
-    <!--<OpenCoverRunner>$(NugetPackagesPath)\OpenCover.3.0.121\OpenCover.Console.exe</OpenCoverRunner>-->
-    <!--<ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.6.0\ReportGenerator.exe</ReportGeneratorRunner>-->
-
-  </PropertyGroup>
+  <!--<Target Name="CoreSettingNUnitTestingAssemblies">
+    <ItemGroup>
+      <NUnitAssemblies Include="
+                                $(TestAssembliesPath)\NUnitTests1.dll;
+                                $(TestAssembliesPath)\NUnitTests2.dll;" />
+    </ItemGroup>
+  </Target>-->
 
 </Project>

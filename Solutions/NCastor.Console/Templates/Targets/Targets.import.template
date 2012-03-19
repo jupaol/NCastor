@@ -36,14 +36,17 @@
 <!-->
 "Your stuff"
 
-Your custom targets
+Your targets import
 -->
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!-- TODO: Place your custom targets here -->
+  <!-- TODO: Place your targets imports here -->
 
+  <Import Project="Build\{{ ProductName }}.VersioningTargets.import"/>
   <Import Project="Build\{{ ProductName }}.BuildTargets.import"/>
+  <Import Project="Build\{{ ProductName }}.CustomBuildTargets.import.template"/>
+
   <Import Project="Tests\{{ ProductName }}.RunTestsTargets.import"/>
 
 </Project>

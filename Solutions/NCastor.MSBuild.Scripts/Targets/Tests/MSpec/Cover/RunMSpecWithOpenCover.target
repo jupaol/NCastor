@@ -6,13 +6,14 @@
     <RunMSpecWithOpenCoverDependsOn>
       SettingMSpecTestingAssemblies;
       SettingInstrumentationAssemblies;
+      ValidateMSpecProperties;
+      ValidateOpenCoverProperties;
       CleanMSpecArtefactFolders;
       CreateMSpecArtefactFolders;
       BeforeRunMSpecWithOpenCover;
       CoreRunMSpecWithOpenCover;
       AfterRunMSpecWithOpenCover;
       TransformMSpecXmlToJUnitXml;
-      ReportMSpecOpenCoverWithRG;
     </RunMSpecWithOpenCoverDependsOn>
   </PropertyGroup>
 
@@ -24,11 +25,7 @@
 
   <Target Name="CoreRunMSpecWithOpenCover" >
 
-    <Error ContinueOnError="false" Text="The MSpec assemblies were not specified" Condition="@(MSpecAssemblies) == ''" />
-    <Error ContinueOnError="false" Text="The MSpec xml report file was not specified" Condition="$(MSpecXmlReportFilePath) == ''" />
-    <Error ContinueOnError="false" Text="The MSpec html report file was not specied" Condition="$(MSpecHtmlReporthFilePath) == ''" />
-    <Error ContinueOnError="false" Text="The MSpec runner was not found" Condition="!Exists($(MSPecRunner))" />
-    <Error ContinueOnError="false" Text="The MSpec test assembly was not found: &quot;%(MSpecAssemblies.Identity)&quot;" Condition="!Exists(%(MSpecAssemblies.Identity))" />
+    <Error ContinueOnError="false" Text="The OpenCover MSpec results file was not specified" Condition="$(OpenCoverMSpec_ReportFilePath) == ''" />
 
     <ItemGroup>
       <_AssembliesToInstrumentWithOpenCoverMSpec Include="@(AssembliesToInstrument->'+[%(FileName)]*')" />
@@ -36,11 +33,11 @@
     </ItemGroup>
 
     <PropertyGroup>
-      <_MSpecCommand>-target:"$(MSPecRunner)" -targetargs:"@(_MSpecAssembliesToRunCodeCoverage, ' ')"</_MSpecCommand>
-      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -register:user -mergebyhash -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSpec, ' ')&quot; -output:&quot;$(OpenCoverMSpec_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+      <_MSpecCommand>-target:"$(MSPecRunner)" -targetargs:"--xml \&quot;$(MSpecXmlReportFilePath)\&quot; --html \&quot;$(MSpecHtmlReporthFilePath)\&quot; @(_MSpecAssembliesToRunCodeCoverage, ' ')"</_MSpecCommand>
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register:user -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSpec, ' ')&quot; -output:&quot;$(OpenCoverMSpec_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
-    <Exec Command="$(_CommonOpenCoverArgs) $(_MSpecCommand)">
+    <Exec ContinueOnError="true" Command="$(_CommonOpenCoverArgs) $(_MSpecCommand)">
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningMSpecTests"/>
     </Exec>
 

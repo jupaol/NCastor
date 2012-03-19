@@ -3,19 +3,10 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <RunTestsRequiredActions>
+    <RunTestsDependsOn>
       Build;
       SettingTestingAssemblies;
-    </RunTestsRequiredActions>
 
-    <RunTestsExpectedActions>
-      
-    </RunTestsExpectedActions>
-  </PropertyGroup>
-  
-  <PropertyGroup>
-    <RunTestsDependsOn>
-      $(RunTestsRequiredActions);
       BeforeRunTests;
 
       RunNUnitTests;
@@ -26,6 +17,10 @@
       RunMSTestWithOpenCover;
       RunMSpecWithOpenCover;
 
+      ReportNUnitOpenCoverWithRG;
+      ReportMSTestOpenCoverWithRG;
+      ReportMSpecOpenCoverWithRG;
+
       CoreRunTests;
       AfterRunTests;
 
@@ -34,7 +29,8 @@
       PackageNUnitTestReports;
       PackageMSTestTestReports;
       PackageMSpecTestReports;
-      $(RunTestsExpectedActions);
+
+      CheckForTestsErrors;
     </RunTestsDependsOn>
   </PropertyGroup>
 

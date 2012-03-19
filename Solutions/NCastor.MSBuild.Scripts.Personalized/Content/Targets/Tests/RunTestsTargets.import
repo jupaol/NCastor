@@ -49,7 +49,6 @@ Your custom tests targets
   
     <PropertyGroup>
     <RunTestsDependsOn>
-      $(RunTestsRequiredActions);
       BeforeRunTests;
 
       RunNUnitTests;
@@ -68,7 +67,6 @@ Your custom tests targets
       PackageNUnitTestReports;
       PackageMSTestTestReports;
       PackageMSpecTestReports;
-      $(RunTestsExpectedActions);
     </RunTestsDependsOn>
   </PropertyGroup>
   
@@ -179,9 +177,7 @@ Your custom tests targets
   
   <PropertyGroup>
     <RunTestsLiteDependsOn>
-      $(RunTestsRequiredActions);
       CoreRunTests;
-      $(RunTestsExpectedActions);
       
       CheckForTestsErrors;
       
@@ -211,7 +207,9 @@ Your custom tests targets
   
   <PropertyGroup>
     <RunTestsDependsOn>
-      $(RunTestsRequiredActions);
+      Build;
+      SettingTestingAssemblies;
+
       BeforeRunTests;
 
       RunNUnitTests;
@@ -222,6 +220,10 @@ Your custom tests targets
       RunMSTestWithOpenCover;
       RunMSpecWithOpenCover;
 
+      ReportNUnitOpenCoverWithRG;
+      ReportMSTestOpenCoverWithRG;
+      ReportMSpecOpenCoverWithRG;
+
       CoreRunTests;
       AfterRunTests;
 
@@ -230,7 +232,8 @@ Your custom tests targets
       PackageNUnitTestReports;
       PackageMSTestTestReports;
       PackageMSpecTestReports;
-      $(RunTestsExpectedActions);
+
+      CheckForTestsErrors;
     </RunTestsDependsOn>
   </PropertyGroup>
   <Target Name="RunTests" DependsOnTargets="$(RunTestsDependsOn)" />
@@ -241,9 +244,10 @@ Your custom tests targets
 
   <PropertyGroup>
     <RunTestsLiteDependsOn>
-      $(RunTestsRequiredActions);
+      BuildLite;
+      SettingTestingAssemblies;
       CoreRunTests;
-      $(RunTestsExpectedActions);
+      CheckForTestsErrors;
     </RunTestsLiteDependsOn>
   </PropertyGroup>
   <Target Name="RunTestsLite" DependsOnTargets="$(RunTestsLiteDependsOn)" />

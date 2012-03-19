@@ -5,6 +5,7 @@
   <PropertyGroup>
     <RunNUnitTestsDependsOn>
       SettingNUnitTestingAssemblies;
+      ValidateNUnitProperties;
       CleanNUnitArtefactFolders;
       CreateNUnitArtefactFolders;
       BeforeRunNUnitTests;
@@ -20,11 +21,6 @@
   <Target Name="AfterRunNUnitTests" />
 
   <Target Name="CoreRunNUnitTests" >
-
-    <Error ContinueOnError="false" Text="The NUnit runner was not found" Condition="!Exists($(NUnitRunner))"></Error>
-    <Error ContinueOnError="false" Text="The NUnit xml report file path was not specified" Condition="$(NUnitXmlReportFilePath) == ''"></Error>
-    <Error ContinueOnError="false" Text="The NUnit assemblies were not specified" Condition="@(NUnitAssemblies) == ''" />
-    <Error ContinueOnError="false" Text="The NUnit test assembly was not found: &quot;%(NUnitAssemblies.Identity)&quot;" Condition="!Exists(%(NUnitAssemblies.Identity))" />
 
     <!--TODO: check this-->
     <MSBuild.Community.Tasks.NUnit Assemblies="@(NUnitAssemblies)"

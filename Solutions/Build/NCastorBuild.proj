@@ -93,16 +93,34 @@
   </ItemGroup>
 
   <PropertyGroup>
+    <BuildDependsOn>
+      ValidateSettings;
+      CalculateSemanticVersion;
+      Clean;
+      CreateArtefactFolders;
+
+      SetAssemblyVersion;
+      SetAssemblyInfo;
+      
+      BeforeBuild;
+      CoreBuild;
+      AfterBuild;
+
+      BuildSpecialProjects;
+    </BuildDependsOn>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <RunTestsDependsOn>
-      $(RunTestsRequiredActions);
+      Build;
+      SettingTestingAssemblies;
       RunMSTestWithOpenCover;
       CoreRunTests;
-      $(RunTestsExpectedActions);
+      CheckForTestsErrors;
     </RunTestsDependsOn>
     <PackageNCastorDependsOn>
-      $(RunTestsDependsOn);
+      RunTests;
       PackageNugets;
-      CheckForTestsErrors;
     </PackageNCastorDependsOn>
 </PropertyGroup>
 

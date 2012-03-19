@@ -22,6 +22,8 @@
 
     <Error ContinueOnError="false" Text="The report generator runner was not specified" Condition="$(ReportGeneratorRunner) == ''" />
     <Error ContinueOnError="false" Text="The report generator runner was not found" Condition="!Exists($(ReportGeneratorRunner))" />
+    <Error ContinueOnError="false" Text="The OpenCover MSTest result file was not specified" Condition="$(OpenCoverMSTest_ReportFilePath) == ''" />
+    <Error ContinueOnError="false" Text="The OpenCover MSTest result file was not found" Condition="!Exists($(OpenCoverMSTest_ReportFilePath))" />
 
     <Exec ContinueOnError="false" Command='"$(ReportGeneratorRunner)" "$(OpenCoverMSTest_ReportFilePath)" "$(ReportGeneratorMSTestReportPath)"' />
 

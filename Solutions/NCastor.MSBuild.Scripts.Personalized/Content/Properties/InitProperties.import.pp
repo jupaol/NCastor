@@ -62,7 +62,7 @@ Initial settings
 
     <!--TODO: Set the assembly title-->
     <AssemblyTitle>$RootNamespace$</AssemblyTitle>
-    <AssemblyProduct>$RootNamespace$</AssemblyProduct>
+    <AssemblyProduct>$DefaultNamespace$</AssemblyProduct>
     
     <!--TODO: Assembly info properties-->
     <AssemblyDescription></AssemblyDescription>

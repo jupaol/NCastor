@@ -20,21 +20,21 @@
 
     <Error 
       Text="
-        At least one error errored when running MSTests tests, probably some tests failed, please check the build log 
+        At least one error ocurred when running MSTests tests, probably some tests failed, please check the build log 
         for more information" 
       Condition="
         @(ErrorsOcurredWhenRunningMSTestTests) != '' and '%(ErrorsOcurredWhenRunningMSTestTests.identity)' > 0" />
 
     <Error
       Text="
-        At least one error errored when running MSpec tests, probably some tests failed, please check the build log 
+        At least one error ocurred when running MSpec tests, probably some tests failed, please check the build log 
         for more information"
       Condition="
         @(ErrorsOcurredWhenRunningMSpecTests) != '' and '%(ErrorsOcurredWhenRunningMSpecTests.identity)' > 0" />
 
     <Error
       Text="
-        At least one error errored when running NUnit tests, probably some tests failed, please check the build log 
+        At least one error ocurred when running NUnit tests, probably some tests failed, please check the build log 
         for more information"
       Condition="
         @(ErrorsOcurredWhenRunningNUnitTests) != '' and '%(ErrorsOcurredWhenRunningNUnitTests.identity)' > 0" />

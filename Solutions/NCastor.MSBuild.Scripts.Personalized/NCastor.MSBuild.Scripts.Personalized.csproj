@@ -40,41 +40,44 @@
     <Compile Include="Dummy.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Properties\InitProperties.import">
+    <None Include="Content\Properties\InitProperties.import.pp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Properties\Properties.import">
+    <None Include="Content\Properties\Properties.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\BuildSolution.proj">
+    <None Include="Content\BuildSolution.proj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Targets\Build\BuildTargets.import">
+    <None Include="Content\Targets\Build\BuildTargets.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Targets\Targets.import">
+    <None Include="Content\Targets\Targets.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Targets\Tests\RunTestsTargets.import">
+    <None Include="Content\Targets\Tests\CustomTestTargets.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
+    <None Include="Content\Targets\Tests\RunTestsTargets.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Tasks\Tasks.import">
+    <None Include="Content\Tasks\Tasks.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -93,6 +96,23 @@
       <Link>Readme.md</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\Targets\Build\CustomBuildTargets.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Targets\Build\VersioningTargets.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Targets\Tests\MSpecTargets.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Targets\Tests\MSTestTargets.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Targets\Tests\NUnitTargets.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

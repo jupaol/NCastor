@@ -187,7 +187,7 @@ namespace NCastor.Console.Integration.Tests
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
             templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
-            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(3);
+            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(5);
         }
 
         [TestMethod]
@@ -222,6 +222,40 @@ namespace NCastor.Console.Integration.Tests
 
             templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
             config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Tests\My App.RunTestsTargets.import");
+        }
+
+        [TestMethod]
+        public void calling_ProcessTargetsVersioningTargetsTemplate_should_save_the_template_on_disk()
+        {
+            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+
+            var config = cont.ProcessTargetsVersioningTargetsTemplate();
+
+            config.Should().NotBeNull();
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+            //testing that the template tokens were substituted correctly
+            var templateRes = this.GetContentFromPersistedTemplate(config);
+
+            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
+            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.VersioningTargets.import");
+        }
+
+        [TestMethod]
+        public void calling_ProcessTargetsCustomBuildTargetsTemplate_should_save_the_template_on_disk()
+        {
+            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+
+            var config = cont.ProcessTargetsCustomBuildTargetsTemplate();
+
+            config.Should().NotBeNull();
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+            //testing that the template tokens were substituted correctly
+            var templateRes = this.GetContentFromPersistedTemplate(config);
+
+            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
+            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.CustomBuildTargets.import");
         }
 
         private string GetContentFromPersistedTemplate(TemplateConfigurator config)

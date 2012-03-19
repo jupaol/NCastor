@@ -43,4 +43,12 @@ Your custom settings
 
   <!-- TODO: Place your custom settings here -->
 
+  <!--Uncomment-->
+  <PropertyGroup>
+
+    <!--Uncomment according to your needs-->
+    <!--<MSTestRunner>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>-->
+
+  </PropertyGroup>
+
 </Project>

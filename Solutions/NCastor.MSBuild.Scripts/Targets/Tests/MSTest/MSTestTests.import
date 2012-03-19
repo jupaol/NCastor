@@ -2,6 +2,7 @@
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <Import Project="ValidateMSTestProperties.target"/>
   <Import Project="SettingMSTestTestingAssemblies.target"/>
   <Import Project="CleanMSTestArtefactFolders.target"/>
   <Import Project="CreateMSTestArtefactFolders.target"/>

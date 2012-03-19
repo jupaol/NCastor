@@ -8,6 +8,8 @@
   <Import Project="SettingInstrumentationAssemblies.target"/>
   <Import Project="RunTests.target"/>
 
+  <Import Project="ValidateOpenCoverProperties.target"/>
+
   <Import Project="MSpec\MSpecTests.import"/>
   <Import Project="MSTest\MSTestTests.import"/>
   <Import Project="NUnit\NUnitTests.import"/>

@@ -6,13 +6,14 @@
     <RunMSTestWithOpenCoverDependsOn>
       SettingMSTestTestingAssemblies;
       SettingInstrumentationAssemblies;
+      ValidateMSTestProperties;
+      ValidateOpenCoverProperties;
       CleanMSTestArtefactFolders;
       CreateMSTestArtefactFolders;
       BeforeRunMSTestWithOpenCover;
       CoreRunMSTestWithOpenCover;
       AfterRunMSTestWithOpenCover;
       CreateMSTestReport;
-      ReportMSTestOpenCoverWithRG;
     </RunMSTestWithOpenCoverDependsOn>
   </PropertyGroup>
 
@@ -24,11 +25,7 @@
 
   <Target Name="CoreRunMSTestWithOpenCover" >
 
-    <Error ContinueOnError="false" Text="The MSTest results file was not specified" Condition="$(MSTestReportFilePath) == ''"></Error>
-    <Error ContinueOnError="false" Text="The MSTest runner was not specified" Condition="$(MSTestRunner) == ''"></Error>
-    <Error ContinueOnError="false" Text="The MSTest runner was not found" Condition="!Exists($(MSTestRunner))"/>
-    <Error ContinueOnError="false" Text="The MSTest containers were not specified" Condition="@(MSTestContainers) == ''"></Error>
-    <Error ContinueOnError="false" Text="The MSTest dll was not found: &quot;%(MSTestContainers.Identity)&quot;" Condition="!Exists(%(MSTestContainers.Identity))" />
+    <Error ContinueOnError="false" Text="The OpenCover MSTest results file path was not specified" Condition="$(OpenCoverMSTest_ReportFilePath) == ''" />
 
     <ItemGroup>
       <_MSTestContainersToRunCodeCoverage Include="@(MSTestContainers->'/testcontainer:\&quot;%(Identity)\&quot;')" />
@@ -40,6 +37,8 @@
 
       <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register:user -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSTest, ' ')&quot; -output:&quot;$(OpenCoverMSTest_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
+
+    <Delete Files="$(MSTestReportFilePath)" Condition="Exists($(MSTestReportFilePath))" />
 
     <Exec ContinueOnError="true" Command="$(_CommonOpenCoverArgs) $(_OpenCoverMSTestCommand)">
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningMSTestTests"/>

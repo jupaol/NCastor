@@ -247,5 +247,37 @@ namespace NCastor.Console
                 {
                 });
         }
+
+        /// <summary>
+        /// Processes Versioning Targets template.
+        /// </summary>
+        /// <returns>
+        /// The TemplateConfigurator object used to process the template
+        /// </returns>
+        public TemplateConfigurator ProcessTargetsVersioningTargetsTemplate()
+        {
+            return this.ProcessTemplate(
+                TemplateConstants.VersioningTargets,
+                "NCastor.Console.Templates.Targets.Build",
+                (x, y, z) =>
+                {
+                });
+        }
+
+        /// <summary>
+        /// Processes Custom Build Targets template.
+        /// </summary>
+        /// <returns>
+        /// The TemplateConfigurator object used to process the template
+        /// </returns>
+        public TemplateConfigurator ProcessTargetsCustomBuildTargetsTemplate()
+        {
+            return this.ProcessTemplate(
+                TemplateConstants.CustomBuildTargets,
+                "NCastor.Console.Templates.Targets.Build",
+                (x, y, z) =>
+                {
+                });
+        }
     }
 }
