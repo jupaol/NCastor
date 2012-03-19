@@ -36,11 +36,11 @@
 <!-->
 "Your stuff"
 
-Your custom targets
+Your custom build targets
 -->
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!--TODO: Place here your custom targets-->
+  <!--TODO: Place here your custom build targets-->
 
 </Project>

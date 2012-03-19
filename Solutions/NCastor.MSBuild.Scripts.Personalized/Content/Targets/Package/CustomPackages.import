@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <!--
-<copyright file="Targets.import" company="Juan Pablo Olmos Lara (Jupaol)">
+<copyright file="CustomPackages.import" company="Juan Pablo Olmos Lara (Jupaol)">
 
   jupaol@hotmail.com
   jupaoljpol@gmail.com
@@ -36,24 +36,13 @@
 <!-->
 "Your stuff"
 
-Your targets imports
+Your custom Package targets
 -->
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!-- TODO: Place your targets imports here -->
+  <!--TODO: Place here your custom Package targets-->
 
-  <Import Project="Build\VersioningTargets.import"/>
-  <Import Project="Build\BuildTargets.import"/>
-  <Import Project="Build\CustomBuildTargets.import"/>
-
-  <Import Project="Tests\MSpecTargets.import"/>
-  <Import Project="Tests\MSTestTargets.import"/>
-  <Import Project="Tests\NUnitTargets.import"/>
-  <Import Project="Tests\CustomTestTargets.import"/>
-  <Import Project="Tests\RunTestsTargets.import"/>
-
-  <Import Project="Package\CreatePackages.import"/>
-  <Import Project="Package\CustomPackages.import"/>
+  
 
 </Project>

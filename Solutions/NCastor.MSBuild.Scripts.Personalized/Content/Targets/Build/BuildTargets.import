@@ -36,12 +36,12 @@
 <!-->
 "Your stuff"
 
-Your custom build targets
+Your Build custom dependencies
 -->
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!-- TODO: Place your custom build targets here -->
+  <!-- TODO: Place here your Build custom dependencies-->
 
   <!--
   This is the full dependency tree for the Build action, you can customize it but just remember there are some actions

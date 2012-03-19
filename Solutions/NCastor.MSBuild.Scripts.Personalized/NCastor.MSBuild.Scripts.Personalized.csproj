@@ -61,6 +61,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Targets\Package\CustomPackages.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Targets\Package\CreatePackages.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Targets\Targets.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
