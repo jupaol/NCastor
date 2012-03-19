@@ -227,12 +227,6 @@ Your custom tests targets
       CoreRunTests;
       AfterRunTests;
 
-      PackageTestAssemblies;
-
-      PackageNUnitTestReports;
-      PackageMSTestTestReports;
-      PackageMSpecTestReports;
-
       CheckForTestsErrors;
     </RunTestsDependsOn>
   </PropertyGroup>
