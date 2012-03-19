@@ -57,6 +57,8 @@ Your CreatePackages custom dependencies
       PackageNUnitTestReports;
       PackageMSTestTestReports;
       PackageMSpecTestReports;
+      
+      PackageNugets;
 
       CoreCreatePackages;
       AfterCreatePackages;
@@ -76,6 +78,8 @@ Your CreatePackages custom dependencies
       PackageNUnitTestReports;
       PackageMSTestTestReports;
       PackageMSpecTestReports;
+
+      PackageNugets;
 
       CoreCreatePackages;
       AfterCreatePackages;

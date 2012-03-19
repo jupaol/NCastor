@@ -5,7 +5,7 @@
   <PropertyGroup>
     <CreatePackagesDependsOn>
       RunTests;
-      
+
       BeforeCreatePackages;
 
       PackageSourceCode;
@@ -15,6 +15,8 @@
       PackageNUnitTestReports;
       PackageMSTestTestReports;
       PackageMSpecTestReports;
+
+      PackageNugets;
 
       CoreCreatePackages;
       AfterCreatePackages;
