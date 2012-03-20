@@ -34,7 +34,7 @@
 
     <PropertyGroup>
       <_MSpecCommand>-target:"$(MSPecRunner)" -targetargs:"--xml \&quot;$(MSpecXmlReportFilePath)\&quot; --html \&quot;$(MSpecHtmlReporthFilePath)\&quot; @(_MSpecAssembliesToRunCodeCoverage, ' ')"</_MSpecCommand>
-      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register:user -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSpec, ' ')&quot; -output:&quot;$(OpenCoverMSpec_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSpec, ' ')&quot; -output:&quot;$(OpenCoverMSpec_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
     <Exec ContinueOnError="true" Command="$(_CommonOpenCoverArgs) $(_MSpecCommand)">
