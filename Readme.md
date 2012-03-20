@@ -19,9 +19,7 @@ The build process in every project is a boring task, and usually takes more time
 - Allowing you to set assembly information to your assemblies
 - Auto increment build and revision version (if using Hudson)
 
-### Building Special Projects (the output of a special project is usually all the files you want to package like a Windows App proj) ###
-
-- You can specify individual building paths for special projects 
+### Specify custom building paths for individual projects ###
 
 ### Running tests with: ###
 
