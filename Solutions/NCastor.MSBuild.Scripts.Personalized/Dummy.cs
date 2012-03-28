@@ -15,7 +15,7 @@ namespace NCastor.MSBuild.Scripts.Personalized
     using System.Text;
 
     /// <summary>
-    /// Just to allow compilation using MSBuild
+    /// Dummy class for building purpose
     /// </summary>
     public class Dummy
     {

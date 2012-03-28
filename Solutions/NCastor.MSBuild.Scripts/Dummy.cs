@@ -10,7 +10,7 @@
 namespace NCastor.MSBuild.Scripts
 {
     /// <summary>
-    /// Dummy class to be able to run compiler in CI server
+    /// Dummy class for building purpose
     /// </summary>
     public class Dummy
     {
