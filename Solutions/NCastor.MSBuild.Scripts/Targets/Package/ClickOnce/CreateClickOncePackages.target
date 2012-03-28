@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateClickOncePackagesDependsOn>
+      BeforeCreateClickOncePackages;
+      CoreCreateClickOncePackages;
+      AfterCreateClickOncePackages;
+    </CreateClickOncePackagesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateClickOncePackages" DependsOnTargets="$(CreateClickOncePackagesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateClickOncePackages" />
+  <Target Name="AfterCreateClickOncePackages" />
+
+  <Target Name="CoreCreateClickOncePackages" >
+
+    <MSBuild
+          Projects="$(ClickOnceProjectPath)"
+          Properties="PublishDir=\\JUPAOL-PC\CruiseControl Integration 01\0000000\;
+                          ApplicationVersion=7.11.2.234;
+                          OutputPath=$(DropsPath)\DebugDeploymentTmp;"
+          Targets="Publish" />
+
+  </Target>
+  
+</Project>

@@ -115,6 +115,7 @@
       Build;
       SettingTestingAssemblies;
       RunMSTestWithOpenCover;
+      ReportMSTestOpenCoverWithRG;
       CoreRunTests;
       CheckForTestsErrors;
     </RunTestsDependsOn>
