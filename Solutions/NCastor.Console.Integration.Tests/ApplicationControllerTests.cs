@@ -113,8 +113,7 @@ namespace NCastor.Console.Integration.Tests
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
-            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(9);
-            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
+            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(8);
         }
 
         [TestMethod]
@@ -130,8 +129,6 @@ namespace NCastor.Console.Integration.Tests
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
-
-            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
         }
 
         [TestMethod]
@@ -148,8 +145,7 @@ namespace NCastor.Console.Integration.Tests
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
-            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(3);
-            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
+            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
             templateRes.CountOcurrences(config.Context.CurrentOptions.SolutionName).Should().Be(1);
 
             templateRes.Should().NotContain("{{ SolutionName }}");
@@ -168,8 +164,6 @@ namespace NCastor.Console.Integration.Tests
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
-
-            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
         }
 
         [TestMethod]
@@ -186,8 +180,7 @@ namespace NCastor.Console.Integration.Tests
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
-            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
-            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(5);
+            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(4);
         }
 
         [TestMethod]
@@ -203,8 +196,6 @@ namespace NCastor.Console.Integration.Tests
 
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
-
-            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
         }
 
         [TestMethod]
@@ -220,7 +211,6 @@ namespace NCastor.Console.Integration.Tests
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
-            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
             config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Tests\My App.RunTestsTargets.import");
         }
 
@@ -237,7 +227,6 @@ namespace NCastor.Console.Integration.Tests
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
-            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
             config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.VersioningTargets.import");
         }
 
@@ -254,7 +243,6 @@ namespace NCastor.Console.Integration.Tests
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
-            templateRes.CountOcurrences(config.Processor.FinalTemplateFileName).Should().Be(1);
             config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.CustomBuildTargets.import");
         }
 

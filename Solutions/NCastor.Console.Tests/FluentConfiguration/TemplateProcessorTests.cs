@@ -83,8 +83,7 @@ namespace NCastor.Console.Tests.FluentConfiguration
 
             cfg.Processor.CurrentTemplate.Prepare();
 
-            cfg.Processor.TemplateBody.Should().NotBeNullOrEmpty().And.NotBeBlank()
-                .And.Contain(cfg.Processor.FinalTemplateFileName);
+            cfg.Processor.TemplateBody.Should().NotBeNullOrEmpty().And.NotBeBlank();
         }
 
         [TestMethod]
