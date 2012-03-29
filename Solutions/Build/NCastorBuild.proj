@@ -29,8 +29,6 @@
 
     <Platform>Any CPU</Platform>
 
-    <NugetPackageSpecificationFilePath>$(SolutionsPath)\Build\NCastor.nuspec</NugetPackageSpecificationFilePath>
-
     <AssemblyTitle>NCastor</AssemblyTitle>
     <AssemblyDescription>NCastor Console Application</AssemblyDescription>
     <AssemblyCompany>Juan Pablo Olmos Lara (Jupaol)</AssemblyCompany>

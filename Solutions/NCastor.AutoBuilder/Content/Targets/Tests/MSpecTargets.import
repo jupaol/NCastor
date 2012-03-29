@@ -10,21 +10,6 @@ Your custom MSpec targets
 
   <!--TODO: Place here your custom MSpec targets-->
 
-  <!--Uncomment to specify the MSpec command line arguments-->
-  <!--<PropertyGroup>
-    <MSpecRunnerArguments></MSpecRunnerArguments>
-  </PropertyGroup>-->
-
-  <!--Uncomment to specify the MSpec command line arguments when used with OpenCover-->
-  <!--<PropertyGroup>
-    <MSpecRunnerWithOpenCoverArguments></MSpecRunnerWithOpenCoverArguments>
-  </PropertyGroup>-->
-
-  <!--Uncoment to specify the OpenCover command line arguments when running MSpec tests-->
-  <!--<PropertyGroup>
-    <OpenCoverRunnerArgumentsForMSpec>-mergebyhash -register -returntargetcode</OpenCoverRunnerArgumentsForMSpec>
-  </PropertyGroup>-->
-
   <!--Uncomment to specify the MSpec assemblies-->
   <!--<Target Name="CoreSettingMSpecTestingAssemblies">
     <ItemGroup>

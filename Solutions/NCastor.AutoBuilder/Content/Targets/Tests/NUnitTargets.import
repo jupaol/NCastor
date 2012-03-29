@@ -10,21 +10,6 @@ Your custom NUnit targets
 
   <!--TODO: Place here your custom NUnit targets-->
 
-  <!--Uncomment to specify the NUnit command line arguments-->
-  <!--<PropertyGroup>
-    <NUnitRunnerArguments>/noshadow</NUnitRunnerArguments>
-  </PropertyGroup>-->
-
-  <!--Uncomment to specify the NUnit command line arguments when used with OpenCover-->
-  <!--<PropertyGroup>
-    <NUnitRunnerWithOpenCoverArguments>/noshadow</NUnitRunnerWithOpenCoverArguments>
-  </PropertyGroup>-->
-
-  <!--Uncoment to specify the OpenCover command line arguments when running NUnit tests-->
-  <!--<PropertyGroup>
-    <OpenCoverRunnerArgumentsForNUnit>-mergebyhash -register -returntargetcode</OpenCoverRunnerArgumentsForNUnit>
-  </PropertyGroup>-->
-
   <!--Uncomment to specify the NUnit assemblies-->
   <!--<Target Name="CoreSettingNUnitTestingAssemblies">
     <ItemGroup>

@@ -21,6 +21,14 @@
     </CreateNugetPackageDependsOn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <WorkingNugetPackagePath Condition="$(WorkingNugetPackagePath) == ''">$(WorkingDirectoryPath)\NugetPackage</WorkingNugetPackagePath>
+    <NugetPackageName Condition="$(NugetPackageName) == ''">$(SolutionName)</NugetPackageName>
+    <NugetPackageNamespace Condition="$(NugetPackageNamespace) == ''">http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd</NugetPackageNamespace>
+
+    <NugetPackageSpecificationFilePath>$(SolutionsPath)\Build\NCastor.nuspec</NugetPackageSpecificationFilePath>
+  </PropertyGroup>
+
   <Target Name="CreateNugetPackage" DependsOnTargets="$(CreateNugetPackageDependsOn)"/>
 
   <!-- To be overriden by the user -->

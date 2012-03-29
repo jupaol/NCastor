@@ -8,7 +8,7 @@ Your targets imports
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!-- TODO: Place your targets imports here -->
+  <!-- TODO: Import your targets imports here -->
 
   <Import Project="Build\VersioningTargets.import"/>
   <Import Project="Build\BuildTargets.import"/>
