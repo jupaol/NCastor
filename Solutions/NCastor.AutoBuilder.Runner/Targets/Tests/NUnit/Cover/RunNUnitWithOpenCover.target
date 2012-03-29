@@ -29,6 +29,10 @@
     <NUnitRunnerWithOpenCoverArguments>/noshadow</NUnitRunnerWithOpenCoverArguments>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <OpenCoverRunnerArgumentsForNUnit>-mergebyhash -register -returntargetcode</OpenCoverRunnerArgumentsForNUnit>
+  </PropertyGroup>
+
   <Target Name="RunNUnitWithOpenCover" DependsOnTargets="$(RunNUnitWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->
@@ -49,7 +53,7 @@
 
       <_OpenCoverNUnitArgs>-target:&quot;$(NUnitRunner)&quot; -targetargs:&quot;$(_NunitArgs)&quot;</_OpenCoverNUnitArgs>
 
-      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverNUnit, ' ')&quot; -output:&quot;$(OpenCoverNUnit_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; $(OpenCoverRunnerArgumentsForNUnit) -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverNUnit, ' ')&quot; -output:&quot;$(OpenCoverNUnit_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
     <Exec ContinueOnError="true" Command="$(_CommonOpenCoverArgs) $(_OpenCoverNUnitArgs)">

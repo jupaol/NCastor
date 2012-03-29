@@ -10,17 +10,22 @@ Your custom NUnit targets
 
   <!--TODO: Place here your custom NUnit targets-->
 
-  <!--Uncomment the following code to specify the command line arguments to use when running NUnit tests-->
+  <!--Uncomment to specify the NUnit command line arguments-->
   <!--<PropertyGroup>
     <NUnitRunnerArguments>/noshadow</NUnitRunnerArguments>
   </PropertyGroup>-->
 
-  <!--Uncomment the following code to specify the command line arguments to use when running NUnit tests with OpenCover-->
+  <!--Uncomment to specify the NUnit command line arguments when used with OpenCover-->
   <!--<PropertyGroup>
     <NUnitRunnerWithOpenCoverArguments>/noshadow</NUnitRunnerWithOpenCoverArguments>
   </PropertyGroup>-->
 
-  <!--Uncomment the following code to specify the assemblies to test with NUnit-->
+  <!--Uncoment to specify the OpenCover command line arguments when running NUnit tests-->
+  <!--<PropertyGroup>
+    <OpenCoverRunnerArgumentsForNUnit>-mergebyhash -register -returntargetcode</OpenCoverRunnerArgumentsForNUnit>
+  </PropertyGroup>-->
+
+  <!--Uncomment to specify the NUnit assemblies-->
   <!--<Target Name="CoreSettingNUnitTestingAssemblies">
     <ItemGroup>
       <NUnitAssemblies Include="

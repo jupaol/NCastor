@@ -10,17 +10,22 @@ Your custom MSTest targets
 
   <!--TODO: Place here your custom MSTest targets-->
 
-  <!--Uncomment the following code to specify custom line arguments when runnning MSTest tests-->
+  <!--Uncomment to specify the MSTest command line arguments-->
   <!--<PropertyGroup>
     <MSTestRunnerArguments>/detail:errormessage /detail:errorstacktrace /detail:stderr</MSTestRunnerArguments>
   </PropertyGroup>-->
 
-  <!--Uncomment the following code to specify custom line arguments when runnning MSTest tests with OpenCover-->
+  <!--Uncomment to specify the MSTest command line arguments when used with OpenCover-->
   <!--<PropertyGroup>
     <MSTestRunnerWithOpenCoverArguments>/detail:errormessage /detail:errorstacktrace /detail:stderr</MSTestRunnerWithOpenCoverArguments>
   </PropertyGroup>-->
 
-  <!--Uncomment the following code to specify the assemblies to test with MSTest-->
+  <!--Uncoment to specify the OpenCover command line arguments when running MSTest tests-->
+  <!--<PropertyGroup>
+    <OpenCoverRunnerArgumentsForMSTest>-mergebyhash -register -returntargetcode</OpenCoverRunnerArgumentsForMSTest>
+  </PropertyGroup>-->
+
+  <!--Uncomment to specify the MSTest assemblies-->
   <!--<Target Name="CoreSettingMSTestTestingAssemblies">
     <ItemGroup>
       <MSTestContainers Include="$(TestAssembliesPath)\mst*.dll;" />

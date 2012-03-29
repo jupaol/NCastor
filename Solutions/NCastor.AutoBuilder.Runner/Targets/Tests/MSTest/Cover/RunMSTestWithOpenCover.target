@@ -30,6 +30,10 @@
     <MSTestRunnerWithOpenCoverArguments>/detail:errormessage /detail:errorstacktrace /detail:stderr</MSTestRunnerWithOpenCoverArguments>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <OpenCoverRunnerArgumentsForMSTest>-mergebyhash -register -returntargetcode</OpenCoverRunnerArgumentsForMSTest>
+  </PropertyGroup>
+
   <Target Name="RunMSTestWithOpenCover" DependsOnTargets="$(RunMSTestWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->
@@ -48,7 +52,7 @@
     <PropertyGroup>
       <_OpenCoverMSTestCommand>-target:"$(MSTestRunner)"  -targetargs:"@(_MSTestContainersToRunCodeCoverage, ' ') $(MSTestRunnerWithOpenCoverArguments) /resultsfile:\"$(MSTestReportFilePath)\""</_OpenCoverMSTestCommand>
 
-      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSTest, ' ')&quot; -output:&quot;$(OpenCoverMSTest_ReportFilePath)&quot;</_CommonOpenCoverArgs>
+      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; $(OpenCoverRunnerArgumentsForMSTest) -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSTest, ' ')&quot; -output:&quot;$(OpenCoverMSTest_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
     <Delete Files="$(MSTestReportFilePath)" Condition="Exists($(MSTestReportFilePath))" />
