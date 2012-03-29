@@ -24,6 +24,10 @@
     </RunMSpecTestsDependsOn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <MSpecRunnerArguments></MSpecRunnerArguments>
+  </PropertyGroup>
+
   <Target Name="RunMSpecTests" DependsOnTargets="$(RunMSpecTestsDependsOn)"/>
 
   <!-- To be overriden by the user -->
@@ -37,7 +41,7 @@
     </ItemGroup>
     
     <PropertyGroup>
-      <_MSpecOptions> --xml "$(MSpecXmlReportFilePath)" --html "$(MSpecHtmlReporthFilePath)"</_MSpecOptions>
+      <_MSpecOptions> --xml "$(MSpecXmlReportFilePath)" --html "$(MSpecHtmlReporthFilePath)" $(MSpecRunnerArguments)</_MSpecOptions>
       <_MSpecCommand>"$(MSPecRunner)" $(_MSpecOptions) @(_MSpecAssemblies, ' ')</_MSpecCommand>
     </PropertyGroup>
 

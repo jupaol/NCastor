@@ -25,6 +25,10 @@
     </RunNUnitWithOpenCoverDependsOn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <NUnitRunnerWithOpenCoverArguments>/noshadow</NUnitRunnerWithOpenCoverArguments>
+  </PropertyGroup>
+
   <Target Name="RunNUnitWithOpenCover" DependsOnTargets="$(RunNUnitWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->
@@ -36,12 +40,12 @@
     <Error ContinueOnError="false" Text="The OpenCover NUnit results file was not specified" Condition="$(OpenCoverNUnit_ReportFilePath) == ''" />
 
     <ItemGroup>
-      <_NUnitAssemblies Include="@(NUnitAssemblies->'\&quot;%(Identity)\&quot;')" />
+      <_NUnitAssembliesToRunWithOpenCover Include="@(NUnitAssemblies->'\&quot;%(Identity)\&quot;')" />
       <_AssembliesToInstrumentWithOpenCoverNUnit Include="@(AssembliesToInstrument->'+[%(FileName)]*')"></_AssembliesToInstrumentWithOpenCoverNUnit>
     </ItemGroup>
 
     <PropertyGroup>
-      <_NunitArgs>@(_NUnitAssemblies, ' ') /noshadow /result=\&quot;$(NUnitXmlReportFilePath)\&quot;</_NunitArgs>
+      <_NunitArgs>@(_NUnitAssembliesToRunWithOpenCover, ' ') $(NUnitRunnerWithOpenCoverArguments) /result=\&quot;$(NUnitXmlReportFilePath)\&quot;</_NunitArgs>
 
       <_OpenCoverNUnitArgs>-target:&quot;$(NUnitRunner)&quot; -targetargs:&quot;$(_NunitArgs)&quot;</_OpenCoverNUnitArgs>
 

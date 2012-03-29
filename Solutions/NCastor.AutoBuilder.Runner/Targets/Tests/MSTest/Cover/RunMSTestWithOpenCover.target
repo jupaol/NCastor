@@ -26,6 +26,10 @@
     </RunMSTestWithOpenCoverDependsOn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <MSTestRunnerWithOpenCoverArguments>/detail:errormessage /detail:errorstacktrace /detail:stderr</MSTestRunnerWithOpenCoverArguments>
+  </PropertyGroup>
+
   <Target Name="RunMSTestWithOpenCover" DependsOnTargets="$(RunMSTestWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->
@@ -42,7 +46,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-      <_OpenCoverMSTestCommand>-target:"$(MSTestRunner)"  -targetargs:"@(_MSTestContainersToRunCodeCoverage, ' ') /detail:errormessage /detail:errorstacktrace /detail:stderr /resultsfile:\"$(MSTestReportFilePath)\""</_OpenCoverMSTestCommand>
+      <_OpenCoverMSTestCommand>-target:"$(MSTestRunner)"  -targetargs:"@(_MSTestContainersToRunCodeCoverage, ' ') $(MSTestRunnerWithOpenCoverArguments) /resultsfile:\"$(MSTestReportFilePath)\""</_OpenCoverMSTestCommand>
 
       <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSTest, ' ')&quot; -output:&quot;$(OpenCoverMSTest_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>

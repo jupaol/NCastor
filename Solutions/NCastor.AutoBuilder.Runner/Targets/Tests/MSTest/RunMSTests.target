@@ -24,6 +24,10 @@
     </RunMSTestsDependsOn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <MSTestRunnerArguments>/detail:errormessage /detail:errorstacktrace /detail:stderr</MSTestRunnerArguments>
+  </PropertyGroup>
+
   <Target Name="RunMSTests" DependsOnTargets="$(RunMSTestsDependsOn)"/>
 
   <!-- To be overriden by the user -->
@@ -37,7 +41,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-      <_MSTestCommand>"$(MSTestRunner)" @(_MSTestContainers, ' ') /detail:errormessage /detail:errorstacktrace /detail:stderr /resultsfile:"$(MSTestReportFilePath)"</_MSTestCommand>
+      <_MSTestCommand>"$(MSTestRunner)" @(_MSTestContainers, ' ') $(MSTestRunnerArguments) /resultsfile:"$(MSTestReportFilePath)"</_MSTestCommand>
     </PropertyGroup>
 
     <Delete Files="$(MSTestReportFilePath)" Condition="Exists($(MSTestReportFilePath))" />

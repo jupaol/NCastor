@@ -26,6 +26,10 @@
     </RunMSpecWithOpenCoverDependsOn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <MSpecRunnerWithOpenCoverArguments></MSpecRunnerWithOpenCoverArguments>
+  </PropertyGroup>
+
   <Target Name="RunMSpecWithOpenCover" DependsOnTargets="$(RunMSpecWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->
@@ -42,7 +46,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-      <_MSpecCommand>-target:"$(MSPecRunner)" -targetargs:"--xml \&quot;$(MSpecXmlReportFilePath)\&quot; --html \&quot;$(MSpecHtmlReporthFilePath)\&quot; @(_MSpecAssembliesToRunCodeCoverage, ' ')"</_MSpecCommand>
+      <_MSpecCommand>-target:"$(MSPecRunner)" -targetargs:"--xml \&quot;$(MSpecXmlReportFilePath)\&quot; --html \&quot;$(MSpecHtmlReporthFilePath)\&quot; @(_MSpecAssembliesToRunCodeCoverage, ' ') $(MSpecRunnerWithOpenCoverArguments)"</_MSpecCommand>
       <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSpec, ' ')&quot; -output:&quot;$(OpenCoverMSpec_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 

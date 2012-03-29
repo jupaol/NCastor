@@ -10,6 +10,17 @@ Your custom MSpec targets
 
   <!--TODO: Place here your custom MSpec targets-->
 
+  <!--Uncoment the following code to specify custom line arguments when running MSpec tests-->
+  <!--<PropertyGroup>
+    <MSpecRunnerArguments></MSpecRunnerArguments>
+  </PropertyGroup>-->
+
+  <!--Uncomment the following code to specify custom line arguments when running MSpec tests with OpenCover-->
+  <!--<PropertyGroup>
+    <MSpecRunnerWithOpenCoverArguments></MSpecRunnerWithOpenCoverArguments>
+  </PropertyGroup>-->
+
+  <!--Uncomment the following code to specify the assemblies to test with MSpec-->
   <!--<Target Name="CoreSettingMSpecTestingAssemblies">
     <ItemGroup>
       <MSpecAssemblies Include="$(TestAssembliesPath)\msp*.dll" />

@@ -23,6 +23,10 @@
     </RunNUnitTestsDependsOn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <NUnitRunnerArguments>/noshadow</NUnitRunnerArguments>
+  </PropertyGroup>
+
   <Target Name="RunNUnitTests" DependsOnTargets="$(RunNUnitTestsDependsOn)" />
   
   <!-- To be overriden by the user -->
@@ -31,13 +35,22 @@
 
   <Target Name="CoreRunNUnitTests" >
 
-    <!--TODO: check this-->
-    <MSBuild.Community.Tasks.NUnit Assemblies="@(NUnitAssemblies)"
+    <ItemGroup>
+      <_NUnitAssemblies Include="@(NUnitAssemblies->'&quot;%(Identity)&quot;')" />
+    </ItemGroup>
+
+    <Exec 
+      ContinueOnError="true"
+      Command='"$(NUnitRunner)" @(_NUnitAssemblies, " ") /result="$(NUnitXmlReportFilePath)" $(NUnitRunnerArguments)'>
+      <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningNUnitTests"/>
+    </Exec>
+    
+    <!--<MSBuild.Community.Tasks.NUnit Assemblies="@(NUnitAssemblies)"
                                    ToolPath="$([System.IO.Directory]::GetParent($(NUnitRunner)))"
                                    OutputXmlFile="$(NUnitXmlReportFilePath)"
                                    ContinueOnError="true">
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningNUnitTests"/>
-    </MSBuild.Community.Tasks.NUnit>
+    </MSBuild.Community.Tasks.NUnit>-->
 
   </Target>
   
