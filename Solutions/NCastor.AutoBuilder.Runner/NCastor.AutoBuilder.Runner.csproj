@@ -505,9 +505,21 @@
     <Content Include="Targets\Package\ClickOnce\PrepareClickOncePackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Package\ClickOnce\ValidateClickOncePackages.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Package\ClickOnce\CleanClickOncePackageArtefacts.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Package\ClickOnce\CreateClickOncePackageArtefacts.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\Package\CreatePackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Targets\Package\Nuget\ValidateNugetPackages.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\Tests\CreateTestAssembliesArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

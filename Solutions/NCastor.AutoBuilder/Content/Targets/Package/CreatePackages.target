@@ -26,6 +26,7 @@ Your CreatePackages custom dependencies
       PackageMSpecTestReports;
       
       PackageNugets;
+      CreateClickOncePackages;
 
       CoreCreatePackages;
       AfterCreatePackages;
@@ -47,6 +48,7 @@ Your CreatePackages custom dependencies
       PackageMSpecTestReports;
 
       PackageNugets;
+      CreateClickOncePackages;
 
       CoreCreatePackages;
       AfterCreatePackages;

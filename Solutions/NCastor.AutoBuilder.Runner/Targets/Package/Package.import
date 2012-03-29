@@ -26,9 +26,13 @@
   <Import Project="Zip\TestsReports\NUnit\PackageNUnitTestReports.target"/>
 
   <Import Project="Nuget\PrepareNugetPackages.target"/>
+  <Import Project="Nuget\ValidateNugetPackages.target"/>
   <Import Project="Nuget\PackageNugets.target"/>
 
   <Import Project="ClickOnce\PrepareClickOncePackages.target"/>
+  <Import Project="ClickOnce\ValidateClickOncePackages.target"/>
+  <Import Project="ClickOnce\CleanClickOncePackageArtefacts.target"/>
+  <Import Project="ClickOnce\CreateClickOncePackageArtefacts.target"/>
   <Import Project="ClickOnce\CreateClickOncePackages.target"/>
 
 </Project>

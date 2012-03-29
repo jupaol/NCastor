@@ -14,6 +14,7 @@
   <PropertyGroup>
     <PackageNugetsDependsOn>
       PrepareNugetPackages;
+      ValidateNugetPackages;
       BeforePackageNugets;
       CorePackageNugets;
       AfterPackageNugets;
@@ -28,23 +29,6 @@
   
   <Target Name="CorePackageNugets" >
 
-    <Error ContinueOnError="false" Text="You need to specify at least one nuget package to process" Condition="@(NugetPackages) == ''" />
-    <Error ContinueOnError="false" Text="The Nuget runner was not specified" Condition="$(NugetRunner) == ''" />
-    <Error ContinueOnError="false" Text="The Nuget runner was not found" Condition="!Exists($(NugetRunner))" />
-
-    <Error
-      ContinueOnError="false"
-      Text="For each nuget package to process, you need to specify the nuspec or project in the include NugetPackages.Include"
-      Condition="%(NugetPackages.Identity) == ''" />
-    <Error
-      ContinueOnError="false"
-      Text="For each nuget package to process, you need to specify its SourcePath property"
-      Condition="%(NugetPackages.SourcePath) == ''" />
-    <Error
-      ContinueOnError="false"
-      Text="For each nuget package to process, you need to specify its Version property"
-      Condition="%(NugetPackages.Version) == ''" />
-    
     <Exec 
       ContinueOnError="false"
       WorkingDirectory="%(NugetPackages.SourcePath)"
