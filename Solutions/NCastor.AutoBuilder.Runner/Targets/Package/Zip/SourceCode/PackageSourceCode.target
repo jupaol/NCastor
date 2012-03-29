@@ -13,8 +13,6 @@
 
   <PropertyGroup>
     <PackageSourceCodeDependsOn>
-      CleanSourceCodeArtefacts;
-      IsolateSourceCode;
       BeforePackageSourceCode;
       CorePackageSourceCode;
       AfterPackageSourceCode;
@@ -33,12 +31,25 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <_SourceCodeFiles Include="$(SourceCodeTmpPath)\**\*" />
+      <_SourceCodeFiles Include="
+                          $(SolutionsPath)\**\*"
+                        Exclude=" 
+                          $(SolutionsPath)\**\bin\**;
+                          $(SolutionsPath)\**\.svn\**;
+                          $(SolutionsPath)\**\Logs\**;
+                          $(DropsPath)\**;
+                          $(WorkingDirectoryPath)\**;
+                          $(SolutionsPath)\**\Logs\**;
+                          $(SolutionsPath)\**\obj\**;
+                          $(SolutionsPath)\**\*.suo;
+                          $(SolutionsPath)\**\*.cache;
+                          $(SolutionsPath)\**\_ReSharper*\**;
+                          $(SolutionsPath)\**\*ReSharper*"/>
     </ItemGroup>
 
     <MsBuild.Community.tasks.Zip ZipFileName="$(SourceCodePackageFilePath)"
                                  Files="@(_SourceCodeFiles)"
-                                 WorkingDirectory="$(SourceCodeTmpPath)"
+                                 WorkingDirectory="$(SolutionsPath)"
                                  Flatten="False" />
 
   </Target>

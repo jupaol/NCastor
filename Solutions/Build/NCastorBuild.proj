@@ -97,6 +97,13 @@
     </RunTestsDependsOn>
     <PackageNCastorDependsOn>
       RunTests;
+      
+      PackageSourceCode;
+      PackageBuild;
+      PackageTestAssemblies;
+
+      PackageMSTestTestReports;
+
       PackageNugets;
     </PackageNCastorDependsOn>
 </PropertyGroup>
