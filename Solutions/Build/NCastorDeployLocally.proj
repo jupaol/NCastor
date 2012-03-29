@@ -32,7 +32,7 @@
       <DirsToRemove
         Include='
           
-          $(NugetPackagesPath)\NCastor.AutoBuilder.1.1.0.0;' />
+          $(NugetPackagesPath)\NCastor.AutoBuilder.Runner.1.1.0.0;' />
     </ItemGroup>
     <RemoveDir ContinueOnError='false' Directories='@(DirsToRemove)' />
 
