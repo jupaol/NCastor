@@ -42,7 +42,7 @@
     <Folder Include="Targets\Reports\Tests\NUnit\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\Common.properties">
+    <Content Include="Properties\Common\Common.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
@@ -83,47 +83,47 @@
     <Content Include="Targets\Package\Zip\SourceCode\PackageSourceCode.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\AssemblyInfo.properties">
+    <Content Include="Properties\Build\AssemblyInfo.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\Packing.properties">
+    <Content Include="Properties\Package\Packing.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\Build.properties">
+    <Content Include="Properties\Build\Build.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\IsolateSourceCode.properties">
+    <Content Include="Properties\Package\IsolateSourceCode.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\UnitTests.properties">
+    <Content Include="Properties\Tests\UnitTests.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\NUnitTests.properties">
+    <Content Include="Properties\Tests\NUnitTests.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\MSTest.properties">
+    <Content Include="Properties\Tests\MSTest.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\MSpecTests.properties">
+    <Content Include="Properties\Tests\MSpecTests.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\OpenCover.properties">
+    <Content Include="Properties\Tests\OpenCover.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\ReportGenerator.properties">
+    <Content Include="Properties\Reports\ReportGenerator.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\Nuget.properties">
+    <Content Include="Properties\Package\Nuget.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

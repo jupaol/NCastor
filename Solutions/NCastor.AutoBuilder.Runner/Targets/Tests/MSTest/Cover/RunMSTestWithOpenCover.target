@@ -26,14 +26,6 @@
     </RunMSTestWithOpenCoverDependsOn>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <MSTestRunnerWithOpenCoverArguments>/detail:errormessage /detail:errorstacktrace /detail:stderr</MSTestRunnerWithOpenCoverArguments>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <OpenCoverRunnerArgumentsForMSTest>-mergebyhash -register -returntargetcode</OpenCoverRunnerArgumentsForMSTest>
-  </PropertyGroup>
-
   <Target Name="RunMSTestWithOpenCover" DependsOnTargets="$(RunMSTestWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->

@@ -25,14 +25,6 @@
     </RunNUnitWithOpenCoverDependsOn>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <NUnitRunnerWithOpenCoverArguments>/noshadow</NUnitRunnerWithOpenCoverArguments>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <OpenCoverRunnerArgumentsForNUnit>-mergebyhash -register -returntargetcode</OpenCoverRunnerArgumentsForNUnit>
-  </PropertyGroup>
-
   <Target Name="RunNUnitWithOpenCover" DependsOnTargets="$(RunNUnitWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->

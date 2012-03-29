@@ -24,10 +24,6 @@
     </RunMSpecTestsDependsOn>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <MSpecRunnerArguments></MSpecRunnerArguments>
-  </PropertyGroup>
-
   <Target Name="RunMSpecTests" DependsOnTargets="$(RunMSpecTestsDependsOn)"/>
 
   <!-- To be overriden by the user -->

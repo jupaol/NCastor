@@ -16,21 +16,21 @@
   </PropertyGroup>
   
   <!-- Importing properties -->
-  <Import Project="$(PropertiesPath)\Common.properties"/>
-  <Import Project="$(PropertiesPath)\AssemblyInfo.properties"/>
+  <Import Project="$(PropertiesPath)\Common\Common.properties"/>
   
-  <Import Project="$(PropertiesPath)\Build.properties"/>
-  <Import Project="$(PropertiesPath)\IsolateSourceCode.properties"/>
-  <Import Project="$(PropertiesPath)\Packing.properties"/>
+  <Import Project="$(PropertiesPath)\Build\AssemblyInfo.properties"/>
+  <Import Project="$(PropertiesPath)\Build\Build.properties"/>
   
-  <Import Project="$(PropertiesPath)\UnitTests.properties"/>
+  <Import Project="$(PropertiesPath)\Tests\UnitTests.properties"/>
+  <Import Project="$(PropertiesPath)\Tests\NUnitTests.properties"/>
+  <Import Project="$(PropertiesPath)\Tests\MSTest.properties"/>
+  <Import Project="$(PropertiesPath)\Tests\MSpecTests.properties"/>
+  <Import Project="$(PropertiesPath)\Tests\OpenCover.properties"/>
   
-  <Import Project="$(PropertiesPath)\NUnitTests.properties"/>
-  <Import Project="$(PropertiesPath)\MSTest.properties"/>
-  <Import Project="$(PropertiesPath)\MSpecTests.properties"/>
-  
-  <Import Project="$(PropertiesPath)\OpenCover.properties"/>
-  <Import Project="$(PropertiesPath)\ReportGenerator.properties"/>
-  <Import Project="$(PropertiesPath)\Nuget.properties"/>
+  <Import Project="$(PropertiesPath)\Reports\ReportGenerator.properties"/>
+
+  <Import Project="$(PropertiesPath)\Package\IsolateSourceCode.properties"/>
+  <Import Project="$(PropertiesPath)\Package\Packing.properties"/>
+  <Import Project="$(PropertiesPath)\Package\Nuget.properties"/>
 
 </Project>

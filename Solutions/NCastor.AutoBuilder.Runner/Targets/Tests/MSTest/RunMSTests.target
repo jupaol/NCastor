@@ -24,10 +24,6 @@
     </RunMSTestsDependsOn>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <MSTestRunnerArguments>/detail:errormessage /detail:errorstacktrace /detail:stderr</MSTestRunnerArguments>
-  </PropertyGroup>
-
   <Target Name="RunMSTests" DependsOnTargets="$(RunMSTestsDependsOn)"/>
 
   <!-- To be overriden by the user -->

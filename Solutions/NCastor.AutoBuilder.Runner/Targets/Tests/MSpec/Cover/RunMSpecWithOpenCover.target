@@ -26,14 +26,6 @@
     </RunMSpecWithOpenCoverDependsOn>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <MSpecRunnerWithOpenCoverArguments></MSpecRunnerWithOpenCoverArguments>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <OpenCoverRunnerArgumentsForMSpec>-mergebyhash -register -returntargetcode</OpenCoverRunnerArgumentsForMSpec>
-  </PropertyGroup>
-
   <Target Name="RunMSpecWithOpenCover" DependsOnTargets="$(RunMSpecWithOpenCoverDependsOn)"/>
 
   <!-- To be overriden by the user -->

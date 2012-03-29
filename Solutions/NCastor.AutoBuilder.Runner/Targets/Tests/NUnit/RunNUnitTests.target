@@ -23,10 +23,6 @@
     </RunNUnitTestsDependsOn>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <NUnitRunnerArguments>/noshadow</NUnitRunnerArguments>
-  </PropertyGroup>
-
   <Target Name="RunNUnitTests" DependsOnTargets="$(RunNUnitTestsDependsOn)" />
   
   <!-- To be overriden by the user -->
