@@ -502,6 +502,9 @@
     <Content Include="Targets\Package\ClickOnce\CreateClickOncePackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Package\ClickOnce\PrepareClickOncePackages.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\Package\CreatePackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

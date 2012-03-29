@@ -13,6 +13,7 @@
 
   <PropertyGroup>
     <CreateClickOncePackagesDependsOn>
+      PrepareClickOncePackages;
       BeforeCreateClickOncePackages;
       CoreCreateClickOncePackages;
       AfterCreateClickOncePackages;
@@ -27,13 +28,37 @@
 
   <Target Name="CoreCreateClickOncePackages" >
 
+    <Error ContinueOnError="false" Text="You need to specify at least one ClickOnce project to generate" Condition="@(ClickOnceProjects) == ''" />
+
+    <Error
+      ContinueOnError="false"
+      Text="For each ClickOnce project, you need to specify the ClickOnce project path"
+      Condition="%(ClickOnceProjects.Identity) == ''"/>
+
+    <Error
+      ContinueOnError="false"
+      Text="For each ClickOnce project, you need to specify the Destination Path" 
+      Condition="%(ClickOnceProjects.DestinationPath) == ''"/>
+
+    <Error
+      ContinueOnError="false"
+      Text="For each ClickOnce project, you need to specify the Working Directory Path"
+      Condition="%(ClickOnceProjects.WorkingDirectoryPath) == ''"/>
+
+    <Error
+      ContinueOnError="false"
+      Text="For each ClickOnce project, you need to specify the application version"
+      Condition="%(ClickOnceProjects.ApplicationVersion) == ''"/>
+
     <MSBuild
-          Projects="$(ClickOnceProjectPath)"
-          Properties="PublishDir=\\JUPAOL-PC\CruiseControl Integration 01\0000000\;
-                          ApplicationVersion=7.11.2.234;
-                          OutputPath=$(DropsPath)\DebugDeploymentTmp;"
+          Projects="%(ClickOnceProjects.Identity)"
+          Properties="
+            PublishDir=%(ClickOnceProjects.DestinationPath);
+            ApplicationVersion=%(ClickOnceProjects.ApplicationVersion);
+            OutputPath=%(ClickOnceProjects.WorkingDirectoryPath);
+            %(ClickOnceProjects.ExtraProperties);"
           Targets="Publish" />
 
   </Target>
-  
+
 </Project>

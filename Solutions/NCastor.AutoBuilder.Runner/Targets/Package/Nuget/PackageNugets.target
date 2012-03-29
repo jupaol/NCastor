@@ -34,15 +34,15 @@
 
     <Error
       ContinueOnError="false"
-      Text="For every nuget package to process, you need to specify the nuspec or project in the include NugetPackages.Include"
+      Text="For each nuget package to process, you need to specify the nuspec or project in the include NugetPackages.Include"
       Condition="%(NugetPackages.Identity) == ''" />
     <Error
       ContinueOnError="false"
-      Text="For every nuget package to process, you need to specify its SourcePath property"
+      Text="For each nuget package to process, you need to specify its SourcePath property"
       Condition="%(NugetPackages.SourcePath) == ''" />
     <Error
       ContinueOnError="false"
-      Text="For every nuget package to process, you need to specify its Version property"
+      Text="For each nuget package to process, you need to specify its Version property"
       Condition="%(NugetPackages.Version) == ''" />
     
     <Exec 

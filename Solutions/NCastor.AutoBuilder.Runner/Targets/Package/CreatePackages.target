@@ -26,6 +26,7 @@
       PackageMSpecTestReports;
 
       PackageNugets;
+      CreateClickOncePackages;
 
       CoreCreatePackages;
       AfterCreatePackages;

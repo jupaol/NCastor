@@ -28,6 +28,7 @@
   <Import Project="Nuget\PrepareNugetPackages.target"/>
   <Import Project="Nuget\PackageNugets.target"/>
 
+  <Import Project="ClickOnce\PrepareClickOncePackages.target"/>
   <Import Project="ClickOnce\CreateClickOncePackages.target"/>
 
 </Project>
