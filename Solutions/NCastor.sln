@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.MSBuild.Scripts", "NCastor.MSBuild.Scripts\NCastor.MSBuild.Scripts.csproj", "{4A0D623E-CBE2-4446-A9DC-FF32EAF219D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Runner", "NCastor.AutoBuilder.Runner\NCastor.AutoBuilder.Runner.csproj", "{4A0D623E-CBE2-4446-A9DC-FF32EAF219D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{8772106C-6838-4B40-9C9D-91D26A4F9122}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{8772106C
 		..\Readme.md = ..\Readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.Console", "NCastor.Console\NCastor.Console.csproj", "{EB10FEA4-D307-44FC-A912-8E852515B1D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Console", "NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console.csproj", "{EB10FEA4-D307-44FC-A912-8E852515B1D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.Console.Tests", "NCastor.Console.Tests\NCastor.Console.Tests.csproj", "{3823CEF7-CA6B-4A97-AB00-D6C3D1C58100}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Console.Tests", "NCastor.AutoBuilder.Console.Tests\NCastor.AutoBuilder.Console.Tests.csproj", "{3823CEF7-CA6B-4A97-AB00-D6C3D1C58100}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F5C9BD34-63AF-4115-99B1-9849E38663F0}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,9 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.Console.Integration.Tests", "NCastor.Console.Integration.Tests\NCastor.Console.Integration.Tests.csproj", "{7F7447AE-32B4-48A9-A27A-A2E60586E8D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Console.Integration.Tests", "NCastor.AutoBuilder.Console.Integration.Tests\NCastor.AutoBuilder.Console.Integration.Tests.csproj", "{7F7447AE-32B4-48A9-A27A-A2E60586E8D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.MSBuild.Scripts.Personalized", "NCastor.MSBuild.Scripts.Personalized\NCastor.MSBuild.Scripts.Personalized.csproj", "{F6EDC8C9-CAE6-4F66-9A97-DB5BE444FBA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder", "NCastor.AutoBuilder\NCastor.AutoBuilder.csproj", "{F6EDC8C9-CAE6-4F66-9A97-DB5BE444FBA6}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -82,6 +82,7 @@ Global
 		{7F7447AE-32B4-48A9-A27A-A2E60586E8D8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7F7447AE-32B4-48A9-A27A-A2E60586E8D8}.Release|x86.ActiveCfg = Release|Any CPU
 		{F6EDC8C9-CAE6-4F66-9A97-DB5BE444FBA6}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F6EDC8C9-CAE6-4F66-9A97-DB5BE444FBA6}.Debug|Any CPU.Build.0 = Debug|x86
 		{F6EDC8C9-CAE6-4F66-9A97-DB5BE444FBA6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{F6EDC8C9-CAE6-4F66-9A97-DB5BE444FBA6}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{F6EDC8C9-CAE6-4F66-9A97-DB5BE444FBA6}.Debug|x86.ActiveCfg = Debug|x86

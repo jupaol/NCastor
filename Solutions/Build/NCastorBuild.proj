@@ -51,20 +51,20 @@
   <!-- TODO: Place your custom settings here -->
 
   <PropertyGroup>
-    <NCastorMSBuildScripts>$(WorkingDirectoryPath)\NCastorToolsAndBaseScripts</NCastorMSBuildScripts>
-    <NCastorMSBuildScriptsPersonalized>$(WorkingDirectoryPath)\NCastorPersonalizedScripts</NCastorMSBuildScriptsPersonalized>
-    <NCastorConsole>$(WorkingDirectoryPath)\NCastorConsoleApp</NCastorConsole>
+    <NCastorAutoBuilderRunner>$(WorkingDirectoryPath)\NCastorAutoBuilderRunner</NCastorAutoBuilderRunner>
+    <NCastorAutoBuilder>$(WorkingDirectoryPath)\NCastorAutoBuilder</NCastorAutoBuilder>
+    <NCastorAutoBuilderConsole>$(WorkingDirectoryPath)\NCastorAutoBuilderConsole</NCastorAutoBuilderConsole>
   </PropertyGroup>
 
   <ItemGroup>
-    <SpecialProjects Include="$(SolutionsPath)\NCastor.MSBuild.Scripts\NCastor.MSBuild.Scripts.csproj">
-      <DestinationPath>$(NCastorMSBuildScripts)</DestinationPath>
+    <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Runner\NCastor.AutoBuilder.Runner.csproj">
+      <DestinationPath>$(NCastorAutoBuilderRunner)</DestinationPath>
     </SpecialProjects>
-    <SpecialProjects Include="$(SolutionsPath)\NCastor.MSBuild.Scripts.Personalized\NCastor.MSBuild.Scripts.Personalized.csproj">
-      <DestinationPath>$(NCastorMSBuildScriptsPersonalized)</DestinationPath>
+    <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj">
+      <DestinationPath>$(NCastorAutoBuilder)</DestinationPath>
     </SpecialProjects>
-    <SpecialProjects Include="$(SolutionsPath)\NCastor.Console\NCastor.Console.csproj">
-      <DestinationPath>$(NCastorConsole)</DestinationPath>
+    <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console.csproj">
+      <DestinationPath>$(NCastorAutoBuilderConsole)</DestinationPath>
     </SpecialProjects>
   </ItemGroup>
 
@@ -111,30 +111,30 @@
   <Target Name="CoreSettingInstrumentationAssemblies">
     <ItemGroup>
       <AssembliesToInstrument Include="
-                                        $(TestAssembliesPath)\NCastor.Console.exe;" />
+                                        $(TestAssembliesPath)\NCastor.AutoBuilder.Console.exe;" />
     </ItemGroup>
   </Target>
 
   <Target Name="CoreSettingMSTestTestingAssemblies">
     <ItemGroup>
       <MSTestContainers Include="
-                          $(TestAssembliesPath)\NCastor.Console.Tests.dll;
-                          $(TestAssembliesPath)\NCastor.Console.Integration.Tests.dll;" />
+                          $(TestAssembliesPath)\NCastor.AutoBuilder.Console.Tests.dll;
+                          $(TestAssembliesPath)\NCastor.AutoBuilder.Console.Integration.Tests.dll;" />
     </ItemGroup>
   </Target>
 
-  <Target Name="PrepareNCastorMSBuildScriptsNuget">
+  <Target Name="PrepareNCastorAutoBuilderRunnerNuget">
     
-    <Delete Files="$(NCastorMSBuildScripts)\NCastor.MSBuild.Scripts.dll;$(NCastorMSBuildScripts)\NCastor.MSBuild.Scripts.pdb;" />
+    <Delete Files="$(NCastorAutoBuilderRunner)\NCastor.AutoBuilder.Runner.dll;$(NCastorAutoBuilderRunner)\NCastor.AutoBuilder.Runner.pdb;" />
 
     <MSBuild.ExtensionPack.FileSystem.RoboCopy
-      Source="$(NCastorConsole)"
-      Destination="$(NCastorMSBuildScripts)\Tools\ScriptCreator"
+      Source="$(NCastorAutoBuilderConsole)"
+      Destination="$(NCastorAutoBuilderRunner)\Tools\ScriptCreator"
       Files="*.dll;*.exe;*.config;"/>
 
     <ItemGroup>
-      <NugetPackages Include="NCastor.nuspec">
-        <SourcePath>$(NCastorMSBuildScripts)</SourcePath>
+      <NugetPackages Include="NCastor.AutoBuilder.Runner.nuspec">
+        <SourcePath>$(NCastorAutoBuilderRunner)</SourcePath>
         <ExtraOptions></ExtraOptions>
         <Version>$(SemanticVersion)</Version>
       </NugetPackages>
@@ -142,13 +142,13 @@
     
   </Target>
 
-  <Target Name="PrepareNCastorMSBuildScriptsPersonalizedNuget">
+  <Target Name="PrepareNCastorAutoBuilderNuget">
 
-    <Delete Files="$(NCastorMSBuildScriptsPersonalized)\NCastor.MSBuild.Scripts.Personalized.dll;$(NCastorMSBuildScriptsPersonalized)\NCastor.MSBuild.Scripts.Personalized.pdb;" />
+    <Delete Files="$(NCastorAutoBuilder)\NCastor.AutoBuilder.dll;$(NCastorAutoBuilder)\NCastor.AutoBuilder.pdb;" />
 
     <ItemGroup>
-      <NugetPackages Include="NCastorPersonalizedScripts.nuspec">
-        <SourcePath>$(NCastorMSBuildScriptsPersonalized)</SourcePath>
+      <NugetPackages Include="NCastor.AutoBuilder.nuspec">
+        <SourcePath>$(NCastorAutoBuilder)</SourcePath>
         <ExtraOptions></ExtraOptions>
         <Version>$(SemanticVersion)</Version>
       </NugetPackages>
@@ -156,6 +156,6 @@
 
   </Target>
 
-  <Target Name="CorePrepareNugetPackages" DependsOnTargets="PrepareNCastorMSBuildScriptsNuget;PrepareNCastorMSBuildScriptsPersonalizedNuget;" />
+  <Target Name="CorePrepareNugetPackages" DependsOnTargets="PrepareNCastorAutoBuilderRunnerNuget;PrepareNCastorAutoBuilderNuget;" />
 
 </Project>
