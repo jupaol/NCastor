@@ -39,9 +39,13 @@
       <_NUnitAssemblies Include="@(NUnitAssemblies->'&quot;%(Identity)&quot;')" />
     </ItemGroup>
 
+    <PropertyGroup>
+      <_NUnitCommandArgs>@(_NUnitAssemblies, ' ') /result="$(NUnitXmlReportFilePath)" $(NUnitRunnerArguments)</_NUnitCommandArgs>
+    </PropertyGroup>
+
     <Exec 
       ContinueOnError="true"
-      Command='"$(NUnitRunner)" @(_NUnitAssemblies, " ") /result="$(NUnitXmlReportFilePath)" $(NUnitRunnerArguments)'>
+      Command='"$(NUnitRunner)" $(_NUnitCommandArgs)'>
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningNUnitTests"/>
     </Exec>
     
