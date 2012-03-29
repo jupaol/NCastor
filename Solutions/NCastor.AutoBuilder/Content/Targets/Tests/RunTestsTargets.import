@@ -198,19 +198,5 @@ Your RunTests custom dependencies
     </RunTestsDependsOn>
   </PropertyGroup>
   <Target Name="RunTests" DependsOnTargets="$(RunTestsDependsOn)" />
-  <!--
-  This is a custom tests target using the minimum actions required, in this case it actually just creates folders,
-  you need to specify at least one type of test to execute
-  -->
-
-  <PropertyGroup>
-    <RunTestsLiteDependsOn>
-      BuildLite;
-      SettingTestingAssemblies;
-      CoreRunTests;
-      CheckForTestsErrors;
-    </RunTestsLiteDependsOn>
-  </PropertyGroup>
-  <Target Name="RunTestsLite" DependsOnTargets="$(RunTestsLiteDependsOn)" />
 
 </Project>

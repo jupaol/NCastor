@@ -80,7 +80,19 @@ Your Build custom dependencies
   -->
   <PropertyGroup>
     <BuildDependsOn>
-      $(BuildDependsOn);
+      ValidateSettings;
+      CalculateSemanticVersion;
+      Clean;
+      CreateArtefactFolders;
+
+      SetAssemblyVersion;
+      SetAssemblyInfo;
+
+      BeforeBuild;
+      CoreBuild;
+      AfterBuild;
+
+      BuildSpecialProjects;
     </BuildDependsOn>
   </PropertyGroup>
   <Target Name="Build" DependsOnTargets="$(BuildDependsOn);" />

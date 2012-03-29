@@ -32,7 +32,7 @@
       <DirsToRemove
         Include='
           
-          $(NugetPackagesPath)\NCastor.1.1.0.0;' />
+          $(NugetPackagesPath)\NCastor.AutoBuilder.1.1.0.0;' />
     </ItemGroup>
     <RemoveDir ContinueOnError='false' Directories='@(DirsToRemove)' />
 
@@ -40,7 +40,7 @@
 
     <MakeDir ContinueOnError="false" Directories='$(NugetPackagesPath)' Condition='!Exists($(NugetPackagesPath))'></MakeDir>
 
-    <Exec Command='"$(NugetRunner)" install NCastor -s c:\00\nuget -o "$(NugetPackagesPath)"'></Exec>
+    <Exec Command='"$(NugetRunner)" install NCastor.AutoBuilder.Runner -s c:\00\nuget -o "$(NugetPackagesPath)"'></Exec>
   
   </Target>
 

@@ -18,7 +18,7 @@ Initial settings
 
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
     <!--TODO: Update the NCastor path if different from the following path-->
-    <NCastorPath>$(NugetPackagesPath)\NCastor.1.1.0.0</NCastorPath>
+    <NCastorPath>$(NugetPackagesPath)\NCastor.AutoBuilder.Runner.1.1.0.0</NCastorPath>
 
     <!--TODO: Version properties-->
     <MajorVersion>1</MajorVersion>

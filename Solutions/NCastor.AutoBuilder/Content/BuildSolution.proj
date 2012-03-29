@@ -10,7 +10,7 @@ because some properties declared in nested MSBuild scripts totally depend on the
 preceding scripts
 -->
 
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="BuildLite" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <!-- Importing  Initial properties -->
   <Import Project="Properties\InitProperties.import"/>

@@ -17,7 +17,7 @@
     <SolutionName>NCastor</SolutionName>
 
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
-    <NCastorPath>$(SolutionsPath)\NCastor.MSBuild.Scripts</NCastorPath>
+    <NCastorPath>$(SolutionsPath)\NCastor.AutoBuilder.Runner</NCastorPath>
 
     <MSTestRunner>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>
     <OpenCoverRunner>$(NugetPackagesPath)\OpenCover.3.0.121\OpenCover.Console.exe</OpenCoverRunner>
