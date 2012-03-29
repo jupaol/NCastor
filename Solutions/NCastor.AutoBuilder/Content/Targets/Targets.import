@@ -22,6 +22,7 @@ Your targets imports
   <Import Project="Tests\RunTests.target"/>
 
   <Import Project="Package\PrepareNugetPackages.target"/>
+  <Import Project="Package\PrepareClickOncePackages.target"/>
   <Import Project="Package\CustomPackages.target"/>
   <Import Project="Package\CreatePackages.target"/>
 
