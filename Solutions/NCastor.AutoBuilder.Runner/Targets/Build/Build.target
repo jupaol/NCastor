@@ -37,7 +37,7 @@
 
   <Target Name="CoreBuild">
 
-    <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(ForcedBuildProperties);" Targets="ReBuild"/>
+    <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(BuildProperties);" Targets="ReBuild"/>
     
   </Target>
   

@@ -31,7 +31,7 @@
 
     <MSBuild 
       Projects="%(SpecialProjects.Identity)" 
-      Properties="$(ForcedBuildPropertiesWithoutOutput); OutputPath=%(SpecialProjects.DestinationPath);"
+      Properties="$(SpecialProjectsBuildProperties); OutputPath=%(SpecialProjects.DestinationPath);"
       Targets="ReBuild"/>
     
   </Target>

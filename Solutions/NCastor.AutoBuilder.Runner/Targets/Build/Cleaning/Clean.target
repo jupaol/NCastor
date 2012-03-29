@@ -28,7 +28,7 @@
 
   <Target Name="CoreClean">
 
-    <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(ForcedBuildProperties)" Targets="Clean" />
+    <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(BuildProperties)" Targets="Clean" />
     
   </Target>
   
