@@ -40,6 +40,9 @@
     <Compile Include="Dummy.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Properties\Build\Build.properties">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Properties\Runners.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

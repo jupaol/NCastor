@@ -12,6 +12,8 @@ Your custom settings
 
   <Import Project="Runners.properties"/>
 
+  <Import Project="Build\Build.properties"/>
+
   <Import Project="Tests\MSpec.properties"/>
   <Import Project="Tests\MSTest.properties"/>
   <Import Project="Tests\NUnit.properties"/>
