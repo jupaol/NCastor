@@ -464,6 +464,9 @@
     <Content Include="Tools\MSTestReportGenerator\Services.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Tools\publish.template.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Tools\uninstall.ps1" />
   </ItemGroup>
   <ItemGroup>

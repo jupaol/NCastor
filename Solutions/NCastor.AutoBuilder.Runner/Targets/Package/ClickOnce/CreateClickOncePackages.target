@@ -40,6 +40,63 @@
             %(ClickOnceProjects.ExtraProperties);"
           Targets="Publish" />
 
+    <PropertyGroup>
+      <_PublishClickOnceHtmlTemplateFilePath>$(NCastorToolsPath)\publish.template.html</_PublishClickOnceHtmlTemplateFilePath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <!--<_PublishClickOnceTokens Include="PublisherName">
+        <ReplacementValue>$(PublisherName)</ReplacementValue>
+        <Visible>false</Visible>
+      </_PublishClickOnceTokens>-->
+      <!--<_PublishClickOnceTokens Include="ProductName">
+        <ReplacementValue>$(ProductName)</ReplacementValue>
+        <Visible>false</Visible>
+      </_PublishClickOnceTokens>-->
+      <!--<_PublishClickOnceTokens Include="ApplicationVersion">
+        <ReplacementValue>$(ApplicationVersion)</ReplacementValue>
+        <Visible>false</Visible>
+      </_PublishClickOnceTokens>-->
+      <!--<_PublishClickOnceTokens Include="Prerequsites">
+        <ReplacementValue>@(BootstrapperPackage->'&lt;li&gt;%(ProductName)&lt;/li&gt;','%0D%0A')</ReplacementValue>
+        <Visible>false</Visible>
+      </_PublishClickOnceTokens>-->
+      <_PublishClickOnceTokens Include="Username">
+        <ReplacementValue>$(Username)</ReplacementValue>
+        <Visible>false</Visible>
+      </_PublishClickOnceTokens>
+    </ItemGroup>
+
+    <MSBuild.Community.Tasks.Time Format="dd/MM/yyyy HH:mm">
+      <Output TaskParameter="FormattedTime" PropertyName="_PublishTime" />
+    </MSBuild.Community.Tasks.Time>
+    
+    <!-- Finalise the publish.htm template file and copy it to the publish location -->
+    <MSBuild.Community.Tasks.TemplateFile 
+      Template="$(_PublishClickOnceHtmlTemplateFilePath)" 
+      Tokens="@(_PublishClickOnceTokens)" 
+      OutputFilename="%(ClickOnceProjects.DestinationPath)\%(ClickOnceProjects.PublishFileName)" />
+    
+    <MSBuild.Community.Tasks.FileUpdate
+      Files="%(ClickOnceProjects.DestinationPath)\%(ClickOnceProjects.PublishFileName)"
+      Regex="\${ApplicationVersion}"
+      ReplacementText="%(ClickOnceProjects.ApplicationVersion)" />
+
+    <MSBuild.Community.Tasks.FileUpdate
+      Files="%(ClickOnceProjects.DestinationPath)\%(ClickOnceProjects.PublishFileName)"
+      Regex="\${PublishTime}"
+      ReplacementText="$(_PublishTime)" />
+
+    <MSBuild.Community.Tasks.FileUpdate
+      Files="%(ClickOnceProjects.DestinationPath)\%(ClickOnceProjects.PublishFileName)"
+      Regex="\${PublisherName}"
+      ReplacementText="%(ClickOnceProjects.PublisherName)" />
+
+    <MSBuild.Community.Tasks.FileUpdate
+      Files="%(ClickOnceProjects.DestinationPath)\%(ClickOnceProjects.PublishFileName)"
+      Regex="\${ProductName}"
+      ReplacementText="%(ClickOnceProjects.ProductName)" />
+
   </Target>
 
 </Project>

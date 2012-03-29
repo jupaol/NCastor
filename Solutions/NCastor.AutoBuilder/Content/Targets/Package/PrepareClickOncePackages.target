@@ -17,6 +17,9 @@ Your Prepare ClickOnce package targets
         <DestinationPath>$(DropsPath)\My ClickOnce Proj - Publish</DestinationPath>
         <WorkingDirectoryPath>$(WorkingDirectoryPath)\My ClickOnce Proj - ClickOnce tmp</WorkingDirectoryPath>
         <ApplicationVersion>$(SemanticVersion)</ApplicationVersion>
+        <PublishFileName></PublishFileName>
+        <PublisherName></PublisherName>
+        <ProductName></ProductName>
         <ExtraProperties></ExtraProperties>
       </ClickOnceProjects>
     </ItemGroup>

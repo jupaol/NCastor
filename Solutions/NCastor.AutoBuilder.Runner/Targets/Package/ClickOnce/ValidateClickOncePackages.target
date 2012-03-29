@@ -49,6 +49,21 @@
       Text="For each ClickOnce project, you need to specify the application version"
       Condition="%(ClickOnceProjects.ApplicationVersion) == ''"/>
 
+    <Error
+      ContinueOnError="false"
+      Text="For each ClickOnce project, you need to specify the publish file name"
+      Condition="%(ClickOnceProjects.PublishFileName) == ''"/>
+
+    <Error
+      ContinueOnError="false"
+      Text="For each ClickOnce project, you need to specify the publisher name"
+      Condition="%(ClickOnceProjects.PublisherName) == ''"/>
+
+    <Error
+      ContinueOnError="false"
+      Text="For each ClickOnce project, you need to specify the product name"
+      Condition="%(ClickOnceProjects.ProductName) == ''"/>
+    
   </Target>
 
 </Project>
