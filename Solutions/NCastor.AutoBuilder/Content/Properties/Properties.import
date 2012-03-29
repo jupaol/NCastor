@@ -10,11 +10,11 @@ Your custom settings
 
   <!-- TODO: Import your custom settings here -->
 
-  <Import Project="Runners.import"/>
+  <Import Project="Runners.properties"/>
 
-  <Import Project="Tests\MSpec.properties.import"/>
-  <Import Project="Tests\MSTest.properties.import"/>
-  <Import Project="Tests\NUnit.properties.import"/>
-  <Import Project="Tests\OpenCover.properties.import"/>
+  <Import Project="Tests\MSpec.properties"/>
+  <Import Project="Tests\MSTest.properties"/>
+  <Import Project="Tests\NUnit.properties"/>
+  <Import Project="Tests\OpenCover.properties"/>
 
 </Project>

@@ -40,10 +40,10 @@
     <Compile Include="Dummy.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Properties\Runners.import">
+    <None Include="Content\Properties\Runners.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Properties\InitProperties.import.pp">
+    <None Include="Content\Properties\Init.properties.pp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -59,33 +59,33 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Properties\Tests\NUnit.properties.import">
+    <None Include="Content\Properties\Tests\NUnit.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Properties\Tests\MSpec.properties.import">
+    <None Include="Content\Properties\Tests\MSpec.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Properties\Tests\OpenCover.properties.import">
+    <None Include="Content\Properties\Tests\OpenCover.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Properties\Tests\MSTest.properties.import">
+    <None Include="Content\Properties\Tests\MSTest.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Targets\Build\BuildTargets.import">
+    <None Include="Content\Targets\Build\Build.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Targets\Build\BuildSpecialProjectsTargets.import">
+    <None Include="Content\Targets\Build\BuildSpecialProjects.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Targets\Package\PrepareNugetPackages.import">
+    <None Include="Content\Targets\Package\PrepareNugetPackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Targets\Package\CustomPackages.import">
+    <None Include="Content\Targets\Package\CustomPackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Targets\Package\CreatePackages.import">
+    <None Include="Content\Targets\Package\CreatePackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\Targets\Targets.import">
@@ -94,10 +94,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Targets\Tests\CustomTestTargets.import">
+    <None Include="Content\Targets\Tests\CustomTest.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Targets\Tests\RunTestsTargets.import">
+    <None Include="Content\Targets\Tests\RunTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -125,19 +125,19 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Targets\Build\CustomBuildTargets.import">
+    <None Include="Content\Targets\Build\CustomBuild.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Targets\Build\VersioningTargets.import">
+    <None Include="Content\Targets\Build\Versioning.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Targets\Tests\MSpecTargets.import">
+    <None Include="Content\Targets\Tests\MSpec.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Targets\Tests\MSTestTargets.import">
+    <None Include="Content\Targets\Tests\MSTest.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Targets\Tests\NUnitTargets.import">
+    <None Include="Content\Targets\Tests\NUnit.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

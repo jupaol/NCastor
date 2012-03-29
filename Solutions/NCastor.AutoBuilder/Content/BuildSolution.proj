@@ -13,7 +13,7 @@ preceding scripts
 <Project DefaultTargets="BuildLite" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <!-- Importing  Initial properties -->
-  <Import Project="Properties\InitProperties.import"/>
+  <Import Project="Properties\Init.properties"/>
 
   <!-- Importing NCastor Global properties -->
   <Import Project="$(NCastorPath)\GlobalProperties.import"/>

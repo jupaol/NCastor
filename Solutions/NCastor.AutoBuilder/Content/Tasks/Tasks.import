@@ -8,6 +8,6 @@ Your custom tasks
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!-- TODO: Place your custom tasks here -->
+  <!-- TODO: Import your custom tasks here -->
 
 </Project>
