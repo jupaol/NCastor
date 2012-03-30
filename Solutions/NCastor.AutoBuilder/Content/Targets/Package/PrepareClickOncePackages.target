@@ -16,10 +16,6 @@ Your Prepare ClickOnce package targets
       <ClickOnceProjects Include="$(SolutionsPath)\My ClickOnce Proj\My ClickOnce Proj.csproj">
         <DestinationPath>$(DropsPath)\My ClickOnce Proj - Publish</DestinationPath>
         <WorkingDirectoryPath>$(WorkingDirectoryPath)\My ClickOnce Proj - ClickOnce tmp</WorkingDirectoryPath>
-        <ApplicationVersion>$(SemanticVersion)</ApplicationVersion>
-        <PublishFileName></PublishFileName>
-        <PublisherName></PublisherName>
-        <ProductName></ProductName>
         <ExtraProperties></ExtraProperties>
       </ClickOnceProjects>
     </ItemGroup>
