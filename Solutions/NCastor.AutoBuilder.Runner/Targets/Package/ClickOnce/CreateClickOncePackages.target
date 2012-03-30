@@ -47,6 +47,16 @@
   </Target>
 
   <Target Name="_CreateClickOncePackages">
+
+    <Error Text="The '_CurrentClickOnceProject' property is required" Condition="$(_CurrentClickOnceProject) == ''" />
+    <Error Text="The '_CurrentClickOnceProject' project does not exists" Condition="!Exists($(_CurrentClickOnceProject))" />
+    <Error Text="The '_CurrentClickOnceProjectDestinationPath' property is required" Condition="$(_CurrentClickOnceProjectDestinationPath) == ''" />
+    <Error Text="The '_CurrentClickOnceProjectDestinationPath' path was not found" Condition="!Exists($(_CurrentClickOnceProjectDestinationPath))"/>
+    <Error Text="The '_CurrentClickOnceProjectApplicationVersion' property is required" Condition="$(_CurrentClickOnceProjectApplicationVersion) == ''"/>
+    <Error Text="The '_CurrentClickOnceProjectWorkingDirectoryPath' property is required" Condition="$(_CurrentClickOnceProjectWorkingDirectoryPath) == ''"/>
+    <Error Text="The '_CurrentClickOnceProjectWorkingDirectoryPath' path was not found" Condition="!Exists($(_CurrentClickOnceProjectWorkingDirectoryPath))"/>
+    <Error Text="The '_CurrentClickOnceProjectPublishFileName' property is required" Condition="$(_CurrentClickOnceProjectPublishFileName) == ''"/>
+    <Error Text="The '_CurrentClickOnceProjectNamespace' property is required" Condition="$(_CurrentClickOnceProjectNamespace) == ''"/>
     
     <MSBuild
       Projects="$(_CurrentClickOnceProject)"
