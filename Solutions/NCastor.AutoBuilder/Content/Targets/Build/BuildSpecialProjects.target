@@ -37,16 +37,16 @@ Your Build special projects targets
     Specifying the special projects
     <ItemGroup>
     <SpecialProjects Include="$(SolutionsPath)\My.Windows.Application\My.Windows.Application.csproj">
-      <DestinationPath>$(MyWindowsApplicationOutputPath)</DestinationPath>
+      <WorkingDirectoryPath>$(MyWindowsApplicationOutputPath)</WorkingDirectoryPath>
     </SpecialProjects>
     <SpecialProjects Include="$(SolutionsPath)\My.Nuget.Package\My.Nuget.Package.csproj">
-      <DestinationPath>$(MyNugetPackageOutputPath)</DestinationPath>
+      <WorkingDirectoryPath>$(MyNugetPackageOutputPath)</WorkingDirectoryPath>
     </SpecialProjects>
     <SpecialProjects Include="$(SolutionsPath)\My.WIX.Installer\My.WIX.Installer.csproj">
-      <DestinationPath>$(MyWIXInstallerOfMyWinAppOutputPath)</DestinationPath>
+      <WorkingDirectoryPath>$(MyWIXInstallerOfMyWinAppOutputPath)</WorkingDirectoryPath>
     </SpecialProjects>
     <SpecialProjects Include="$(SolutionsPath)\Another.Nuget.Package\Another.Nuget.Package.csproj">
-      <DestinationPath>$(AnotherNugetPackageOutputPath)</DestinationPath>
+      <WorkingDirectoryPath>$(AnotherNugetPackageOutputPath)</WorkingDirectoryPath>
     </SpecialProjects>
   </ItemGroup>
   </Target>-->

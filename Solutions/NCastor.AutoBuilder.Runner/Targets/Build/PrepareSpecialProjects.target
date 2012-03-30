@@ -19,7 +19,7 @@
     </PrepareSpecialProjectsDependsOn>
   </PropertyGroup>
 
-  <Target Name="PrepareSpecialProjects" DependsOnTargets="$(PrepareSpecialProjectsDependsOn)"/>
+  <Target Name="PrepareSpecialProjects" DependsOnTargets="$(PrepareSpecialProjectsDependsOn)" />
 
   <!-- To be overriden by the user -->
   <Target Name="BeforePrepareSpecialProjects" />

@@ -32,7 +32,7 @@
       Targets="_PackageSpecialProjects"
       Properties="
         _CurrentSpecialProjectZipFilePath=$(DropsPath)\$(PackageName).%(SpecialProjects.FileName).$(Configuration).$(Platform).v$(SemanticVersion).zip;
-        _CurrentSpecialFoldersWorkingDirectoryPath=%(SpecialProjects.DestinationPath)
+        _CurrentSpecialFoldersWorkingDirectoryPath=%(SpecialProjects.WorkingDirectoryPath)
       "/>
     
   </Target>

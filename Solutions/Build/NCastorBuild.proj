@@ -156,13 +156,13 @@
 
     <ItemGroup>
       <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Runner\NCastor.AutoBuilder.Runner.csproj">
-        <DestinationPath>$(NCastorAutoBuilderRunner)</DestinationPath>
+        <WorkingDirectoryPath>$(NCastorAutoBuilderRunner)</WorkingDirectoryPath>
       </SpecialProjects>
       <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj">
-        <DestinationPath>$(NCastorAutoBuilder)</DestinationPath>
+        <WorkingDirectoryPath>$(NCastorAutoBuilder)</WorkingDirectoryPath>
       </SpecialProjects>
       <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console.csproj">
-        <DestinationPath>$(NCastorAutoBuilderConsole)</DestinationPath>
+        <WorkingDirectoryPath>$(NCastorAutoBuilderConsole)</WorkingDirectoryPath>
       </SpecialProjects>
     </ItemGroup>
 

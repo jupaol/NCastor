@@ -19,7 +19,7 @@
     </CleanBuildSpecialProjectsArtefactsDependsOn>
   </PropertyGroup>
 
-  <Target Name="CleanBuildSpecialProjectsArtefacts" DependsOnTargets="$(CleanBuildSpecialProjectsArtefactsDependsOn)" Condition="@(SpecialProjects) != ''"/>
+  <Target Name="CleanBuildSpecialProjectsArtefacts" DependsOnTargets="$(CleanBuildSpecialProjectsArtefactsDependsOn)" />
 
   <!-- To be overriden by the user -->
   <Target Name="BeforeCleanBuildSpecialProjectsArtefacts" />
@@ -27,16 +27,17 @@
 
   <Target Name="CoreCleanBuildSpecialProjectsArtefacts" >
 
+    <Error ContinueOnError="false" Text="You need to specify at least one special project to build. If you do not want to build special folders, simply remove the BuildSpecialProjects target call" Condition="@(SpecialProjects) == ''" />
     <Error ContinueOnError="false" Text="For at least one special projects, the special project destination path was not specified" Condition="%(SpecialProjects.Identity) == ''" />
     <Error ContinueOnError="false" Text="At least one special project path was not found" Condition="!Exists(%(SpecialProjects.Identity))" />
-    <Error ContinueOnError="false" Text="If you specify special projects, you need to specify the DestinationPath for each one of them" Condition="%(SpecialProjects.DestinationPath) == ''" />
+    <Error ContinueOnError="false" Text="If you specify special projects, you need to specify the WorkingDirectoryPath for each one of them" Condition="%(SpecialProjects.WorkingDirectoryPath) == ''" />
     
-    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="%(SpecialProjects.DestinationPath)" ContinueOnError="false" Condition="Exists(%(SpecialProjects.DestinationPath))" />
-    <RemoveDir ContinueOnError="false" Directories="%(SpecialProjects.DestinationPath)" Condition="Exists(%(SpecialProjects.DestinationPath))" />
+    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="%(SpecialProjects.WorkingDirectoryPath)" ContinueOnError="false" Condition="Exists(%(SpecialProjects.WorkingDirectoryPath))" />
+    <RemoveDir ContinueOnError="false" Directories="%(SpecialProjects.WorkingDirectoryPath)" Condition="Exists(%(SpecialProjects.WorkingDirectoryPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
 
-    <Error ContinueOnError="false" Text="There was a problem when cleaning some of the special project destination directories" Condition="Exists(%(SpecialProjects.DestinationPath))" />
+    <Error ContinueOnError="false" Text="There was a problem when cleaning some of the special project destination directories" Condition="Exists(%(SpecialProjects.WorkingDirectoryPath))" />
 
   </Target>
   

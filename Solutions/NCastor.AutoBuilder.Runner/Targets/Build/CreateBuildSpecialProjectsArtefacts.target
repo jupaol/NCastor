@@ -19,7 +19,7 @@
     </CreateBuildSpecialProjectsArtefactsDependsOn>
   </PropertyGroup>
 
-  <Target Name="CreateBuildSpecialProjectsArtefacts" DependsOnTargets="$(CreateBuildSpecialProjectsArtefactsDependsOn)" Condition="@(SpecialProjects) != ''" />
+  <Target Name="CreateBuildSpecialProjectsArtefacts" DependsOnTargets="$(CreateBuildSpecialProjectsArtefactsDependsOn)" />
 
   <!-- To be overriden by the user -->
   <Target Name="BeforeCreateBuildSpecialProjectsArtefacts" />
@@ -27,7 +27,7 @@
 
   <Target Name="CoreCreateBuildSpecialProjectsArtefacts" >
 
-    <MakeDir ContinueOnError="false" Directories="%(SpecialProjects.DestinationPath)" Condition="!Exists(%(SpecialProjects.DestinationPath))" />
+    <MakeDir ContinueOnError="false" Directories="%(SpecialProjects.WorkingDirectoryPath)" Condition="!Exists(%(SpecialProjects.WorkingDirectoryPath))" />
     
   </Target>
   
