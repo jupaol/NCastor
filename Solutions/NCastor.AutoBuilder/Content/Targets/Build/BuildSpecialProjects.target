@@ -19,18 +19,23 @@ Your Build special projects targets
   the build process.
   
   The following are examples to show you how to specify special projects:
+  
+  Note: You need to override the following target: CorePrepareSpecialProjects and inside this target place 
+  the definition of the special projects
   -->
 
-  <!--Properties to keep the track of the paths to the output of your special folders-->
-  <!--<PropertyGroup>
+  <!--This is the target that should be overriden-->
+  <!--<Target Name="CorePrepareSpecialProjects">
+    Properties to keep the track of the paths to the output of your special folders
+    <PropertyGroup>
     <MyWindowsApplicationOutputPath>$(WorkingDirectoryPath)\MyWindowsApplicationBuild</MyWindowsApplicationOutputPath>
     <MyNugetPackageOutputPath>$(WorkingDirectoryPath)\MyNugetPackageBuild</MyNugetPackageOutputPath>
     <AnotherNugetPackageOutputPath>$(WorkingDirectoryPath)\AnotherNugetPackageBuild</AnotherNugetPackageOutputPath>
     <MyWIXInstallerOfMyWinAppOutputPath>$(WorkingDirectoryPath)\MyWIXInstallerOfMyWinApp</MyWIXInstallerOfMyWinAppOutputPath>
-  </PropertyGroup>-->
+  </PropertyGroup>
 
-  <!--Specifying the special projects-->
-  <!--<ItemGroup>
+    Specifying the special projects
+    <ItemGroup>
     <SpecialProjects Include="$(SolutionsPath)\My.Windows.Application\My.Windows.Application.csproj">
       <DestinationPath>$(MyWindowsApplicationOutputPath)</DestinationPath>
     </SpecialProjects>
@@ -43,6 +48,7 @@ Your Build special projects targets
     <SpecialProjects Include="$(SolutionsPath)\Another.Nuget.Package\Another.Nuget.Package.csproj">
       <DestinationPath>$(AnotherNugetPackageOutputPath)</DestinationPath>
     </SpecialProjects>
-  </ItemGroup>-->
-
+  </ItemGroup>
+  </Target>-->
+  
 </Project>

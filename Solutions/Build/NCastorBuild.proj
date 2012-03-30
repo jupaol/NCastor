@@ -49,24 +49,6 @@
   <!-- TODO: Place your custom settings here -->
 
   <PropertyGroup>
-    <NCastorAutoBuilderRunner>$(WorkingDirectoryPath)\NCastorAutoBuilderRunner</NCastorAutoBuilderRunner>
-    <NCastorAutoBuilder>$(WorkingDirectoryPath)\NCastorAutoBuilder</NCastorAutoBuilder>
-    <NCastorAutoBuilderConsole>$(WorkingDirectoryPath)\NCastorAutoBuilderConsole</NCastorAutoBuilderConsole>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Runner\NCastor.AutoBuilder.Runner.csproj">
-      <DestinationPath>$(NCastorAutoBuilderRunner)</DestinationPath>
-    </SpecialProjects>
-    <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj">
-      <DestinationPath>$(NCastorAutoBuilder)</DestinationPath>
-    </SpecialProjects>
-    <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console.csproj">
-      <DestinationPath>$(NCastorAutoBuilderConsole)</DestinationPath>
-    </SpecialProjects>
-  </ItemGroup>
-
-  <PropertyGroup>
     <BuildDependsOn>
       ValidateSettings;
       CalculateSemanticVersion;
@@ -163,5 +145,27 @@
   </Target>
 
   <Target Name="CorePrepareNugetPackages" DependsOnTargets="PrepareNCastorAutoBuilderRunnerNuget;PrepareNCastorAutoBuilderNuget;" />
+
+  <Target Name="CorePrepareSpecialProjects">
+
+    <PropertyGroup>
+      <NCastorAutoBuilderRunner>$(WorkingDirectoryPath)\NCastorAutoBuilderRunner</NCastorAutoBuilderRunner>
+      <NCastorAutoBuilder>$(WorkingDirectoryPath)\NCastorAutoBuilder</NCastorAutoBuilder>
+      <NCastorAutoBuilderConsole>$(WorkingDirectoryPath)\NCastorAutoBuilderConsole</NCastorAutoBuilderConsole>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Runner\NCastor.AutoBuilder.Runner.csproj">
+        <DestinationPath>$(NCastorAutoBuilderRunner)</DestinationPath>
+      </SpecialProjects>
+      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj">
+        <DestinationPath>$(NCastorAutoBuilder)</DestinationPath>
+      </SpecialProjects>
+      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console.csproj">
+        <DestinationPath>$(NCastorAutoBuilderConsole)</DestinationPath>
+      </SpecialProjects>
+    </ItemGroup>
+
+  </Target>
 
 </Project>

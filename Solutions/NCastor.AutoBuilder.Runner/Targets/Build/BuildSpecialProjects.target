@@ -15,6 +15,7 @@
     <BuildSpecialProjectsDependsOn>
       CleanBuildSpecialProjectsArtefacts;
       CreateBuildSpecialProjectsArtefacts;
+      PrepareSpecialProjects;
       BeforeBuildSpecialProjects;
       CoreBuildSpecialProjects;
       AfterBuildSpecialProjects;

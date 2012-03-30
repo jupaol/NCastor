@@ -467,6 +467,10 @@
     <Content Include="Targets\Package\Zip\Build\PackageSpecialProjects.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Build\PrepareSpecialProjects.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Tools\publish.template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
