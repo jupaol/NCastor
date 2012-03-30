@@ -27,7 +27,12 @@
 
   <Target Name="CoreCleanAssemblyInfoArtefacts" >
 
-    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(AssemblyInfoPath)" ContinueOnError="false" Condition="Exists($(AssemblyInfoPath))" />
+    <MSBuild.ExtensionPack.FileSystem.Folder
+      TaskAction="RemoveContent"
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
+      Path="$(AssemblyInfoPath)" 
+      ContinueOnError="false" 
+      Condition="Exists($(AssemblyInfoPath))" />
     <RemoveDir ContinueOnError="false" Directories="$(AssemblyInfoPath)" Condition="Exists($(AssemblyInfoPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />

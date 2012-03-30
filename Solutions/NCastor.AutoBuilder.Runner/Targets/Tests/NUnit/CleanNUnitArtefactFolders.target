@@ -28,8 +28,13 @@
   <Target Name="CoreCleanNUnitArtefactFolders" >
 
     <Error ContinueOnError="false" Text="The NUnit reports path was not specified" Condition="$(NUnitReportsPath) == ''" />
-    
-    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(NUnitReportsPath)" ContinueOnError="false" Condition="Exists($(NUnitReportsPath))" />
+
+    <MSBuild.ExtensionPack.FileSystem.Folder
+      TaskAction="RemoveContent"
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
+      Path="$(NUnitReportsPath)" 
+      ContinueOnError="false" 
+      Condition="Exists($(NUnitReportsPath))" />
     <RemoveDir ContinueOnError="false" Directories="$(NUnitReportsPath)" Condition="Exists($(NUnitReportsPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />

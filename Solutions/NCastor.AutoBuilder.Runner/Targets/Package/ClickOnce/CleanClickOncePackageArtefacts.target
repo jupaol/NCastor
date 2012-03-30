@@ -27,10 +27,20 @@
 
   <Target Name="CoreCleanClickOncePackageArtefacts" >
 
-    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="%(ClickOnceProjects.DestinationPath)" ContinueOnError="false" Condition="Exists(%(ClickOnceProjects.DestinationPath))" />
+    <MSBuild.ExtensionPack.FileSystem.Folder
+      TaskAction="RemoveContent"
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
+      Path="%(ClickOnceProjects.DestinationPath)" 
+      ContinueOnError="false" 
+      Condition="Exists(%(ClickOnceProjects.DestinationPath))" />
     <RemoveDir ContinueOnError="false" Directories="%(ClickOnceProjects.DestinationPath)" Condition="Exists(%(ClickOnceProjects.DestinationPath))" />
 
-    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="%(ClickOnceProjects.WorkingDirectoryPath)" ContinueOnError="false" Condition="Exists(%(ClickOnceProjects.WorkingDirectoryPath))" />
+    <MSBuild.ExtensionPack.FileSystem.Folder
+      TaskAction="RemoveContent"
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
+      Path="%(ClickOnceProjects.WorkingDirectoryPath)" 
+      ContinueOnError="false" 
+      Condition="Exists(%(ClickOnceProjects.WorkingDirectoryPath))" />
     <RemoveDir ContinueOnError="false" Directories="%(ClickOnceProjects.WorkingDirectoryPath)" Condition="Exists(%(ClickOnceProjects.WorkingDirectoryPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />

@@ -29,7 +29,12 @@
 
     <Error ContinueOnError="false" Text="The test assemblies path was not specified" Condition="$(TestAssembliesPath) == ''" />
 
-    <Microsoft.Sdc.Tasks.Folder.CleanFolder Path="$(TestAssembliesPath)" ContinueOnError="false" Condition="Exists($(TestAssembliesPath))" />
+    <MSBuild.ExtensionPack.FileSystem.Folder
+      TaskAction="RemoveContent"
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
+      Path="$(TestAssembliesPath)" 
+      ContinueOnError="false" 
+      Condition="Exists($(TestAssembliesPath))" />
     <RemoveDir ContinueOnError="false" Directories="$(TestAssembliesPath)" Condition="Exists($(TestAssembliesPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
