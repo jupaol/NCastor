@@ -19,6 +19,7 @@
 
       PackageSourceCode;
       PackageBuild;
+      PackageSpecialProjects;
       PackageTestAssemblies;
 
       PackageNUnitTestReports;

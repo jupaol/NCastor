@@ -19,6 +19,7 @@ Your CreatePackages custom dependencies
 
       PackageSourceCode;
       PackageBuild;
+      PackageSpecialProjects;
       PackageTestAssemblies;
 
       PackageNUnitTestReports;
@@ -41,6 +42,7 @@ Your CreatePackages custom dependencies
 
       PackageSourceCode;
       PackageBuild;
+      PackageSpecialProjects;
       PackageTestAssemblies;
 
       PackageNUnitTestReports;

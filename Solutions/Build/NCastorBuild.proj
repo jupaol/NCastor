@@ -75,7 +75,7 @@
 
       SetAssemblyVersion;
       SetAssemblyInfo;
-      
+
       BeforeBuild;
       CoreBuild;
       AfterBuild;
@@ -95,9 +95,10 @@
     </RunTestsDependsOn>
     <PackageNCastorDependsOn>
       RunTests;
-      
+
       PackageSourceCode;
       PackageBuild;
+      PackageSpecialProjects;
       PackageTestAssemblies;
 
       PackageMSTestTestReports;

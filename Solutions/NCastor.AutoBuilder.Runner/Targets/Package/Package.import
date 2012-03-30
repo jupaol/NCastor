@@ -18,6 +18,7 @@
   <Import Project="Zip\SourceCode\PackageSourceCode.target"/>
   
   <Import Project="Zip\Build\PackageBuild.target"/>
+  <Import Project="Zip\Build\PackageSpecialProjects.target"/>
 
   <Import Project="Zip\TestAssemblies\PackageTestAssemblies.target"/>
   
