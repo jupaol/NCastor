@@ -340,88 +340,46 @@
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.BizTalk.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.BizTalk.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Iis7.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Iis7.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Loggers.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Loggers.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Sql2005.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Sql2005.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Sql2008.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Sql2008.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.StyleCop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.StyleCop.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Sync.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Sync.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.TaskFactory.Dlr.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.TaskFactory.Dlr.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.TaskFactory.PowerShell.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.TaskFactory.PowerShell.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Tfs.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Tfs.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Tfs2010.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.Tfs2010.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.WindowsVirtualPC.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Tasks\MSBuild Extension Pack\MSBuild.ExtensionPack.WindowsVirtualPC.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tasks\MSBuild.Community\ICSharpCode.SharpZipLib.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tasks\MSBuild.Community\MSBuild.Community.Tasks.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Tasks\MSBuild.Community\MSBuild.Community.Tasks.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tasks\MSBuild.Community\MSBuild.Community.Tasks.xml">
