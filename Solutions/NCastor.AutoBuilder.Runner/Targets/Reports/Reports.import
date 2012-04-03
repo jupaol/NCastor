@@ -21,6 +21,7 @@
   <Import Project="Cover\CreateMSTestOpenCoverWithRGArtefacts.target"/>
   <Import Project="Cover\ReportMSTestOpenCoverWithRG.target"/>
 
+  <Import Project="Tests\NUnit\CreateNUnitReport.target"/>
   <Import Project="Cover\CleanNUnitOpenCoverWithRGArtefacts.target"/>
   <Import Project="Cover\CreateNUnitOpenCoverWithRGArtefacts.target"/>
   <Import Project="Cover\ReportNUnitOpenCoverWithRG.target"/>

@@ -39,7 +39,6 @@
     <Folder Include="Targets\Build\Versioning\Hudson\Git\" />
     <Folder Include="Targets\Build\Versioning\Hudson\TFS\" />
     <Folder Include="Targets\Build\Versioning\TeamCity\" />
-    <Folder Include="Targets\Reports\Tests\NUnit\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Common\Common.properties">
@@ -432,9 +431,27 @@
     <Content Include="Targets\Package\Zip\ClickOncePublishedFiles\PackageClickOnceArtefacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Reports\Tests\NUnit\CreateNUnitReport.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Tools\publish.template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Tools\NUnitReportGenerator\gpl.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\NUnitReportGenerator\NUnitReport.Core.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\NUnitReportGenerator\NUnitReport.Core.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\NUnitReportGenerator\NUnitReport.CUI.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\NUnitReportGenerator\NUnitReport.CUI.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tools\uninstall.ps1" />
   </ItemGroup>
   <ItemGroup>
