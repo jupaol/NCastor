@@ -10,6 +10,8 @@ Your targets imports
 
   <!-- TODO: Import your targets imports here -->
 
+  <Import Project="Custom.target"/>
+
   <Import Project="Build\Versioning.target"/>
   <Import Project="Build\Build.target"/>
   <Import Project="Build\BuildSpecialProjects.target"/>

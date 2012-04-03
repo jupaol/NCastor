@@ -82,6 +82,10 @@
     <None Include="Content\Targets\Build\BuildSpecialProjects.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Targets\Custom.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Targets\Package\PrepareClickOncePackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
