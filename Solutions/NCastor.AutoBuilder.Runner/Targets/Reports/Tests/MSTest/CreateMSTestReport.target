@@ -27,11 +27,10 @@
 
   <Target Name="CoreCreateMSTestReport" >
 
-    <ItemGroup>
-      <__MSTestReportFileName Include="$(MSTestReportFilePath)" />
-    </ItemGroup>
-
-    <Exec WorkingDirectory="$(MSTestResultsPath)" Command='"$(MSTestReportGeneratorRunner)" %(__MSTestReportFileName.FileName)%(__MSTestReportFileName.Extension)' ContinueOnError="false" />
+    <Exec 
+      WorkingDirectory="$(MSTestResultsPath)" 
+      Command='"$(MSTestReportGeneratorRunner)" $([System.IO.Path]::GetFileName($(MSTestReportFilePath)))' 
+      ContinueOnError="false" />
     
   </Target>
   
