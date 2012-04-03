@@ -11,7 +11,7 @@ Initial settings
   <!--TODO: Update the paths if needed-->
   
   <PropertyGroup>
-    <GlobalRootPath>$(MSBuildProjectDirectory)\..\..</GlobalRootPath>
+    <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
     <SolutionsPath>$(GlobalRootPath)\Solutions</SolutionsPath>
     <!--TODO: Set the name of your solution-->
     <SolutionName></SolutionName>
