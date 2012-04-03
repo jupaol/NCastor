@@ -97,19 +97,4 @@ Your Build custom dependencies
   </PropertyGroup>
   <Target Name="Build" DependsOnTargets="$(BuildDependsOn);" />
 
-  <!--
-  This is a custom build target using the minimum actions required
-  -->
-  <PropertyGroup>
-    <BuildLiteDependsOn>
-      ValidateSettings;
-      CalculateSemanticVersion;
-      Clean;
-      CreateArtefactFolders;
-
-      CoreBuild;
-    </BuildLiteDependsOn>
-  </PropertyGroup>
-  <Target Name="BuildLite" DependsOnTargets="$(BuildLiteDependsOn)" />
-
 </Project>
