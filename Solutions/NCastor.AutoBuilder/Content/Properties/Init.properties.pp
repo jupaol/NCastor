@@ -26,6 +26,7 @@ Initial settings
 
     <!--TODO: Build properties-->
     <Platform>Any CPU</Platform>
+    <Configuration>Debug</Configuration>
 
     <!--TODO: Set the assembly title-->
     <AssemblyTitle>$RootNamespace$</AssemblyTitle>
