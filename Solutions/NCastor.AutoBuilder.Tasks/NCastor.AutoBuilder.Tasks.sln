@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E451232E-0054-4560-A935-3E00221602FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Tasks", "NCastor.AutoBuilder.Tasks\NCastor.AutoBuilder.Tasks.csproj", "{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Tasks.Tests", "NCastor.AutoBuilder.Tasks.Tests\NCastor.AutoBuilder.Tasks.Tests.csproj", "{011F4510-B2E0-4155-BAAD-FE5454457859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildProject", "Build\BuildProject\BuildProject.csproj", "{9A6FDFDF-1960-42E6-A4CF-BE4F41D1AE04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011F4510-B2E0-4155-BAAD-FE5454457859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011F4510-B2E0-4155-BAAD-FE5454457859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011F4510-B2E0-4155-BAAD-FE5454457859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011F4510-B2E0-4155-BAAD-FE5454457859}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A6FDFDF-1960-42E6-A4CF-BE4F41D1AE04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A6FDFDF-1960-42E6-A4CF-BE4F41D1AE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A6FDFDF-1960-42E6-A4CF-BE4F41D1AE04} = {E451232E-0054-4560-A935-3E00221602FF}
+	EndGlobalSection
+EndGlobal

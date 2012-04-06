@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project DefaultTargets="BuildLite" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <_NCastorAutoBuilderTasksAssembly>NCastor.AutoBuilder.Tasks.dll</_NCastorAutoBuilderTasksAssembly>
+  </PropertyGroup>
+  
+  <!--File system-->
+  <UsingTask 
+    AssemblyFile="$(_NCastorAutoBuilderTasksAssembly)" 
+    TaskName="NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries" />
+
+</Project>
