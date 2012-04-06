@@ -442,6 +442,22 @@
       <Link>Readme.md</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Backup\Backup.import">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Backup\Artefacts\BackupArtefacts.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Backup\Artefacts\PrepareBackupArtefacts.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Backup\Artefacts\Backup.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Tools\publish.template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

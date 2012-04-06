@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Project DefaultTargets="CreatePackages" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Backup" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
@@ -57,13 +57,23 @@
     <RunTestsDependsOn>
       Build;
     </RunTestsDependsOn>
+  </PropertyGroup>
 
+  <PropertyGroup>
     <CreatePackagesDependsOn>
       RunTests;
 
       PackageNugets;
     </CreatePackagesDependsOn>
-</PropertyGroup>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BackupDependsOn>
+      CreatePackages;
+      
+      BackupArtefacts;
+    </BackupDependsOn>
+  </PropertyGroup>
 
   <!-- TODO: Place your custom targets here -->
 
@@ -115,6 +125,21 @@
       </SpecialProjects>
     </ItemGroup>
 
+  </Target>
+
+  <Target Name="PrepareBackupArtefacts">
+
+    <PropertyGroup>
+      <_PrivateNugetServerPath>c:\00\nuget</_PrivateNugetServerPath>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <BackupArtefactFiles
+        Include="$(DropsPath)\NCastor.AutoBuilder.*.nupkg">
+        <BackupPath>$(_PrivateNugetServerPath)</BackupPath>
+      </BackupArtefactFiles>
+    </ItemGroup>
+    
   </Target>
 
 </Project>
