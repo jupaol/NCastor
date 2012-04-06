@@ -5,6 +5,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Runner"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder", "NCastor.AutoBuilder\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj", "{F6EDC8C9-CAE6-4F66-9A97-DB5BE444FBA6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{ECAFAA88-A4EA-411F-A294-B014E4CF8E60}"
+	ProjectSection(SolutionItems) = preProject
+		..\Licence.md = ..\Licence.md
+		..\Readme.md = ..\Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{05A4E137-8A49-4DDE-93B4-DDC0AC9ED848}"
+	ProjectSection(SolutionItems) = preProject
+		NCastor.AutoBuilder\Build\Build.cmd = NCastor.AutoBuilder\Build\Build.cmd
+		NCastor.AutoBuilder\Build\BuildSolution.proj = NCastor.AutoBuilder\Build\BuildSolution.proj
+		NCastor.AutoBuilder\Build\DeployLocally.proj = NCastor.AutoBuilder\Build\DeployLocally.proj
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

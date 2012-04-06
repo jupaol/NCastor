@@ -68,6 +68,14 @@
     <Compile Include="Dummy.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\Licence.md">
+      <Link>Licence.md</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\Readme.md">
+      <Link>Readme.md</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Content\Properties\Build\Build.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -149,16 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NCastor.AutoBuilder.nuspec">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\Licence.md">
-      <Link>Licence.md</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\Readme.md">
-      <Link>Readme.md</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

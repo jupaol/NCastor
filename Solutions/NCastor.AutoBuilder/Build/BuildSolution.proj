@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--
-<copyright file="NCastorBuild.proj" company="Juan Pablo Olmos Lara (Jupaol)">
-
-  jupaol@hotmail.com
-  http://jupaol.blogspot.com/
-
-</copyright>
--->
-
-<Project DefaultTargets="PackageNCastor" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="CreatePackages" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <GlobalRootPath>$(MSBuildProjectDirectory)\..\..</GlobalRootPath>
+    <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
     <SolutionsPath>$(GlobalRootPath)\Solutions</SolutionsPath>
-    <SolutionName>NCastor</SolutionName>
+    <SolutionName>NCastor.AutoBuilder</SolutionName>
 
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
-    <NCastorPath>$(SolutionsPath)\NCastor.AutoBuilder.Runner</NCastorPath>
+    <NCastorPath>$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner</NCastorPath>
 
-    <MSTestRunner>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>
-    <OpenCoverRunner>$(NugetPackagesPath)\OpenCover.3.0.121\OpenCover.Console.exe</OpenCoverRunner>
-    <ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.6.0\ReportGenerator.exe</ReportGeneratorRunner>
-    <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.6.0\tools\NuGet.exe</NugetRunner>
+    <WorkingDirectoryPath>$(GlobalRootPath)\WorkingDirectory\$(SolutionName)</WorkingDirectoryPath>
+    <DropsPath>$(GlobalRootPath)\Drops\$(SolutionName)</DropsPath>
+    <AssemblyInfoPath>$(GlobalRootPath)\CommonAssemblyProperties\$(SolutionName)</AssemblyInfoPath>
 
     <MajorVersion>1</MajorVersion>
     <MinorVersion>1</MinorVersion>
@@ -35,6 +25,8 @@
     <AssemblyProduct>NCastor</AssemblyProduct>
     <AssemblyCopyright>Copyright (c) 2012, Juan Pablo Olmos Lara (Jupaol) All rights reserved.</AssemblyCopyright>
     <AssemblyTrademark>NCastor, All Rights Reserved</AssemblyTrademark>
+
+    <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>
   </PropertyGroup>
 
   <!-- Importing NCastor Global properties -->
@@ -55,12 +47,7 @@
       Clean;
       CreateArtefactFolders;
 
-      SetAssemblyVersion;
-      SetAssemblyInfo;
-
-      BeforeBuild;
       CoreBuild;
-      AfterBuild;
 
       BuildSpecialProjects;
     </BuildDependsOn>
@@ -69,56 +56,22 @@
   <PropertyGroup>
     <RunTestsDependsOn>
       Build;
-      SettingTestingAssemblies;
-      RunMSTestWithOpenCover;
-      ReportMSTestOpenCoverWithRG;
-      CoreRunTests;
-      CheckForTestsErrors;
     </RunTestsDependsOn>
-    <PackageNCastorDependsOn>
+
+    <CreatePackagesDependsOn>
       RunTests;
 
-      PackageSourceCode;
-      PackageBuild;
-      PackageSpecialProjects;
-      PackageTestAssemblies;
-
-      PackageMSTestTestReports;
-
       PackageNugets;
-    </PackageNCastorDependsOn>
+    </CreatePackagesDependsOn>
 </PropertyGroup>
 
   <!-- TODO: Place your custom targets here -->
 
   <Target Name="PackageNCastor" DependsOnTargets="$(PackageNCastorDependsOn)" />
 
-  <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
-  <Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />
-    
-  <Target Name="CoreSettingInstrumentationAssemblies">
-    <ItemGroup>
-      <AssembliesToInstrument Include="
-                                        $(TestAssembliesPath)\NCastor.AutoBuilder.Console.exe;" />
-    </ItemGroup>
-  </Target>
-
-  <Target Name="CoreSettingMSTestTestingAssemblies">
-    <ItemGroup>
-      <MSTestContainers Include="
-                          $(TestAssembliesPath)\NCastor.AutoBuilder.Console.Tests.dll;
-                          $(TestAssembliesPath)\NCastor.AutoBuilder.Console.Integration.Tests.dll;" />
-    </ItemGroup>
-  </Target>
-
   <Target Name="PrepareNCastorAutoBuilderRunnerNuget">
     
     <Delete Files="$(NCastorAutoBuilderRunner)\NCastor.AutoBuilder.Runner.dll;$(NCastorAutoBuilderRunner)\NCastor.AutoBuilder.Runner.pdb;" />
-
-    <MSBuild.ExtensionPack.FileSystem.RoboCopy
-      Source="$(NCastorAutoBuilderConsole)"
-      Destination="$(NCastorAutoBuilderRunner)\Tools\ScriptCreator"
-      Files="*.dll;*.exe;*.config;"/>
 
     <ItemGroup>
       <NugetPackages Include="NCastor.AutoBuilder.Runner.nuspec">
@@ -151,18 +104,14 @@
     <PropertyGroup>
       <NCastorAutoBuilderRunner>$(WorkingDirectoryPath)\NCastorAutoBuilderRunner</NCastorAutoBuilderRunner>
       <NCastorAutoBuilder>$(WorkingDirectoryPath)\NCastorAutoBuilder</NCastorAutoBuilder>
-      <NCastorAutoBuilderConsole>$(WorkingDirectoryPath)\NCastorAutoBuilderConsole</NCastorAutoBuilderConsole>
     </PropertyGroup>
 
     <ItemGroup>
-      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Runner\NCastor.AutoBuilder.Runner.csproj">
+      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner\NCastor.AutoBuilder.Runner.csproj">
         <WorkingDirectoryPath>$(NCastorAutoBuilderRunner)</WorkingDirectoryPath>
       </SpecialProjects>
-      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj">
+      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj">
         <WorkingDirectoryPath>$(NCastorAutoBuilder)</WorkingDirectoryPath>
-      </SpecialProjects>
-      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console.csproj">
-        <WorkingDirectoryPath>$(NCastorAutoBuilderConsole)</WorkingDirectoryPath>
       </SpecialProjects>
     </ItemGroup>
 

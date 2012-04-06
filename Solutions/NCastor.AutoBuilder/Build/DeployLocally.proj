@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--
-<copyright file="NCastorDeployLocally.proj" company="Juan Pablo Olmos Lara (Jupaol)">
-
-  jupaol@hotmail.com
-  http://jupaol.blogspot.com/
-
-</copyright>
--->
-
 <Project DefaultTargets="DeployToTestLocally" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <!-- Drops path -->
