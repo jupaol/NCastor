@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E451232E-0054-4560-A935-3E00221602FF}"
+	ProjectSection(SolutionItems) = preProject
+		NCastor.AutoBuilder.Tasks\Build\BuildSolution.proj = NCastor.AutoBuilder.Tasks\Build\BuildSolution.proj
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Tasks", "NCastor.AutoBuilder.Tasks\NCastor.AutoBuilder.Tasks\NCastor.AutoBuilder.Tasks.csproj", "{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Tasks.Tests", "NCastor.AutoBuilder.Tasks\NCastor.AutoBuilder.Tasks.Tests\NCastor.AutoBuilder.Tasks.Tests.csproj", "{011F4510-B2E0-4155-BAAD-FE5454457859}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A0946455-48F5-4D3C-B4DB-F3CBD554366F}"
+	ProjectSection(SolutionItems) = preProject
+		..\Licence.md = ..\Licence.md
+		..\Readme.md = ..\Readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011F4510-B2E0-4155-BAAD-FE5454457859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011F4510-B2E0-4155-BAAD-FE5454457859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011F4510-B2E0-4155-BAAD-FE5454457859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011F4510-B2E0-4155-BAAD-FE5454457859}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

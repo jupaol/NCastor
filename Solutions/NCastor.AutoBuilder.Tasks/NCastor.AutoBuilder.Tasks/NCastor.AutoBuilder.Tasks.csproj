@@ -49,16 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NCastor.AutoBuilder.Tasks">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\Licence.md">
+      <Link>Licence.md</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\Readme.md">
+      <Link>Readme.md</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="FileSystem\Folder\RemoveDirectoryWithRetries1.cs" />
     <Compile Include="..\..\..\CommonAssemblyProperties\NCastor.AutoBuilder.Tasks\AssemblyCommonInfo.cs">
       <Link>Properties\AssemblyCommonInfo.cs</Link>
     </Compile>
     <Compile Include="..\..\..\CommonAssemblyProperties\NCastor.AutoBuilder.Tasks\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
-    <Content Include="NCastor.AutoBuilder.Tasks">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="FileSystem\Folder\RemoveDirectoryWithRetries1.cs" />
     <Compile Include="FileSystem\Folder\RemoveDirectoryWithRetries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="NCastor.AutoBuilder.Tasks.nuspec">

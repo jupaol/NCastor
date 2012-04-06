@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>NCastor.AutoBuilder.Console</id>
+    <version>1.0.0.0</version>
+    <title>NCastor AutoBuilder Console</title>
+    <authors>Juan Pablo Olmos Lara (jupaol@hotmail.com)</authors>
+    <owners>Juan Pablo Olmos Lara (jupaol@hotmail.com)</owners>
+    <projectUrl>https://github.com/jupaol/NCastor</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NCastor AutoBuilder Console</description>
+    <copyright>Copyright (c) 2012, Juan Pablo Olmos Lara (Jupaol)</copyright>
+    <tags> NCastor Auto Build Deploy Jupaol Castor MSBuild script unit test run NUnit MSTest MSPec OpenCover Report Generator Hudson CI Continous Integration ClickOnce WXI Package Installer Nuget FxCop StyleCop "Windoes XML Installer" installer Task</tags>
+  </metadata>
+</package>
