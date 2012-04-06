@@ -110,6 +110,14 @@
     <None Include="Content\Properties\Tests\MSTest.properties">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Targets\Backup\Backup.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Targets\Backup\CustmoBackup.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Targets\Build\Build.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
