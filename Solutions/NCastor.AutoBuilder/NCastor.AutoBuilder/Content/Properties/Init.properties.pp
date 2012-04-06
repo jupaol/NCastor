@@ -20,6 +20,10 @@ Initial settings
     <!--TODO: Update the NCastor path if different from the following path-->
     <NCastorPath>$(NugetPackagesPath)\NCastor.AutoBuilder.Runner.1.1.0.0</NCastorPath>
 
+    <DropsPath Condition="$(DropsPath) == ''">$(GlobalRootPath)\Drops</DropsPath>
+    <AssemblyInfoPath Condition="$(AssemblyInfoPath) == ''">$(GlobalRootPath)\CommonAssemblyProperties</AssemblyInfoPath>
+    <WorkingDirectoryPath Condition="$(WorkingDirectoryPath) == ''">$(GlobalRootPath)\WorkingDirectory</WorkingDirectoryPath>
+
     <!--TODO: Version properties-->
     <MajorVersion>1</MajorVersion>
     <MinorVersion>0</MinorVersion>
