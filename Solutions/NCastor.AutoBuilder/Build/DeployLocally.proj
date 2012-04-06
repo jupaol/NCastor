@@ -4,7 +4,11 @@
 
   <!-- Drops path -->
   <PropertyGroup>
-    <DropsPath>$(MSBuildProjectDirectory)\..\..\Drops</DropsPath>
+    <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
+    <SolutionsPath>$(GlobalRootPath)\Solutions</SolutionsPath>
+    <SolutionName>NCastor.AutoBuilder</SolutionName>
+
+    <DropsPath>$(GlobalRootPath)\Drops\$(SolutionName)</DropsPath>
   </PropertyGroup>
 
   <Target Name="DeployToTestLocally">
@@ -16,14 +20,14 @@
     <PropertyGroup>
       <NugetLocalServer>c:\00\nuget</NugetLocalServer>
       <NugetPackagesPath>C:\Users\Jupaol\Documents\Visual Studio 2010\Projects\ConsoleApplication1\packages</NugetPackagesPath>
-      <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.6.0\tools\NuGet.exe</NugetRunner>
+      <NugetRunner>$(SolutionsPath)\Packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>
     </PropertyGroup>
 
     <ItemGroup>
       <DirsToRemove
         Include='
           
-          $(NugetPackagesPath)\NCastor.AutoBuilder.Runner.1.1.0.0;' />
+          $(NugetPackagesPath)\NCastor.AutoBuilder.Runner.*;' />
     </ItemGroup>
     <RemoveDir ContinueOnError='false' Directories='@(DirsToRemove)' />
 
