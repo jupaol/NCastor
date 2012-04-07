@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<!--
-"Your Stuff"
-
-This file is the entry point of your build process, this file imports "Your Stuff" the auto generated MSBuild scripts.
-
-Remember that MSBuild scripts are evaluated sequentially so the order in which you import the projects it's important
-because some properties declared in nested MSBuild scripts totally depend on the properties declared in the 
-preceding scripts
--->
-
-<Project DefaultTargets="CreatePackages" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Backup" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
@@ -93,6 +83,14 @@ preceding scripts
     </CreatePackagesDependsOn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <BackupDependsOn>
+      CreatePackages;
+
+      BackupArtefacts;
+    </BackupDependsOn>
+  </PropertyGroup>
+
   <Target Name="CorePrepareSpecialProjects">
     <PropertyGroup>
       <NCastorAutoBuilderTasksSpecialProjectPath>$(WorkingDirectoryPath)\NCastor.AutoBuilder.Tasks</NCastorAutoBuilderTasksSpecialProjectPath>
@@ -144,6 +142,21 @@ preceding scripts
         <ExtraOptions></ExtraOptions>
         <Version>$(SemanticVersion)</Version>
       </NugetPackages>
+    </ItemGroup>
+
+  </Target>
+
+  <Target Name="PrepareBackupArtefacts">
+
+    <PropertyGroup>
+      <_PrivateNugetServerPath>c:\00\nuget</_PrivateNugetServerPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <BackupArtefactFiles
+        Include="$(DropsPath)\NCastor.AutoBuilder.*.nupkg">
+        <BackupPath>$(_PrivateNugetServerPath)</BackupPath>
+      </BackupArtefactFiles>
     </ItemGroup>
 
   </Target>
