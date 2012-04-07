@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+"Your stuff"
+
+Your Distribute targets
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <DistributeDependsOn>
+      BeforeDistribute;
+
+      DistributeArtefacts;
+      CoreDistribute;
+
+      AfterDistribute;
+    </DistributeDependsOn>
+  </PropertyGroup>
+  <Target Name="Distribute" DependsOnTargets="$(DistributeDependsOn)"/>
+
+</Project>

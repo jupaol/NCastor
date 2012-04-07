@@ -28,7 +28,7 @@ Your targets imports
   <Import Project="Package\CustomPackages.target"/>
   <Import Project="Package\CreatePackages.target"/>
 
-  <Import Project="BackupArtefacts\Backup.target"/>
-  <Import Project="BackupArtefacts\CustmoBackup.target"/>
+  <Import Project="Distribute\Distribute.target"/>
+  <Import Project="Distribute\CustomDistribute.target"/>
 
 </Project>

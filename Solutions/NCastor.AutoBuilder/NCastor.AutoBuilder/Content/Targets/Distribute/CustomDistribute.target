@@ -3,11 +3,11 @@
 <!--
 "Your stuff"
 
-Your Custom Backup targets
+Your Custom Distribute targets
 -->
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!--Place here your custom backup targets-->
+  <!--Place here your custom distribute targets-->
 
 </Project>
