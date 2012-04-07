@@ -43,7 +43,11 @@
       Path="$(WorkingNugetPackagePath)" 
       ContinueOnError="false" 
       Condition="Exists($(WorkingNugetPackagePath))" />
-    <RemoveDir ContinueOnError="false" Directories="$(WorkingNugetPackagePath)" Condition="Exists($())" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
+      ContinueOnError="false" 
+      Directories="$(WorkingNugetPackagePath)" 
+      Condition="Exists($())" />
 
     <MakeDir ContinueOnError="false" Directories="$(WorkingNugetPackagePath)" Condition="!Exists($(WorkingNugetPackagePath))" />
 

@@ -21,7 +21,11 @@
       Path="$(ReportGeneratorMSTestReportPath)" 
       ContinueOnError="false" 
       Condition="Exists($(ReportGeneratorMSTestReportPath))" />
-    <RemoveDir ContinueOnError="false" Directories="$(ReportGeneratorMSTestReportPath)" Condition="Exists($(ReportGeneratorMSTestReportPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
+      ContinueOnError="false" 
+      Directories="$(ReportGeneratorMSTestReportPath)" 
+      Condition="Exists($(ReportGeneratorMSTestReportPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
 

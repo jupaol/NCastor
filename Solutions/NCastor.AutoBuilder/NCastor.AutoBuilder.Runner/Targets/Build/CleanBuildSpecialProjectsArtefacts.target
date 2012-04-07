@@ -38,7 +38,11 @@
       Path="%(SpecialProjects.WorkingDirectoryPath)" 
       ContinueOnError="false" 
       Condition="Exists(%(SpecialProjects.WorkingDirectoryPath))" />
-    <RemoveDir ContinueOnError="false" Directories="%(SpecialProjects.WorkingDirectoryPath)" Condition="Exists(%(SpecialProjects.WorkingDirectoryPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
+      ContinueOnError="false" 
+      Directories="%(SpecialProjects.WorkingDirectoryPath)" 
+      Condition="Exists(%(SpecialProjects.WorkingDirectoryPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
 

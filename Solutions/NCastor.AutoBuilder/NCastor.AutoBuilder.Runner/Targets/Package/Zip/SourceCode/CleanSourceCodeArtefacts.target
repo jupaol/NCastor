@@ -35,7 +35,11 @@
       Path="$(SourceCodeTmpPath)" 
       ContinueOnError="false" 
       Condition="Exists('$(SourceCodeTmpPath)')" />
-    <RemoveDir ContinueOnError="false" Directories="$(SourceCodeTmpPath)" Condition="Exists($(SourceCodeTmpPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
+      ContinueOnError="false" 
+      Directories="$(SourceCodeTmpPath)" 
+      Condition="Exists($(SourceCodeTmpPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
     

@@ -33,7 +33,11 @@
       Path="$(WorkingDirectoryPath)"
       ContinueOnError="false"
       Condition="Exists($(WorkingDirectoryPath))"/>
-    <RemoveDir ContinueOnError="false" Directories="$(WorkingDirectoryPath)" Condition="Exists($(WorkingDirectoryPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
+      ContinueOnError="false" 
+      Directories="$(WorkingDirectoryPath)" 
+      Condition="Exists($(WorkingDirectoryPath))" />
     
     <MSBuild.ExtensionPack.FileSystem.Folder
       TaskAction="RemoveContent"
@@ -41,7 +45,11 @@
       Path="$(DropsPath)"
       ContinueOnError="false"
       Condition="Exists($(DropsPath))" />
-    <RemoveDir ContinueOnError="false" Directories="$(DropsPath)" Condition="Exists($(DropsPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
+      ContinueOnError="false" 
+      Directories="$(DropsPath)" 
+      Condition="Exists($(DropsPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
 
