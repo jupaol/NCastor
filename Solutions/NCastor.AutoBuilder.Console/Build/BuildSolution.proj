@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Project DefaultTargets="CreatePackages" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Backup" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
@@ -68,13 +68,24 @@
       ReportMSTestOpenCoverWithRG;
       CheckForTestsErrors;
     </RunTestsDependsOn>
+</PropertyGroup>
+
+  <PropertyGroup>
     <CreatePackagesDependsOn>
       RunTests;
 
       PackageMSTestTestReports;
       PackageNugets;
     </CreatePackagesDependsOn>
-</PropertyGroup>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BackupDependsOn>
+      CreatePackages;
+
+      BackupArtefacts;
+    </BackupDependsOn>
+  </PropertyGroup>
 
   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
     
@@ -128,6 +139,21 @@
       <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console.csproj">
         <WorkingDirectoryPath>$(NCastorAutoBuilderConsole)</WorkingDirectoryPath>
       </SpecialProjects>
+    </ItemGroup>
+
+  </Target>
+
+  <Target Name="PrepareBackupArtefacts">
+
+    <PropertyGroup>
+      <_PrivateNugetServerPath>c:\00\nuget</_PrivateNugetServerPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <BackupArtefactFiles
+        Include="$(DropsPath)\NCastor.AutoBuilder.*.nupkg">
+        <BackupPath>$(_PrivateNugetServerPath)</BackupPath>
+      </BackupArtefactFiles>
     </ItemGroup>
 
   </Target>
