@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="Backup.import" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="Artefacts\BackupArtefacts.target"/>
+  <Import Project="Artefacts\PrepareBackupArtefacts.target"/>
+  <Import Project="Artefacts\Backup.target"/>
+
+</Project>

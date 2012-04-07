@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="Backup.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <BackupDependsOn>
+      BeforeBackup;
+
+      BackupArtefacts;
+      CoreBackup;
+
+
+      AfterBackup;
+    </BackupDependsOn>
+  </PropertyGroup>
+
+  <Target Name="Backup" DependsOnTargets="$(BackupDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeBackup" />
+  <Target Name="AfterBackup" />
+
+  <Target Name="CoreBackup" >
+
+  </Target>
+  
+</Project>
