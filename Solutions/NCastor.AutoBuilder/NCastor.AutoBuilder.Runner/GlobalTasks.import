@@ -19,11 +19,13 @@
     <MSBuildExtensionPackPath>$(TasksPath)\MSBuild Extension Pack</MSBuildExtensionPackPath>
     <MSBuildCommunityPath>$(TasksPath)\MSBuild.Community</MSBuildCommunityPath>
     <MSBuildSDCTasksPath>$(TasksPath)\SDC Tasks</MSBuildSDCTasksPath>
+    <MSBuildNCastorAutoBuilderTasksPath>$(TasksPath)\NCastor</MSBuildNCastorAutoBuilderTasksPath>
   </PropertyGroup>
 
   <!-- Importing tasks -->
   <Import Project="$(MSBuildExtensionPackPath)\MSBuild.ExtensionPack.tasks" />
   <Import Project="$(MSBuildCommunityPath)\MSBuild.Community.Tasks.Targets" />
   <Import Project="$(MSBuildSDCTasksPath)\Microsoft.Sdc.Common.tasks" />
+  <Import Project="$(MSBuildNCastorAutoBuilderTasksPath)\NCastor.AutoBuilder.Tasks" />
 
 </Project>
