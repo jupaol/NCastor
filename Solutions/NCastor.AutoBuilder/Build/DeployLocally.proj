@@ -31,7 +31,7 @@
     </ItemGroup>
     <RemoveDir ContinueOnError='false' Directories='@(DirsToRemove)' />
 
-    <Copy SourceFiles='@(NCastorPackage)' DestinationFiles='$(NugetLocalServer)\%(NCastorPackage.FileName).%(NCastorPackage.Extension)' />
+    <Copy SourceFiles='@(NCastorPackage)' DestinationFiles='$(NugetLocalServer)\%(NCastorPackage.FileName)%(NCastorPackage.Extension)' />
 
     <MakeDir ContinueOnError="false" Directories='$(NugetPackagesPath)' Condition='!Exists($(NugetPackagesPath))'></MakeDir>
 
