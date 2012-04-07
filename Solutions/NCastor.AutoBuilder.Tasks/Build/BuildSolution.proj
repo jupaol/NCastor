@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project DefaultTargets="Backup" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Distribute" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
@@ -84,11 +84,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <BackupDependsOn>
+    <DistributeDependsOn>
       CreatePackages;
 
-      BackupArtefacts;
-    </BackupDependsOn>
+      DistributeArtefacts;
+    </DistributeDependsOn>
   </PropertyGroup>
 
   <Target Name="CorePrepareSpecialProjects">
@@ -146,17 +146,17 @@
 
   </Target>
 
-  <Target Name="PrepareBackupArtefacts">
+  <Target Name="PrepareDistributeArtefacts">
 
     <PropertyGroup>
       <_PrivateNugetServerPath>c:\00\nuget</_PrivateNugetServerPath>
     </PropertyGroup>
 
     <ItemGroup>
-      <BackupArtefactFiles
+      <DistributeArtefactFiles
         Include="$(DropsPath)\NCastor.AutoBuilder.*.nupkg">
-        <BackupPath>$(_PrivateNugetServerPath)</BackupPath>
-      </BackupArtefactFiles>
+        <OutputPath>$(_PrivateNugetServerPath)</OutputPath>
+      </DistributeArtefactFiles>
     </ItemGroup>
 
   </Target>
