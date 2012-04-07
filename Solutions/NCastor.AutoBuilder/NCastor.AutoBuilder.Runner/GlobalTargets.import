@@ -21,6 +21,6 @@
   <Import Project="$(TargetsPath)\Package\Package.import" />
   <Import Project="$(TargetsPath)\Tests\Tests.import" />
   <Import Project="$(TargetsPath)\Reports\Reports.import" />
-  <Import Project="$(TargetsPath)\Backup\Backup.import" />
+  <Import Project="$(TargetsPath)\BackupArtefacts\Backup.import" />
 
 </Project>
