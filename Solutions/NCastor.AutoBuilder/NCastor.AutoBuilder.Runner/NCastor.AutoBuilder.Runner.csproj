@@ -306,6 +306,14 @@
     <Content Include="Tasks\MSBuild.Community\License.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Tools\ConsoleRunner\CommandLine.dll" />
+    <Content Include="Tools\ConsoleRunner\CommandLine.xml" />
+    <Content Include="Tools\ConsoleRunner\CuttingEdge.Conditions.dll" />
+    <Content Include="Tools\ConsoleRunner\CuttingEdge.Conditions.xml" />
+    <Content Include="Tools\ConsoleRunner\log4net.dll" />
+    <Content Include="Tools\ConsoleRunner\log4net.xml" />
+    <Content Include="Tools\ConsoleRunner\NCastor.AutoBuilder.Console.exe" />
+    <Content Include="Tools\ConsoleRunner\Template.dll" />
     <Content Include="Tools\init.ps1" />
   </ItemGroup>
   <ItemGroup>
@@ -458,6 +466,8 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="packages.config" />
+    <None Include="Tools\ConsoleRunner\NCastor.AutoBuilder.Console.exe.config" />
     <None Include="Tools\publish.template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
