@@ -29,6 +29,7 @@ Your targets imports
   <Import Project="Package\CreatePackages.target"/>
 
   <Import Project="Distribute\Distribute.target"/>
+  <Import Project="Distribute\DistributeArtefacts.target"/>
   <Import Project="Distribute\CustomDistribute.target"/>
 
 </Project>
