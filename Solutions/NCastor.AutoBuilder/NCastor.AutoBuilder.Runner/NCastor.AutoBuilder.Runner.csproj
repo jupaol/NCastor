@@ -297,6 +297,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Tasks\SDC Tasks\Microsoft.Sdc.Common.tasks">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -306,14 +309,33 @@
     <Content Include="Tasks\MSBuild.Community\License.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\ConsoleRunner\CommandLine.dll" />
-    <Content Include="Tools\ConsoleRunner\CommandLine.xml" />
-    <Content Include="Tools\ConsoleRunner\CuttingEdge.Conditions.dll" />
-    <Content Include="Tools\ConsoleRunner\CuttingEdge.Conditions.xml" />
-    <Content Include="Tools\ConsoleRunner\log4net.dll" />
-    <Content Include="Tools\ConsoleRunner\log4net.xml" />
-    <Content Include="Tools\ConsoleRunner\NCastor.AutoBuilder.Console.exe" />
-    <Content Include="Tools\ConsoleRunner\Template.dll" />
+    <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\ConsoleRunner\CommandLine.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\ConsoleRunner\CommandLine.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\ConsoleRunner\CuttingEdge.Conditions.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\ConsoleRunner\CuttingEdge.Conditions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\ConsoleRunner\log4net.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\ConsoleRunner\log4net.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\ConsoleRunner\NCastor.AutoBuilder.Console.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Tools\ConsoleRunner\Template.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Tools\init.ps1" />
   </ItemGroup>
   <ItemGroup>
@@ -467,7 +489,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
-    <None Include="Tools\ConsoleRunner\NCastor.AutoBuilder.Console.exe.config" />
+    <None Include="Tools\ConsoleRunner\NCastor.AutoBuilder.Console.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Tools\publish.template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
