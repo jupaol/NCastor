@@ -33,7 +33,6 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
-    <Folder Include="Targets\Build\Versioning\ContinousIntegrationServers\CCNET\" />
     <Folder Include="Targets\Build\Versioning\VersionControlServers\TFS\" />
   </ItemGroup>
   <ItemGroup>
