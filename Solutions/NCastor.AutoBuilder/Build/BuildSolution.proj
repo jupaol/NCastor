@@ -62,9 +62,9 @@
   <PropertyGroup>
     <BuildDependsOn>
       ValidateSettings;
-      CalculateSemanticVersion;
       Clean;
       CreateArtefactFolders;
+      CalculateSemanticVersion;
 
       SetAssemblyVersion;
       SetAssemblyInfo;
