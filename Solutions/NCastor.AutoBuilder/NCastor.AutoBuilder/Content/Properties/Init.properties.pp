@@ -20,6 +20,11 @@ Initial settings
     <!--TODO: Update the NCastor path if different from the following path-->
     <NCastorPath>$(NugetPackagesPath)\NCastor.AutoBuilder.Runner.1.1.0.0</NCastorPath>
 
+    <!--This property should not changed directly through the file, instead change when running the build script
+    Example:
+    msbuild myproj.proj /p:IsDesktopBuild=false-->
+    <IsDesktopBuild>true</IsDesktopBuild>
+
     <DropsPath Condition="$(DropsPath) == ''">$(GlobalRootPath)\Drops</DropsPath>
     <AssemblyInfoPath Condition="$(AssemblyInfoPath) == ''">$(GlobalRootPath)\CommonAssemblyProperties</AssemblyInfoPath>
     <WorkingDirectoryPath Condition="$(WorkingDirectoryPath) == ''">$(GlobalRootPath)\WorkingDirectory</WorkingDirectoryPath>
