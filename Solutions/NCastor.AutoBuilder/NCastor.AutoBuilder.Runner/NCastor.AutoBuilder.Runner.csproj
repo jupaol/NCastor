@@ -320,6 +320,9 @@
     <Content Include="Targets\Build\Versioning\VersionControlServers\Git\FormatGitRevisionVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Build\Versioning\VersionControlServers\SVN\UseSvnRevisionAsCurrentRevisionVersion.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

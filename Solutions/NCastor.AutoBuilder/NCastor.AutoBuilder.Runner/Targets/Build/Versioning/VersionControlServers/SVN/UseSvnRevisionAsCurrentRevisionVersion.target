@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="UseSvnRevisionAsCurrentRevisionVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <UseSvnRevisionAsCurrentRevisionVersionDependsOn>
+      GetSvnRevisionVersion;
+      BeforeUseSvnRevisionAsCurrentRevisionVersion;
+      CoreUseSvnRevisionAsCurrentRevisionVersion;
+      AfterUseSvnRevisionAsCurrentRevisionVersion;
+    </UseSvnRevisionAsCurrentRevisionVersionDependsOn>
+  </PropertyGroup>
+
+  <Target Name="UseSvnRevisionAsCurrentRevisionVersion" DependsOnTargets="$(UseSvnRevisionAsCurrentRevisionVersionDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeUseSvnRevisionAsCurrentRevisionVersion" />
+  <Target Name="AfterUseSvnRevisionAsCurrentRevisionVersion" />
+
+  <Target Name="CoreUseSvnRevisionAsCurrentRevisionVersion" >
+
+    <PropertyGroup>
+      <RevisionVersion>$(SvnRevisionVersion)</RevisionVersion>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>
