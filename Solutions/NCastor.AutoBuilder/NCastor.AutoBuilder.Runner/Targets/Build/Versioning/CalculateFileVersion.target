@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CalculateFileVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CalculateFileVersionDependsOn>
+      CalculateBuildVersion;
+      CalculateRevisionVersion;
+      ValidateVersioningProperties;
+      BeforeCalculateFileVersion;
+      CoreCalculateFileVersion;
+      AfterCalculateFileVersion;
+    </CalculateFileVersionDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CalculateFileVersion" DependsOnTargets="$(CalculateFileVersionDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCalculateFileVersion" />
+  <Target Name="AfterCalculateFileVersion" />
+
+  <Target Name="CoreCalculateFileVersion" >
+
+    <PropertyGroup>
+      <FileVersion>$(MajorVersion).$(MinorVersion).$(RevisionVersion)</FileVersion>
+    </PropertyGroup>
+    
+  </Target>
+  
+</Project>

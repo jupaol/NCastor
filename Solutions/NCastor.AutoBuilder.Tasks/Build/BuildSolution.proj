@@ -17,8 +17,9 @@
     <AssemblyInfoPath>$(GlobalRootPath)\CommonAssemblyProperties\$(SolutionName)</AssemblyInfoPath>
 
     <!--TODO: Version properties-->
-    <MajorVersion>1</MajorVersion>
-    <MinorVersion>0</MinorVersion>
+    <MajorVersion>0</MajorVersion>
+    <MinorVersion>1</MinorVersion>
+    <RevisionVersion>0</RevisionVersion>
 
     <!--TODO: Build properties-->
     <Platform>Any CPU</Platform>
@@ -37,6 +38,7 @@
     <OpenCoverRunner>$(NugetPackagesPath)\OpenCover.4.0.301\OpenCover.Console.exe</OpenCoverRunner>
     <ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.7.0\ReportGenerator.exe</ReportGeneratorRunner>
     <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>
+    <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
   </PropertyGroup>
   
   <!-- Importing NCastor Global properties -->
@@ -51,9 +53,9 @@
   <PropertyGroup>
     <BuildDependsOn>
       ValidateSettings;
-      CalculateSemanticVersion;
       Clean;
       CreateArtefactFolders;
+      CalculateSemanticVersion;
 
       SetAssemblyVersion;
       SetAssemblyInfo;
@@ -91,6 +93,8 @@
     </DistributeDependsOn>
   </PropertyGroup>
 
+  <Target Name="CoreCalculateAdditionalVersionInformation" DependsOnTargets="FormatGitRevisionVersion"/>
+
   <Target Name="CorePrepareSpecialProjects">
     <PropertyGroup>
       <NCastorAutoBuilderTasksSpecialProjectPath>$(WorkingDirectoryPath)\NCastor.AutoBuilder.Tasks</NCastorAutoBuilderTasksSpecialProjectPath>
@@ -102,8 +106,6 @@
       </SpecialProjects>
     </ItemGroup>
   </Target>
-
-  <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
 
   <Target Name="CoreSettingInstrumentationAssemblies">
     <ItemGroup>

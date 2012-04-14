@@ -34,8 +34,8 @@
     
     <MSBuild.Community.tasks.AssemblyInfo OutputFile="$(AssemblyVersionFilePath)"
               CodeLanguage="C#"
-              AssemblyFileVersion="$(SemanticVersion)"
-              AssemblyInformationalVersion="$(SemanticVersion)"
+              AssemblyFileVersion="$(FileVersion)"
+              AssemblyInformationalVersion="$(InformationalVersion)"
               AssemblyVersion="$(SemanticVersion)" />
 
   </Target>

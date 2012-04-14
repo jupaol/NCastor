@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="GetGitRevisionVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <GetGitRevisionVersionDependsOn>
+      BeforeGetGitRevisionVersion;
+      CoreGetGitRevisionVersion;
+      AfterGetGitRevisionVersion;
+    </GetGitRevisionVersionDependsOn>
+  </PropertyGroup>
+
+  <Target Name="GetGitRevisionVersion" DependsOnTargets="$(GetGitRevisionVersionDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeGetGitRevisionVersion" />
+  <Target Name="AfterGetGitRevisionVersion" />
+
+  <Target
+    Name="CoreGetGitRevisionVersion"
+    DependsOnTargets="
+      _FindGitVersion;
+      _GetGitRevisionVersionWhenTagDoesNotExist;
+      _GetGitRevisionVersionWhenTagExists;"/>
+
+  <Target Name="_FindGitVersion">
+
+    <Delete Files="$(WorkingDirectoryPath)\gitversion.txt" Condition="Exists('$(WorkingDirectoryPath)\gitversion.txt')"/>
+    <Exec
+      Command='"$(GitRunner)" describe --abbrev=12 --always --candidates 1 --long --tags --match "$(Enviroment)*" >> "$(WorkingDirectoryPath)\gitversion.txt"'/>
+    <ReadLinesFromFile File="$(WorkingDirectoryPath)\gitversion.txt" >
+      <Output ItemName="_GitVersionInfo" TaskParameter="Lines"/>
+    </ReadLinesFromFile>
+    <Message Text="Git version from file: @(_GitVersionInfo)" />
+    <MSBuild.ExtensionPack.Framework.TextString TaskAction="Split" String1="@(_GitVersionInfo)" String2="-">
+      <Output ItemName="_GitVersionTokens" TaskParameter="Strings"/>
+    </MSBuild.ExtensionPack.Framework.TextString>
+    <Message Text="Git version after split: @(_GitVersionInfo)" />
+    <Message Text="Git version after split (tokens): @(_GitVersionTokens)" />
+
+  </Target>
+
+  <Target Name="_GetGitRevisionVersionWhenTagDoesNotExist" Condition="@(_GitVersionTokens) == @(_GitVersionInfo)">
+    <Message Importance="high" Text="Tag was not found, getting current version" />
+    <PropertyGroup>
+      <GitRevisionVersion>-0-g@(_GitVersionInfo)</GitRevisionVersion>
+    </PropertyGroup>
+    <Message Importance="high" Text="Current version: $(GitRevisionVersion)" />
+  </Target>
+
+  <Target Name="_GetGitRevisionVersionWhenTagExists" Condition="@(_GitVersionTokens) != @(_GitVersionInfo)">
+
+    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="GetItemCount" InputItems1="@(_GitVersionTokens)">
+      <Output TaskParameter="ItemCount" PropertyName="_GitVersionTokensCount"/>
+    </MSBuild.ExtensionPack.Framework.MsBuildHelper>
+    <Message Text="Item count: $(_GitVersionTokensCount)" />
+    <Message Text="Tag exists" Condition="$(_GitVersionTokensCount) >= 3"/>
+    
+    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="GetItem" InputItems1="@(_GitVersionTokens)" Position="$([MSBuild]::Subtract($(_GitVersionTokensCount), 1))" Condition="$(_GitVersionTokensCount) >= 3">
+      <Output TaskParameter="OutputItems" ItemName="_GitRevisionVersion2"/>
+    </MSBuild.ExtensionPack.Framework.MsBuildHelper>
+    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="GetItem" InputItems1="@(_GitVersionTokens)" Position="$([MSBuild]::Subtract($(_GitVersionTokensCount), 2))" Condition="$(_GitVersionTokensCount) >= 3">
+      <Output TaskParameter="OutputItems" ItemName="_GitRevisionVersion1"/>
+    </MSBuild.ExtensionPack.Framework.MsBuildHelper>
+    <PropertyGroup Condition="$(_GitVersionTokensCount) >= 3">
+      <GitRevisionVersion>-@(_GitRevisionVersion1)-@(_GitRevisionVersion2)</GitRevisionVersion>
+    </PropertyGroup>
+    <Message Importance="high" Text="Current version: $(GitRevisionVersion)" />
+
+  </Target>
+
+</Project>

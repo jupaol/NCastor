@@ -14,8 +14,9 @@
     <DropsPath>$(GlobalRootPath)\Drops\$(SolutionName)</DropsPath>
     <AssemblyInfoPath>$(GlobalRootPath)\CommonAssemblyProperties\$(SolutionName)</AssemblyInfoPath>
 
-    <MajorVersion>1</MajorVersion>
+    <MajorVersion>0</MajorVersion>
     <MinorVersion>1</MinorVersion>
+    <RevisionVersion>0</RevisionVersion>
 
     <Platform>Any CPU</Platform>
 
@@ -46,6 +47,9 @@
       CalculateSemanticVersion;
       Clean;
       CreateArtefactFolders;
+
+      SetAssemblyVersion;
+      SetAssemblyInfo;
 
       CoreBuild;
 

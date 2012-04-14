@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="GetSvnRevisionVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <GetSvnRevisionVersionDependsOn>
+      BeforeGetSvnRevisionVersion;
+      CoreGetSvnRevisionVersion;
+      AfterGetSvnRevisionVersion;
+    </GetSvnRevisionVersionDependsOn>
+  </PropertyGroup>
+
+  <Target Name="GetSvnRevisionVersion" DependsOnTargets="$(GetSvnRevisionVersionDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeGetSvnRevisionVersion" />
+  <Target Name="AfterGetSvnRevisionVersion" />
+
+  <Target Name="CoreGetSvnRevisionVersion" >
+
+    <MSBuild.Community.Tasks.Subversion.SvnVersion LocalPath="." ToolPath="$(SvnRunnersPath)">
+      <Output TaskParameter="Revision" PropertyName="SvnRevisionVersion" />
+    </MSBuild.Community.Tasks.Subversion.SvnVersion>
+    <Message Text="Revision: $(SvnRevisionVersion)"/>
+
+    <!--<PropertyGroup>
+      <SvnRevisionVersion>$(SVN_REVISION)</SvnRevisionVersion>
+    </PropertyGroup>-->
+    
+  </Target>
+  
+</Project>

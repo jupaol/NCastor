@@ -48,15 +48,15 @@ Your Build custom dependencies
   Currently the supported targets are: (More comming soon)
   
   Hudson
-    BuildVersionHudson
+    GetBuildVersionFromHudson
     SVN
       RevisionVersionHudsonSvn
   TFS
-    BuildVersionTFS
+    GetBuildVersionFromTFS
   
   Example:
   
-   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />
+   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
    <Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />
    
    Custom calculation example:

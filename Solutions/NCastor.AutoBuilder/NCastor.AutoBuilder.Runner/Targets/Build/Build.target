@@ -14,17 +14,17 @@
   <PropertyGroup>
     <BuildDependsOn>
       ValidateSettings;
-      CalculateSemanticVersion;
       Clean;
       CreateArtefactFolders;
+      CalculateSemanticVersion;
 
       SetAssemblyVersion;
       SetAssemblyInfo;
-      
+
       BeforeBuild;
       CoreBuild;
       AfterBuild;
-      
+
       BuildSpecialProjects;
     </BuildDependsOn>
   </PropertyGroup>

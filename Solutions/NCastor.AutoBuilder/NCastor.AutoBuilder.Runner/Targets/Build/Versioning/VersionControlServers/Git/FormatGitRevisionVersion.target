@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="FormatGitRevisionVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+
+  <PropertyGroup>
+    <FormatGitRevisionVersionDependsOn>
+      GetGitRevisionVersion;
+      BeforeFormatGitRevisionVersion;
+      CoreFormatGitRevisionVersion;
+      AfterFormatGitRevisionVersion;
+    </FormatGitRevisionVersionDependsOn>
+  </PropertyGroup>
+
+  <Target Name="FormatGitRevisionVersion" DependsOnTargets="$(FormatGitRevisionVersionDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeFormatGitRevisionVersion" />
+  <Target Name="AfterFormatGitRevisionVersion" />
+
+  <Target Name="CoreFormatGitRevisionVersion" >
+
+    <MSBuild.ExtensionPack.Framework.TextString TaskAction="Replace" OldString="$(GitRevisionVersion)" OldValue="-" NewValue=".">
+      <Output PropertyName="_FormattedGitRevisionVersion" TaskParameter="NewString"/>
+    </MSBuild.ExtensionPack.Framework.TextString>
+
+    <PropertyGroup>
+      <AdditionalVersionInformation>( +build.git$(_FormattedGitRevisionVersion) )</AdditionalVersionInformation>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>

@@ -15,9 +15,12 @@
     <CalculateSemanticVersionDependsOn>
       CalculateBuildVersion;
       CalculateRevisionVersion;
+      ValidateVersioningProperties;
       BeforeCalculateSemanticVersion;
       CoreCalculateSemanticVersion;
       AfterCalculateSemanticVersion;
+      CalculateFileVersion;
+      CalculateInformationalVersion;
     </CalculateSemanticVersionDependsOn>
   </PropertyGroup>
 
@@ -30,12 +33,7 @@
   <Target Name="CoreCalculateSemanticVersion">
 
     <PropertyGroup>
-      <MajorVersion Condition="$(MajorVersion) == ''">1</MajorVersion>
-      <MinorVersion Condition="$(MinorVersion) == ''">0</MinorVersion>
-      <BuildVersion Condition="$(BuildVersion) == ''">0</BuildVersion>
-      <RevisionVersion Condition="$(RevisionVersion) == ''">0</RevisionVersion>
-      
-      <SemanticVersion>$(MajorVersion).$(MinorVersion).$(BuildVersion).$(RevisionVersion)</SemanticVersion>
+      <SemanticVersion>$(MajorVersion).$(MinorVersion).$(RevisionVersion)</SemanticVersion>
     </PropertyGroup>
 
   </Target>

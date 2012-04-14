@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="ValidateVersioningProperties.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <ValidateVersioningPropertiesDependsOn>
+      BeforeValidateVersioningProperties;
+      CoreValidateVersioningProperties;
+      AfterValidateVersioningProperties;
+    </ValidateVersioningPropertiesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="ValidateVersioningProperties" DependsOnTargets="$(ValidateVersioningPropertiesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeValidateVersioningProperties" />
+  <Target Name="AfterValidateVersioningProperties" />
+
+  <Target Name="CoreValidateVersioningProperties" >
+
+    <PropertyGroup>
+      <MajorVersion Condition="$(MajorVersion) == ''">0</MajorVersion>
+      <MinorVersion Condition="$(MinorVersion) == ''">1</MinorVersion>
+      <BuildVersion Condition="$(BuildVersion) == ''">0</BuildVersion>
+      <RevisionVersion Condition="$(RevisionVersion) == ''">0</RevisionVersion>
+    </PropertyGroup>
+
+  </Target>
+
+</Project>

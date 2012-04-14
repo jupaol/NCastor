@@ -11,7 +11,7 @@ Your custom versioning targets
   <!--TODO: Place here your versioning targets-->
 
   <!--Examples-->
-  <!--<Target Name="CoreCalculateBuildVersion" DependsOnTargets="BuildVersionHudson;" />-->
+  <!--<Target Name="CoreCalculateBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />-->
   <!--<Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />-->
 
   <!--Custom calculation example:-->

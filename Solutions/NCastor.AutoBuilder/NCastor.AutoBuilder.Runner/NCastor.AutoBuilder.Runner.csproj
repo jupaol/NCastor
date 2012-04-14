@@ -33,12 +33,9 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
-    <Folder Include="Targets\Build\Versioning\CCNET\Git\" />
-    <Folder Include="Targets\Build\Versioning\CCNET\SVN\" />
-    <Folder Include="Targets\Build\Versioning\CCNET\TFS\" />
-    <Folder Include="Targets\Build\Versioning\Hudson\Git\" />
-    <Folder Include="Targets\Build\Versioning\Hudson\TFS\" />
-    <Folder Include="Targets\Build\Versioning\TeamCity\" />
+    <Folder Include="Targets\Build\Versioning\ContinousIntegrationServers\CCNET\" />
+    <Folder Include="Targets\Build\Versioning\ContinousIntegrationServers\TeamCity\" />
+    <Folder Include="Targets\Build\Versioning\VersionControlServers\TFS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Common\Common.properties">
@@ -126,14 +123,14 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\Hudson\BuildVersionHudson.target">
+    <Content Include="Targets\Build\Versioning\ContinousIntegrationServers\Hudson\GetBuildVersionFromHudson.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Targets\Build\Versioning\Hudson\SVN\RevisionVersionHudsonSvn.target">
+    <Content Include="Targets\Build\Versioning\VersionControlServers\SVN\FormatSvnRevisionVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\TFS\BuildVersionTFS.target">
+    <Content Include="Targets\Build\Versioning\ContinousIntegrationServers\TFS\GetBuildVersionFromTFS.target">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -142,6 +139,7 @@
     </Content>
     <Content Include="Targets\Build\Versioning\CalculateSemanticVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Targets\Tests\RunTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -296,6 +294,31 @@
     <Content Include="Targets\Build\Versioning\SetAssemblyVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Targets\Build\Versioning\ValidateVersioningProperties.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\CalculateFileVersion.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\CalculateInformationalVersion.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\CalculateAdditionalVersionInformation.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\VersionControlServers\SVN\GetSvnRevisionVersion.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\VersionControlServers\Git\GetGitRevisionVersion.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\VersionControlServers\Git\FormatGitRevisionVersion.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
