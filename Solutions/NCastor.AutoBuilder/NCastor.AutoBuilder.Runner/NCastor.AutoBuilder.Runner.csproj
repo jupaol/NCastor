@@ -34,7 +34,6 @@
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
     <Folder Include="Targets\Build\Versioning\ContinousIntegrationServers\CCNET\" />
-    <Folder Include="Targets\Build\Versioning\ContinousIntegrationServers\TeamCity\" />
     <Folder Include="Targets\Build\Versioning\VersionControlServers\TFS\" />
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +320,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Build\Versioning\VersionControlServers\SVN\UseSvnRevisionAsCurrentRevisionVersion.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\ContinousIntegrationServers\TeamCity\GetBuildVersionFromTeamCity.target">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
