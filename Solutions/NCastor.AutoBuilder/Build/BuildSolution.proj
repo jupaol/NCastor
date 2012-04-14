@@ -10,6 +10,9 @@
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
     <NCastorPath>$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner</NCastorPath>
 
+    <Enviroment>local</Enviroment>
+    <IsDesktopBuild>true</IsDesktopBuild>
+
     <WorkingDirectoryPath>$(GlobalRootPath)\WorkingDirectory\$(SolutionName)</WorkingDirectoryPath>
     <DropsPath>$(GlobalRootPath)\Drops\$(SolutionName)</DropsPath>
     <AssemblyInfoPath>$(GlobalRootPath)\CommonAssemblyProperties\$(SolutionName)</AssemblyInfoPath>
@@ -29,6 +32,21 @@
 
     <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>
   </PropertyGroup>
+
+  <Choose>
+    <When Condition="$(IsDesktopBuild) == 'false'">
+      <!--Externaal runner location when it is not a desktop build-->
+      <PropertyGroup>
+        <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
+      </PropertyGroup>
+    </When>
+    <When  Condition="$(IsDesktopBuild) == 'true'">
+      <!--Externaal runner location when it is a desktop build-->
+      <PropertyGroup>
+        <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
+      </PropertyGroup>      
+    </When>
+  </Choose>
 
   <!-- Importing NCastor Global properties -->
   <Import Project="$(NCastorPath)\GlobalProperties.import"/>
@@ -80,6 +98,8 @@
   </PropertyGroup>
 
   <!-- TODO: Place your custom targets here -->
+
+  <Target Name="CoreCalculateAdditionalVersionInformation" DependsOnTargets="FormatGitRevisionVersion" />
 
   <Target Name="PackageNCastor" DependsOnTargets="$(PackageNCastorDependsOn)" />
 
