@@ -29,7 +29,7 @@
 
     <!--To be injected by TeamCity-->
     <PropertyGroup>
-      <BuildVersion>$(build.number)</BuildVersion>
+      <BuildVersion>$(BUILD_NUMBER)</BuildVersion>
     </PropertyGroup>
     
   </Target>  
