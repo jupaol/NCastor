@@ -31,7 +31,7 @@
       Projects="$(MSBuildProjectFullPath)"
       Targets="_PackageClickOnceArtefacts"
       Properties="
-        _CurrentClickOnceZipFilePath=$(DropsPath)\$(PackageName).Published.%(ClickOnceProjects.FileName).$(Configuration).$(Platform).v$(SemanticVersion).zip;
+        _CurrentClickOnceZipFilePath=$(DropsPath)\%(ClickOnceProjects.FileName).Published.$(Configuration).$(Platform).v$(SemanticVersion).zip;
         _CurrentClickOnceDestinationSourcePath=%(ClickOnceProjects.DestinationPath)
       "/>
 

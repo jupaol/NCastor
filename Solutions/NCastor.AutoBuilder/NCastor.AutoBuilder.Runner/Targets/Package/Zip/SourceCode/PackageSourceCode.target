@@ -32,19 +32,20 @@
 
     <ItemGroup>
       <_SourceCodeFiles Include="
-                          $(SolutionsPath)\**\*"
+                          $(GlobalRootPath)\**\*"
                         Exclude=" 
-                          $(SolutionsPath)\**\bin\**;
-                          $(SolutionsPath)\**\.svn\**;
-                          $(SolutionsPath)\**\Logs\**;
+                          $(GlobalRootPath)\**\bin\**;
+                          $(GlobalRootPath)\**\.svn\**;
+                          $(GlobalRootPath)\**\.git\**;
+                          $(GlobalRootPath)\**\Logs\**;
                           $(DropsPath)\**;
                           $(WorkingDirectoryPath)\**;
-                          $(SolutionsPath)\**\Logs\**;
-                          $(SolutionsPath)\**\obj\**;
-                          $(SolutionsPath)\**\*.suo;
-                          $(SolutionsPath)\**\*.cache;
-                          $(SolutionsPath)\**\_ReSharper*\**;
-                          $(SolutionsPath)\**\*ReSharper*"/>
+                          $(GlobalRootPath)\**\Logs\**;
+                          $(GlobalRootPath)\**\obj\**;
+                          $(GlobalRootPath)\**\*.suo;
+                          $(GlobalRootPath)\**\*.cache;
+                          $(GlobalRootPath)\**\_ReSharper*\**;
+                          $(GlobalRootPath)\**\*ReSharper*"/>
     </ItemGroup>
 
     <MsBuild.Community.tasks.Zip ZipFileName="$(SourceCodePackageFilePath)"

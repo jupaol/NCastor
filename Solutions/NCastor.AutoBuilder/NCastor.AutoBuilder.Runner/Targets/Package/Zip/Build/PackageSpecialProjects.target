@@ -31,7 +31,7 @@
       Projects="$(MSBuildProjectFullPath)" 
       Targets="_PackageSpecialProjects"
       Properties="
-        _CurrentSpecialProjectZipFilePath=$(DropsPath)\$(PackageName).%(SpecialProjects.FileName).$(Configuration).$(Platform).v$(SemanticVersion).zip;
+        _CurrentSpecialProjectZipFilePath=$(DropsPath)\%(SpecialProjects.FileName).Build.$(Configuration).$(Platform).v$(SemanticVersion).zip;
         _CurrentSpecialFoldersWorkingDirectoryPath=%(SpecialProjects.WorkingDirectoryPath)
       "/>
     

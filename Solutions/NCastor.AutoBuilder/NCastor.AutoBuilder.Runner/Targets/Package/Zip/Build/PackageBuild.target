@@ -27,7 +27,7 @@
   <Target Name="CorePackageBuild" >
 
     <PropertyGroup>
-      <BuildPackageFilePath Condition="$(BuildPackageFilePath) == ''">$(DropsPath)\$(PackageName).App.$(Configuration).$(Platform).v$(SemanticVersion).zip</BuildPackageFilePath>
+      <BuildPackageFilePath Condition="$(BuildPackageFilePath) == ''">$(DropsPath)\$(PackageName).Build.$(Configuration).$(Platform).v$(SemanticVersion).zip</BuildPackageFilePath>
     </PropertyGroup>
 
     <ItemGroup>
