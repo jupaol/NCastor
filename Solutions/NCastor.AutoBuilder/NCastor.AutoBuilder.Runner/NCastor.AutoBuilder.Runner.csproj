@@ -33,6 +33,8 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
+    <Folder Include="Targets\Labels\Svn\" />
+    <Folder Include="Targets\Labels\TFS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Common\Common.properties">
@@ -345,6 +347,21 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Labels\Labels.import">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Targets\Labels\ShouldCreateLabel.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Labels\FormatLabelName.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Labels\CreateLabels.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Labels\Git\CreateGitLabel.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

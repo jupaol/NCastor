@@ -22,5 +22,6 @@
   <Import Project="$(TargetsPath)\Tests\Tests.import" />
   <Import Project="$(TargetsPath)\Reports\Reports.import" />
   <Import Project="$(TargetsPath)\Distribute\Distribute.import" />
+  <Import Project="$(TargetsPath)\Labels\Labels.import" />
 
 </Project>

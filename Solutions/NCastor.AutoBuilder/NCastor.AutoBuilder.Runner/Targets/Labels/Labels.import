@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="Labels.import" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="ShouldCreateLabel.target" />
+  <Import Project="FormatLabelName.target" />
+  <Import Project="Git\CreateGitLabel.target" />
+  <Import Project="CreateLabels.target" />
+
+</Project>

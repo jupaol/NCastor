@@ -74,6 +74,8 @@
       PackageNugets;
 
       DistributeArtefacts;
+
+      CreateGitLabel;
     </BuildNCastorAutoBuilderSolutionDependsOn>
   </PropertyGroup>
   <Target Name="BuildNCastorAutoBuilderSolution" DependsOnTargets="$(BuildNCastorAutoBuilderSolutionDependsOn)" />

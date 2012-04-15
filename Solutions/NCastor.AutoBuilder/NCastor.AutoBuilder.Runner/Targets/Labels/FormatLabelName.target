@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="FormatLabelName.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <FormatLabelNameDependsOn>
+      CalculateSemanticVersion;
+      BeforeFormatLabelName;
+      CoreFormatLabelName;
+      AfterFormatLabelName;
+    </FormatLabelNameDependsOn>
+  </PropertyGroup>
+
+  <Target Name="FormatLabelName" DependsOnTargets="$(FormatLabelNameDependsOn)" Condition="$(CanCreateLabel) == 'true'"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeFormatLabelName" />
+  <Target Name="AfterFormatLabelName" />
+
+  <Target Name="CoreFormatLabelName" >
+
+    <Error Text="The 'InformationalVersion' is used as part of the tag name, therefore it can not be emty" Condition="$(InformationalVersion) == ''"/>
+    <Error Text="The 'GitTagPrefix' is sued as part of the tag name, therefore it can not be emty" Condition="$(GitTagPrefix) == ''"/>
+
+    <Message Text="Calculating the 'LabelName'"/>
+    <PropertyGroup>
+      <LabelName>$(GitTagPrefix)$(InformationalVersion)</LabelName>
+    </PropertyGroup>
+    
+  </Target>
+  
+</Project>
