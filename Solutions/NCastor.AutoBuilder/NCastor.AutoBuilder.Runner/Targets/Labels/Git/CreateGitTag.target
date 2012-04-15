@@ -13,7 +13,6 @@
 
   <PropertyGroup>
     <CreateGitTagDependsOn>
-      ShouldCreateLabel;
       FormatLabelName;
       BeforeCreateGitTag;
       CoreCreateGitTag;

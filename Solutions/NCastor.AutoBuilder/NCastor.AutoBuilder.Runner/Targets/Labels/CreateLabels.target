@@ -13,7 +13,6 @@
 
   <PropertyGroup>
     <CreateLabelsDependsOn>
-      ShouldCreateLabel;
       BeforeCreateLabels;
 
       CreateGitTag;

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="FormatLabelNamePrefix.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <FormatLabelNamePrefixDependsOn>
+      BeforeFormatLabelNamePrefix;
+      CoreFormatLabelNamePrefix;
+      AfterFormatLabelNamePrefix;
+    </FormatLabelNamePrefixDependsOn>
+  </PropertyGroup>
+
+  <Target Name="FormatLabelNamePrefix" DependsOnTargets="$(FormatLabelNamePrefixDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeFormatLabelNamePrefix" />
+  <Target Name="AfterFormatLabelNamePrefix" />
+
+  <Target Name="CoreFormatLabelNamePrefix" Condition="$(LabelNamePrefix) == ''">
+
+    <MSBuild.ExtensionPack.Framework.TextString TaskAction="Split" String1="$(SolutionName)" String2=" ">
+      <Output ItemName="_Formated_Solution_Name_Tokens" TaskParameter="Strings"/>
+    </MSBuild.ExtensionPack.Framework.TextString>
+    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="ItemColToString" InputItems1="@(_Formated_Solution_Name_Tokens)" Separator="_">
+      <Output TaskParameter="OutString" PropertyName="_Formated_Solution_Name"/>
+    </MSBuild.ExtensionPack.Framework.MsBuildHelper>
+
+    <PropertyGroup>
+      <LabelNamePrefix Condition="$(LabelNamePrefix) == ''">$(_Formated_Solution_Name)_$(Environment)_v</LabelNamePrefix>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>

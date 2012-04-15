@@ -13,6 +13,7 @@
 
   <PropertyGroup>
     <GetGitRevisionVersionDependsOn>
+      FormatLabelNamePrefix;
       BeforeGetGitRevisionVersion;
       CoreGetGitRevisionVersion;
       AfterGetGitRevisionVersion;
@@ -36,7 +37,7 @@
 
     <Delete Files="$(WorkingDirectoryPath)\gitversion.txt" Condition="Exists('$(WorkingDirectoryPath)\gitversion.txt')"/>
     <Exec
-      Command='"$(GitRunner)" describe --abbrev=12 --always --candidates 1 --long --tags --match "$(GitTagPrefix)*" >> "$(WorkingDirectoryPath)\gitversion.txt"'/>
+      Command='"$(GitRunner)" describe --abbrev=12 --always --candidates 1 --long --tags --match "$(LabelNamePrefix)*" >> "$(WorkingDirectoryPath)\gitversion.txt"'/>
     <ReadLinesFromFile File="$(WorkingDirectoryPath)\gitversion.txt" >
       <Output ItemName="_GitVersionInfo" TaskParameter="Lines"/>
     </ReadLinesFromFile>

@@ -343,14 +343,10 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\Build\Versioning\Git.properties">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Targets\Labels\Labels.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\Labels\ShouldCreateLabel.target">
+    <None Include="Targets\Labels\FormatLabelNamePrefix.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Targets\Labels\FormatLabelName.target">
