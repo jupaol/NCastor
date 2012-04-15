@@ -93,6 +93,7 @@
     </DistributeDependsOn>
   </PropertyGroup>
 
+  <Target Name="CoreCalculateBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
   <Target Name="CoreCalculateAdditionalVersionInformation" DependsOnTargets="FormatGitRevisionVersion"/>
 
   <Target Name="CorePrepareSpecialProjects">
