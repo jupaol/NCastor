@@ -75,7 +75,7 @@
 
       DistributeArtefacts;
 
-      CreateGitLabel;
+      CreateGitTag;
     </BuildNCastorAutoBuilderSolutionDependsOn>
   </PropertyGroup>
   <Target Name="BuildNCastorAutoBuilderSolution" DependsOnTargets="$(BuildNCastorAutoBuilderSolutionDependsOn)" />

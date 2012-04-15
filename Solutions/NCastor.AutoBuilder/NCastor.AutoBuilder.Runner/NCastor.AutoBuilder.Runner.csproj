@@ -359,7 +359,7 @@
     <None Include="Targets\Labels\CreateLabels.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Targets\Labels\Git\CreateGitLabel.target">
+    <None Include="Targets\Labels\Git\CreateGitTag.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">

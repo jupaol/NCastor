@@ -16,7 +16,7 @@
       ShouldCreateLabel;
       BeforeCreateLabels;
 
-      CreateGitLabel;
+      CreateGitTag;
       CoreCreateLabels;
 
       AfterCreateLabels;

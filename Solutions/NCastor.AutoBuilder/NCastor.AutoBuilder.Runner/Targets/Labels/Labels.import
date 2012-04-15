@@ -13,7 +13,7 @@
 
   <Import Project="ShouldCreateLabel.target" />
   <Import Project="FormatLabelName.target" />
-  <Import Project="Git\CreateGitLabel.target" />
+  <Import Project="Git\CreateGitTag.target" />
   <Import Project="CreateLabels.target" />
 
 </Project>
