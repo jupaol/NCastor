@@ -27,24 +27,12 @@
 
   <Target Name="CoreCleanArtefactFolders">
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="$(WorkingDirectoryPath)"
-      ContinueOnError="false"
-      Condition="Exists($(WorkingDirectoryPath))"/>
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
       Directories="$(WorkingDirectoryPath)" 
       Condition="Exists($(WorkingDirectoryPath))" />
     
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="$(DropsPath)"
-      ContinueOnError="false"
-      Condition="Exists($(DropsPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 

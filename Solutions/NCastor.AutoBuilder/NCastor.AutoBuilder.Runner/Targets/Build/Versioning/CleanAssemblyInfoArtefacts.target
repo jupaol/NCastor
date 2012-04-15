@@ -27,12 +27,6 @@
 
   <Target Name="CoreCleanAssemblyInfoArtefacts" >
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="$(AssemblyInfoPath)" 
-      ContinueOnError="false" 
-      Condition="Exists($(AssemblyInfoPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 

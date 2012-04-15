@@ -29,12 +29,6 @@
 
     <Error ContinueOnError="false" Text="The test assemblies path was not specified" Condition="$(TestAssembliesPath) == ''" />
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="$(TestAssembliesPath)" 
-      ContinueOnError="false" 
-      Condition="Exists($(TestAssembliesPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 

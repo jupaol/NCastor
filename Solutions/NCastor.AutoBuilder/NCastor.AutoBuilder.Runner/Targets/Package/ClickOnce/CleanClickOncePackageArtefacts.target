@@ -27,24 +27,12 @@
 
   <Target Name="CoreCleanClickOncePackageArtefacts" >
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="%(ClickOnceProjects.DestinationPath)" 
-      ContinueOnError="false" 
-      Condition="Exists(%(ClickOnceProjects.DestinationPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
       Directories="%(ClickOnceProjects.DestinationPath)" 
       Condition="Exists(%(ClickOnceProjects.DestinationPath))" />
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="%(ClickOnceProjects.WorkingDirectoryPath)" 
-      ContinueOnError="false" 
-      Condition="Exists(%(ClickOnceProjects.WorkingDirectoryPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 

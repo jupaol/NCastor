@@ -29,12 +29,6 @@
 
     <Error ContinueOnError="false" Text="The NUnit reports path was not specified" Condition="$(NUnitReportsPath) == ''" />
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="$(NUnitReportsPath)" 
-      ContinueOnError="false" 
-      Condition="Exists($(NUnitReportsPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 

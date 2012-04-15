@@ -37,17 +37,11 @@
   <Target Name="PrepareNugetPackage" />
   <Target Name="AddBuildFilesToNugetPackageWorkingDirectory" >
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="$(WorkingNugetPackagePath)" 
-      ContinueOnError="false" 
-      Condition="Exists($(WorkingNugetPackagePath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
       Directories="$(WorkingNugetPackagePath)" 
-      Condition="Exists($())" />
+      Condition="Exists($(WorkingNugetPackagePath))" />
 
     <MakeDir ContinueOnError="false" Directories="$(WorkingNugetPackagePath)" Condition="!Exists($(WorkingNugetPackagePath))" />
 

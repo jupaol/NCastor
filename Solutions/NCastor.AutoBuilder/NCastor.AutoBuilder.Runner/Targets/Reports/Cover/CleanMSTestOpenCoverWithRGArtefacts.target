@@ -15,12 +15,6 @@
 
     <Error ContinueOnError="false" Text="The MSTest code coverage report path was not specified" Condition="$(ReportGeneratorMSTestReportPath) == ''" />
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="$(ReportGeneratorMSTestReportPath)" 
-      ContinueOnError="false" 
-      Condition="Exists($(ReportGeneratorMSTestReportPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 

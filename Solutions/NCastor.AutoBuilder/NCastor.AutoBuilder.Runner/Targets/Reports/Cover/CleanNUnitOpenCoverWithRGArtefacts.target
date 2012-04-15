@@ -15,12 +15,6 @@
 
     <Error ContinueOnError="false" Text="The NUnit code coverage report path was not specified" Condition="$(ReportGeneratorNUnitReportPath) == ''" />
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="$(ReportGeneratorNUnitReportPath)" 
-      ContinueOnError="false" 
-      Condition="Exists($(ReportGeneratorNUnitReportPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 

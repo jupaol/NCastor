@@ -32,12 +32,6 @@
     <Error ContinueOnError="false" Text="At least one special project path was not found" Condition="!Exists(%(SpecialProjects.Identity))" />
     <Error ContinueOnError="false" Text="If you specify special projects, you need to specify the WorkingDirectoryPath for each one of them" Condition="%(SpecialProjects.WorkingDirectoryPath) == ''" />
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="%(SpecialProjects.WorkingDirectoryPath)" 
-      ContinueOnError="false" 
-      Condition="Exists(%(SpecialProjects.WorkingDirectoryPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 

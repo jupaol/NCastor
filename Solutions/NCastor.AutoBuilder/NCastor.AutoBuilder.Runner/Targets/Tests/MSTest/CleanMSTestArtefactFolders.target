@@ -29,12 +29,6 @@
 
     <Error ContinueOnError="false" Text="The MSTest results path was not specified" Condition="$(MSTestResultsPath) == ''" />
 
-    <MSBuild.ExtensionPack.FileSystem.Folder
-      TaskAction="RemoveContent"
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)"
-      Path="$(MSTestResultsPath)" 
-      ContinueOnError="false" 
-      Condition="Exists($(MSTestResultsPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
