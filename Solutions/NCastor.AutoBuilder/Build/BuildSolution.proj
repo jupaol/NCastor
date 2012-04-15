@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Project DefaultTargets="Distribute" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="BuildNCastorAutoBuilderSolution" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
@@ -10,9 +10,8 @@
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
     <NCastorPath>$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner</NCastorPath>
 
-    <Enviroment>local</Enviroment>
     <IsDesktopBuild>true</IsDesktopBuild>
-
+    
     <WorkingDirectoryPath>$(GlobalRootPath)\WorkingDirectory\$(SolutionName)</WorkingDirectoryPath>
     <DropsPath>$(GlobalRootPath)\Drops\$(SolutionName)</DropsPath>
     <AssemblyInfoPath>$(GlobalRootPath)\CommonAssemblyProperties\$(SolutionName)</AssemblyInfoPath>
@@ -60,7 +59,7 @@
   <!-- TODO: Place your custom settings here -->
 
   <PropertyGroup>
-    <BuildDependsOn>
+    <BuildNCastorAutoBuilderSolutionDependsOn>
       ValidateSettings;
       Clean;
       CreateArtefactFolders;
@@ -70,32 +69,14 @@
       SetAssemblyInfo;
 
       CoreBuild;
-
       BuildSpecialProjects;
-    </BuildDependsOn>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <RunTestsDependsOn>
-      Build;
-    </RunTestsDependsOn>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <CreatePackagesDependsOn>
-      RunTests;
 
       PackageNugets;
-    </CreatePackagesDependsOn>
-  </PropertyGroup>
 
-  <PropertyGroup>
-    <DistributeDependsOn>
-      CreatePackages;
-      
       DistributeArtefacts;
-    </DistributeDependsOn>
+    </BuildNCastorAutoBuilderSolutionDependsOn>
   </PropertyGroup>
+  <Target Name="BuildNCastorAutoBuilderSolution" DependsOnTargets="$(BuildNCastorAutoBuilderSolutionDependsOn)" />
 
   <!-- TODO: Place your custom targets here -->
 
