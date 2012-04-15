@@ -33,7 +33,7 @@
 
     <PropertyGroup>
       <InformationalVersion>$(MajorVersion).$(MinorVersion).$(RevisionVersion)</InformationalVersion>
-      <InformationalVersion Condition="$(AdditionalVersionInformation) != ''">$(InformationalVersion) $(AdditionalVersionInformation)</InformationalVersion>
+      <InformationalVersion Condition="$(AdditionalVersionInformation) != ''">$(InformationalVersion)$(AdditionalVersionInformation)</InformationalVersion>
     </PropertyGroup>
     
   </Target>

@@ -29,7 +29,7 @@
   <Target Name="CoreFormatSvnRevisionVersion" >
 
     <PropertyGroup>
-      <AdditionalVersionInformation>( +build.svn.$(SvnRevisionVersion) )</AdditionalVersionInformation>
+      <AdditionalVersionInformation>.build.svn.$(SvnRevisionVersion)</AdditionalVersionInformation>
     </PropertyGroup>
 
   </Target>

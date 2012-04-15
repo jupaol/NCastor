@@ -29,7 +29,7 @@
   <Target Name="CoreFormatTFSRevisionVersion" >
 
     <PropertyGroup>
-      <AdditionalVersionInformation>( +build.tfs.$(TFSRevisionVersion) )</AdditionalVersionInformation>
+      <AdditionalVersionInformation>.build.tfs.$(TFSRevisionVersion)</AdditionalVersionInformation>
     </PropertyGroup>
 
   </Target>
