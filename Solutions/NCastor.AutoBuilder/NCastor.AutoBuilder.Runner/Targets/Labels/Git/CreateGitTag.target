@@ -30,7 +30,7 @@
 
     <Error Text="The Git runner was not specified" Condition="$(GitRunner) == ''" />
     <Error Text="The Git runner was not found" Condition="!Exists($(GitRunner))" />
-    <Error Text="The 'LabelName' is required" Condition="$(LabelName) == ''" />
+    <Error Text="The 'LabelName' is required to create the Git tag" Condition="$(LabelName) == ''" />
 
     <PropertyGroup>
       <_GitLabelResultFilePath>$(WorkingDirectoryPath)\GitLabelResult.txt</_GitLabelResultFilePath>
