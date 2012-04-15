@@ -39,10 +39,10 @@
       ContinueOnError="false"
       Text="For each nuget package to process, you need to specify its SourcePath property"
       Condition="%(NugetPackages.SourcePath) == ''" />
-    <Error
+    <!--<Error
       ContinueOnError="false"
       Text="For each nuget package to process, you need to specify its Version property"
-      Condition="%(NugetPackages.Version) == ''" />
+      Condition="%(NugetPackages.Version) == ''" />-->
 
   </Target>
   

@@ -32,7 +32,7 @@
     <Exec 
       ContinueOnError="false"
       WorkingDirectory="%(NugetPackages.SourcePath)"
-      Command='"$(NugetRunner)" pack "%(NugetPackages.Identity)" -Verbose -Version %(NugetPackages.Version) -OutputDirectory "$(DropsPath)" %(NugetPackages.ExtraOptions)' />
+      Command='"$(NugetRunner)" pack "%(NugetPackages.Identity)" -Verbose -Version $(SemanticVersion) -OutputDirectory "$(DropsPath)" %(NugetPackages.ExtraOptions)' />
     
   </Target>
   

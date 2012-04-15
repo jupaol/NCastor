@@ -111,7 +111,6 @@
       <NugetPackages Include="NCastor.AutoBuilder.Runner.nuspec">
         <SourcePath>$(NCastorAutoBuilderRunner)</SourcePath>
         <ExtraOptions></ExtraOptions>
-        <Version>$(SemanticVersion)</Version>
       </NugetPackages>
     </ItemGroup>
     
@@ -125,7 +124,6 @@
       <NugetPackages Include="NCastor.AutoBuilder.nuspec">
         <SourcePath>$(NCastorAutoBuilder)</SourcePath>
         <ExtraOptions></ExtraOptions>
-        <Version>$(SemanticVersion)</Version>
       </NugetPackages>
     </ItemGroup>
 
