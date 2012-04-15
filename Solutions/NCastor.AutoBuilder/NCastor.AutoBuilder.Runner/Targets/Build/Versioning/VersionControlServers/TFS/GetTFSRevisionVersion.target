@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="GetTFSRevisionVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <GetTFSRevisionVersionDependsOn>
+      BeforeGetTFSRevisionVersion;
+      CoreGetTFSRevisionVersion;
+      AfterGetTFSRevisionVersion;
+    </GetTFSRevisionVersionDependsOn>
+  </PropertyGroup>
+
+  <Target Name="GetTFSRevisionVersion" DependsOnTargets="$(GetTFSRevisionVersionDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeGetTFSRevisionVersion" />
+  <Target Name="AfterGetTFSRevisionVersion" />
+
+  <Target Name="CoreGetTFSRevisionVersion" >
+
+    <Error Text="The TFS Runner was not specified" Condition="$(TFSRunner) == ''" />
+    <Error Text="The TFS Runner was not found" Condition="!Exists($(TFSRunner))" />
+    <Error Text="The TFS user name was not specified" Condition="$(TFSUserName) == ''" />
+    <Error Text="The TFS password was not specified" Condition="$(TFSPassword) == ''" />
+
+    <PropertyGroup>
+      <_TFS_Changeset_TMP_File>$(WorkingDirectoryPath)\tfs_changeset_tmp.txt</_TFS_Changeset_TMP_File>
+    </PropertyGroup>
+    
+    <!-- Retrieve Changesets associated with a given workspace -->
+    <Delete Files="$(_TFS_Changeset_TMP_File)" Condition="Exists($(_TFS_Changeset_TMP_File))" />
+    <Exec
+      Command='"$(TFSRunner)" history "$(GlobalRootPath)" /recursive /sort:descending /noprompt /login:$(TFSUserName),$(TFSPassword) /format:brief /stopafter:1 >> "$(_TFS_Changeset_TMP_File)"'/>
+
+    <!--Reading the file with the changeset results-->
+    <ReadLinesFromFile File="$(_TFS_Changeset_TMP_File)" >
+      <Output ItemName="_TFS_Changesets_Info" TaskParameter="Lines"/>
+    </ReadLinesFromFile>
+    <Message Text="TFS Changesets - file content:" />
+    <Message Text="@(_TFS_Changesets_Info)" />
+    <Error Text="The file containing the changeset results was empty" Condition="@(_TFS_Changesets_Info) == ''" />
+
+    <!--Getting the number of lines readed from the file-->
+    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="GetItemCount" InputItems1="@(_TFS_Changesets_Info)">
+      <Output TaskParameter="ItemCount" PropertyName="_TFS_TMP_File_Lines_count"/>
+    </MSBuild.ExtensionPack.Framework.MsBuildHelper>
+    <Message Text="Number of lines: $(_TFS_TMP_File_Lines_count)" />
+    <Error Text="There was a problem reading the number of lines from: '_TFS_Changesets_Info'" Condition="$(_TFS_TMP_File_Lines_count) == ''" />
+    <!--<Error Text="There was a problem when getting the latest changeset results, the file does not contain the expected number of lines" Condition="$(_TFS_TMP_File_Lines_count) != 3"/>-->
+
+    <!--Reading the third line of the line, this line contains the changeset info-->
+    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="GetItem" InputItems1="@(_TFS_Changesets_Info)" Position="2">
+      <Output TaskParameter="OutputItems" ItemName="_Item_TFS_Line_Containing_Changeset"/>
+    </MSBuild.ExtensionPack.Framework.MsBuildHelper>
+    <PropertyGroup>
+      <_TFS_Line_Containing_Changeset>%(_Item_TFS_Line_Containing_Changeset.Identity)</_TFS_Line_Containing_Changeset>
+    </PropertyGroup>
+    <Message Text="Line containing the latest changeset: $(_TFS_Line_Containing_Changeset)" />
+    <Error Text="There was a problem reading the line containing the latest changeset" Condition="$(_TFS_Line_Containing_Changeset) == ''" />
+
+    <!--Getting the latest changeset-->
+    <MSBuild.ExtensionPack.Framework.TextString TaskAction="Split" String1="$(_TFS_Line_Containing_Changeset)" String2=" ">
+      <Output ItemName="_TFS_Parsed_Tokens" TaskParameter="Strings"/>
+    </MSBuild.ExtensionPack.Framework.TextString>
+    <Message Text="TFS changeset tokens: @(_TFS_Parsed_Tokens)" />
+    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="GetItem" InputItems1="@(_TFS_Parsed_Tokens)" Position="0">
+      <Output TaskParameter="OutputItems" ItemName="_Item_TFS_Latest_Changeset"/>
+    </MSBuild.ExtensionPack.Framework.MsBuildHelper>
+    <PropertyGroup>
+      <TFSRevisionVersion>%(_Item_TFS_Latest_Changeset.Identity)</TFSRevisionVersion>
+    </PropertyGroup>
+    <Message Text="Latest changeset: $(TFSRevisionVersion)" />
+
+  </Target>
+  
+</Project>

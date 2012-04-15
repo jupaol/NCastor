@@ -33,7 +33,6 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
-    <Folder Include="Targets\Build\Versioning\VersionControlServers\TFS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Common\Common.properties">
@@ -322,6 +321,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Build\Versioning\ContinousIntegrationServers\TeamCity\GetBuildVersionFromTeamCity.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\VersionControlServers\TFS\FormatTFSRevisionVersion.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\VersionControlServers\TFS\UseTFSRevisionAsCurrentRevisionVersion.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\VersionControlServers\TFS\GetTFSRevisionVersion.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Properties\Build\Versioning\TFS.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
