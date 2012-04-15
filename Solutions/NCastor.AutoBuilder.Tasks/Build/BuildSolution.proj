@@ -12,6 +12,8 @@
     <!--TODO: Update the NCastor path if different from the following path-->
     <NCastorPath>$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner</NCastorPath>
 
+    <IsDesktopBuild>true</IsDesktopBuild>
+
     <WorkingDirectoryPath>$(GlobalRootPath)\WorkingDirectory\$(SolutionName)</WorkingDirectoryPath>
     <DropsPath>$(GlobalRootPath)\Drops\$(SolutionName)</DropsPath>
     <AssemblyInfoPath>$(GlobalRootPath)\CommonAssemblyProperties\$(SolutionName)</AssemblyInfoPath>
@@ -38,9 +40,23 @@
     <OpenCoverRunner>$(NugetPackagesPath)\OpenCover.4.0.301\OpenCover.Console.exe</OpenCoverRunner>
     <ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.7.0\ReportGenerator.exe</ReportGeneratorRunner>
     <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>
-    <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
   </PropertyGroup>
-  
+
+  <Choose>
+    <When Condition="$(IsDesktopBuild) == 'false'">
+      <!--Externaal runner location when it is not a desktop build-->
+      <PropertyGroup>
+        <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
+      </PropertyGroup>
+    </When>
+    <When  Condition="$(IsDesktopBuild) == 'true'">
+      <!--Externaal runner location when it is a desktop build-->
+      <PropertyGroup>
+        <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
+      </PropertyGroup>
+    </When>
+  </Choose>
+
   <!-- Importing NCastor Global properties -->
   <Import Project="$(NCastorPath)\GlobalProperties.import"/>
 
