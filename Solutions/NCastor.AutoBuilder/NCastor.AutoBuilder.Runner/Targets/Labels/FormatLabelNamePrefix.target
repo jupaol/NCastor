@@ -30,7 +30,7 @@
     <MSBuild.ExtensionPack.Framework.TextString TaskAction="Split" String1="$(SolutionName)" String2=" ">
       <Output ItemName="_Formated_Solution_Name_Tokens" TaskParameter="Strings"/>
     </MSBuild.ExtensionPack.Framework.TextString>
-    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="ItemColToString" InputItems1="@(_Formated_Solution_Name_Tokens)" Separator="_">
+    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="ItemColToString" InputItems1="@(_Formated_Solution_Name_Tokens)" Separator=".">
       <Output TaskParameter="OutString" PropertyName="_Formated_Solution_Name"/>
     </MSBuild.ExtensionPack.Framework.MsBuildHelper>
 
