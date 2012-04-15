@@ -10,8 +10,8 @@
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
     <NCastorPath>$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner</NCastorPath>
 
-    <IsDesktopBuild>false</IsDesktopBuild>
-    <Environment>Dev</Environment>
+    <IsDesktopBuild>true</IsDesktopBuild>
+    <!--<Environment>Dev</Environment>-->
     
     <WorkingDirectoryPath>$(GlobalRootPath)\WorkingDirectory\$(SolutionName)</WorkingDirectoryPath>
     <DropsPath>$(GlobalRootPath)\Drops\$(SolutionName)</DropsPath>

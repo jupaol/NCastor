@@ -32,8 +32,31 @@
     <Error Text="The Git runner was not found" Condition="!Exists($(GitRunner))" />
     <Error Text="The 'LabelName' is required" Condition="$(LabelName) == ''" />
 
+    <PropertyGroup>
+      <_GitLabelResultFilePath>$(WorkingDirectoryPath)\GitLabelResult.txt</_GitLabelResultFilePath>
+    </PropertyGroup>
+
+    <!--Check to see if the tag already exists in the Git repository-->
+    <Exec 
+      Command='"$(GitRunner)" tag -l "$(LabelName)" >> "$(_GitLabelResultFilePath)"'
+      WorkingDirectory='$(GlobalRootPath)'/>
+    <ReadLinesFromFile File="$(_GitLabelResultFilePath)" >
+      <Output ItemName="_Git_Tags_Found" TaskParameter="Lines"/>
+    </ReadLinesFromFile>
+    <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="GetItemCount" InputItems1="@(_Git_Tags_Found)">
+      <Output TaskParameter="ItemCount" PropertyName="_Git_Tags_Found_Count"/>
+    </MSBuild.ExtensionPack.Framework.MsBuildHelper>
+    <MSBuild.Community.Tasks.Time Format="MM.dd.yyyy.HH.mm">
+      <Output TaskParameter="FormattedTime" PropertyName="_Git_Tag_Sufix_Timing" />
+    </MSBuild.Community.Tasks.Time>
+    <PropertyGroup Condition="$(_Git_Tags_Found_Count) != 0">
+      <LabelName>$(LabelName)_date_$(_Git_Tag_Sufix_Timing)</LabelName>
+    </PropertyGroup>
+
     <Message Text="Creating the label : $(LabelName)"/>
-    <Exec Command='"$(GitRunner)" tag -a "$(LabelName)" -m "$(LabelName)"'/>
+    <Exec 
+      Command='"$(GitRunner)" tag -a "$(LabelName)" -m "$(LabelName)"'
+      WorkingDirectory='$(GlobalRootPath)'/>
     
   </Target>
   
