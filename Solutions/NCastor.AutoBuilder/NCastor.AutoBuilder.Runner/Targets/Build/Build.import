@@ -17,6 +17,7 @@
   <Import Project="Versioning\ContinousIntegrationServers\Hudson\GetBuildVersionFromHudson.target"/>
   <Import Project="Versioning\ContinousIntegrationServers\TFS\GetBuildVersionFromTFS.target"/>
   <Import Project="Versioning\ContinousIntegrationServers\TeamCity\GetBuildVersionFromTeamCity.target"/>
+  <Import Project="Versioning\ContinousIntegrationServers\CCNET\GetBuildVersionFromCCNET.target"/>
 
   <Import Project="Versioning\VersionControlServers\Svn\GetSvnRevisionVersion.target"/>
   <Import Project="Versioning\VersionControlServers\Svn\FormatSvnRevisionVersion.target"/>

@@ -337,6 +337,10 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Build\Versioning\ContinousIntegrationServers\CCNET\GetBuildVersionFromCCNET.target">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

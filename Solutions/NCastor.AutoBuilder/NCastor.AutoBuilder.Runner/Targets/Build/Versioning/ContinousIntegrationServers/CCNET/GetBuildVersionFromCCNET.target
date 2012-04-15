@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="GetBuildVersionFromCCNET.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <GetBuildVersionFromCCNETDependsOn>
+      BeforeGetBuildVersionFromCCNET;
+      CoreGetBuildVersionFromCCNET;
+      AfterGetBuildVersionFromCCNET;
+    </GetBuildVersionFromCCNETDependsOn>
+  </PropertyGroup>
+
+  <Target Name="GetBuildVersionFromCCNET" DependsOnTargets="$(GetBuildVersionFromCCNETDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeGetBuildVersionFromCCNET" />
+  <Target Name="AfterGetBuildVersionFromCCNET" />
+
+  <Target Name="CoreGetBuildVersionFromCCNET" >
+
+    <Warning Text="The 'CCNetLabel' property was not injected by CCNET, the build version will be set to '0'" Condition="$(CCNetLabel) == ''" />
+    
+    <PropertyGroup>
+      <!-- To be injected by Hudson -->
+      <BuildVersion Condition="$(CCNetLabel) != ''">$(CCNetLabel.Split('.')[2])</BuildVersion>
+      <BuildVersion Condition="$(CCNetLabel) == ''"></BuildVersion>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>
