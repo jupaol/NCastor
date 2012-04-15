@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Project DefaultTargets="Distribute" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="BuildNCastorAutoBuilderConsole" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
@@ -63,7 +63,7 @@
   <!-- TODO: Place your custom settings here -->
 
   <PropertyGroup>
-    <BuildDependsOn>
+    <BuildNCastorAutoBuilderConsoleDependsOn>
       ValidateSettings;
       Clean;
       CreateArtefactFolders;
@@ -75,36 +75,19 @@
       CoreBuild;
 
       BuildSpecialProjects;
-    </BuildDependsOn>
-  </PropertyGroup>
 
-  <PropertyGroup>
-    <RunTestsDependsOn>
-      Build;
-      
       SettingTestingAssemblies;
       RunMSTestWithOpenCover;
       ReportMSTestOpenCoverWithRG;
       CheckForTestsErrors;
-    </RunTestsDependsOn>
-</PropertyGroup>
-
-  <PropertyGroup>
-    <CreatePackagesDependsOn>
-      RunTests;
 
       PackageMSTestTestReports;
       PackageNugets;
-    </CreatePackagesDependsOn>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <DistributeDependsOn>
-      CreatePackages;
 
       DistributeArtefacts;
-    </DistributeDependsOn>
+    </BuildNCastorAutoBuilderConsoleDependsOn>
   </PropertyGroup>
+  <Target Name="BuildNCastorAutoBuilderConsole" DependsOnTargets="$(BuildNCastorAutoBuilderConsoleDependsOn)"/>
 
   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
   <Target Name="CoreCalculateAdditionalVersionInformation" DependsOnTargets="FormatGitRevisionVersion"/>

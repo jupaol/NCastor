@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project DefaultTargets="Distribute" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="BuildNCastorAutoBuilderTasks" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
@@ -67,7 +67,7 @@
   <Import Project="$(NCastorPath)\GlobalTargets.import"/>
 
   <PropertyGroup>
-    <BuildDependsOn>
+    <BuildNCastorAutoBuilderTasksDependsOn>
       ValidateSettings;
       Clean;
       CreateArtefactFolders;
@@ -78,36 +78,21 @@
 
       CoreBuild;
       BuildSpecialProjects;
-    </BuildDependsOn>
-  </PropertyGroup>
 
-  <PropertyGroup>
-    <RunTestsDependsOn>
-      Build;
       SettingTestingAssemblies;
 
       RunMSpecWithOpenCover;
       ReportMSpecOpenCoverWithRG;
 
       CheckForTestsErrors;
-    </RunTestsDependsOn>
-  </PropertyGroup>
 
-  <PropertyGroup>
-    <CreatePackagesDependsOn>
-      RunTests;
       PackageMSpecTestReports;
       PackageNugets;
-    </CreatePackagesDependsOn>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <DistributeDependsOn>
-      CreatePackages;
 
       DistributeArtefacts;
-    </DistributeDependsOn>
+    </BuildNCastorAutoBuilderTasksDependsOn>
   </PropertyGroup>
+  <Target Name="BuildNCastorAutoBuilderTasks" DependsOnTargets="$(BuildNCastorAutoBuilderTasksDependsOn)" />
 
   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
   <Target Name="CoreCalculateAdditionalVersionInformation" DependsOnTargets="FormatGitRevisionVersion"/>
