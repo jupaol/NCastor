@@ -21,7 +21,7 @@
     </FormatLabelNameDependsOn>
   </PropertyGroup>
 
-  <Target Name="FormatLabelName" DependsOnTargets="$(FormatLabelNameDependsOn)" Condition="$(CanCreateLabel) == 'true'"/>
+  <Target Name="FormatLabelName" DependsOnTargets="$(FormatLabelNameDependsOn)"/>
 
   <!-- To be overriden by the user -->
   <Target Name="BeforeFormatLabelName" />

@@ -20,7 +20,7 @@
     </CreateGitTagDependsOn>
   </PropertyGroup>
 
-  <Target Name="CreateGitTag" DependsOnTargets="$(CreateGitTagDependsOn)" Condition="$(CanCreateLabel) == 'true'"/>
+  <Target Name="CreateGitTag" DependsOnTargets="$(CreateGitTagDependsOn)" Condition="$(CreateLabel) == 'true'"/>
 
   <!-- To be overriden by the user -->
   <Target Name="BeforeCreateGitTag" />

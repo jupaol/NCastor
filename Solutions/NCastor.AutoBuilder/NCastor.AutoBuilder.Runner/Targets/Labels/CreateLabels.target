@@ -22,7 +22,7 @@
     </CreateLabelsDependsOn>
   </PropertyGroup>
 
-  <Target Name="CreateLabels" DependsOnTargets="$(CreateLabelsDependsOn)"/>
+  <Target Name="CreateLabels" DependsOnTargets="$(CreateLabelsDependsOn)" Condition="$(CreateLabel) == 'true'"/>
 
   <!-- To be overriden by the user -->
   <Target Name="BeforeCreateLabels" />
