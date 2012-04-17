@@ -53,11 +53,16 @@
       <LabelName>$(LabelName)_date_$(_Git_Tag_Sufix_Timing)</LabelName>
     </PropertyGroup>
 
-    <Message Text="Creating the label : $(LabelName)"/>
+    <Message Text="Creating the tag: $(LabelName)"/>
     <Exec 
       Command='"$(GitRunner)" tag -a "$(LabelName)" -m "$(LabelName)"'
       WorkingDirectory='$(GlobalRootPath)'/>
-    
+
+    <Message Text='Pushing the tag: $(LabelName)' />
+    <Exec
+      Command='"$(GitRunner)" push origin $(LabelName)'
+      WorkingDirectory='$(GlobalRootPath)'/>
+
   </Target>
   
 </Project>
