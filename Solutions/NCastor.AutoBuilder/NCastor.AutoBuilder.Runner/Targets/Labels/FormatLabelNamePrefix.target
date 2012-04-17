@@ -25,17 +25,17 @@
   <Target Name="BeforeFormatLabelNamePrefix" />
   <Target Name="AfterFormatLabelNamePrefix" />
 
-  <Target Name="CoreFormatLabelNamePrefix" Condition="$(LabelNamePrefix) == ''">
+  <Target Name="CoreFormatLabelNamePrefix">
 
-    <MSBuild.ExtensionPack.Framework.TextString TaskAction="Split" String1="$(SolutionName)" String2=" ">
+    <!--<MSBuild.ExtensionPack.Framework.TextString TaskAction="Split" String1="$(SolutionName)" String2=" ">
       <Output ItemName="_Formated_Solution_Name_Tokens" TaskParameter="Strings"/>
     </MSBuild.ExtensionPack.Framework.TextString>
     <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="ItemColToString" InputItems1="@(_Formated_Solution_Name_Tokens)" Separator=".">
       <Output TaskParameter="OutString" PropertyName="_Formated_Solution_Name"/>
-    </MSBuild.ExtensionPack.Framework.MsBuildHelper>
+    </MSBuild.ExtensionPack.Framework.MsBuildHelper>-->
 
     <PropertyGroup>
-      <LabelNamePrefix Condition="$(LabelNamePrefix) == ''">$(_Formated_Solution_Name)_$(Environment)_v</LabelNamePrefix>
+      <LabelNamePrefix Condition="$(LabelNamePrefix) == ''">$(Environment)_v</LabelNamePrefix>
     </PropertyGroup>
 
   </Target>
