@@ -57,7 +57,7 @@
 
     <Message Text="Creating the tag: $(LabelName)"/>
     <Exec 
-      Command='"$(GitRunner)" tag -a "$(LabelName)" -m "$(LabelName)"'
+      Command='"$(GitRunner)" tag -a "$(LabelName)" -m "NCastor AutoBuilder - Auto-Tagging: $(LabelName)"'
       WorkingDirectory='$(GlobalRootPath)'/>
     
     <Message Text='Pushing the tag: $(LabelName)' />
