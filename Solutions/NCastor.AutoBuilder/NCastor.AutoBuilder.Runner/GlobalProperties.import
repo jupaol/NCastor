@@ -34,4 +34,6 @@
   <Import Project="$(PropertiesPath)\Package\Packing.properties"/>
   <Import Project="$(PropertiesPath)\Package\Nuget.properties"/>
 
+  <Import Project="$(PropertiesPath)\Labels\Labels.properties"/>
+
 </Project>

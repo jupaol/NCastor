@@ -346,6 +346,10 @@
     <Content Include="Targets\Labels\Labels.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Properties\Labels\Labels.properties">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\Labels\FormatLabelNamePrefix.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

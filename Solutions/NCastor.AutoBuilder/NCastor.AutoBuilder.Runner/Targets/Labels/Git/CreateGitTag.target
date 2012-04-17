@@ -31,6 +31,8 @@
     <Error Text="The Git runner was not specified" Condition="$(GitRunner) == ''" />
     <Error Text="The Git runner was not found" Condition="!Exists($(GitRunner))" />
     <Error Text="The 'LabelName' is required to create the Git tag" Condition="$(LabelName) == ''" />
+    <Error Text="The Git timeout used to push the tag is required" Condition="$(GitPushTimeOut) == ''"/>
+    <Error Text="The Git default remote used to push the tag is required" Condition="$(GitDefaultRemote) == ''"/>
 
     <PropertyGroup>
       <_GitLabelResultFilePath>$(WorkingDirectoryPath)\GitLabelResult.txt</_GitLabelResultFilePath>
@@ -60,9 +62,9 @@
     
     <Message Text='Pushing the tag: $(LabelName)' />
     <Exec
-      Command='"$(GitRunner)" push origin $(LabelName)'
+      Command='"$(GitRunner)" push $(GitDefaultRemote) $(LabelName)'
       WorkingDirectory='$(GlobalRootPath)' 
-      Timeout='30000'/>
+      Timeout='$(GitPushTimeOut)'/>
 
   </Target>
   
