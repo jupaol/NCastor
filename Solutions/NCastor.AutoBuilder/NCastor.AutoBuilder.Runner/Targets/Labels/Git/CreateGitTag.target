@@ -57,11 +57,12 @@
     <Exec 
       Command='"$(GitRunner)" tag -a "$(LabelName)" -m "$(LabelName)"'
       WorkingDirectory='$(GlobalRootPath)'/>
-
+    
     <Message Text='Pushing the tag: $(LabelName)' />
     <Exec
       Command='"$(GitRunner)" push origin $(LabelName)'
-      WorkingDirectory='$(GlobalRootPath)'/>
+      WorkingDirectory='$(GlobalRootPath)' 
+      Timeout='20000'/>
 
   </Target>
   
