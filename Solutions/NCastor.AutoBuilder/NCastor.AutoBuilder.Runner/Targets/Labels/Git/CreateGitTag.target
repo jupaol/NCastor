@@ -62,7 +62,7 @@
     <Exec
       Command='"$(GitRunner)" push origin $(LabelName)'
       WorkingDirectory='$(GlobalRootPath)' 
-      Timeout='20000'/>
+      Timeout='30000'/>
 
   </Target>
   
