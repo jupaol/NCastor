@@ -18,6 +18,8 @@
   <!-- Importing properties -->
   <Import Project="$(PropertiesPath)\Common\Common.properties"/>
 
+  <Import Project="$(PropertiesPath)\VersionControlServers\SVN.properties"/>
+  
   <Import Project="$(PropertiesPath)\Build\Versioning\TFS.properties"/>
   <Import Project="$(PropertiesPath)\Build\AssemblyInfo.properties"/>
   <Import Project="$(PropertiesPath)\Build\Build.properties"/>

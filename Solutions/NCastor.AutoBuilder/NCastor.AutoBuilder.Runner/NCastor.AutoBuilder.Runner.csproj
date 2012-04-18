@@ -350,6 +350,10 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Properties\VersionControlServers\SVN.properties">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\Labels\FormatLabelNamePrefix.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -360,6 +364,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Targets\Labels\Git\CreateGitTag.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Labels\Svn\CreateSvnTag.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">

@@ -16,6 +16,7 @@
       BeforeCreateLabels;
 
       CreateGitTag;
+      CreateSvnTag;
       CoreCreateLabels;
 
       AfterCreateLabels;
