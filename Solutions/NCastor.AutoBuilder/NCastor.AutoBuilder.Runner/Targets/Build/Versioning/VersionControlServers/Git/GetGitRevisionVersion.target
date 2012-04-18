@@ -32,8 +32,11 @@
       _FindGitVersion;
       _GetGitRevisionVersionWhenTagDoesNotExist;
       _GetGitRevisionVersionWhenTagExists;"/>
-
+  
   <Target Name="_FindGitVersion">
+
+    <Error Text="The Git runner was not specified" Condition="$(GitRunner) == ''" />
+    <Error Text="The Git runner was not found" Condition="!Exists($(GitRunner))" />
 
     <Delete Files="$(WorkingDirectoryPath)\gitversion.txt" Condition="Exists('$(WorkingDirectoryPath)\gitversion.txt')"/>
     <Exec
