@@ -34,7 +34,6 @@
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
     <Folder Include="Properties\Labels\" />
-    <Folder Include="Targets\Labels\TFS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Common\Common.properties">
@@ -370,6 +369,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Targets\Labels\Svn\CreateSvnTag.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Targets\Labels\TFS\CreateTfsLabel.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">

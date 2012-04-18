@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CreateTfsLabel.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateTfsLabelDependsOn>
+      FormatLabelName;
+      BeforeCreateTfsLabel;
+      CoreCreateTfsLabel;
+      AfterCreateTfsLabel;
+    </CreateTfsLabelDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateTfsLabel" DependsOnTargets="$(CreateTfsLabelDependsOn)" Condition="$(CreateLabel) == 'true'"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateTfsLabel" />
+  <Target Name="AfterCreateTfsLabel" />
+
+  <Target Name="CoreCreateTfsLabel" >
+
+    <Error Text="The TFS runeer was not specified" Condition="$(TFSRunner) == ''"/>
+    <Error Text="The TFS runner was not found" Condition="!Exists($(TFSRunner))"/>
+    <Error Text="The label name property is required to create a TFS label" Condition="$(LabelName) == ''"/>
+    <Error Text="The team project URL is required" Condition="$(TfsTeamProjectCollectionUrl) == ''"/>
+    <Error Text="The label name sufux needs to be specified in case the label already exists" Condition="$(LabelNameSufixWhenLabelExists) == ''"/>
+    <Error Text="The informational version is required. It is used in the label description" Condition="$(InformationalVersion) == ''"/>
+
+    <!--Determine if the connection process will use credentials-->
+    <PropertyGroup>
+      <_TFS_Runner_Login_Arguments></_TFS_Runner_Login_Arguments>
+      <_TFS_Runner_Login_Arguments Condition="$(TfsUserName) != ''">/login:"$(TfsUserName)"</_TFS_Runner_Login_Arguments>
+      <_TFS_Runner_Login_Arguments Condition="$(TfsPassword) != ''">$(_TFS_Runner_Login_Arguments),"$(TfsPassword)"</_TFS_Runner_Login_Arguments>
+    </PropertyGroup>
+
+    <Message Text="Checking to see if the label already exists..."/>
+    <!-- this task will look up the tag supplied.  
+    If it exists it will return a code of 0 
+    Technically this is a success but for this instance, 
+    it is a failure because we don't want to find it! -->
+    <Exec
+      Command='"$(TFSRunner)" labels "$(LabelName)" /noprompt /collection:"$(TfsTeamProjectCollectionUrl)" $(_TFS_Runner_Login_Arguments)'
+      ContinueOnError='true'
+      Timeout='$(TfsConnectionTimeout)'>
+      <Output TaskParameter="ExitCode" PropertyName="_Tfs_Label_Exists_Exit_Code"/>
+    </Exec>
+    <Message Text="ExitCode = $(_Tfs_Label_Exists_Exit_Code)"/>
+    <Warning
+      Condition="$(_Tfs_Label_Exists_Exit_Code) == '0'"
+      Text="The Label: $(LabelName) already exists! The new label will be: $(LabelName)$(LabelNameSufixWhenLabelExists)"/>
+    <PropertyGroup Condition="$(_Tfs_Label_Exists_Exit_Code) == '0'">
+      <LabelName>$(LabelName)$(LabelNameSufixWhenLabelExists)</LabelName>
+    </PropertyGroup>
+
+    <Message Text="Creating the label: $(LabelName)..." />
+    <Exec
+      Command='"$(TFSRunner)" label "$(LabelName)" "$(GlobalRootPath)" /comment:"NCastor AutoBuilder Auto-Tagging: $(LabelName) from build: $(InformationalVersion)" /noprompt /recursive /version:T $(_TFS_Runner_Login_Arguments)'
+      Timeout='$(TfsCommitTimeout)'/>
+
+  </Target>
+  
+</Project>

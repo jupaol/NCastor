@@ -16,6 +16,7 @@
   <Import Project="FormatLabelName.target" />
   <Import Project="Git\CreateGitTag.target" />
   <Import Project="Svn\CreateSvnTag.target" />
+  <Import Project="Tfs\CreateTfsLabel.target" />
   <Import Project="CreateLabels.target" />
 
 </Project>

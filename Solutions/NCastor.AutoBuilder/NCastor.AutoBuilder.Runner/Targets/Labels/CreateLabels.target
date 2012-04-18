@@ -17,6 +17,7 @@
 
       CreateGitTag;
       CreateSvnTag;
+      CreateTfsLabel;
       CoreCreateLabels;
 
       AfterCreateLabels;

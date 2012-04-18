@@ -73,7 +73,6 @@
     <PropertyGroup Condition="$(_SVN_Tag_Exists_Exit_Code) == '0'">
       <LabelName>$(LabelName)$(LabelNameSufixWhenLabelExists)</LabelName>
     </PropertyGroup>
-    <Message Text="Finished Checking to see if the tag already exists"/>
 
     <Message Text="Creating the tag: $(LabelName)" />
     <MSBuild.Community.Tasks.Subversion.SvnCopy 
@@ -82,7 +81,7 @@
       ToolPath="$(SvnRunnersPath)"
       SourcePath="$(_Current_SVN_Repo_URL)"
       DestinationPath="$(SvnTagsUrl)/$(LabelName)"
-      Message="NCastor AutoBuilder Auto-Tagging: $(LabelName) From Build: $(InformationalVersion)" 
+      Message="NCastor AutoBuilder Auto-Tagging: $(LabelName) from build: $(InformationalVersion)" 
       Timeout="$(SvnCommitTimeout)"/>
 
   </Target>
