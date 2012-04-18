@@ -34,21 +34,36 @@
     <Error Text="The Svn tags Url was not specified" Condition="$(SvnTagsUrl) == ''" />
 
     <Message Text="Getting the current SVN URL:" />
-    <MSBuild.Community.Tasks.Subversion.SvnInfo 
+    <MSBuild.Community.Tasks.Subversion.SvnInfo
       LocalPath="$(GlobalRootPath)" 
-      ToolPath="$(SvnRunnersPath)">
+      ToolPath="$(SvnRunnersPath)"
+      Timeout="$(SvnConnectionTimeout)">
       <Output TaskParameter="RepositoryPath" PropertyName="_Current_SVN_Repo_URL" />
     </MSBuild.Community.Tasks.Subversion.SvnInfo>
     <Message Text="Repo URL: $(_Current_SVN_Repo_URL)" />
-    
+
+    <Message Text="Checking connectivity..."/>
+    <MSBuild.Community.Tasks.Subversion.SvnClient
+      Username="$(SvnUserName)"
+      Password="$(SvnPassword)"
+      Command='ls "$(_Current_SVN_Repo_URL)"'
+      ContinueOnError="true"
+      Timeout="$(SvnConnectionTimeout)">
+      <Output TaskParameter="ExitCode" PropertyName="_SVN_Connection_Exit_Code"/>
+    </MSBuild.Community.Tasks.Subversion.SvnClient>
+    <Error Text="Couldn't establish a connection to SVN ($(_Current_SVN_Repo_URL)). Check your credentials" Condition="$(_SVN_Connection_Exit_Code) != '0'" />
+
     <Message Text="Checking to see if the tag already exists"/>
     <!-- this task will look up the tag supplied.  
     If it exists it will return a code of 0 
     Technically this is a success but for this instance, 
     it is a failure because we don't want to find it! -->
     <MSBuild.Community.Tasks.Subversion.SvnClient
+      Username="$(SvnUserName)"
+      Password="$(SvnPassword)"
       Command='ls "$(SvnTagsUrl)/$(LabelName)"'
-      ContinueOnError="true">
+      ContinueOnError="true"
+      Timeout="$(SvnConnectionTimeout)">
       <Output TaskParameter="ExitCode" PropertyName="_SVN_Tag_Exists_Exit_Code"/>
     </MSBuild.Community.Tasks.Subversion.SvnClient>
     <Message Text="ExitCode = $(_SVN_Tag_Exists_Exit_Code)"/>
@@ -62,10 +77,13 @@
 
     <Message Text="Creating the tag: $(LabelName)" />
     <MSBuild.Community.Tasks.Subversion.SvnCopy 
+      Username="$(SvnUserName)"
+      Password="$(SvnPassword)"
       ToolPath="$(SvnRunnersPath)"
       SourcePath="$(_Current_SVN_Repo_URL)"
       DestinationPath="$(SvnTagsUrl)/$(LabelName)"
-      Message="NCastor AutoBuilder Auto-Tagging: $(LabelName) From Build: $(InformationalVersion)" />
+      Message="NCastor AutoBuilder Auto-Tagging: $(LabelName) From Build: $(InformationalVersion)" 
+      Timeout="$(SvnCommitTimeout)"/>
 
   </Target>
   
