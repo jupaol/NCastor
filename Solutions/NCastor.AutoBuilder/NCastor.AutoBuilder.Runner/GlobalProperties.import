@@ -19,8 +19,9 @@
   <Import Project="$(PropertiesPath)\Common\Common.properties"/>
 
   <Import Project="$(PropertiesPath)\VersionControlServers\SVN.properties"/>
+  <Import Project="$(PropertiesPath)\VersionControlServers\Git.properties"/>
+  <Import Project="$(PropertiesPath)\VersionControlServers\TFS.properties"/>
   
-  <Import Project="$(PropertiesPath)\Build\Versioning\TFS.properties"/>
   <Import Project="$(PropertiesPath)\Build\AssemblyInfo.properties"/>
   <Import Project="$(PropertiesPath)\Build\Build.properties"/>
   
@@ -35,7 +36,5 @@
   <Import Project="$(PropertiesPath)\Package\IsolateSourceCode.properties"/>
   <Import Project="$(PropertiesPath)\Package\Packing.properties"/>
   <Import Project="$(PropertiesPath)\Package\Nuget.properties"/>
-
-  <Import Project="$(PropertiesPath)\Labels\Labels.properties"/>
 
 </Project>

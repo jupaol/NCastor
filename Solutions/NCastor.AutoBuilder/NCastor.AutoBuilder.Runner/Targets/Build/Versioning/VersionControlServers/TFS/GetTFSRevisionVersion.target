@@ -29,8 +29,8 @@
 
     <Error Text="The TFS Runner was not specified" Condition="$(TFSRunner) == ''" />
     <Error Text="The TFS Runner was not found" Condition="!Exists($(TFSRunner))" />
-    <Error Text="The TFS user name was not specified" Condition="$(TFSUserName) == ''" />
-    <Error Text="The TFS password was not specified" Condition="$(TFSPassword) == ''" />
+    <Error Text="The TFS user name was not specified" Condition="$(TfsUserName) == ''" />
+    <Error Text="The TFS password was not specified" Condition="$(TfsPassword) == ''" />
 
     <PropertyGroup>
       <_TFS_Changeset_TMP_File>$(WorkingDirectoryPath)\tfs_changeset_tmp.txt</_TFS_Changeset_TMP_File>
@@ -39,7 +39,7 @@
     <!-- Retrieve Changesets associated with a given workspace -->
     <Delete Files="$(_TFS_Changeset_TMP_File)" Condition="Exists($(_TFS_Changeset_TMP_File))" />
     <Exec
-      Command='"$(TFSRunner)" history "$(GlobalRootPath)" /recursive /sort:descending /noprompt /login:$(TFSUserName),$(TFSPassword) /format:brief /stopafter:1 >> "$(_TFS_Changeset_TMP_File)"'/>
+      Command='"$(TFSRunner)" history "$(GlobalRootPath)" /recursive /sort:descending /noprompt /login:$(TfsUserName),$(TfsPassword) /format:brief /stopafter:1 >> "$(_TFS_Changeset_TMP_File)"'/>
 
     <!--Reading the file with the changeset results-->
     <ReadLinesFromFile File="$(_TFS_Changeset_TMP_File)" >

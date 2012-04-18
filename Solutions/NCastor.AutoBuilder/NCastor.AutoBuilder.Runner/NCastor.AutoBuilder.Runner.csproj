@@ -33,6 +33,7 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
+    <Folder Include="Properties\Labels\" />
     <Folder Include="Targets\Labels\TFS\" />
   </ItemGroup>
   <ItemGroup>
@@ -334,7 +335,7 @@
     <Content Include="Targets\Build\Versioning\VersionControlServers\TFS\GetTFSRevisionVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\Build\Versioning\TFS.properties">
+    <Content Include="Properties\VersionControlServers\TFS.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -345,11 +346,11 @@
     <Content Include="Targets\Labels\Labels.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\Labels\Labels.properties">
+    <Content Include="Properties\VersionControlServers\SVN.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\VersionControlServers\SVN.properties">
+    <Content Include="Properties\VersionControlServers\Git.properties">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
