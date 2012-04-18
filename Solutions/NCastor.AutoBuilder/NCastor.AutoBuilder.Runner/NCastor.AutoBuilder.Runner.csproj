@@ -33,7 +33,6 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
-    <Folder Include="Targets\Labels\Svn\" />
     <Folder Include="Targets\Labels\TFS\" />
   </ItemGroup>
   <ItemGroup>
@@ -354,6 +353,9 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Targets\Labels\FormatLabelNameSufixWhenLabelExists.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Targets\Labels\FormatLabelNamePrefix.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

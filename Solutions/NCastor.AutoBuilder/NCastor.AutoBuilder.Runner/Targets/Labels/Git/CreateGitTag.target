@@ -48,17 +48,11 @@
     <MSBuild.ExtensionPack.Framework.MsBuildHelper TaskAction="GetItemCount" InputItems1="@(_Git_Tags_Found)">
       <Output TaskParameter="ItemCount" PropertyName="_Git_Tags_Found_Count"/>
     </MSBuild.ExtensionPack.Framework.MsBuildHelper>
-    <MSBuild.Community.Tasks.Time Format="MM.dd.yyyy.HH.mm">
-      <Output TaskParameter="FormattedTime" PropertyName="_Git_Tag_Sufix_Timing" />
-    </MSBuild.Community.Tasks.Time>
-    <PropertyGroup>
-      <_Git_Label_Name_Sufix_If_Tag_Exists>_date_$(_Git_Tag_Sufix_Timing)</_Git_Label_Name_Sufix_If_Tag_Exists>
-    </PropertyGroup>
     <Warning 
-      Text="The Tag: $(LabelName) already exisis in the current Git repo, the new label name will be: $(LabelName)$(_Git_Label_Name_Sufix_If_Tag_Exists)" 
+      Text="The Tag: $(LabelName) already exisis! The new tag name will be: $(LabelName)$(LabelNameSufixWhenLabelExists)" 
       Condition="$(_Git_Tags_Found_Count) != 0"/>
     <PropertyGroup Condition="$(_Git_Tags_Found_Count) != 0">
-      <LabelName>$(LabelName)$(_Git_Label_Name_Sufix_If_Tag_Exists)</LabelName>
+      <LabelName>$(LabelName)$(LabelNameSufixWhenLabelExists)</LabelName>
     </PropertyGroup>
 
     <Message Text="Creating the tag: $(LabelName)"/>

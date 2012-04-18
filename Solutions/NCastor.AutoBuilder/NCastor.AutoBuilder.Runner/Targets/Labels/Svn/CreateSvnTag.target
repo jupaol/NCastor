@@ -52,17 +52,11 @@
       <Output TaskParameter="ExitCode" PropertyName="_SVN_Tag_Exists_Exit_Code"/>
     </MSBuild.Community.Tasks.Subversion.SvnClient>
     <Message Text="ExitCode = $(_SVN_Tag_Exists_Exit_Code)"/>
-    <MSBuild.Community.Tasks.Time Format="MM.dd.yyyy.HH.mm" Condition="$(_SVN_Tag_Exists_Exit_Code) == '0'">
-      <Output TaskParameter="FormattedTime" PropertyName="_Svn_Tag_Sufix_Timing" />
-    </MSBuild.Community.Tasks.Time>
-    <PropertyGroup Condition="$(_SVN_Tag_Exists_Exit_Code) == '0'">
-      <_Svn_Tag_Sufix_When_Tag_Already_Exists>_date_$(_Svn_Tag_Sufix_Timing)</_Svn_Tag_Sufix_When_Tag_Already_Exists>
-    </PropertyGroup>
     <Warning 
       Condition="$(_SVN_Tag_Exists_Exit_Code) == '0'" 
-      Text="The Tag: $(LabelName) already exists! The new tag will be: $(LabelName)$(_Svn_Tag_Sufix_When_Tag_Already_Exists)"/>
+      Text="The Tag: $(LabelName) already exists! The new tag will be: $(LabelName)$(LabelNameSufixWhenLabelExists)"/>
     <PropertyGroup Condition="$(_SVN_Tag_Exists_Exit_Code) == '0'">
-      <LabelName>$(LabelName)$(_Svn_Tag_Sufix_When_Tag_Already_Exists)</LabelName>
+      <LabelName>$(LabelName)$(LabelNameSufixWhenLabelExists)</LabelName>
     </PropertyGroup>
     <Message Text="Finished Checking to see if the tag already exists"/>
 

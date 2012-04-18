@@ -15,6 +15,7 @@
     <FormatLabelNameDependsOn>
       CalculateSemanticVersion;
       FormatLabelNamePrefix;
+      FormatLabelNameSufixWhenLabelExists;
       BeforeFormatLabelName;
       CoreFormatLabelName;
       AfterFormatLabelName;

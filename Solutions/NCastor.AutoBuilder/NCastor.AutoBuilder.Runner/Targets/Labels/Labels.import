@@ -12,6 +12,7 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <Import Project="FormatLabelNamePrefix.target" />
+  <Import Project="FormatLabelNameSufixWhenLabelExists.target" />
   <Import Project="FormatLabelName.target" />
   <Import Project="Git\CreateGitTag.target" />
   <Import Project="Svn\CreateSvnTag.target" />

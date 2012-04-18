@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="FormatLabelNameSufixWhenLabelExists.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <FormatLabelNameSufixWhenLabelExistsDependsOn>
+      BeforeFormatLabelNameSufixWhenLabelExists;
+      CoreFormatLabelNameSufixWhenLabelExists;
+      AfterFormatLabelNameSufixWhenLabelExists;
+    </FormatLabelNameSufixWhenLabelExistsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="FormatLabelNameSufixWhenLabelExists" DependsOnTargets="$(FormatLabelNameSufixWhenLabelExistsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeFormatLabelNameSufixWhenLabelExists" />
+  <Target Name="AfterFormatLabelNameSufixWhenLabelExists" />
+
+  <Target Name="CoreFormatLabelNameSufixWhenLabelExists" >
+
+    <MSBuild.Community.Tasks.Time Format="MM.dd.yyyy.HH.mm">
+      <Output TaskParameter="FormattedTime" PropertyName="_Label_Sufix_Date" />
+    </MSBuild.Community.Tasks.Time>
+    <PropertyGroup>
+      <LabelNameSufixWhenLabelExists>_date_$(_Label_Sufix_Date)</LabelNameSufixWhenLabelExists>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>
