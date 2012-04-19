@@ -4,6 +4,8 @@
 "Your Stuff"
 
 Place in this file your custom properties
+
+For more help visit: https://github.com/jupaol/NCastor
 -->
 
 <Project DefaultTargets="BuildSolution" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
@@ -12,7 +14,8 @@ Place in this file your custom properties
   <PropertyGroup>
 
     <!--Controls the versioning of your assemblies, the default is to use the SemanticVersion (http://semver.org/)
-    therefore, these properties should be changed manually following the SemanticVersion rules when you release a new version-->
+    therefore, these properties should be changed manually following the SemanticVersion rules when you release a new version
+    consult the help to learn how to change this behavior-->
     <MajorVersion>0</MajorVersion>
     <MinorVersion>1</MinorVersion>
     <RevisionVersion>0</RevisionVersion>

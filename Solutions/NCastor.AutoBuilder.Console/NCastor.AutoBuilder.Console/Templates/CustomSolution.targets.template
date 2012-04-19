@@ -3,14 +3,13 @@
 <!--
 "Your Stuff"
 
-This file is the entry point of your build process, this file imports "Your Stuff" the auto generated MSBuild scripts.
+Place in this file your custom targets
 
-Remember that MSBuild scripts are evaluated sequentially so the order in which you import the projects it's important
-because some properties declared in nested MSBuild scripts totally depend on the properties declared in the 
-preceding scripts
+For more help visit: https://github.com/jupaol/NCastor
 -->
 
 <Project DefaultTargets="BuildSolution" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <!--TODO: Place in this file your custom targets-->
 
 </Project>
