@@ -7,8 +7,6 @@
   <Target Name="CoreGetBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
   <Target Name="CoreGetExtraInformationalVersion" DependsOnTargets="FormatGitRevisionVersion" />
 
-  <Target Name="PackageNCastor" DependsOnTargets="$(PackageNCastorDependsOn)" />
-
   <Target Name="PrepareNCastorAutoBuilderRunnerNuget">
 
     <Delete Files="$(NCastorAutoBuilderRunner)\NCastor.AutoBuilder.Runner.dll;$(NCastorAutoBuilderRunner)\NCastor.AutoBuilder.Runner.pdb;" />
