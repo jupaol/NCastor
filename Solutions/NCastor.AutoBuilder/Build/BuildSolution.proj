@@ -1,51 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Project DefaultTargets="BuildNCastorAutoBuilderSolution" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="BuildSolution" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
+    <!--This is the root path of the files belonging to your project-->
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
+    <!--The path to your solutions-->
     <SolutionsPath>$(GlobalRootPath)\Solutions</SolutionsPath>
+    <!--The solution to build-->
     <SolutionName>NCastor.AutoBuilder</SolutionName>
 
+    <!--Global paths, modify if needed-->
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
     <NCastorPath>$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner</NCastorPath>
-
-    <IsDesktopBuild>true</IsDesktopBuild>
     
+    <!--Solution paths, these paths are removed in every build-->
+    <!--This is the working directory path of your solution, this path is used by several targets during all the build process-->
     <WorkingDirectoryPath>$(GlobalRootPath)\WorkingDirectory\$(SolutionName)</WorkingDirectoryPath>
+    <!--This is the location of your generated artifacts (unit tests reports, zip files, clickonce published files, etc)-->
     <DropsPath>$(GlobalRootPath)\Drops\$(SolutionName)</DropsPath>
+    <!--This is the path where the files containing the assembly info will be generated-->
     <AssemblyInfoPath>$(GlobalRootPath)\CommonAssemblyProperties\$(SolutionName)</AssemblyInfoPath>
 
-    <MajorVersion>0</MajorVersion>
-    <MinorVersion>1</MinorVersion>
-    <RevisionVersion>0</RevisionVersion>
-
     <Platform>Any CPU</Platform>
+    <Configuration>Debug</Configuration>
 
-    <AssemblyTitle>NCastor</AssemblyTitle>
-    <AssemblyDescription>NCastor Console Application</AssemblyDescription>
-    <AssemblyCompany>Juan Pablo Olmos Lara (Jupaol)</AssemblyCompany>
-    <AssemblyProduct>NCastor</AssemblyProduct>
-    <AssemblyCopyright>Copyright (c) 2012, Juan Pablo Olmos Lara (Jupaol) All rights reserved.</AssemblyCopyright>
-    <AssemblyTrademark>NCastor, All Rights Reserved</AssemblyTrademark>
-
-    <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>
+    <!--True indicates the solution is being build in desktop mode (usually from a developer sandbox), 
+    False indicates the solution is being build in a CI box-->
+    <IsDesktopBuild>true</IsDesktopBuild>
   </PropertyGroup>
-
-  <Choose>
-    <When Condition="$(IsDesktopBuild) == 'false'">
-      <!--Externaal runner location when it is not a desktop build-->
-      <PropertyGroup>
-        <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
-      </PropertyGroup>
-    </When>
-    <When  Condition="$(IsDesktopBuild) == 'true'">
-      <!--Externaal runner location when it is a desktop build-->
-      <PropertyGroup>
-        <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
-      </PropertyGroup>      
-    </When>
-  </Choose>
 
   <!-- Importing NCastor Global properties -->
   <Import Project="$(NCastorPath)\GlobalProperties.import"/>
@@ -53,13 +36,18 @@
   <!-- Importing third party tasks -->
   <Import Project="$(NCastorPath)\GlobalTasks.import"/>
 
-  <!-- IUmporting NCastor targets -->
+  <!-- Importing NCastor targets -->
   <Import Project="$(NCastorPath)\GlobalTargets.import"/>
 
-  <!-- TODO: Place your custom settings here -->
+  <!-- Importing Custom properties -->
+  <Import Project="CustomSolution.properties"/>
 
+  <!-- Importing Custom targets -->
+  <Import Project="CustomSolution.targets"/>
+
+  <!--Your default build graph, here you can customize the whole build process by adding or removing  custom targets-->
   <PropertyGroup>
-    <BuildNCastorAutoBuilderSolutionDependsOn>
+    <BuildSolutionDependsOn>
       ValidateSettings;
       Clean;
       CreateArtifactDirectories;
@@ -76,76 +64,8 @@
       DistributeArtifacts;
 
       CreateGitTag;
-    </BuildNCastorAutoBuilderSolutionDependsOn>
+    </BuildSolutionDependsOn>
   </PropertyGroup>
-  <Target Name="BuildNCastorAutoBuilderSolution" DependsOnTargets="$(BuildNCastorAutoBuilderSolutionDependsOn)" />
-
-  <!-- TODO: Place your custom targets here -->
-
-  <Target Name="CoreGetBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
-  <Target Name="CoreGetExtraInformationalVersion" DependsOnTargets="FormatGitRevisionVersion" />
-
-  <Target Name="PackageNCastor" DependsOnTargets="$(PackageNCastorDependsOn)" />
-
-  <Target Name="PrepareNCastorAutoBuilderRunnerNuget">
-    
-    <Delete Files="$(NCastorAutoBuilderRunner)\NCastor.AutoBuilder.Runner.dll;$(NCastorAutoBuilderRunner)\NCastor.AutoBuilder.Runner.pdb;" />
-
-    <ItemGroup>
-      <NugetPackages Include="NCastor.AutoBuilder.Runner.nuspec">
-        <SourcePath>$(NCastorAutoBuilderRunner)</SourcePath>
-        <ExtraOptions></ExtraOptions>
-      </NugetPackages>
-    </ItemGroup>
-    
-  </Target>
-
-  <Target Name="PrepareNCastorAutoBuilderNuget">
-
-    <Delete Files="$(NCastorAutoBuilder)\NCastor.AutoBuilder.dll;$(NCastorAutoBuilder)\NCastor.AutoBuilder.pdb;" />
-
-    <ItemGroup>
-      <NugetPackages Include="NCastor.AutoBuilder.nuspec">
-        <SourcePath>$(NCastorAutoBuilder)</SourcePath>
-        <ExtraOptions></ExtraOptions>
-      </NugetPackages>
-    </ItemGroup>
-
-  </Target>
-
-  <Target Name="CorePrepareNugetPackages" DependsOnTargets="PrepareNCastorAutoBuilderRunnerNuget;PrepareNCastorAutoBuilderNuget;" />
-
-  <Target Name="CorePrepareSpecialProjects">
-
-    <PropertyGroup>
-      <NCastorAutoBuilderRunner>$(WorkingDirectoryPath)\NCastorAutoBuilderRunner</NCastorAutoBuilderRunner>
-      <NCastorAutoBuilder>$(WorkingDirectoryPath)\NCastorAutoBuilder</NCastorAutoBuilder>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner\NCastor.AutoBuilder.Runner.csproj">
-        <WorkingDirectoryPath>$(NCastorAutoBuilderRunner)</WorkingDirectoryPath>
-      </SpecialProjects>
-      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj">
-        <WorkingDirectoryPath>$(NCastorAutoBuilder)</WorkingDirectoryPath>
-      </SpecialProjects>
-    </ItemGroup>
-
-  </Target>
-
-  <Target Name="PrepareDistributeArtifacts">
-
-    <PropertyGroup>
-      <_PrivateNugetServerPath>c:\00\nuget</_PrivateNugetServerPath>
-    </PropertyGroup>
-    
-    <ItemGroup>
-      <DistributeArtifactFiles
-        Include="$(DropsPath)\NCastor.AutoBuilder.*.nupkg">
-        <OutputPath>$(_PrivateNugetServerPath)</OutputPath>
-      </DistributeArtifactFiles>
-    </ItemGroup>
-    
-  </Target>
+  <Target Name="BuildSolution" DependsOnTargets="$(BuildSolutionDependsOn)" />
 
 </Project>

@@ -23,6 +23,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{03C22B6F-0425-44F5-9125-B16DCEF64C75}"
 	ProjectSection(SolutionItems) = preProject
 		NCastor.AutoBuilder.Console\Build\BuildSolution.proj = NCastor.AutoBuilder.Console\Build\BuildSolution.proj
+		NCastor.AutoBuilder.Console\Build\CustomSolution.properties = NCastor.AutoBuilder.Console\Build\CustomSolution.properties
+		NCastor.AutoBuilder.Console\Build\CustomSolution.targets = NCastor.AutoBuilder.Console\Build\CustomSolution.targets
 	EndProjectSection
 EndProject
 Global

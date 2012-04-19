@@ -4,6 +4,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E451232E-0054-4560-A935-3E00221602FF}"
 	ProjectSection(SolutionItems) = preProject
 		NCastor.AutoBuilder.Tasks\Build\BuildSolution.proj = NCastor.AutoBuilder.Tasks\Build\BuildSolution.proj
+		NCastor.AutoBuilder.Tasks\Build\CustomSolution.properties = NCastor.AutoBuilder.Tasks\Build\CustomSolution.properties
+		NCastor.AutoBuilder.Tasks\Build\CustomSolution.targets = NCastor.AutoBuilder.Tasks\Build\CustomSolution.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCastor.AutoBuilder.Tasks", "NCastor.AutoBuilder.Tasks\NCastor.AutoBuilder.Tasks\NCastor.AutoBuilder.Tasks.csproj", "{1D85BDDB-66FE-43FE-A365-9AEF7396EDB4}"

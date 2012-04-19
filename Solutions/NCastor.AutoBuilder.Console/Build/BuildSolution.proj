@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Project DefaultTargets="BuildNCastorAutoBuilderConsole" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="BuildSolution" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   
   <PropertyGroup>
     <GlobalRootPath>$(MSBuildProjectDirectory)\..\..\..</GlobalRootPath>
@@ -9,47 +9,15 @@
 
     <NugetPackagesPath>$(SolutionsPath)\Packages</NugetPackagesPath>
     <NCastorPath>$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner</NCastorPath>
-
-    <IsDesktopBuild>true</IsDesktopBuild>
-
     <WorkingDirectoryPath>$(GlobalRootPath)\WorkingDirectory\$(SolutionName)</WorkingDirectoryPath>
     <DropsPath>$(GlobalRootPath)\Drops\$(SolutionName)</DropsPath>
     <AssemblyInfoPath>$(GlobalRootPath)\CommonAssemblyProperties\$(SolutionName)</AssemblyInfoPath>
 
-    <MajorVersion>0</MajorVersion>
-    <MinorVersion>1</MinorVersion>
-    <RevisionVersion>0</RevisionVersion>
-
     <Platform>Any CPU</Platform>
+    <Configuration>Debug</Configuration>
 
-    <AssemblyTitle>NCastor</AssemblyTitle>
-    <AssemblyDescription>NCastor Console Application</AssemblyDescription>
-    <AssemblyCompany>Juan Pablo Olmos Lara (Jupaol)</AssemblyCompany>
-    <AssemblyProduct>NCastor</AssemblyProduct>
-    <AssemblyCopyright>Copyright (c) 2012, Juan Pablo Olmos Lara (Jupaol) All rights reserved.</AssemblyCopyright>
-    <AssemblyTrademark>NCastor, All Rights Reserved</AssemblyTrademark>
-
-    <OpenCoverRunner>$(NugetPackagesPath)\OpenCover.4.0.301\OpenCover.Console.exe</OpenCoverRunner>
-    <ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.7.0\ReportGenerator.exe</ReportGeneratorRunner>
-    <NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>
+    <IsDesktopBuild>true</IsDesktopBuild>
   </PropertyGroup>
-
-  <Choose>
-    <When Condition="$(IsDesktopBuild) == 'false'">
-      <!--Externaal runner location when it is not a desktop build-->
-      <PropertyGroup>
-        <MSTestRunner>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>
-        <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
-      </PropertyGroup>
-    </When>
-    <When  Condition="$(IsDesktopBuild) == 'true'">
-      <!--Externaal runner location when it is a desktop build-->
-      <PropertyGroup>
-        <MSTestRunner>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>
-        <GitRunner>C:\Program Files (x86)\Git\bin\git.exe</GitRunner>
-      </PropertyGroup>
-    </When>
-  </Choose>
 
   <!-- Importing NCastor Global properties -->
   <Import Project="$(NCastorPath)\GlobalProperties.import"/>
@@ -60,14 +28,18 @@
   <!-- IUmporting NCastor targets -->
   <Import Project="$(NCastorPath)\GlobalTargets.import"/>
 
-  <!-- TODO: Place your custom settings here -->
+  <!-- Importing Custom properties -->
+  <Import Project="CustomSolution.properties"/>
+
+  <!-- Importing Custom targets -->
+  <Import Project="CustomSolution.targets"/>
 
   <PropertyGroup>
-    <BuildNCastorAutoBuilderConsoleDependsOn>
+    <BuildSolutionDependsOn>
       ValidateSettings;
       Clean;
-      CreateArtefactFolders;
-      CalculateSemanticVersion;
+      CreateArtifactDirectories;
+      FormatSemanticVersion;
 
       SetAssemblyVersion;
       SetAssemblyInfo;
@@ -84,81 +56,9 @@
       PackageMSTestTestReports;
       PackageNugets;
 
-      DistributeArtefacts;
-    </BuildNCastorAutoBuilderConsoleDependsOn>
+      DistributeArtifacts;
+    </BuildSolutionDependsOn>
   </PropertyGroup>
-  <Target Name="BuildNCastorAutoBuilderConsole" DependsOnTargets="$(BuildNCastorAutoBuilderConsoleDependsOn)"/>
-
-  <Target Name="CoreCalculateBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
-  <Target Name="CoreCalculateAdditionalVersionInformation" DependsOnTargets="FormatGitRevisionVersion"/>
-
-  <Target Name="CoreSettingInstrumentationAssemblies">
-    <ItemGroup>
-      <AssembliesToInstrument Include="
-                                        $(TestAssembliesPath)\NCastor.AutoBuilder.Console.exe;" />
-    </ItemGroup>
-  </Target>
-
-  <Target Name="CoreSettingMSTestTestingAssemblies">
-    <ItemGroup>
-      <MSTestContainers Include="
-                          $(TestAssembliesPath)\NCastor.AutoBuilder.Console.Tests.dll;
-                          $(TestAssembliesPath)\NCastor.AutoBuilder.Console.Integration.Tests.dll;" />
-    </ItemGroup>
-  </Target>
-
-  <Target Name="CorePrepareNugetPackages">
-
-    <Delete Files="$(NCastorAutoBuilderConsole)\NCastor.AutoBuilder.Console.pdb" />
-
-    <ItemGroup>
-      <_NCastorAutoBuilderConsoleNugetFiles 
-        Include="$(NCastorAutoBuilderConsole)\*.*" 
-        Exclude="$(NCastorAutoBuilderConsole)\*.md;$(NCastorAutoBuilderConsole)\*.nuspec;"/>
-    </ItemGroup>
-
-    <MakeDir Directories="$(NCastorAutoBuilderConsole)\Content\Tools\ConsoleRunner" />
-    <Move 
-      DestinationFolder="$(NCastorAutoBuilderConsole)\Content\Tools\ConsoleRunner" 
-      SourceFiles="@(_NCastorAutoBuilderConsoleNugetFiles)"/>
-    
-    <ItemGroup>
-      <NugetPackages Include="NCastor.AutoBuilder.Console.nuspec">
-        <SourcePath>$(NCastorAutoBuilderConsole)</SourcePath>
-        <ExtraOptions></ExtraOptions>
-        <Version>$(SemanticVersion)</Version>
-      </NugetPackages>
-    </ItemGroup>
-
-  </Target>
-
-  <Target Name="CorePrepareSpecialProjects">
-
-    <PropertyGroup>
-      <NCastorAutoBuilderConsole>$(WorkingDirectoryPath)\NCastorAutoBuilderConsole</NCastorAutoBuilderConsole>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console.csproj">
-        <WorkingDirectoryPath>$(NCastorAutoBuilderConsole)</WorkingDirectoryPath>
-      </SpecialProjects>
-    </ItemGroup>
-
-  </Target>
-
-  <Target Name="PrepareDistributeArtefacts">
-
-    <PropertyGroup>
-      <_PrivateNugetServerPath>c:\00\nuget</_PrivateNugetServerPath>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <DistributeArtefactFiles
-        Include="$(DropsPath)\NCastor.AutoBuilder.*.nupkg">
-        <OutputPath>$(_PrivateNugetServerPath)</OutputPath>
-      </DistributeArtefactFiles>
-    </ItemGroup>
-
-  </Target>
+  <Target Name="BuildSolution" DependsOnTargets="$(BuildSolutionDependsOn)"/>
 
 </Project>

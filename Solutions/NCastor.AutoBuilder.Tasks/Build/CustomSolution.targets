@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project DefaultTargets="BuildNCastorAutoBuilderSolution" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- TODO: Place your custom targets here -->
+  <Target Name="CoreGetBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
+  <Target Name="CoreGetExtraInformationalVersion" DependsOnTargets="FormatGitRevisionVersion" />
+
+  <Target Name="CorePrepareSpecialProjects">
+    <PropertyGroup>
+      <NCastorAutoBuilderTasksSpecialProjectPath>$(WorkingDirectoryPath)\NCastor.AutoBuilder.Tasks</NCastorAutoBuilderTasksSpecialProjectPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder.Tasks\NCastor.AutoBuilder.Tasks\NCastor.AutoBuilder.Tasks.csproj">
+        <WorkingDirectoryPath>$(NCastorAutoBuilderTasksSpecialProjectPath)</WorkingDirectoryPath>
+      </SpecialProjects>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CoreSettingInstrumentationAssemblies">
+    <ItemGroup>
+      <AssembliesToInstrument Include="
+                                        $(TestAssembliesPath)\NCastor.AutoBuilder.Tasks.dll;" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CoreSettingMSpecTestingAssemblies">
+    <ItemGroup>
+      <MSpecAssemblies Include="$(TestAssembliesPath)\NCastor.AutoBuilder.Tasks.Tests.dll" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CorePrepareNugetPackages">
+
+    <Delete Files="$(NCastorAutoBuilderTasksSpecialProjectPath)\NCastor.AutoBuilder.Tasks.pdb"/>
+
+    <ItemGroup>
+      <_NCastorAutoBuilderTasksFiles
+        Include="$(NCastorAutoBuilderTasksSpecialProjectPath)\*.*"
+        Exclude="
+        $(NCastorAutoBuilderTasksSpecialProjectPath)\*.nuspec;
+        $(NCastorAutoBuilderTasksSpecialProjectPath)\*.md;" />
+    </ItemGroup>
+
+    <MakeDir Directories="$(NCastorAutoBuilderTasksSpecialProjectPath)\Content\Tasks\NCastor" />
+
+    <Move
+      DestinationFolder="$(NCastorAutoBuilderTasksSpecialProjectPath)\Content\Tasks\NCastor"
+      SourceFiles="@(_NCastorAutoBuilderTasksFiles)"/>
+
+    <ItemGroup>
+      <NugetPackages Include="NCastor.AutoBuilder.Tasks.nuspec">
+        <SourcePath>$(NCastorAutoBuilderTasksSpecialProjectPath)</SourcePath>
+        <ExtraOptions></ExtraOptions>
+        <Version>$(SemanticVersion)</Version>
+      </NugetPackages>
+    </ItemGroup>
+
+  </Target>
+
+  <Target Name="PrepareDistributeArtifacts">
+
+    <PropertyGroup>
+      <_PrivateNugetServerPath>c:\00\nuget</_PrivateNugetServerPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <DistributeArtifactFiles
+        Include="$(DropsPath)\NCastor.AutoBuilder.*.nupkg">
+        <OutputPath>$(_PrivateNugetServerPath)</OutputPath>
+      </DistributeArtifactFiles>
+    </ItemGroup>
+
+  </Target>
+
+</Project>
