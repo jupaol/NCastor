@@ -13,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{ECAFAA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{05A4E137-8A49-4DDE-93B4-DDC0AC9ED848}"
 	ProjectSection(SolutionItems) = preProject
-		NCastor.AutoBuilder\Build\Build.cmd = NCastor.AutoBuilder\Build\Build.cmd
 		NCastor.AutoBuilder\Build\BuildSolution.proj = NCastor.AutoBuilder\Build\BuildSolution.proj
 		NCastor.AutoBuilder\Build\CustomSolution.properties = NCastor.AutoBuilder\Build\CustomSolution.properties
 		NCastor.AutoBuilder\Build\CustomSolution.targets = NCastor.AutoBuilder\Build\CustomSolution.targets

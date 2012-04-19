@@ -22,14 +22,14 @@
 
   <Target Name="PrepareNCastorAutoBuilderNuget">
 
-    <Delete Files="$(NCastorAutoBuilder)\NCastor.AutoBuilder.dll;$(NCastorAutoBuilder)\NCastor.AutoBuilder.pdb;" />
+    <!--<Delete Files="$(NCastorAutoBuilder)\NCastor.AutoBuilder.dll;$(NCastorAutoBuilder)\NCastor.AutoBuilder.pdb;" />
 
     <ItemGroup>
       <NugetPackages Include="NCastor.AutoBuilder.nuspec">
         <SourcePath>$(NCastorAutoBuilder)</SourcePath>
         <ExtraOptions></ExtraOptions>
       </NugetPackages>
-    </ItemGroup>
+    </ItemGroup>-->
 
   </Target>
 
@@ -46,9 +46,9 @@
       <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder.Runner\NCastor.AutoBuilder.Runner.csproj">
         <WorkingDirectoryPath>$(NCastorAutoBuilderRunner)</WorkingDirectoryPath>
       </SpecialProjects>
-      <SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj">
+      <!--<SpecialProjects Include="$(SolutionsPath)\NCastor.AutoBuilder\NCastor.AutoBuilder\NCastor.AutoBuilder.csproj">
         <WorkingDirectoryPath>$(NCastorAutoBuilder)</WorkingDirectoryPath>
-      </SpecialProjects>
+      </SpecialProjects>-->
     </ItemGroup>
 
   </Target>
