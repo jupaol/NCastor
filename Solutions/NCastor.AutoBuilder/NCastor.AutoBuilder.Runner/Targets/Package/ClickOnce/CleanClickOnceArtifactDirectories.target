@@ -49,8 +49,9 @@
 
     <Message Text="$(LoggingMessagePrefix) Ensuring all the (DestinationPath) directories specified in the (ClickOnceProjects) item were removed..." Importance="normal" />
     <Message Text="$(LoggingMessagePrefix) Ensuring all the (WorkingDirectoryPath) directories specified in the (ClickOnceProjects) item were removed..." Importance="normal" />
-    
-    <!--TODO: add validation here-->
+
+    <Error Text="There was a problem while rmeoving the following directory: (%(ClickOnceProjects.DestinationPath))" Condition="Exists(%(ClickOnceProjects.DestinationPath))" />
+    <Error Text="There was a problem while rmeoving the following directory: (%(ClickOnceProjects.WorkingDirectoryPath))" Condition="Exists(%(ClickOnceProjects.WorkingDirectoryPath))" />
 
   </Target>
 
