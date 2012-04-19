@@ -11,18 +11,18 @@ Your custom versioning targets
   <!--TODO: Place here your versioning targets-->
 
   <!--Examples-->
-  <!--<Target Name="CoreCalculateBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />-->
-  <!--<Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />-->
+  <!--<Target Name="CoreGetBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />-->
+  <!--<Target Name="CoreGetRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />-->
 
   <!--Custom calculation example:-->
 
-  <!--<Target Name="CoreCalculateBuildVersion">
+  <!--<Target Name="CoreGetBuildVersion">
     <PropertyGroup>
       <BuildVersion>$(MyCalculatedBuildVersion)</BuildVersion>
     </PropertyGroup>
   </Target>-->
 
-  <!--<Target Name="CoreCalculateRevisionVersion">
+  <!--<Target Name="CoreGetRevisionVersion">
     <PropertyGroup>
       <RevisionVersion>$(MyCalculatedRevisionVersion)</RevisionVersion>
     </PropertyGroup>

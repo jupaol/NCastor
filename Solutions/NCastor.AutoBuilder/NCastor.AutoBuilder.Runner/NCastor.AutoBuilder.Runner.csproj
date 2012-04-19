@@ -134,7 +134,7 @@
     <Content Include="Targets\Build\Cleaning\CleanArtefactFolders.targeet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\CalculateSemanticVersion.target">
+    <Content Include="Targets\Build\Versioning\FormatSemanticVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
@@ -144,10 +144,10 @@
     <Content Include="Targets\Tests\NUnit\RunNUnitTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\CalculateBuildVersion.target">
+    <Content Include="Targets\Build\Versioning\GetBuildVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\CalculateRevisionVersion.target">
+    <Content Include="Targets\Build\Versioning\GetRevisionVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Package\Zip\SourceCode\CleanSourceCodeArtefacts.target">
@@ -296,15 +296,11 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\CalculateFileVersion.target">
+    <Content Include="Targets\Build\Versioning\FormatFileVersion.target">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\CalculateInformationalVersion.target">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Targets\Build\Versioning\CalculateAdditionalVersionInformation.target">
+    <Content Include="Targets\Build\Versioning\FormatInformationalVersion.target">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -350,6 +346,9 @@
     </Content>
     <Content Include="Properties\VersionControlServers\Git.properties">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Build\Versioning\GetExtraInformationalVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Targets\Labels\FormatLabelNameSufixWhenLabelExists.target">

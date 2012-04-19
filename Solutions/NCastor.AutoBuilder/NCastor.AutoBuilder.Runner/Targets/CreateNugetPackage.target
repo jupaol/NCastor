@@ -56,7 +56,7 @@
 
     <Error ContinueOnError="false" Text="The Nuget spec file was not specified" Condition="$(NugetPackageSpecificationFilePath) == ''" />
     <Error ContinueOnError="false" Text="The Nuget spec file was not found" Condition="!Exists($(NugetPackageSpecificationFilePath))" />
-    <Error ContinueOnError="false" Text="The Semantic version was not specified (did you skip the CalculateSemanticVersion task?)" Condition="$(SemanticVersion) == ''" />
+    <Error ContinueOnError="false" Text="The Semantic version was not specified (did you skip the FormatSemanticVersion target?)" Condition="$(SemanticVersion) == ''" />
 
     <Copy SourceFiles="$(NugetPackageSpecificationFilePath)" DestinationFolder="$(WorkingNugetPackagePath)" />
 

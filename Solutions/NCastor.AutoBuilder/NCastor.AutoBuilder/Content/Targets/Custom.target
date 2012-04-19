@@ -13,7 +13,7 @@ Your custom targets
   <PropertyGroup>
     <MyCustomBuildDependsOn>
       ValidateSettings;
-      CalculateSemanticVersion;
+      FormatSemanticVersion;
       Clean;
       CreateArtefactFolders;
 

@@ -40,8 +40,8 @@ Your Build custom dependencies
   
   To setup a custom assembly version (build version and revision version), you need to override the following targets:
   
-  "CoreCalculateBuildVersion"
-  "CoreCalculateRevisionVersion"
+  "CoreGetBuildVersion"
+  "CoreGetRevisionVersion"
   
   You can calculate the version numbers using any MSBuild valid task, or executing an exe file.
   There are several pre-build actions in order to fill this numbers for you
@@ -56,18 +56,18 @@ Your Build custom dependencies
   
   Example:
   
-   <Target Name="CoreCalculateBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
-   <Target Name="CoreCalculateRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />
+   <Target Name="CoreGetBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
+   <Target Name="CoreGetRevisionVersion" DependsOnTargets="RevisionVersionHudsonSvn" />
    
    Custom calculation example:
    
-   <Target Name="CoreCalculateBuildVersion">
+   <Target Name="CoreGetBuildVersion">
     <PropertyGroup>
       <BuildVersion>$(MyCalculatedBuildVersion)</BuildVersion>
     </PropertyGroup>
    </Target>
 
-   <Target Name="CoreCalculateRevisionVersion">
+   <Target Name="CoreGetRevisionVersion">
     <PropertyGroup>
       <RevisionVersion>$(MyCalculatedRevisionVersion)</RevisionVersion>
     </PropertyGroup>
@@ -81,7 +81,7 @@ Your Build custom dependencies
   <PropertyGroup>
     <BuildDependsOn>
       ValidateSettings;
-      CalculateSemanticVersion;
+      FormatSemanticVersion;
       Clean;
       CreateArtefactFolders;
 

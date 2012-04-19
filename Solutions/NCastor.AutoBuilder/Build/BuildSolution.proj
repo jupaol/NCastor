@@ -63,7 +63,7 @@
       ValidateSettings;
       Clean;
       CreateArtefactFolders;
-      CalculateSemanticVersion;
+      FormatSemanticVersion;
 
       SetAssemblyVersion;
       SetAssemblyInfo;
@@ -82,8 +82,8 @@
 
   <!-- TODO: Place your custom targets here -->
 
-  <Target Name="CoreCalculateBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
-  <Target Name="CoreCalculateAdditionalVersionInformation" DependsOnTargets="FormatGitRevisionVersion" />
+  <Target Name="CoreGetBuildVersion" DependsOnTargets="GetBuildVersionFromHudson;" />
+  <Target Name="CoreGetExtraInformationalVersion" DependsOnTargets="FormatGitRevisionVersion" />
 
   <Target Name="PackageNCastor" DependsOnTargets="$(PackageNCastorDependsOn)" />
 

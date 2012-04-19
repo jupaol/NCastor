@@ -16,7 +16,7 @@
       ValidateSettings;
       Clean;
       CreateArtefactFolders;
-      CalculateSemanticVersion;
+      FormatSemanticVersion;
 
       SetAssemblyVersion;
       SetAssemblyInfo;

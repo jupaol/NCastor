@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <!--
-<copyright file="CalculateSemanticVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
+<copyright file="FormatSemanticVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
 
   jupaol@hotmail.com
   http://jupaol.blogspot.com/
@@ -12,25 +12,25 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <CalculateSemanticVersionDependsOn>
-      CalculateBuildVersion;
-      CalculateRevisionVersion;
+    <FormatSemanticVersionDependsOn>
+      GetBuildVersion;
+      GetRevisionVersion;
       ValidateVersioningProperties;
-      BeforeCalculateSemanticVersion;
-      CoreCalculateSemanticVersion;
-      AfterCalculateSemanticVersion;
-      CalculateFileVersion;
-      CalculateInformationalVersion;
-    </CalculateSemanticVersionDependsOn>
+      BeforeFormatSemanticVersion;
+      CoreFormatSemanticVersion;
+      AfterFormatSemanticVersion;
+      FormatFileVersion;
+      FormatInformationalVersion;
+    </FormatSemanticVersionDependsOn>
   </PropertyGroup>
 
-  <Target Name="CalculateSemanticVersion" DependsOnTargets="$(CalculateSemanticVersionDependsOn)" />
+  <Target Name="FormatSemanticVersion" DependsOnTargets="$(FormatSemanticVersionDependsOn)" />
 
   <!-- To be overriden by the user -->
-  <Target Name="BeforeCalculateSemanticVersion" />
-  <Target Name="AfterCalculateSemanticVersion" />
+  <Target Name="BeforeFormatSemanticVersion" />
+  <Target Name="AfterFormatSemanticVersion" />
 
-  <Target Name="CoreCalculateSemanticVersion">
+  <Target Name="CoreFormatSemanticVersion">
 
     <Message Text="$(LoggingMessagePrefix) Formatting the (SemanticVersion) property. This version is used as the Assembly version of all your assemblies. This version is the only one that the .Net framework actually cares when reading assembly version..." Importance="high" />
 

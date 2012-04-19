@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <!--
-<copyright file="CalculateInformationalVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
+<copyright file="FormatInformationalVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
 
   jupaol@hotmail.com
   http://jupaol.blogspot.com/
@@ -12,24 +12,24 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <CalculateInformationalVersionDependsOn>
-      CalculateBuildVersion;
-      CalculateRevisionVersion;
+    <FormatInformationalVersionDependsOn>
+      GetBuildVersion;
+      GetRevisionVersion;
+      GetExtraInformationalVersion;
       ValidateVersioningProperties;
-      CalculateAdditionalVersionInformation;
-      BeforeCalculateInformationalVersion;
-      CoreCalculateInformationalVersion;
-      AfterCalculateInformationalVersion;
-    </CalculateInformationalVersionDependsOn>
+      BeforeFormatInformationalVersion;
+      CoreFormatInformationalVersion;
+      AfterFormatInformationalVersion;
+    </FormatInformationalVersionDependsOn>
   </PropertyGroup>
 
-  <Target Name="CalculateInformationalVersion" DependsOnTargets="$(CalculateInformationalVersionDependsOn)"/>
+  <Target Name="FormatInformationalVersion" DependsOnTargets="$(FormatInformationalVersionDependsOn)"/>
 
   <!-- To be overriden by the user -->
-  <Target Name="BeforeCalculateInformationalVersion" />
-  <Target Name="AfterCalculateInformationalVersion" />
+  <Target Name="BeforeFormatInformationalVersion" />
+  <Target Name="AfterFormatInformationalVersion" />
 
-  <Target Name="CoreCalculateInformationalVersion" >
+  <Target Name="CoreFormatInformationalVersion" >
 
     <Message Text="$(LoggingMessagePrefix) Formatting the (InformationalVersion) property. This version is used as the detailed version of your product combining a public semantic version with a technical version..." Importance="high" />
 

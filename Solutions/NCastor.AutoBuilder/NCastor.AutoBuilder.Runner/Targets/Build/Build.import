@@ -11,8 +11,8 @@
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Import Project="Versioning\CalculateBuildVersion.target"/>
-  <Import Project="Versioning\CalculateRevisionVersion.target"/>
+  <Import Project="Versioning\GetBuildVersion.target"/>
+  <Import Project="Versioning\GetRevisionVersion.target"/>
   
   <Import Project="Versioning\ContinousIntegrationServers\Hudson\GetBuildVersionFromHudson.target"/>
   <Import Project="Versioning\ContinousIntegrationServers\TFS\GetBuildVersionFromTFS.target"/>
@@ -29,10 +29,10 @@
   <Import Project="Versioning\VersionControlServers\TFS\UseTFSRevisionAsCurrentRevisionVersion.target"/>
 
   <Import Project="Versioning\ValidateVersioningProperties.target"/>
-  <Import Project="Versioning\CalculateSemanticVersion.target"/>
-  <Import Project="Versioning\CalculateFileVersion.target"/>
-  <Import Project="Versioning\CalculateAdditionalVersionInformation.target"/>
-  <Import Project="Versioning\CalculateInformationalVersion.target"/>
+  <Import Project="Versioning\FormatSemanticVersion.target"/>
+  <Import Project="Versioning\FormatFileVersion.target"/>
+  <Import Project="Versioning\GetExtraInformationalVersion.target"/>
+  <Import Project="Versioning\FormatInformationalVersion.target"/>
 
   <Import Project="Cleaning\CleanArtefactFolders.targeet"/>
   <Import Project="Cleaning\Clean.target"/>
