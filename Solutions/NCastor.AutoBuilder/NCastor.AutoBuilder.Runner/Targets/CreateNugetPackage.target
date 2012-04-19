@@ -38,7 +38,7 @@
   <Target Name="AddBuildFilesToNugetPackageWorkingDirectory" >
 
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
-      RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
+      RetryCount="$(NumberOfRetriesWhenDeletingDirectories)" 
       ContinueOnError="false" 
       Directories="$(WorkingNugetPackagePath)" 
       Condition="Exists($(WorkingNugetPackagePath))" />

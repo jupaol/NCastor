@@ -28,7 +28,7 @@
 
       PackageNugets;
       CreateClickOncePackages;
-      PackageClickOnceArtefacts;
+      PackageClickOnceArtifacts;
 
       CoreCreatePackages;
       AfterCreatePackages;

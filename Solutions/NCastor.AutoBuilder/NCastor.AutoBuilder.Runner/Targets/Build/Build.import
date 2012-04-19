@@ -34,19 +34,19 @@
   <Import Project="Versioning\GetExtraInformationalVersion.target"/>
   <Import Project="Versioning\FormatInformationalVersion.target"/>
 
-  <Import Project="Cleaning\CleanArtefactFolders.targeet"/>
-  <Import Project="Cleaning\Clean.target"/>
+  <Import Project="CleanArtifactDirectories.target"/>
+  <Import Project="Clean.target"/>
 
-  <Import Project="CreateArtefactFolders.target"/>
+  <Import Project="CreateArtifactDirectories.target"/>
 
-  <Import Project="Versioning\CleanAssemblyInfoArtefacts.target" />
-  <Import Project="Versioning\CreateAssemblyInfoArtefacts.target" />
+  <Import Project="Versioning\CleanAssemblyInfoArtifacts.target" />
+  <Import Project="Versioning\CreateAssemblyInfoArtifacts.target" />
   <Import Project="Versioning\SetAssemblyVersion.target" />
   <Import Project="Versioning\SetAssemblyInfo.target" />
 
   <Import Project="Build.target"/>
-  <Import Project="CleanBuildSpecialProjectsArtefacts.target"/>
-  <Import Project="CreateBuildSpecialProjectsArtefacts.target"/>
+  <Import Project="CleanSpecialProjectArtifacts.target"/>
+  <Import Project="CreateSpecialProjectArtifacts.target"/>
   <Import Project="PrepareSpecialProjects.target"/>
   <Import Project="BuildSpecialProjects.target"/>
 

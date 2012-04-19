@@ -13,8 +13,8 @@
 
   <PropertyGroup>
     <SetAssemblyInfoDependsOn>
-      CleanAssemblyInfoArtefacts;
-      CreateAssemblyInfoArtefacts;
+      CleanAssemblyInfoArtifacts;
+      CreateAssemblyInfoArtifacts;
       BeforeSetAssemblyInfo;
       CoreSetAssemblyInfo;
       AfterSetAssemblyInfo;

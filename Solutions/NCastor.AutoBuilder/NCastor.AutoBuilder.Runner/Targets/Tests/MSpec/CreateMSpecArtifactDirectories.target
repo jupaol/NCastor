@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CreateMSpecArtifactDirectories.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateMSpecArtifactDirectoriesDependsOn>
+      BeforeCreateMSpecArtifactDirectories;
+      CoreCreateMSpecArtifactDirectories;
+      AfterCreateMSpecArtifactDirectories;
+    </CreateMSpecArtifactDirectoriesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateMSpecArtifactDirectories" DependsOnTargets="$(CreateMSpecArtifactDirectoriesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateMSpecArtifactDirectories" />
+  <Target Name="AfterCreateMSpecArtifactDirectories" />
+
+  <Target Name="CoreCreateMSpecArtifactDirectories" >
+
+    <Message Text="$(LoggingMessagePrefix) Creating all the MSpec artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(MSpecResultsPath))..."
+      Importance="normal" 
+      Condition="!Exists($(MSpecResultsPath))" />
+    <MakeDir ContinueOnError="false" Directories="$(MSpecResultsPath)" Condition="!Exists($(MSpecResultsPath))" />
+
+  </Target>
+  
+</Project>

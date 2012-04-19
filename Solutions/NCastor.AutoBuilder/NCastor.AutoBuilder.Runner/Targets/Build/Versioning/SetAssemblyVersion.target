@@ -13,8 +13,8 @@
 
   <PropertyGroup>
     <SetAssemblyVersionDependsOn>
-      CleanAssemblyInfoArtefacts;
-      CreateAssemblyInfoArtefacts;
+      CleanAssemblyInfoArtifacts;
+      CreateAssemblyInfoArtifacts;
       BeforeSetAssemblyVersion;
       CoreSetAssemblyVersion;
       AfterSetAssemblyVersion;

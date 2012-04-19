@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CreateMSTest_OC_RG_Dirs.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateMSTest_OC_RG_DirsDependsOn>
+      BeforeCreateMSTest_OC_RG_Dirs;
+      CoreCreateMSTest_OC_RG_Dirs;
+      AfterCreateMSTest_OC_RG_Dirs;
+    </CreateMSTest_OC_RG_DirsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateMSTest_OC_RG_Dirs" DependsOnTargets="$(CreateMSTest_OC_RG_DirsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateMSTest_OC_RG_Dirs" />
+  <Target Name="AfterCreateMSTest_OC_RG_Dirs" />
+
+  <Target Name="CoreCreateMSTest_OC_RG_Dirs" >
+
+    <Message Text="$(LoggingMessagePrefix) Creating all the MSTest artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(ReportGeneratorMSTestReportPath))..."
+      Importance="normal"
+      Condition="!Exists($(ReportGeneratorMSTestReportPath))" />
+    <MakeDir ContinueOnError="false" Directories="$(ReportGeneratorMSTestReportPath)" Condition="!Exists($(ReportGeneratorMSTestReportPath))" />
+
+  </Target>
+
+</Project>

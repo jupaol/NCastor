@@ -83,7 +83,7 @@ Your Build custom dependencies
       ValidateSettings;
       FormatSemanticVersion;
       Clean;
-      CreateArtefactFolders;
+      CreateArtifactDirectories;
 
       SetAssemblyVersion;
       SetAssemblyInfo;

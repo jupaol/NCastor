@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CleanMSTest_OC_RG_Dirs.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanMSTest_OC_RG_DirsDependsOn>
+      BeforeCleanMSTest_OC_RG_Dirs;
+      CoreCleanMSTest_OC_RG_Dirs;
+      AfterCleanMSTest_OC_RG_Dirs;
+    </CleanMSTest_OC_RG_DirsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanMSTest_OC_RG_Dirs" DependsOnTargets="$(CleanMSTest_OC_RG_DirsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCleanMSTest_OC_RG_Dirs" />
+  <Target Name="AfterCleanMSTest_OC_RG_Dirs" />
+
+  <Target Name="CoreCleanMSTest_OC_RG_Dirs" >
+
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the MSTest artifact directories..." Importance="high" />
+
+    <Error ContinueOnError="false" Text="The MSTest code coverage report path was not specified" Condition="$(ReportGeneratorMSTestReportPath) == ''" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Removing directory: ($(ReportGeneratorMSTestReportPath))..."
+      Importance="normal"
+      Condition="Exists($(ReportGeneratorMSTestReportPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries
+      RetryCount="$(NumberOfRetriesWhenDeletingDirectories)"
+      ContinueOnError="false"
+      Directories="$(ReportGeneratorMSTestReportPath)"
+      Condition="Exists($(ReportGeneratorMSTestReportPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingDirectories)" />
+
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the MSTest artifact directories were removed..." Importance="normal" />
+    <Error ContinueOnError="false" Text="There was a problem when cleaning the MSTest code coverage reports directory (MSTest-OpenCover-ReportGenerator)" Condition="Exists($(ReportGeneratorMSTestReportPath))" />
+
+  </Target>
+
+</Project>

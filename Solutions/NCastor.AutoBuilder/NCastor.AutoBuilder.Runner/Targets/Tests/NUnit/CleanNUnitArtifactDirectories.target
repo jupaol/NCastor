@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CleanNUnitArtifactDirectories.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanNUnitArtifactDirectoriesDependsOn>
+      BeforeCleanNUnitArtifactDirectories;
+      CoreCleanNUnitArtifactDirectories;
+      AfterCleanNUnitArtifactDirectories;
+    </CleanNUnitArtifactDirectoriesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanNUnitArtifactDirectories" DependsOnTargets="$(CleanNUnitArtifactDirectoriesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCleanNUnitArtifactDirectories" />
+  <Target Name="AfterCleanNUnitArtifactDirectories" />
+
+  <Target Name="CoreCleanNUnitArtifactDirectories" >
+
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the NUnit artifact directories..." Importance="high" />
+    
+    <Error ContinueOnError="false" Text="The NUnit reports path was not specified" Condition="$(NUnitReportsPath) == ''" />
+
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing directory: ($(NUnitReportsPath))..." 
+      Importance="normal" 
+      Condition="Exists($(NUnitReportsPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingDirectories)" 
+      ContinueOnError="false" 
+      Directories="$(NUnitReportsPath)" 
+      Condition="Exists($(NUnitReportsPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingDirectories)" />
+
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the NUnit artifact directories were removed..." Importance="normal" />
+    <Error ContinueOnError="false" Text="There was a problem when cleaning the NUnit reports directory" Condition="Exists($(NUnitReportsPath))" />
+
+  </Target>
+  
+</Project>

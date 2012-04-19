@@ -13,7 +13,7 @@
 
   <PropertyGroup>
     <IsolateSourceCodeDependsOn>
-      CleanSourceCodeArtefacts;
+      CleanSourceCodeArtifactDirectories;
       BeforeIsolateSourceCode;
       CoreIsolateSourceCode;
       AfterIsolateSourceCode;

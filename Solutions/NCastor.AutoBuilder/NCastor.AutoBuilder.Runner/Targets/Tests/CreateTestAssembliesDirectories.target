@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CreateTestAssembliesDirectories.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateTestAssembliesDirectoriesDependsOn>
+      BeforeCreateTestAssembliesDirectories;
+      CoreCreateTestAssembliesDirectories;
+      AfterCreateTestAssembliesDirectories;
+    </CreateTestAssembliesDirectoriesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateTestAssembliesDirectories" DependsOnTargets="$(CreateTestAssembliesDirectoriesDependsOn)" Condition="$(TestAssembliesPath) != $(BuildingPath)" />
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateTestAssembliesDirectories" />
+  <Target Name="AfterCreateTestAssembliesDirectories" />
+
+  <Target Name="CoreCreateTestAssembliesDirectories">
+
+    <Message Text="$(LoggingMessagePrefix) Creating all the testing assembly directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(TestAssembliesPath))..."
+      Importance="normal" 
+      Condition="!Exists($(TestAssembliesPath))" />
+    <MakeDir ContinueOnError="false" Directories="$(TestAssembliesPath)" Condition="!Exists($(TestAssembliesPath))" />
+    
+  </Target>
+
+</Project>

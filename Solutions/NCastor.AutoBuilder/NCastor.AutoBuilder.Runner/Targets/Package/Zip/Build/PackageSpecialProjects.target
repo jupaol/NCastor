@@ -34,27 +34,27 @@
       Targets="_PackageSpecialProjects"
       Properties="
         _CurrentSpecialProjectZipFilePath=$(DropsPath)\%(SpecialProjects.FileName).Build.$(Configuration).$(Platform).v$(SemanticVersion).zip;
-        _CurrentSpecialFoldersWorkingDirectoryPath=%(SpecialProjects.WorkingDirectoryPath)
+        _CurrentSpecialProjectWorkingDirectoryPath=%(SpecialProjects.WorkingDirectoryPath)
       "/>
     
   </Target>
 
   <Target Name="_PackageSpecialProjects">
 
-    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file the build artifacts from the path: ($(_CurrentSpecialFoldersWorkingDirectoryPath))..." Importance="high" />
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file the build artifacts from the path: ($(_CurrentSpecialProjectWorkingDirectoryPath))..." Importance="high" />
     
-    <Error ContinueOnError="false" Text="The _CurrentSpecialFoldersWorkingDirectoryPath was not specified" Condition="$(_CurrentSpecialFoldersWorkingDirectoryPath) == ''" />
-    <Error ContinueOnError="false" Text="The _CurrentSpecialFoldersWorkingDirectoryPath was not found" Condition="!Exists($(_CurrentSpecialFoldersWorkingDirectoryPath))" />
+    <Error ContinueOnError="false" Text="The _CurrentSpecialProjectWorkingDirectoryPath was not specified" Condition="$(_CurrentSpecialProjectWorkingDirectoryPath) == ''" />
+    <Error ContinueOnError="false" Text="The _CurrentSpecialProjectWorkingDirectoryPath was not found" Condition="!Exists($(_CurrentSpecialProjectWorkingDirectoryPath))" />
     <Error ContinueOnError="false" Text="The _CurrentSpecialProjectZipFilePath was not specified" Condition="$(_CurrentSpecialProjectZipFilePath) == ''" />
     
     <ItemGroup>
-      <_CurrentSpecialFoldersFiles Include="$(_CurrentSpecialFoldersWorkingDirectoryPath)\**\*" />
+      <_CurrentSpecialProjectFiles Include="$(_CurrentSpecialProjectWorkingDirectoryPath)\**\*" />
     </ItemGroup>
     
     <MsBuild.Community.tasks.Zip 
       ZipFileName="$(_CurrentSpecialProjectZipFilePath)"
-      Files="@(_CurrentSpecialFoldersFiles)"
-      WorkingDirectory="$(_CurrentSpecialFoldersWorkingDirectoryPath)"
+      Files="@(_CurrentSpecialProjectFiles)"
+      WorkingDirectory="$(_CurrentSpecialProjectWorkingDirectoryPath)"
       Flatten="False" />
 
   </Target>

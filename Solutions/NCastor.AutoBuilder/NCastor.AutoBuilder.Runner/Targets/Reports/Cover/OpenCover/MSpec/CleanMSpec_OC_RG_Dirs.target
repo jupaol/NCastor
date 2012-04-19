@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CleanMSpec_OC_RG_Dirs.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanMSpec_OC_RG_DirsDependsOn>
+      BeforeCleanMSpec_OC_RG_Dirs;
+      CoreCleanMSpec_OC_RG_Dirs;
+      AfterCleanMSpec_OC_RG_Dirs;
+    </CleanMSpec_OC_RG_DirsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanMSpec_OC_RG_Dirs" DependsOnTargets="$(CleanMSpec_OC_RG_DirsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCleanMSpec_OC_RG_Dirs" />
+  <Target Name="AfterCleanMSpec_OC_RG_Dirs" />
+
+  <Target Name="CoreCleanMSpec_OC_RG_Dirs" >
+
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the MSpec artifact directories..." Importance="high" />
+
+    <Error ContinueOnError="false" Text="The MSpec report path was not specified" Condition="$(ReportGeneratorMSpecReportPath) == ''" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Removing directory: ($(ReportGeneratorMSpecReportPath))..."
+      Importance="normal"
+      Condition="Exists($(ReportGeneratorMSpecReportPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries
+      RetryCount="$(NumberOfRetriesWhenDeletingDirectories)"
+      ContinueOnError="false"
+      Directories="$(ReportGeneratorMSpecReportPath)"
+      Condition="Exists($(ReportGeneratorMSpecReportPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingDirectories)" />
+
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the MSpec artifact directories were removed..." Importance="normal" />
+    <Error ContinueOnError="false" Text="There was a problem when cleaning the MSpec code coverage reports directory (MSpec-OpenCover-ReportGenerator)" Condition="Exists($(ReportGeneratorMSpecReportPath))" />
+
+  </Target>
+  
+</Project>

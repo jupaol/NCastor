@@ -28,7 +28,7 @@ Your CreatePackages custom dependencies
       
       PackageNugets;
       CreateClickOncePackages;
-      PackageClickOnceArtefacts;
+      PackageClickOnceArtifacts;
 
       CoreCreatePackages;
       AfterCreatePackages;
@@ -52,7 +52,7 @@ Your CreatePackages custom dependencies
 
       PackageNugets;
       CreateClickOncePackages;
-      PackageClickOnceArtefacts;
+      PackageClickOnceArtifacts;
 
       CoreCreatePackages;
       AfterCreatePackages;

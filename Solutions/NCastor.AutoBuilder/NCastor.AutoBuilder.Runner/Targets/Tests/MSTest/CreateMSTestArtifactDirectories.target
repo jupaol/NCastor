@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CreateMSTestArtifactDirectories.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateMSTestArtifactDirectoriesDependsOn>
+      BeforeCreateMSTestArtifactDirectories;
+      CoreCreateMSTestArtifactDirectories;
+      AfterCreateMSTestArtifactDirectories;
+    </CreateMSTestArtifactDirectoriesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateMSTestArtifactDirectories" DependsOnTargets="$(CreateMSTestArtifactDirectoriesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateMSTestArtifactDirectories" />
+  <Target Name="AfterCreateMSTestArtifactDirectories" />
+
+  <Target Name="CoreCreateMSTestArtifactDirectories" >
+
+    <Message Text="$(LoggingMessagePrefix) Creating all the MSTest artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(MSTestResultsPath))..."
+      Importance="normal" 
+      Condition="!Exists($(MSTestResultsPath))" />
+    <MakeDir ContinueOnError="false" Directories="$(MSTestResultsPath)" Condition="!Exists($(MSTestResultsPath))" />
+
+  </Target>
+  
+</Project>

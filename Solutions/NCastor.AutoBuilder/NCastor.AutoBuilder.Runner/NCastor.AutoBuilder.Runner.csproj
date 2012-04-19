@@ -64,7 +64,7 @@
     <Content Include="Tasks\MSBuild.Community\MSBuild.Community.Tasks.Targets">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\CreateArtefactFolders.target">
+    <Content Include="Targets\Build\CreateArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Package\Zip\SourceCode\IsolateSourceCode.target">
@@ -131,9 +131,9 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Cleaning\CleanArtefactFolders.targeet">
+    <None Include="Targets\Build\CleanArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
     <Content Include="Targets\Build\Versioning\FormatSemanticVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -150,17 +150,17 @@
     <Content Include="Targets\Build\Versioning\GetRevisionVersion.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\Zip\SourceCode\CleanSourceCodeArtefacts.target">
+    <Content Include="Targets\Package\Zip\SourceCode\CleanSourceCodeArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Build\Build.import">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\CreateAssemblyInfoArtefacts.target">
+    <Content Include="Targets\Build\Versioning\CreateAssemblyInfoArtifacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\Versioning\CleanAssemblyInfoArtefacts.target">
+    <Content Include="Targets\Build\Versioning\CleanAssemblyInfoArtifacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Common\Common.import">
@@ -175,22 +175,22 @@
     <Content Include="Targets\Package\Package.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Cover\CreateMSpecOpenCoverWithRGArtefacts.target">
+    <Content Include="Targets\Reports\Cover\OpenCover\MSpec\CreateMSpec_OC_RG_Dirs.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Cover\CleanMSpecOpenCoverWithRGArtefacts.target">
+    <Content Include="Targets\Reports\Cover\OpenCover\MSpec\CleanMSpec_OC_RG_Dirs.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Cover\CreateMSTestOpenCoverWithRGArtefacts.target">
+    <Content Include="Targets\Reports\Cover\OpenCover\MSTest\CreateMSTest_OC_RG_Dirs.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Cover\CleanMSTestOpenCoverWithRGArtefacts.target">
+    <Content Include="Targets\Reports\Cover\OpenCover\MSTest\CleanMSTest_OC_RG_Dirs.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Cover\CreateNUnitOpenCoverWithRGArtefacts.target">
+    <Content Include="Targets\Reports\Cover\OpenCover\NUnit\CreateNUnit_OC_RG_Dirs.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Cover\CleanNUnitOpenCoverWithRGArtefacts.target">
+    <Content Include="Targets\Reports\Cover\OpenCover\NUnit\CleanNUnit_OC_RG_Dirs.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Package\Zip\TestAssemblies\PackageTestAssemblies.target">
@@ -214,7 +214,7 @@
     <Content Include="Targets\Tests\CheckForTestsErrors.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Tests\MSpec\CreateMSpecArtefactFolders.target">
+    <Content Include="Targets\Tests\MSpec\CreateMSpecArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Tests\MSpec\SettingMSpecTestingAssemblies.target">
@@ -223,13 +223,13 @@
     <Content Include="Targets\Tests\MSpec\MSpecTests.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Tests\MSTest\CreateMSTestArtefactFolders.target">
+    <Content Include="Targets\Tests\MSTest\CreateMSTestArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Tests\MSTest\MSTestTests.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Tests\NUnit\CreateNUnitArtefactFolders.target">
+    <Content Include="Targets\Tests\NUnit\CreateNUnitArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Tests\NUnit\SettingNUnitTestingAssemblies.target">
@@ -241,16 +241,16 @@
     <Content Include="Targets\Tests\Tests.import">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Tests\NUnit\CleanNUnitArtefactFolders.target">
+    <Content Include="Targets\Tests\NUnit\CleanNUnitArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Tests\MSTest\RunMSTests.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Tests\MSTest\CleanMSTestArtefactFolders.target">
+    <Content Include="Targets\Tests\MSTest\CleanMSTestArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Tests\MSpec\CleanMSpecArtefactFolders.target">
+    <Content Include="Targets\Tests\MSpec\CleanMSpecArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Tests\MSpec\RunMSpecTests.target">
@@ -268,13 +268,13 @@
     <Content Include="Targets\Tests\MSpec\Cover\RunMSpecWithOpenCover.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Cover\ReportNUnitOpenCoverWithRG.target">
+    <Content Include="Targets\Reports\Cover\OpenCover\NUnit\ReportNUnitOpenCoverWithRG.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Cover\ReportMSTestOpenCoverWithRG.target">
+    <Content Include="Targets\Reports\Cover\OpenCover\MSTest\ReportMSTestOpenCoverWithRG.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Reports\Cover\ReportMSpecOpenCoverWithRG.target">
+    <Content Include="Targets\Reports\Cover\OpenCover\MSpec\ReportMSpecOpenCoverWithRG.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Reports\Tests\MSTest\CreateMSTestReport.target">
@@ -499,7 +499,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tools\install.ps1" />
-    <Content Include="Targets\Build\Cleaning\Clean.target">
+    <Content Include="Targets\Build\Clean.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tools\MSTestReportGenerator\Assembly.dll">
@@ -533,7 +533,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\Zip\ClickOncePublishedFiles\PackageClickOnceArtefacts.target">
+    <Content Include="Targets\Package\Zip\ClickOncePublishedFiles\PackageClickOnceArtifacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Targets\Reports\Tests\NUnit\CreateNUnitReport.target">
@@ -551,15 +551,15 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Distribute\Artefacts\DistributeArtefacts.target">
+    <Content Include="Targets\Distribute\Artifacts\DistributeArtifacts.target">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Distribute\Artefacts\PrepareDistributeArtefacts.target">
+    <Content Include="Targets\Distribute\Artifacts\PrepareDistributeArtifacts.target">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Distribute\Artefacts\Distribute.target">
+    <Content Include="Targets\Distribute\Artifacts\Distribute.target">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -600,10 +600,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Targets\Build\CreateBuildSpecialProjectsArtefacts.target">
+    <Content Include="Targets\Build\CreateSpecialProjectArtifacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Build\CleanBuildSpecialProjectsArtefacts.target">
+    <Content Include="Targets\Build\CleanSpecialProjectArtifacts.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="NCastor.AutoBuilder.Runner.nuspec">
@@ -621,10 +621,10 @@
     <Content Include="Targets\Package\ClickOnce\ValidateClickOncePackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\ClickOnce\CleanClickOncePackageArtefacts.target">
+    <Content Include="Targets\Package\ClickOnce\CleanClickOnceArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Targets\Package\ClickOnce\CreateClickOncePackageArtefacts.target">
+    <Content Include="Targets\Package\ClickOnce\CreateClickOnceArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Targets\Package\CreatePackages.target">
@@ -633,7 +633,7 @@
     <Content Include="Targets\Package\Nuget\ValidateNugetPackages.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Targets\Tests\CreateTestAssembliesArtefacts.target">
+    <None Include="Targets\Tests\CreateTestAssembliesDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Targets\Tests\NUnit\ValidateNUnitProperties.target">
@@ -647,7 +647,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Targets\Tests\CleanTestAssembliesArtefacts.target">
+    <None Include="Targets\Tests\CleanTestAssembliesDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

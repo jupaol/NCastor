@@ -29,7 +29,7 @@
     </description>
     <summary>
       Use NCastor to quiclly add MSBuild scripts to set assembly info, compile, run tests, run code and 
-      assembly analysis, generate test results and test coverage reports, zip your artefacts, package your application 
+      assembly analysis, generate test results and test coverage reports, zip your artifacts, package your application 
       and create Nuget package
     </summary>
     <tags>

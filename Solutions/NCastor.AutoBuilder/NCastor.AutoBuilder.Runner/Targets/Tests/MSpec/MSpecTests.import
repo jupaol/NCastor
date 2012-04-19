@@ -13,8 +13,8 @@
 
   <Import Project="ValidateMSpecProperties.target"/>
   <Import Project="SettingMSpecTestingAssemblies.target"/>
-  <Import Project="CleanMSpecArtefactFolders.target"/>
-  <Import Project="CreateMSpecArtefactFolders.target"/>
+  <Import Project="CleanMSpecArtifactDirectories.target"/>
+  <Import Project="CreateMSpecArtifactDirectories.target"/>
   <Import Project="RunMSpecTests.target"/>
 
   <Import Project="Cover\RunMSpecWithOpenCover.target"/>

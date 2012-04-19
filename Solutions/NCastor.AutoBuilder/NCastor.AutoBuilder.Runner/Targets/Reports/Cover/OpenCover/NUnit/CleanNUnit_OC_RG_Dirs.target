@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CleanNUnit_OC_RG_Dirs.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanNUnit_OC_RG_DirsDependsOn>
+      BeforeCleanNUnit_OC_RG_Dirs;
+      CoreCleanNUnit_OC_RG_Dirs;
+      AfterCleanNUnit_OC_RG_Dirs;
+    </CleanNUnit_OC_RG_DirsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanNUnit_OC_RG_Dirs" DependsOnTargets="$(CleanNUnit_OC_RG_DirsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCleanNUnit_OC_RG_Dirs" />
+  <Target Name="AfterCleanNUnit_OC_RG_Dirs" />
+
+  <Target Name="CoreCleanNUnit_OC_RG_Dirs" >
+
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the NUnit artifact directories..." Importance="high" />
+
+    <Error ContinueOnError="false" Text="The NUnit code coverage report path was not specified" Condition="$(ReportGeneratorNUnitReportPath) == ''" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Removing directory: ($(ReportGeneratorNUnitReportPath))..."
+      Importance="normal"
+      Condition="Exists($(ReportGeneratorNUnitReportPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries
+      RetryCount="$(NumberOfRetriesWhenDeletingDirectories)"
+      ContinueOnError="false"
+      Directories="$(ReportGeneratorNUnitReportPath)"
+      Condition="Exists($(ReportGeneratorNUnitReportPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingDirectories)" />
+
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the NUnit artifact directories were removed..." Importance="normal" />
+    <Error ContinueOnError="false" Text="There was a problem when cleaning the NUnit code coverage reports directory (NUnit-OpenCover-ReportGenerator)" Condition="Exists($(ReportGeneratorNUnitReportPath))" />
+
+  </Target>
+
+</Project>

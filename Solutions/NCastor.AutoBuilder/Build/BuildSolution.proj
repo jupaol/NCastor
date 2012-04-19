@@ -62,7 +62,7 @@
     <BuildNCastorAutoBuilderSolutionDependsOn>
       ValidateSettings;
       Clean;
-      CreateArtefactFolders;
+      CreateArtifactDirectories;
       FormatSemanticVersion;
 
       SetAssemblyVersion;
@@ -70,10 +70,10 @@
 
       CoreBuild;
       BuildSpecialProjects;
-
+      PackageSpecialProjects;
       PackageNugets;
 
-      DistributeArtefacts;
+      DistributeArtifacts;
 
       CreateGitTag;
     </BuildNCastorAutoBuilderSolutionDependsOn>
@@ -133,17 +133,17 @@
 
   </Target>
 
-  <Target Name="PrepareDistributeArtefacts">
+  <Target Name="PrepareDistributeArtifacts">
 
     <PropertyGroup>
       <_PrivateNugetServerPath>c:\00\nuget</_PrivateNugetServerPath>
     </PropertyGroup>
     
     <ItemGroup>
-      <DistributeArtefactFiles
+      <DistributeArtifactFiles
         Include="$(DropsPath)\NCastor.AutoBuilder.*.nupkg">
         <OutputPath>$(_PrivateNugetServerPath)</OutputPath>
-      </DistributeArtefactFiles>
+      </DistributeArtifactFiles>
     </ItemGroup>
     
   </Target>

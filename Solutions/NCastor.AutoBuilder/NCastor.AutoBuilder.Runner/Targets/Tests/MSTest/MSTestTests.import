@@ -13,8 +13,8 @@
 
   <Import Project="ValidateMSTestProperties.target"/>
   <Import Project="SettingMSTestTestingAssemblies.target"/>
-  <Import Project="CleanMSTestArtefactFolders.target"/>
-  <Import Project="CreateMSTestArtefactFolders.target"/>
+  <Import Project="CleanMSTestArtifactDirectories.target"/>
+  <Import Project="CreateMSTestArtifactDirectories.target"/>
   <Import Project="RunMSTests.target"/>
 
   <Import Project="Cover\RunMSTestWithOpenCover.target"/>

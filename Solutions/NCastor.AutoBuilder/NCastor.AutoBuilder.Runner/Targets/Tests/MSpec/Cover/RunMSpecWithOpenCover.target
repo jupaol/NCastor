@@ -17,8 +17,8 @@
       SettingInstrumentationAssemblies;
       ValidateMSpecProperties;
       ValidateOpenCoverProperties;
-      CleanMSpecArtefactFolders;
-      CreateMSpecArtefactFolders;
+      CleanMSpecArtifactDirectories;
+      CreateMSpecArtifactDirectories;
       BeforeRunMSpecWithOpenCover;
       CoreRunMSpecWithOpenCover;
       AfterRunMSpecWithOpenCover;

@@ -3,24 +3,24 @@
 <!--
 "Your stuff"
 
-Your Custom Distribute Artefacts targets
+Your Custom Distribute Artifacts targets
 -->
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!--Place here your custom distribute artefacts targets-->
+  <!--Place here your custom distribute artifacts targets-->
 
-  <!--<Target Name="PrepareDistributeArtefacts">
+  <!--<Target Name="PrepareDistributeArtifacts">
 
     <PropertyGroup>
       <_PrivateNugetServerPath>c:\MyPrivateNugetServer</_PrivateNugetServerPath>
     </PropertyGroup>
 
     <ItemGroup>
-      <DistributeArtefactFiles
+      <DistributeArtifactFiles
         Include="$(DropsPath)\NCastor.AutoBuilder.*.nupkg">
         <OutputPath>$(_PrivateNugetServerPath)</OutputPath>
-      </DistributeArtefactFiles>
+      </DistributeArtifactFiles>
     </ItemGroup>
 
   </Target>-->

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="DistributeArtifacts.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <DistributeArtifactsDependsOn>
+      PrepareDistributeArtifacts;
+      BeforeDistributeArtifacts;
+      CoreDistributeArtifacts;
+      AfterDistributeArtifacts;
+    </DistributeArtifactsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="DistributeArtifacts" DependsOnTargets="$(DistributeArtifactsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeDistributeArtifacts" />
+  <Target Name="AfterDistributeArtifacts" />
+
+  <Target Name="CoreDistributeArtifacts" >
+
+    <Message Text="$(LoggingMessagePrefix) Distributing the artifacts specified in the (DistributeArtifactFiles) item..." Importance="high" />
+
+    <Error 
+      ContinueOnError="false"
+      Condition="@(DistributeArtifactFiles) == ''"
+      Text="You need to specify at least one set of files to Distribute"/>
+
+    <Error
+      ContinueOnError="false"
+      Condition="%(DistributeArtifactFiles.OutputPath) == ''"
+      Text="For each set of Distribute files, you need to specify the OutputPath"/>
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating all the (OutputPath) directories specified in the (DistributeArtifactFiles) item..."
+      Importance="normal" />
+    <MakeDir
+      Condition="!Exists(%(DistributeArtifactFiles.OutputPath))"
+      Directories="%(DistributeArtifactFiles.OutputPath)"/>
+
+    <Message Text="$(LoggingMessagePrefix) Distributing the artifacts..." Importance="normal" />
+    <Copy 
+      ContinueOnError="false"
+      SourceFiles="@(DistributeArtifactFiles)"
+      DestinationFiles="@(DistributeArtifactFiles->'%(OutputPath)\%(RecursiveDir)%(Filename)%(Extension)')"/>
+
+  </Target>
+  
+</Project>

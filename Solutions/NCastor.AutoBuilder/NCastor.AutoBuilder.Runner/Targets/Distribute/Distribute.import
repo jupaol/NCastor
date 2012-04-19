@@ -11,8 +11,8 @@
 
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Import Project="Artefacts\DistributeArtefacts.target"/>
-  <Import Project="Artefacts\PrepareDistributeArtefacts.target"/>
-  <Import Project="Artefacts\Distribute.target"/>
+  <Import Project="Artifacts\DistributeArtifacts.target"/>
+  <Import Project="Artifacts\PrepareDistributeArtifacts.target"/>
+  <Import Project="Artifacts\Distribute.target"/>
 
 </Project>

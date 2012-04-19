@@ -17,8 +17,8 @@
       SettingInstrumentationAssemblies;
       ValidateNUnitProperties;
       ValidateOpenCoverProperties;
-      CleanNUnitArtefactFolders;
-      CreateNUnitArtefactFolders;
+      CleanNUnitArtifactDirectories;
+      CreateNUnitArtifactDirectories;
       BeforeRunNUnitWithOpenCover;
       CoreRunNUnitWithOpenCover;
       AfterRunNUnitWithOpenCover;

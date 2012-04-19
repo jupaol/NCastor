@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CreateMSpec_OC_RG_Dirs.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateMSpec_OC_RG_DirsDependsOn>
+      BeforeCreateMSpec_OC_RG_Dirs;
+      CoreCreateMSpec_OC_RG_Dirs;
+      AfterCreateMSpec_OC_RG_Dirs;
+    </CreateMSpec_OC_RG_DirsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateMSpec_OC_RG_Dirs" DependsOnTargets="$(CreateMSpec_OC_RG_DirsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateMSpec_OC_RG_Dirs" />
+  <Target Name="AfterCreateMSpec_OC_RG_Dirs" />
+
+  <Target Name="CoreCreateMSpec_OC_RG_Dirs" >
+
+    <Message Text="$(LoggingMessagePrefix) Creating all the MSpec artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(ReportGeneratorMSpecReportPath))..."
+      Importance="normal"
+      Condition="!Exists($(ReportGeneratorMSpecReportPath))" />
+    <MakeDir ContinueOnError="false" Directories="$(ReportGeneratorMSpecReportPath)" Condition="!Exists($(ReportGeneratorMSpecReportPath))" />
+
+  </Target>
+
+</Project>

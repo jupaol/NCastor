@@ -13,8 +13,8 @@
 
   <PropertyGroup>
     <SettingTestingAssembliesDependsOn>
-      CleanTestAssembliesArtefacts;
-      CreateTestAssembliesArtefacts;
+      CleanTestAssembliesDirectories;
+      CreateTestAssembliesDirectories;
       BeforeSettingTestingAssemblies;
       CoreSettingTestingAssemblies;
       AfterSettingTestingAssemblies;

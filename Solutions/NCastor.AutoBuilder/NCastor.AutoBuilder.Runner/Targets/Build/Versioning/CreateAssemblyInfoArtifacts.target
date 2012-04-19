@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CreateAssemblyInfoArtifacts.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateAssemblyInfoArtifactsDependsOn>
+      BeforeCreateAssemblyInfoArtifacts;
+      CoreCreateAssemblyInfoArtifacts;
+      AfterCreateAssemblyInfoArtifacts;
+    </CreateAssemblyInfoArtifactsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateAssemblyInfoArtifacts" DependsOnTargets="$(CreateAssemblyInfoArtifactsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateAssemblyInfoArtifacts" />
+  <Target Name="AfterCreateAssemblyInfoArtifacts" />
+
+  <Target Name="CoreCreateAssemblyInfoArtifacts" >
+
+    <Message Text="$(LoggingMessagePrefix) Creating assembly version artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(AssemblyInfoPath))..."
+      Importance="normal" 
+      Condition="!Exists($(AssemblyInfoPath))" />
+    <MakeDir ContinueOnError="false" Directories="$(AssemblyInfoPath)" Condition="!Exists($(AssemblyInfoPath))" />
+    
+  </Target>  
+  
+</Project>

@@ -15,7 +15,7 @@
     <BuildDependsOn>
       ValidateSettings;
       Clean;
-      CreateArtefactFolders;
+      CreateArtifactDirectories;
       FormatSemanticVersion;
 
       SetAssemblyVersion;

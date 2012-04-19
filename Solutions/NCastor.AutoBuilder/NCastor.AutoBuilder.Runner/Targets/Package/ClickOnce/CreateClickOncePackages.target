@@ -15,8 +15,8 @@
     <CreateClickOncePackagesDependsOn>
       PrepareClickOncePackages;
       ValidateClickOncePackages;
-      CleanClickOncePackageArtefacts;
-      CreateClickOncePackageArtefacts;
+      CleanClickOnceArtifactDirectories;
+      CreateClickOnceArtifactDirectories;
       BeforeCreateClickOncePackages;
       CoreCreateClickOncePackages;
       AfterCreateClickOncePackages;

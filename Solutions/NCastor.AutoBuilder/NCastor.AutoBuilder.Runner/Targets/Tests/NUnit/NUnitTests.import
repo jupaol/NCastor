@@ -13,8 +13,8 @@
 
   <Import Project="ValidateNUnitProperties.target"/>
   <Import Project="SettingNUnitTestingAssemblies.target"/>
-  <Import Project="CleanNUnitArtefactFolders.target"/>
-  <Import Project="CreateNUnitArtefactFolders.target"/>
+  <Import Project="CleanNUnitArtifactDirectories.target"/>
+  <Import Project="CreateNUnitArtifactDirectories.target"/>
   <Import Project="RunNUnitTests.target"/>
   
   <Import Project="Cover\RunNUnitWithOpenCover.target"/>

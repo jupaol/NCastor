@@ -15,8 +15,8 @@
     <RunMSpecTestsDependsOn>
       SettingMSpecTestingAssemblies;
       ValidateMSpecProperties;
-      CleanMSpecArtefactFolders;
-      CreateMSpecArtefactFolders;
+      CleanMSpecArtifactDirectories;
+      CreateMSpecArtifactDirectories;
       BeforeRunMSpecTests;
       CoreRunMSpecTests;
       AfterRunMSpecTests;

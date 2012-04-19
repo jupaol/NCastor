@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CreateSpecialProjectArtifacts.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateSpecialProjectArtifactsDependsOn>
+      BeforeCreateSpecialProjectArtifacts;
+      CoreCreateSpecialProjectArtifacts;
+      AfterCreateSpecialProjectArtifacts;
+    </CreateSpecialProjectArtifactsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateSpecialProjectArtifacts" DependsOnTargets="$(CreateSpecialProjectArtifactsDependsOn)" />
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateSpecialProjectArtifacts" />
+  <Target Name="AfterCreateSpecialProjectArtifacts" />
+
+  <Target Name="CoreCreateSpecialProjectArtifacts" >
+
+    <Message Text="$(LoggingMessagePrefix) Creating all the (WorkingDirectoryPath) special project artifact directories specified in the (SpecialProjects) item..." Importance="high" />
+
+    <MakeDir ContinueOnError="false" Directories="%(SpecialProjects.WorkingDirectoryPath)" Condition="!Exists(%(SpecialProjects.WorkingDirectoryPath))" />
+    
+  </Target>
+  
+</Project>

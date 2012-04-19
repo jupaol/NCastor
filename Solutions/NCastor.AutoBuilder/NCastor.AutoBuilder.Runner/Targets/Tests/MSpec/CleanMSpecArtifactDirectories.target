@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CleanMSpecArtifactDirectories.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanMSpecArtifactDirectoriesDependsOn>
+      BeforeCleanMSpecArtifactDirectories;
+      CoreCleanMSpecArtifactDirectories;
+      AfterCleanMSpecArtifactDirectories;
+    </CleanMSpecArtifactDirectoriesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanMSpecArtifactDirectories" DependsOnTargets="$(CleanMSpecArtifactDirectoriesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCleanMSpecArtifactDirectories" />
+  <Target Name="AfterCleanMSpecArtifactDirectories" />
+
+  <Target Name="CoreCleanMSpecArtifactDirectories" >
+
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the MSpec artifact directories..." Importance="high" />
+    
+    <Error ContinueOnError="false" Text="The MSpec results path was not specified" Condition="$(MSpecResultsPath) == ''" />
+
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing directory: ($(MSpecResultsPath))..." 
+      Importance="normal" 
+      Condition="Exists($(MSpecResultsPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingDirectories)" 
+      ContinueOnError="false" 
+      Directories="$(MSpecResultsPath)" 
+      Condition="Exists($(MSpecResultsPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingDirectories)" />
+
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the MSpec artifact directories were removed..." Importance="normal" />
+    <Error ContinueOnError="false" Text="There was a problem when cleaning the MSpec reports directory" Condition="Exists($(MSpecResultsPath))" />
+
+  </Target>  
+  
+</Project>

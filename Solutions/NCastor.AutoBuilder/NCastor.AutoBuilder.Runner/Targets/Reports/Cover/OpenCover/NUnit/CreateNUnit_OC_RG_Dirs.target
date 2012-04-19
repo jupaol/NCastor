@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CreateNUnit_OC_RG_Dirs.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CreateNUnit_OC_RG_DirsDependsOn>
+      BeforeCreateNUnit_OC_RG_Dirs;
+      CoreCreateNUnit_OC_RG_Dirs;
+      AfterCreateNUnit_OC_RG_Dirs;
+    </CreateNUnit_OC_RG_DirsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateNUnit_OC_RG_Dirs" DependsOnTargets="$(CreateNUnit_OC_RG_DirsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCreateNUnit_OC_RG_Dirs" />
+  <Target Name="AfterCreateNUnit_OC_RG_Dirs" />
+
+  <Target Name="CoreCreateNUnit_OC_RG_Dirs" >
+
+    <Message Text="$(LoggingMessagePrefix) Creating all the NUnit artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(ReportGeneratorNUnitReportPath))..."
+      Importance="normal"
+      Condition="!Exists($(ReportGeneratorNUnitReportPath))" />
+    <MakeDir ContinueOnError="false" Directories="$(ReportGeneratorNUnitReportPath)" Condition="!Exists($(ReportGeneratorNUnitReportPath))" />
+
+  </Target>
+
+</Project>

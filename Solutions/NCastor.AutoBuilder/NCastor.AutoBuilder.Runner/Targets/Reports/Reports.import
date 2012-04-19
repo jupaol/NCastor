@@ -12,18 +12,18 @@
 <Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <Import Project="Tests\MSpec\TransformMSpecXmlToJUnitXml.target"/>
-  <Import Project="Cover\CleanMSpecOpenCoverWithRGArtefacts.target"/>
-  <Import Project="Cover\CreateMSpecOpenCoverWithRGArtefacts.target"/>
-  <Import Project="Cover\ReportMSpecOpenCoverWithRG.target"/>
+  <Import Project="Cover\OpenCover\MSpec\CleanMSpec_OC_RG_Dirs.target"/>
+  <Import Project="Cover\OpenCover\MSpec\CreateMSpec_OC_RG_Dirs.target"/>
+  <Import Project="Cover\OpenCover\MSpec\ReportMSpecOpenCoverWithRG.target"/>
   
   <Import Project="Tests\MSTest\CreateMSTestReport.target"/>
-  <Import Project="Cover\CleanMSTestOpenCoverWithRGArtefacts.target"/>
-  <Import Project="Cover\CreateMSTestOpenCoverWithRGArtefacts.target"/>
-  <Import Project="Cover\ReportMSTestOpenCoverWithRG.target"/>
+  <Import Project="Cover\OpenCover\MSTest\CleanMSTest_OC_RG_Dirs.target"/>
+  <Import Project="Cover\OpenCover\MSTest\CreateMSTest_OC_RG_Dirs.target"/>
+  <Import Project="Cover\OpenCover\MSTest\ReportMSTestOpenCoverWithRG.target"/>
 
   <Import Project="Tests\NUnit\CreateNUnitReport.target"/>
-  <Import Project="Cover\CleanNUnitOpenCoverWithRGArtefacts.target"/>
-  <Import Project="Cover\CreateNUnitOpenCoverWithRGArtefacts.target"/>
-  <Import Project="Cover\ReportNUnitOpenCoverWithRG.target"/>
+  <Import Project="Cover\OpenCover\NUnit\CleanNUnit_OC_RG_Dirs.target"/>
+  <Import Project="Cover\OpenCover\NUnit\CreateNUnit_OC_RG_Dirs.target"/>
+  <Import Project="Cover\OpenCover\NUnit\ReportNUnitOpenCoverWithRG.target"/>
 
 </Project>

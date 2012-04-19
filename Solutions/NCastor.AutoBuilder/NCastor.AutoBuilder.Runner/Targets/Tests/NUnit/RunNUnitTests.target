@@ -15,8 +15,8 @@
     <RunNUnitTestsDependsOn>
       SettingNUnitTestingAssemblies;
       ValidateNUnitProperties;
-      CleanNUnitArtefactFolders;
-      CreateNUnitArtefactFolders;
+      CleanNUnitArtifactDirectories;
+      CreateNUnitArtifactDirectories;
       BeforeRunNUnitTests;
       CoreRunNUnitTests;
       AfterRunNUnitTests;

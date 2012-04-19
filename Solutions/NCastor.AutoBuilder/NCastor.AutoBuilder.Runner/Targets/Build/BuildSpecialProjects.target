@@ -14,8 +14,8 @@
   <PropertyGroup>
     <BuildSpecialProjectsDependsOn>
       PrepareSpecialProjects;
-      CleanBuildSpecialProjectsArtefacts;
-      CreateBuildSpecialProjectsArtefacts;
+      CleanSpecialProjectArtifacts;
+      CreateSpecialProjectArtifacts;
       BeforeBuildSpecialProjects;
       CoreBuildSpecialProjects;
       AfterBuildSpecialProjects;

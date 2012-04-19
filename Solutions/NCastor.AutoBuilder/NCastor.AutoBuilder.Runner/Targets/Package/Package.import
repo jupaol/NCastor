@@ -13,7 +13,7 @@
 
   <Import Project="CreatePackages.target"/>
   
-  <Import Project="Zip\SourceCode\CleanSourceCodeArtefacts.target" />
+  <Import Project="Zip\SourceCode\CleanSourceCodeArtifactDirectories.target" />
   <Import Project="Zip\SourceCode\IsolateSourceCode.target"/>
   <Import Project="Zip\SourceCode\PackageSourceCode.target"/>
   
@@ -26,7 +26,7 @@
   <Import Project="Zip\TestsReports\MSTest\PackageMSTestTestReports.target"/>
   <Import Project="Zip\TestsReports\NUnit\PackageNUnitTestReports.target"/>
 
-  <Import Project="Zip\ClickOncePublishedFiles\PackageClickOnceArtefacts.target"/>
+  <Import Project="Zip\ClickOncePublishedFiles\PackageClickOnceArtifacts.target"/>
 
   <Import Project="Nuget\PrepareNugetPackages.target"/>
   <Import Project="Nuget\ValidateNugetPackages.target"/>
@@ -34,8 +34,8 @@
 
   <Import Project="ClickOnce\PrepareClickOncePackages.target"/>
   <Import Project="ClickOnce\ValidateClickOncePackages.target"/>
-  <Import Project="ClickOnce\CleanClickOncePackageArtefacts.target"/>
-  <Import Project="ClickOnce\CreateClickOncePackageArtefacts.target"/>
+  <Import Project="ClickOnce\CleanClickOnceArtifactDirectories.target"/>
+  <Import Project="ClickOnce\CreateClickOnceArtifactDirectories.target"/>
   <Import Project="ClickOnce\CreateClickOncePackages.target"/>
 
 </Project>

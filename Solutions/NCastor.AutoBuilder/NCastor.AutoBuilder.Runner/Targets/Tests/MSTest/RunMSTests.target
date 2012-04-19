@@ -15,8 +15,8 @@
     <RunMSTestsDependsOn>
       SettingMSTestTestingAssemblies;
       ValidateMSTestProperties;
-      CleanMSTestArtefactFolders;
-      CreateMSTestArtefactFolders;
+      CleanMSTestArtifactDirectories;
+      CreateMSTestArtifactDirectories;
       BeforeRunMSTests;
       CoreRunMSTests;
       AfterRunMSTests;

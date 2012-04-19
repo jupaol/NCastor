@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CleanSourceCodeArtifactDirectories.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanSourceCodeArtifactDirectoriesDependsOn>
+      BeforeCleanSourceCodeArtifactDirectories;
+      CoreCleanSourceCodeArtifactDirectories;
+      AfterCleanSourceCodeArtifactDirectories;
+    </CleanSourceCodeArtifactDirectoriesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanSourceCodeArtifactDirectories" DependsOnTargets="$(CleanSourceCodeArtifactDirectoriesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCleanSourceCodeArtifactDirectories" />
+  <Target Name="AfterCleanSourceCodeArtifactDirectories" />
+
+  <Target Name="CoreCleanSourceCodeArtifactDirectories" >
+
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the source code artifact directories..." Importance="high" />
+    
+    <Error ContinueOnError="false" Text="The source code tmp path was not specified" Condition="$(SourceCodeTmpPath) == ''" />
+
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing directory: ($(SourceCodeTmpPath))..." 
+      Importance="normal" 
+      Condition="Exists($(SourceCodeTmpPath))" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingDirectories)" 
+      ContinueOnError="false" 
+      Directories="$(SourceCodeTmpPath)" 
+      Condition="Exists($(SourceCodeTmpPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingDirectories)" />
+
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the source code artifact  directories were removed..." Importance="normal" />
+    <Error ContinueOnError="false" Text="There was a problem while deleting the source code tmp directory. Please try again" Condition="Exists($(SourceCodeTmpPath))" />
+
+  </Target>
+
+</Project>

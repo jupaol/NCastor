@@ -17,8 +17,8 @@
       SettingInstrumentationAssemblies;
       ValidateMSTestProperties;
       ValidateOpenCoverProperties;
-      CleanMSTestArtefactFolders;
-      CreateMSTestArtefactFolders;
+      CleanMSTestArtifactDirectories;
+      CreateMSTestArtifactDirectories;
       BeforeRunMSTestWithOpenCover;
       CoreRunMSTestWithOpenCover;
       AfterRunMSTestWithOpenCover;

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CleanClickOnceArtifactDirectories.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CleanClickOnceArtifactDirectoriesDependsOn>
+      BeforeCleanClickOnceArtifactDirectories;
+      CoreCleanClickOnceArtifactDirectories;
+      AfterCleanClickOnceArtifactDirectories;
+    </CleanClickOnceArtifactDirectoriesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanClickOnceArtifactDirectories" DependsOnTargets="$(CleanClickOnceArtifactDirectoriesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCleanClickOnceArtifactDirectories" />
+  <Target Name="AfterCleanClickOnceArtifactDirectories" />
+
+  <Target Name="CoreCleanClickOnceArtifactDirectories" >
+
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the ClickOnce artifact directories..." Importance="high" />
+
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing all the (DestinationPath) directories specified in the (ClickOnceProjects) item..." 
+      Importance="normal" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingDirectories)" 
+      ContinueOnError="false" 
+      Directories="%(ClickOnceProjects.DestinationPath)" 
+      Condition="Exists(%(ClickOnceProjects.DestinationPath))" />
+
+    <Message Text="$(LoggingMessagePrefix) Removing all the (WorkingDirectoryPath) directories specified in the (ClickOnceProjects) item..." Importance="normal" />
+    <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
+      RetryCount="$(NumberOfRetriesWhenDeletingDirectories)" 
+      ContinueOnError="false" 
+      Directories="%(ClickOnceProjects.WorkingDirectoryPath)" 
+      Condition="Exists(%(ClickOnceProjects.WorkingDirectoryPath))" />
+
+    <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingDirectories)" />
+
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the (DestinationPath) directories specified in the (ClickOnceProjects) item were removed..." Importance="normal" />
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the (WorkingDirectoryPath) directories specified in the (ClickOnceProjects) item were removed..." Importance="normal" />
+    
+    <!--TODO: add validation here-->
+
+  </Target>
+
+</Project>
