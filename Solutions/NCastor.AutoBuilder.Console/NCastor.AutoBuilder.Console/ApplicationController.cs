@@ -255,5 +255,38 @@ namespace NCastor.AutoBuilder.Console
                 {
                 });
         }
+
+        /// <summary>
+        /// Processes Custom solution properties template.
+        /// </summary>
+        /// <returns>
+        /// The TemplateConfigurator object used to process the template
+        /// </returns>
+        public TemplateConfigurator ProcessCustomSolutionPropertiesTemplate()
+        {
+            return this.ProcessTemplate(
+                TemplateConstants.CustomSolutionProperties,
+                "NCastor.AutoBuilder.Console.Templates",
+                (x, y, z) =>
+                {
+                    x.Set(TemplateTokenConstants.ProductName, y.ProductName);
+                });
+        }
+
+        /// <summary>
+        /// Processes Custom solution targets template.
+        /// </summary>
+        /// <returns>
+        /// The TemplateConfigurator object used to process the template
+        /// </returns>
+        public TemplateConfigurator ProcessCustomSolutionTargetsTemplate()
+        {
+            return this.ProcessTemplate(
+                TemplateConstants.CustomSolutionTargets,
+                "NCastor.AutoBuilder.Console.Templates",
+                (x, y, z) =>
+                {
+                });
+        }
     }
 }

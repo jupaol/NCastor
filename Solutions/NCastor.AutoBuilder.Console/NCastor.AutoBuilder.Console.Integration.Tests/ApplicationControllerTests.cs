@@ -113,7 +113,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             //testing that the template tokens were substituted correctly
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
-            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(8);
+            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
         }
 
         [TestMethod]
@@ -244,6 +244,39 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
             config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.CustomBuildTargets.import");
+        }
+
+        [TestMethod]
+        public void calling_ProcessCustomSolutionPropertiesTemplate_should_save_the_template_on_disk()
+        {
+            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+
+            var config = cont.ProcessCustomSolutionPropertiesTemplate();
+
+            config.Should().NotBeNull();
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+            //testing that the template tokens were substituted correctly
+            var templateRes = this.GetContentFromPersistedTemplate(config);
+
+            config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.properties");
+            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
+        }
+
+        [TestMethod]
+        public void calling_ProcessCustomSolutionTargetsTemplate_should_save_the_template_on_disk()
+        {
+            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+
+            var config = cont.ProcessCustomSolutionTargetsTemplate();
+
+            config.Should().NotBeNull();
+            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+            //testing that the template tokens were substituted correctly
+            var templateRes = this.GetContentFromPersistedTemplate(config);
+
+            config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.targets");
         }
 
         private string GetContentFromPersistedTemplate(TemplateConfigurator config)

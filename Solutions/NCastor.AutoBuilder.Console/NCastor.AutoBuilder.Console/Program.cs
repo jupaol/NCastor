@@ -36,12 +36,14 @@ namespace NCastor.AutoBuilder.Console
             try
             {
                 controller.ProcessSolutionTemplate();
-                controller.ProcessPropertiesCustomPropertiesTemplate();
-                controller.ProcessPropertiesInitPropertiesTemplate();
-                controller.ProcessTasksCustomTasksTemplate();
-                controller.ProcessTargetsCustomTargetsTemplate();
-                controller.ProcessTargetsBuildTargetsTemplate();
-                controller.ProcessTargetsRunTestsTargetsTemplate();
+                ////controller.ProcessPropertiesCustomPropertiesTemplate();
+                ////controller.ProcessPropertiesInitPropertiesTemplate();
+                ////controller.ProcessTasksCustomTasksTemplate();
+                ////controller.ProcessTargetsCustomTargetsTemplate();
+                ////controller.ProcessTargetsBuildTargetsTemplate();
+                ////controller.ProcessTargetsRunTestsTargetsTemplate();
+                controller.ProcessCustomSolutionPropertiesTemplate();
+                controller.ProcessCustomSolutionTargetsTemplate();
             }
             catch (Exception exc)
             {

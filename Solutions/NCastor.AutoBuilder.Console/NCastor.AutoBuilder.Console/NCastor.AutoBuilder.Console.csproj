@@ -123,7 +123,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
-    <EmbeddedResource Include="Templates\BuildSolution.proj.template" />
+    <EmbeddedResource Include="Templates\BuildSolution.proj.template.old" />
     <EmbeddedResource Include="Templates\Properties\InitProperties.import.template" />
     <EmbeddedResource Include="Templates\Properties\Properties.import.template" />
     <EmbeddedResource Include="Templates\Targets\Targets.import.template" />
@@ -136,6 +136,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <EmbeddedResource Include="Templates\BuildSolution.proj.template" />
+    <EmbeddedResource Include="Templates\CustomSolution.targets.template" />
+    <EmbeddedResource Include="Templates\CustomSolution.properties.template" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -63,5 +63,15 @@ namespace NCastor.AutoBuilder.Console.Constants
         /// Represents the Tasks.import.template file name embedded into the assembly
         /// </summary>
         public const string CustomTasks = "Tasks.import.template";
+
+        /// <summary>
+        /// Represents the CustomSolution.properties.template file name embedded into the assembly
+        /// </summary>
+        public const string CustomSolutionProperties = "CustomSolution.properties.template";
+
+        /// <summary>
+        /// Represents the CustomSolution.targets.template file name embedded into the assembly
+        /// </summary>
+        public const string CustomSolutionTargets = "CustomSolution.targets.template";
     }
 }
