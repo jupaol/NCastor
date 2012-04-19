@@ -21,7 +21,7 @@
     
     <PropertyGroup>
       <NugetLocalServer>c:\00\nuget</NugetLocalServer>
-      <NugetPackagesPath>C:\Users\Jupaol\Documents\Visual Studio 2010\Projects\ConsoleApplication1\packages</NugetPackagesPath>
+      <NugetPackagesPath>C:\Users\Jupaol\Documents\Visual Studio 2010\Projects\ConsoleApplication1\trunk\packages</NugetPackagesPath>
       <NugetRunner>$(SolutionsPath)\Packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>
     </PropertyGroup>
 
