@@ -13,8 +13,14 @@
 
   <Target Name="CleanNUnitOpenCoverWithRGArtefacts">
 
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the NUnit artifact directories..." Importance="high" />
+
     <Error ContinueOnError="false" Text="The NUnit code coverage report path was not specified" Condition="$(ReportGeneratorNUnitReportPath) == ''" />
 
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing directory: ($(ReportGeneratorNUnitReportPath))..." 
+      Importance="normal" 
+      Condition="Exists($(ReportGeneratorNUnitReportPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
@@ -23,6 +29,7 @@
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
 
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the NUnit artifact directories were removed..." Importance="normal" />
     <Error ContinueOnError="false" Text="There was a problem when cleaning the NUnit code coverage reports directory (NUnit-OpenCover-ReportGenerator)" Condition="Exists($(ReportGeneratorNUnitReportPath))" />
 
   </Target>

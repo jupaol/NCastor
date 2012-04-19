@@ -28,6 +28,8 @@
 
   <Target Name="CoreCreateGitTag">
 
+    <Message Text="$(LoggingMessagePrefix) Creating the Git tag. This task should be the last process called in your build process..." Importance="high" />
+
     <Error Text="The Git runner was not specified" Condition="$(GitRunner) == ''" />
     <Error Text="The Git runner was not found" Condition="!Exists($(GitRunner))" />
     <Error Text="The 'LabelName' is required to create the Git tag" Condition="$(LabelName) == ''" />
@@ -39,6 +41,7 @@
     </PropertyGroup>
 
     <!--Check to see if the tag already exists in the Git repository-->
+    <Message Text="$(LoggingMessagePrefix) Trying to find a tag in the current Git repository with the name: ($(LabelName))..." Importance="normal" />
     <Exec 
       Command='"$(GitRunner)" tag -l "$(LabelName)" >> "$(_GitLabelResultFilePath)"'
       WorkingDirectory='$(GlobalRootPath)'/>
@@ -51,16 +54,20 @@
     <Warning 
       Text="The Tag: $(LabelName) already exisis! The new tag name will be: $(LabelName)$(LabelNameSufixWhenLabelExists)" 
       Condition="$(_Git_Tags_Found_Count) != 0"/>
+    <Message 
+      Text="$(LoggingMessagePrefix) The tag: ($(LabelName)) was found. For consistency, this tag WON'T BE OVERRIDDEN; instead, a new tag will be created with the following name: ($(LabelName)$(LabelNameSufixWhenLabelExists))..." 
+      Importance="high" 
+      Condition="$(_Git_Tags_Found_Count) != 0"/>
     <PropertyGroup Condition="$(_Git_Tags_Found_Count) != 0">
       <LabelName>$(LabelName)$(LabelNameSufixWhenLabelExists)</LabelName>
     </PropertyGroup>
 
-    <Message Text="Creating the tag: $(LabelName)"/>
+    <Message Text="$(LoggingMessagePrefix) Creating the tag: ($(LabelName))..." Importance="normal" />
     <Exec 
       Command='"$(GitRunner)" tag -a "$(LabelName)" -m "NCastor AutoBuilder - Auto-Tagging: $(LabelName) from build: $(InformationalVersion)"'
       WorkingDirectory='$(GlobalRootPath)'/>
     
-    <Message Text='Pushing the tag: $(LabelName)' />
+    <Message Text='$(LoggingMessagePrefix) Pushing the tag: ($(LabelName)) using the following remote: ($(GitDefaultRemote))...'  Importance="normal" />
     <Exec
       Command='"$(GitRunner)" push $(GitDefaultRemote) $(LabelName)'
       WorkingDirectory='$(GlobalRootPath)' 

@@ -26,6 +26,8 @@
   
   <Target Name="CorePackageBuild" >
 
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file the main solution build artifacts from the path: ($(BuildingPath))..." Importance="high" />
+    
     <PropertyGroup>
       <BuildPackageFilePath Condition="$(BuildPackageFilePath) == ''">$(DropsPath)\$(PackageName).Build.$(Configuration).$(Platform).v$(SemanticVersion).zip</BuildPackageFilePath>
     </PropertyGroup>

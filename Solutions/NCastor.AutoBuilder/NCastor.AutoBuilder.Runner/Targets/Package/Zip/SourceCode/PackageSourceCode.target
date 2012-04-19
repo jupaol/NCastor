@@ -26,6 +26,8 @@
   
   <Target Name="CorePackageSourceCode" >
 
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file all the source code files from the path: ($(SolutionsPath))..." Importance="high" />
+    
     <PropertyGroup>
       <SourceCodePackageFilePath Condition="$(SourceCodePackageFilePath) == ''">$(DropsPath)\$(PackageName).Source.v$(SemanticVersion).zip</SourceCodePackageFilePath>
     </PropertyGroup>

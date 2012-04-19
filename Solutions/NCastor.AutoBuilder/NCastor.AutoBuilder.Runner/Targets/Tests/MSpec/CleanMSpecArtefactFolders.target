@@ -27,8 +27,14 @@
 
   <Target Name="CoreCleanMSpecArtefactFolders" >
 
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the MSpec artifact directories..." Importance="high" />
+    
     <Error ContinueOnError="false" Text="The MSpec results path was not specified" Condition="$(MSpecResultsPath) == ''" />
 
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing directory: ($(MSpecResultsPath))..." 
+      Importance="normal" 
+      Condition="Exists($(MSpecResultsPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
@@ -37,6 +43,7 @@
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
 
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the MSpec artifact directories were removed..." Importance="normal" />
     <Error ContinueOnError="false" Text="There was a problem when cleaning the MSpec reports directory" Condition="Exists($(MSpecResultsPath))" />
 
   </Target>  

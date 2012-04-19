@@ -27,6 +27,8 @@
 
   <Target Name="CoreValidateMSpecProperties" >
 
+    <Message Text="$(LoggingMessagePrefix) Validating the MSpec properties required to run the unit tests..." Importance="high" />
+
     <Error ContinueOnError="false" Text="The MSpec xml report file was not specified" Condition="$(MSpecXmlReportFilePath) == ''" />
     <Error ContinueOnError="false" Text="The MSpec html report file was not specied" Condition="$(MSpecHtmlReporthFilePath) == ''" />
     <Error ContinueOnError="false" Text="The MSpec runner was not specified" Condition="$(MSPecRunner) == ''" />

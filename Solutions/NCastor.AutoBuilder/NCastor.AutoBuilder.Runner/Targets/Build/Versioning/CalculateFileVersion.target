@@ -30,6 +30,8 @@
 
   <Target Name="CoreCalculateFileVersion" >
 
+    <Message Text="$(LoggingMessagePrefix) Formatting the (FileVersion) property. This version is used as the file version of the assemblies..." Importance="high" />
+
     <PropertyGroup>
       <FileVersion>$(MajorVersion).$(MinorVersion).$(RevisionVersion)</FileVersion>
     </PropertyGroup>

@@ -30,6 +30,8 @@
 
   <Target Name="CoreBuildSpecialProjects" >
 
+    <Message Text="$(LoggingMessagePrefix) Building the special projects configured through the (SpecialProjects) item..." Importance="high" />
+    
     <MSBuild 
       Projects="%(SpecialProjects.Identity)" 
       Properties="$(SpecialProjectsBuildProperties); OutputPath=%(SpecialProjects.WorkingDirectoryPath);"

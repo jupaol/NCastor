@@ -31,6 +31,8 @@
 
   <Target Name="CoreCalculateInformationalVersion" >
 
+    <Message Text="$(LoggingMessagePrefix) Formatting the (InformationalVersion) property. This version is used as the detailed version of your product combining a public semantic version with a technical version..." Importance="high" />
+
     <PropertyGroup>
       <InformationalVersion>$(MajorVersion).$(MinorVersion).$(RevisionVersion)</InformationalVersion>
       <InformationalVersion Condition="$(AdditionalVersionInformation) != ''">$(InformationalVersion)$(AdditionalVersionInformation)</InformationalVersion>

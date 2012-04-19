@@ -27,6 +27,8 @@
 
   <Target Name="CoreValidateOpenCoverProperties" >
 
+    <Message Text="$(LoggingMessagePrefix) Validating all the OpenCover properties required to run the tests..." Importance="high" />
+
     <Error ContinueOnError="false" Text="The open cover runner was not specified" Condition="$(OpenCoverRunner) == ''" />
     <Error ContinueOnError="false" Text="The open cover runner was not found" Condition="!Exists($(OpenCoverRunner))" />
 

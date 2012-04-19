@@ -27,6 +27,8 @@
 
   <Target Name="CoreTransformMSpecXmlToJUnitXml" >
 
+    <Message Text="$(LoggingMessagePrefix) Transforming MSpec XML unit test results into an JUnit XML report..." Importance="high" />
+    
     <PropertyGroup>
       <_MSpec_JUnit_XSD>$(NCastorToolsPath)\MSpecToJUnit.xslt</_MSpec_JUnit_XSD>
     </PropertyGroup>

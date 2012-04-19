@@ -32,14 +32,19 @@
 
   <Target Name="CoreRunNUnitTests" >
 
+    <Message Text="$(LoggingMessagePrefix) Running all the NUnit unit tests specified in the (NUnitAssemblies) item..." Importance="high" />
+
+    <Message Text="$(LoggingMessagePrefix) Parsing all the NUnit assemblies to test specified in the (NUnitAssemblies) item..." Importance="normal" />
     <ItemGroup>
       <_NUnitAssemblies Include="@(NUnitAssemblies->'&quot;%(Identity)&quot;')" />
     </ItemGroup>
 
+    <Message Text="$(LoggingMessagePrefix) Setting up NUnit arguments..." Importance="normal" />
     <PropertyGroup>
       <_NUnitCommandArgs>@(_NUnitAssemblies, ' ') /result="$(NUnitXmlReportFilePath)" $(NUnitRunnerArguments)</_NUnitCommandArgs>
     </PropertyGroup>
 
+    <Message Text="$(LoggingMessagePrefix) Running the NUnit unit tests..." Importance="normal" />
     <Exec 
       ContinueOnError="true"
       Command='"$(NUnitRunner)" $(_NUnitCommandArgs)'>

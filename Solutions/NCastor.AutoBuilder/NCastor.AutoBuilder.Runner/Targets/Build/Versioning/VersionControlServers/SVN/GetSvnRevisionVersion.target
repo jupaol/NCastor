@@ -27,13 +27,15 @@
 
   <Target Name="CoreGetSvnRevisionVersion" >
 
-    <Error Text="The Svn runners path was not specified" Condition="$(SvnRunnersPath) == ''" />
-    <Error Text="The Svn runners path was not found" Condition="!Exists($(SvnRunnersPath))" />
+    <Message Text="$(LoggingMessagePrefix) Getting the SVN revision of the current SVN repository..." Importance="high" />
+    
+    <Error Text="The Svn runner path was not specified" Condition="$(SvnRunnersPath) == ''" />
+    <Error Text="The Svn runner path was not found" Condition="!Exists($(SvnRunnersPath))" />
 
     <MSBuild.Community.Tasks.Subversion.SvnVersion LocalPath="$(GlobalRootPath)" ToolPath="$(SvnRunnersPath)">
       <Output TaskParameter="Revision" PropertyName="SvnRevisionVersion" />
     </MSBuild.Community.Tasks.Subversion.SvnVersion>
-    <Message Text="Revision: $(SvnRevisionVersion)"/>
+    <Message Text="SVN revision found: $(SvnRevisionVersion)..." Importance="normal" />
 
     <!--<PropertyGroup>
       <SvnRevisionVersion>$(SVN_REVISION)</SvnRevisionVersion>

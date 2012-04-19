@@ -34,13 +34,17 @@
 
   <Target Name="CoreRunNUnitWithOpenCover" >
 
+    <Message Text="$(LoggingMessagePrefix) Running all the NUnit unit tests specified in the (NUnitAssemblies) item using OpenCover..." Importance="high" />
+
     <Error ContinueOnError="false" Text="The OpenCover NUnit results file was not specified" Condition="$(OpenCoverNUnit_ReportFilePath) == ''" />
 
+    <Message Text="$(LoggingMessagePrefix) Parsing all the assemblies to instrument specified in the (AssembliesToInstrument) item and the NUnit assemblies to test specified in the (NUnitAssemblies) item..." Importance="normal" />
     <ItemGroup>
       <_NUnitAssembliesToRunWithOpenCover Include="@(NUnitAssemblies->'\&quot;%(Identity)\&quot;')" />
       <_AssembliesToInstrumentWithOpenCoverNUnit Include="@(AssembliesToInstrument->'+[%(FileName)]*')"></_AssembliesToInstrumentWithOpenCoverNUnit>
     </ItemGroup>
 
+    <Message Text="$(LoggingMessagePrefix) Setting up OpenCover and NUnit arguments..." Importance="normal" />
     <PropertyGroup>
       <_NunitArgs>@(_NUnitAssembliesToRunWithOpenCover, ' ') $(NUnitRunnerWithOpenCoverArguments) /result=\&quot;$(NUnitXmlReportFilePath)\&quot;</_NunitArgs>
 
@@ -49,6 +53,7 @@
       <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; $(OpenCoverRunnerArgumentsForNUnit) -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverNUnit, ' ')&quot; -output:&quot;$(OpenCoverNUnit_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
+    <Message Text="$(LoggingMessagePrefix) Running the NUnit unit tests with OpenCover..." Importance="normal" />
     <Exec ContinueOnError="true" Command="$(_CommonOpenCoverArgs) $(_OpenCoverNUnitArgs)">
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningNUnitTests"/>
     </Exec>

@@ -27,6 +27,8 @@
 
   <Target Name="CorePackageClickOnceArtefacts" >
 
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file the build artifacts published by ClickOnce from each ClickOnce project specified in the (ClickOnceProjects) item..." Importance="high" />
+
     <MSBuild
       Projects="$(MSBuildProjectFullPath)"
       Targets="_PackageClickOnceArtefacts"
@@ -38,6 +40,8 @@
   </Target>
 
   <Target Name="_PackageClickOnceArtefacts">
+
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file the build artifacts published by clickOnce from the path: ($(_CurrentClickOnceDestinationSourcePath))..." Importance="high" />
 
     <Error ContinueOnError="false" Text="The _CurrentClickOnceDestinationSourcePath was not specified" Condition="$(_CurrentClickOnceDestinationSourcePath) == ''" />
     <Error ContinueOnError="false" Text="The _CurrentClickOnceDestinationSourcePath was not found" Condition="!Exists($(_CurrentClickOnceDestinationSourcePath))" />

@@ -27,6 +27,11 @@
 
   <Target Name="CoreValidateVersioningProperties" >
 
+    <Message Text="$(LoggingMessagePrefix) Validating versioning properties. If the properties were not set before, they will be initialized here to default values..." Importance="high" />
+
+    <Warning Text="The major version was not set, it will be set to (0)" Condition="$(MajorVersion) == ''" />
+    <Warning Text="The minor version was not set, it will be set to (1)" Condition="$(MinorVersion) == ''" />
+    
     <PropertyGroup>
       <MajorVersion Condition="$(MajorVersion) == ''">0</MajorVersion>
       <MinorVersion Condition="$(MinorVersion) == ''">1</MinorVersion>

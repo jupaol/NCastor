@@ -27,6 +27,12 @@
 
   <Target Name="CoreGetBuildVersionFromHudson" >
 
+    <Message Text="$(LoggingMessagePrefix) Getting the Build Number from Hudson..." Importance="high" />
+    
+    <Warning 
+      Text="The 'BUILD_NUMBER' property was not injected by Hudson, the build version will be set to '0'" 
+      Condition="$(BUILD_NUMBER) == ''" />
+    
     <PropertyGroup>
       <!-- To be injected by Hudson -->
       <BuildVersion>$(BUILD_NUMBER)</BuildVersion>

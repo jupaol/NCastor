@@ -28,6 +28,8 @@
 
   <Target Name="CoreClean">
 
+    <Message Text="$(LoggingMessagePrefix) Cleaning solution files..." Importance="high" />
+    
     <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(BuildProperties)" Targets="Clean" />
     
   </Target>

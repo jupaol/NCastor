@@ -33,7 +33,6 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Lib\" />
-    <Folder Include="Properties\Labels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Common\Common.properties">

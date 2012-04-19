@@ -13,6 +13,12 @@
 
   <Target Name='CreateMSTestOpenCoverWithRGArtefacts'>
 
+    <Message Text="$(LoggingMessagePrefix) Creating all the MSTest artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(ReportGeneratorMSTestReportPath))..."
+      Importance="normal" 
+      Condition="!Exists($(ReportGeneratorMSTestReportPath))" />
     <MakeDir ContinueOnError="false" Directories="$(ReportGeneratorMSTestReportPath)" Condition="!Exists($(ReportGeneratorMSTestReportPath))" />
 
   </Target>

@@ -27,6 +27,12 @@
 
   <Target Name="CoreCreateTestAssembliesArtefacts">
 
+    <Message Text="$(LoggingMessagePrefix) Creating all the testing assembly directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(TestAssembliesPath))..."
+      Importance="normal" 
+      Condition="!Exists($(TestAssembliesPath))" />
     <MakeDir ContinueOnError="false" Directories="$(TestAssembliesPath)" Condition="!Exists($(TestAssembliesPath))" />
     
   </Target>

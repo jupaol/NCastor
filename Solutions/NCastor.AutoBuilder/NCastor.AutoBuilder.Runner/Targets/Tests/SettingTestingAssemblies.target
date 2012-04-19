@@ -29,6 +29,8 @@
 
   <Target Name="CoreSettingTestingAssemblies" >
 
+    <Message Text="$(LoggingMessagePrefix) Setting up the testing assemblies..." Importance="high" />
+
     <MSBuild.ExtensionPack.FileSystem.RoboCopy
       Source="$(BuildingPath)"
       Destination="$(TestAssembliesPath)"

@@ -27,6 +27,12 @@
 
   <Target Name="CoreCreateMSpecArtefactFolders" >
 
+    <Message Text="$(LoggingMessagePrefix) Creating all the MSpec artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(MSpecResultsPath))..."
+      Importance="normal" 
+      Condition="!Exists($(MSpecResultsPath))" />
     <MakeDir ContinueOnError="false" Directories="$(MSpecResultsPath)" Condition="!Exists($(MSpecResultsPath))" />
 
   </Target>

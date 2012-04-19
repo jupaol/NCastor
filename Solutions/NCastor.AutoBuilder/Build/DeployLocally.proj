@@ -12,6 +12,8 @@
   </PropertyGroup>
 
   <Target Name="DeployToTestLocally">
+
+    <Message Text="$(LoggingMessagePrefix) Deploying NCastor AutoBuilder locally..." Importance="high" />
     
     <ItemGroup>
       <NCastorPackage Include='$(DropsPath)\*.nupkg'></NCastorPackage>
@@ -33,7 +35,11 @@
 
     <Copy SourceFiles='@(NCastorPackage)' DestinationFiles='$(NugetLocalServer)\%(NCastorPackage.FileName)%(NCastorPackage.Extension)' />
 
-    <MakeDir ContinueOnError="false" Directories='$(NugetPackagesPath)' Condition='!Exists($(NugetPackagesPath))'></MakeDir>
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(NugetPackagesPath))..."
+      Importance="normal"
+      Condition='!Exists($(NugetPackagesPath))'/>
+    <MakeDir ContinueOnError="false" Directories='$(NugetPackagesPath)' Condition='!Exists($(NugetPackagesPath))'/>
 
     <Exec Command='"$(NugetRunner)" install NCastor.AutoBuilder.Runner -s c:\00\nuget -o "$(NugetPackagesPath)"'></Exec>
   

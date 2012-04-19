@@ -27,6 +27,12 @@
 
   <Target Name="CoreCreateAssemblyInfoArtefacts" >
 
+    <Message Text="$(LoggingMessagePrefix) Creating assembly version artifact folders..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(AssemblyInfoPath))..."
+      Importance="normal" 
+      Condition="!Exists($(AssemblyInfoPath))" />
     <MakeDir ContinueOnError="false" Directories="$(AssemblyInfoPath)" Condition="!Exists($(AssemblyInfoPath))" />
     
   </Target>  

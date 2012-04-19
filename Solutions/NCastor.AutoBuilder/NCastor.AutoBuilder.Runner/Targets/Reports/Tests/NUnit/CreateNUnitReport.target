@@ -27,6 +27,8 @@
 
   <Target Name="CoreCreateNUnitReport" >
 
+    <Message Text="$(LoggingMessagePrefix) Generating an HTML report from the NUnit unit test results..." Importance="high" />
+
     <Exec 
       ContinueOnError="false"
       Command='"$(NUnitReportGeneratorRunner)" "$(NUnitXmlReportFilePath)" "$(NUnitHtmlReportFilePath)"'/>

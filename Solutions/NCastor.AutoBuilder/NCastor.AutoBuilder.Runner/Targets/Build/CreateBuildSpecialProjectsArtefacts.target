@@ -27,6 +27,8 @@
 
   <Target Name="CoreCreateBuildSpecialProjectsArtefacts" >
 
+    <Message Text="$(LoggingMessagePrefix) Creating all the (WorkingDirectoryPath) special project artifact directories specified in the (SpecialProjects) item..." Importance="high" />
+
     <MakeDir ContinueOnError="false" Directories="%(SpecialProjects.WorkingDirectoryPath)" Condition="!Exists(%(SpecialProjects.WorkingDirectoryPath))" />
     
   </Target>

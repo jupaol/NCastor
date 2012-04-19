@@ -27,6 +27,12 @@
 
   <Target Name="CoreGetBuildVersionFromTeamCity" >
 
+    <Message Text="$(LoggingMessagePrefix) Getting the Build Number from TeamCity..." Importance="high" />
+
+    <Warning
+      Text="The 'BUILD_NUMBER' property was not injected by TeamCity, the build version will be set to '0'"
+      Condition="$(BUILD_NUMBER) == ''" />
+
     <!--To be injected by TeamCity-->
     <PropertyGroup>
       <BuildVersion>$(BUILD_NUMBER)</BuildVersion>

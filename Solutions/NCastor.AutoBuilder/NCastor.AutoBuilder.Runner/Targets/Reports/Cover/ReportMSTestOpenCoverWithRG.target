@@ -29,6 +29,8 @@
 
   <Target Name="CoreReportMSTestOpenCoverWithRG" >
 
+    <Message Text="$(LoggingMessagePrefix) Generating the MSTest unit tests code coverage report using OpenCover..." Importance="high" />
+    
     <Error ContinueOnError="false" Text="The report generator runner was not specified" Condition="$(ReportGeneratorRunner) == ''" />
     <Error ContinueOnError="false" Text="The report generator runner was not found" Condition="!Exists($(ReportGeneratorRunner))" />
     <Error ContinueOnError="false" Text="The OpenCover MSTest result file was not specified" Condition="$(OpenCoverMSTest_ReportFilePath) == ''" />

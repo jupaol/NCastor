@@ -27,6 +27,8 @@
 
   <Target Name="CorePackageNUnitTestReports" >
 
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file all the NUnit report files from the path: ($(NUnitReportsPath))..." Importance="high" />
+
     <PropertyGroup>
       <NUnitResultsPackageFilePath Condition="$(NUnitResultsPackageFilePath) == ''">$(DropsPath)\$(PackageName).NUnitReports.$(Configuration).$(Platform).v$(SemanticVersion).zip</NUnitResultsPackageFilePath>
     </PropertyGroup>

@@ -31,6 +31,8 @@
 
   <Target Name="CoreCreateClickOncePackages" >
 
+    <Message Text="$(LoggingMessagePrefix) Building all the ClickOnce projects specified in the (ClickOnceProjects) item..." Importance="high" />
+    
     <MSBuild 
       Projects="$(MSBuildProjectFullPath)"
       Targets="_CreateClickOncePackages"
@@ -57,7 +59,8 @@
     <Error Text="The '_CurrentClickOnceProjectWorkingDirectoryPath' path was not found" Condition="!Exists($(_CurrentClickOnceProjectWorkingDirectoryPath))"/>
     <Error Text="The '_CurrentClickOnceProjectPublishFileName' property is required" Condition="$(_CurrentClickOnceProjectPublishFileName) == ''"/>
     <Error Text="The '_CurrentClickOnceProjectNamespace' property is required" Condition="$(_CurrentClickOnceProjectNamespace) == ''"/>
-    
+
+    <Message Text="$(LoggingMessagePrefix) Building ClickOnce project: ($(_CurrentClickOnceProject))..." Importance="normal" />
     <MSBuild
       Projects="$(_CurrentClickOnceProject)"
       Properties="
@@ -67,11 +70,14 @@
             $(_CurrentClickOnceProjectExtraProperties);"
       Targets="Publish" />
 
+    <Message Text="$(LoggingMessagePrefix) Creating the HTML publish page for the project: ($(_CurrentClickOnceProject))..." Importance="normal" />
+    
     <PropertyGroup>
       <_PublishClickOnceHtmlTemplateFilePath>$(NCastorToolsPath)\publish.template.html</_PublishClickOnceHtmlTemplateFilePath>
       <_CurrentClickOnceProjectPublishFilePath>$(_CurrentClickOnceProjectDestinationPath)\$(_CurrentClickOnceProjectPublishFileName)</_CurrentClickOnceProjectPublishFilePath>
     </PropertyGroup>
 
+    <Message Text="$(LoggingMessagePrefix) Reading publisher name from: ($(_CurrentClickOnceProject))..." Importance="normal" />
     <MSBuild.Community.Tasks.XmlRead
       Prefix="nu"
       Namespace="$(_CurrentClickOnceProjectNamespace)"
@@ -80,6 +86,7 @@
       <Output PropertyName="_CurrentClickOnceProjectPublisherName" TaskParameter="Value"/>
     </MSBuild.Community.Tasks.XmlRead>
 
+    <Message Text="$(LoggingMessagePrefix) Reading product name from: ($(_CurrentClickOnceProject))..." Importance="normal" />
     <MSBuild.Community.Tasks.XmlRead
       Prefix="nu"
       Namespace="$(_CurrentClickOnceProjectNamespace)"
@@ -111,10 +118,13 @@
       </_PublishClickOnceTokens>
     </ItemGroup>
 
+    <Message Text="$(LoggingMessagePrefix) Getting the current date..." Importance="normal" />
     <MSBuild.Community.Tasks.Time Format="dd/MM/yyyy HH:mm">
       <Output TaskParameter="FormattedTime" PropertyName="_PublishTime" />
     </MSBuild.Community.Tasks.Time>
 
+    <Message Text="$(LoggingMessagePrefix) Assembling the HTML publisg page..." Importance="normal" />
+    
     <!-- Finalise the publish.htm template file and copy it to the publish location -->
     <MSBuild.Community.Tasks.TemplateFile
       Template="$(_PublishClickOnceHtmlTemplateFilePath)"

@@ -27,8 +27,14 @@
 
   <Target Name="CoreCleanTestAssembliesArtefacts" >
 
+    <Message Text="$(LoggingMessagePrefix) Cleaning the testing assembly directories..." Importance="high" />
+
     <Error ContinueOnError="false" Text="The test assemblies path was not specified" Condition="$(TestAssembliesPath) == ''" />
 
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing directory: ($(TestAssembliesPath))..." 
+      Importance="normal" 
+      Condition="Exists($(TestAssembliesPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
@@ -37,6 +43,7 @@
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
 
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the testing assembly directories were removed..." Importance="normal" />
     <Error ContinueOnError="false" Text="There was a problem when cleaning the Test assemblies directory" Condition="Exists($(TestAssembliesPath))" />
 
   </Target>

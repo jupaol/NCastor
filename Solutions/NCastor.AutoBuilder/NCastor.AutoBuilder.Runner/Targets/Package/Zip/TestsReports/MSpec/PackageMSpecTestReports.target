@@ -27,6 +27,8 @@
 
   <Target Name="CorePackageMSpecTestReports" >
 
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file all the MSpec report files from the path: ($(MSpecResultsPath))..." Importance="high" />
+    
     <PropertyGroup>
       <MSpecResultsPackageFilePath Condition="$(MSpecResultsPackageFilePath) == ''">$(DropsPath)\$(PackageName).MSpecReports.$(Configuration).$(Platform).v$(SemanticVersion).zip</MSpecResultsPackageFilePath>
     </PropertyGroup>

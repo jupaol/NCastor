@@ -27,6 +27,8 @@
 
   <Target Name="CoreValidateNugetPackages" >
 
+    <Message Text="$(LoggingMessagePrefix) Validating Nuget packages..." Importance="high" />
+    
     <Error ContinueOnError="false" Text="You need to specify at least one nuget package to process" Condition="@(NugetPackages) == ''" />
     <Error ContinueOnError="false" Text="The Nuget runner was not specified" Condition="$(NugetRunner) == ''" />
     <Error ContinueOnError="false" Text="The Nuget runner was not found" Condition="!Exists($(NugetRunner))" />

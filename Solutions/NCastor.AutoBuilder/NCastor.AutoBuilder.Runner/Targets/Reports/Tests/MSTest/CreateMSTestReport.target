@@ -27,6 +27,8 @@
 
   <Target Name="CoreCreateMSTestReport" >
 
+    <Message Text="$(LoggingMessagePrefix) Generating an HTML report from the MSTest unit test results..." Importance="high" />
+    
     <Exec 
       WorkingDirectory="$(MSTestResultsPath)" 
       Command='"$(MSTestReportGeneratorRunner)" $([System.IO.Path]::GetFileName($(MSTestReportFilePath)))' 

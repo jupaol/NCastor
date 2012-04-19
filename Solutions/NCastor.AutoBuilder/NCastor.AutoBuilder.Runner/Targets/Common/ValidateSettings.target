@@ -28,24 +28,31 @@
   <!-- Validate target -->
   <Target Name="CoreValidateSettings">
 
+    <Message Text="$(LoggingMessagePrefix) Validating global settings..." Importance="high" />
+
+    <Message Text="$(LoggingMessagePrefix) Validating global paths..." Importance="normal" />
     <Error ContinueOnError="false" Text="The global root path was not defined" Condition="$(GlobalRootPath) == ''" />
     <Error ContinueOnError="false" Text="The global root path was not found" Condition="!Exists($(GlobalRootPath))"></Error>
     <Error ContinueOnError="false" Text="The solutions path was not defined" Condition="$(SolutionsPath) == ''" />
     <Error ContinueOnError="false" Text="The solution path was not found" Condition="!Exists($(SolutionsPath))"></Error>
     <Error ContinueOnError="false" Text="The Nuget packages path was not defined" Condition="$(NugetPackagesPath) == ''" />
-    
+
+    <Message Text="$(LoggingMessagePrefix) Validating solution..." Importance="normal" />
     <Error ContinueOnError="false" Text="The solution name was not defined" Condition="$(SolutionName) == ''" />
     <Error ContinueOnError="false" Text="The solution path was not defined" Condition="$(FullSolutionFilePath) == ''" />
     <Error ContinueOnError="false" Text="The solution path was not found" Condition="!Exists($(FullSolutionFilePath))" />
 
+    <Message Text="$(LoggingMessagePrefix) Validating artifact paths..." Importance="normal" />
     <Error ContinueOnError="false" Text="The drops path was not defined" Condition="$(DropsPath) == ''" />
     <Error ContinueOnError="false" Text="The working directory path was not defined" Condition="$(WorkingDirectoryPath) == ''" />
 
-    <Error ContinueOnError="false" Text="The NCastor path was not specified" Condition="$(NCastorPath) == ''" />
-    <Error ContinueOnError="false" Text="The NCastor path was not found" Condition="!Exists($(NCastorPath))" />
+    <Message Text="$(LoggingMessagePrefix) Validating the NCastor AutoBuilder paths..." Importance="normal" />
+    <Error ContinueOnError="false" Text="The NCastor AutoBuilder path was not specified" Condition="$(NCastorPath) == ''" />
+    <Error ContinueOnError="false" Text="The NCastor AutoBuilder path was not found" Condition="!Exists($(NCastorPath))" />
 
-    <Error ContinueOnError="false" Text="The NCastor tools path was not specified" Condition="$(NCastorToolsPath) == ''" />
-    <Error ContinueOnError="false" Text="The NCastor tools path was not found" Condition="!Exists($(NCastorToolsPath))" />
+    <Message Text="$(LoggingMessagePrefix) Validating the NCastor AutoBuilder tools path..." Importance="normal" />
+    <Error ContinueOnError="false" Text="The NCastor AutoBuilder tools path was not specified" Condition="$(NCastorToolsPath) == ''" />
+    <Error ContinueOnError="false" Text="The NCastor AutoBuilder tools path was not found" Condition="!Exists($(NCastorToolsPath))" />
 
   </Target>
   

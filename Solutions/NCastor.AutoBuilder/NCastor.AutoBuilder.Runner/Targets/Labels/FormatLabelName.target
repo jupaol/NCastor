@@ -30,10 +30,11 @@
 
   <Target Name="CoreFormatLabelName" >
 
+    <Message Text="$(LoggingMessagePrefix) Formatting the label name..." Importance="high" />
+    
     <Error Text="The 'SemanticVersion' is used as part of the tag name, therefore it can not be emty" Condition="$(SemanticVersion) == ''"/>
     <Error Text="The 'LabelNamePrefix' is sued as part of the tag name, therefore it can not be emty" Condition="$(LabelNamePrefix) == ''"/>
 
-    <Message Text="Calculating the 'LabelName'"/>
     <PropertyGroup>
       <LabelName>$(LabelNamePrefix)$(SemanticVersion)</LabelName>
     </PropertyGroup>

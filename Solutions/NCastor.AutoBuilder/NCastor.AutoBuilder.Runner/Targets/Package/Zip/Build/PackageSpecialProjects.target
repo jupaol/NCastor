@@ -27,6 +27,8 @@
 
   <Target Name="CorePackageSpecialProjects" >
 
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file the build artifacts from each special project specified in the (SpecialProjects) item..." Importance="high" />
+
     <MSBuild
       Projects="$(MSBuildProjectFullPath)" 
       Targets="_PackageSpecialProjects"
@@ -39,6 +41,8 @@
 
   <Target Name="_PackageSpecialProjects">
 
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file the build artifacts from the path: ($(_CurrentSpecialFoldersWorkingDirectoryPath))..." Importance="high" />
+    
     <Error ContinueOnError="false" Text="The _CurrentSpecialFoldersWorkingDirectoryPath was not specified" Condition="$(_CurrentSpecialFoldersWorkingDirectoryPath) == ''" />
     <Error ContinueOnError="false" Text="The _CurrentSpecialFoldersWorkingDirectoryPath was not found" Condition="!Exists($(_CurrentSpecialFoldersWorkingDirectoryPath))" />
     <Error ContinueOnError="false" Text="The _CurrentSpecialProjectZipFilePath was not specified" Condition="$(_CurrentSpecialProjectZipFilePath) == ''" />

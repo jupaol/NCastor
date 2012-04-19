@@ -27,6 +27,8 @@
 
   <Target Name="CoreValidateClickOncePackages" >
 
+    <Message Text="$(LoggingMessagePrefix) Validating the metadata specified in the (ClickOnceProjects) item..." Importance="high" />
+    
     <Error ContinueOnError="false" Text="You need to specify at least one ClickOnce project to generate" Condition="@(ClickOnceProjects) == ''" />
     
     <Error

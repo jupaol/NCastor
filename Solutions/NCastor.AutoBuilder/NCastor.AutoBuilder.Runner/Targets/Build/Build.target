@@ -37,6 +37,8 @@
 
   <Target Name="CoreBuild">
 
+    <Message Text="$(LoggingMessagePrefix) Building the solution: ($(FullSolutionFilePath))..." Importance="high" />
+    
     <MSBuild Projects="$(FullSolutionFilePath)" Properties="$(BuildProperties);" Targets="ReBuild"/>
     
   </Target>

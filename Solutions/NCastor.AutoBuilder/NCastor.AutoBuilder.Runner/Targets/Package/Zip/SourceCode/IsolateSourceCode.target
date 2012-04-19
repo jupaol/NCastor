@@ -28,6 +28,8 @@
 
   <Target Name="CoreIsolateSourceCode" >
 
+    <Message Text="$(LoggingMessagePrefix) Isolating the source code..." Importance="high" />
+    
     <ItemGroup>
       <SourceFilesToCopy
             Include=" $(SolutionsPath)\**\*.*;"
@@ -44,8 +46,13 @@
                       $(SolutionsPath)\**\*ReSharper*"/>
     </ItemGroup>
 
+    <Message 
+      Text="$(LoggingMessagePrefix) Creating source code artifac directories..." 
+      Importance="normal" 
+      Condition="!Exists($(SourceCodeTmpPath))" />
     <MakeDir ContinueOnError="false" Directories="$(SourceCodeTmpPath)" Condition="!Exists($(SourceCodeTmpPath))" />
 
+    <Message Text="$(LoggingMessagePrefix) Copying source code files..." Importance="normal" />
     <Copy SourceFiles="@(SourceFilesToCopy)" DestinationFiles="@(SourceFilesToCopy->'$(SourceCodeTmpPath)\%(RecursiveDir)%(Filename)%(Extension)')" />
     
   </Target>

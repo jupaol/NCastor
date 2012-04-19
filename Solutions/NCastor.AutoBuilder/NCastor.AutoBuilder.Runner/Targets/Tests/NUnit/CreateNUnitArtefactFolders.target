@@ -27,6 +27,12 @@
 
   <Target Name="CoreCreateNUnitArtefactFolders" >
 
+    <Message Text="$(LoggingMessagePrefix) Creating all the NUnit artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(NUnitReportsPath))..."
+      Importance="normal" 
+      Condition="!Exists($(NUnitReportsPath))" />
     <MakeDir ContinueOnError="false" Directories="$(NUnitReportsPath)" Condition="!Exists($(NUnitReportsPath))" />
 
   </Target>

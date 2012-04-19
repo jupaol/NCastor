@@ -13,8 +13,14 @@
 
   <Target Name='CleanMSpecOpenCoverWithRGArtefacts'>
 
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the MSpec artifact directories..." Importance="high" />
+    
     <Error ContinueOnError="false" Text="The MSpec report path was not specified" Condition="$(ReportGeneratorMSpecReportPath) == ''" />
 
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing directory: ($(ReportGeneratorMSpecReportPath))..." 
+      Importance="normal" 
+      Condition="Exists($(ReportGeneratorMSpecReportPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
@@ -23,6 +29,7 @@
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
 
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the MSpec artifact directories were removed..." Importance="normal" />
     <Error ContinueOnError="false" Text="There was a problem when cleaning the MSpec code coverage reports directory (MSpec-OpenCover-ReportGenerator)" Condition="Exists($(ReportGeneratorMSpecReportPath))" />
 
   </Target>

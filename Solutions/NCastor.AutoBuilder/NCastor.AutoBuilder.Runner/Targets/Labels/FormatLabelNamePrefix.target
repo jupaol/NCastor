@@ -34,6 +34,8 @@
       <Output TaskParameter="OutString" PropertyName="_Formated_Solution_Name"/>
     </MSBuild.ExtensionPack.Framework.MsBuildHelper>-->
 
+    <Message Text="$(LoggingMessagePrefix) Formatting the label name prefix..." Importance="high" />
+    
     <PropertyGroup>
       <LabelNamePrefix Condition="$(LabelNamePrefix) == ''">$(Environment)_v</LabelNamePrefix>
     </PropertyGroup>

@@ -27,6 +27,12 @@
 
   <Target Name="CoreCreateMSTestArtefactFolders" >
 
+    <Message Text="$(LoggingMessagePrefix) Creating all the MSTest artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(MSTestResultsPath))..."
+      Importance="normal" 
+      Condition="!Exists($(MSTestResultsPath))" />
     <MakeDir ContinueOnError="false" Directories="$(MSTestResultsPath)" Condition="!Exists($(MSTestResultsPath))" />
 
   </Target>

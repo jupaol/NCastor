@@ -27,6 +27,8 @@
 
   <Target Name="CoreCheckForTestsErrors" >
 
+    <Message Text="$(LoggingMessagePrefix) Checking for test errors..." Importance="high" />
+
     <Error 
       Text="
         At least one error ocurred when running MSTests tests, probably some tests failed, please check the build log 

@@ -29,6 +29,8 @@
 
   <Target Name="CoreReportNUnitOpenCoverWithRG" >
 
+    <Message Text="$(LoggingMessagePrefix) Generating the NUnit unit tests code coverage report using OpenCover..." Importance="high" />
+    
     <Error ContinueOnError="false" Text="The report generator runner was not specified" Condition="$(ReportGeneratorRunner) == ''" />
     <Error ContinueOnError="false" Text="The report generator runner was not found" Condition="!Exists($(ReportGeneratorRunner))" />
     <Error ContinueOnError="false" Text="The OpenCover NUnit result file was not specified" Condition="$(OpenCoverNUnit_ReportFilePath) == ''" />

@@ -27,12 +27,18 @@
 
   <Target Name="CoreCleanClickOncePackageArtefacts" >
 
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the ClickOnce artifact directories..." Importance="high" />
+
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing all the (DestinationPath) directories specified in the (ClickOnceProjects) item..." 
+      Importance="normal" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
       Directories="%(ClickOnceProjects.DestinationPath)" 
       Condition="Exists(%(ClickOnceProjects.DestinationPath))" />
 
+    <Message Text="$(LoggingMessagePrefix) Removing all the (WorkingDirectoryPath) directories specified in the (ClickOnceProjects) item..." Importance="normal" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
@@ -40,6 +46,11 @@
       Condition="Exists(%(ClickOnceProjects.WorkingDirectoryPath))" />
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
+
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the (DestinationPath) directories specified in the (ClickOnceProjects) item were removed..." Importance="normal" />
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the (WorkingDirectoryPath) directories specified in the (ClickOnceProjects) item were removed..." Importance="normal" />
+    
+    <!--TODO: add validation here-->
 
   </Target>
 

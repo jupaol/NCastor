@@ -29,6 +29,8 @@
   
   <Target Name="CorePackageNugets" >
 
+    <Message Text="$(LoggingMessagePrefix) Packing all Nugets (SourcePath) specified in the (NugetPackages) item..." Importance="normal" />
+    
     <Exec 
       ContinueOnError="false"
       WorkingDirectory="%(NugetPackages.SourcePath)"

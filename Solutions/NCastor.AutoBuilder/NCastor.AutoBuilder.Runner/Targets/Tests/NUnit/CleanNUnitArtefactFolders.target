@@ -27,8 +27,14 @@
 
   <Target Name="CoreCleanNUnitArtefactFolders" >
 
+    <Message Text="$(LoggingMessagePrefix) Cleaning all the NUnit artifact directories..." Importance="high" />
+    
     <Error ContinueOnError="false" Text="The NUnit reports path was not specified" Condition="$(NUnitReportsPath) == ''" />
 
+    <Message 
+      Text="$(LoggingMessagePrefix) Removing directory: ($(NUnitReportsPath))..." 
+      Importance="normal" 
+      Condition="Exists($(NUnitReportsPath))" />
     <NCastor.AutoBuilder.Tasks.FileSystem.Folder.RemoveDirectoryWithRetries 
       RetryCount="$(NumberOfRetriesWhenDeletingFolders)" 
       ContinueOnError="false" 
@@ -37,6 +43,7 @@
 
     <MSBuild.Community.Tasks.Sleep Milliseconds="$(DelayAfterDeletingFolders)" />
 
+    <Message Text="$(LoggingMessagePrefix) Ensuring all the NUnit artifact directories were removed..." Importance="normal" />
     <Error ContinueOnError="false" Text="There was a problem when cleaning the NUnit reports directory" Condition="Exists($(NUnitReportsPath))" />
 
   </Target>

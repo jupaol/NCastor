@@ -28,8 +28,6 @@
   <Target Name="BeforeDistribute" />
   <Target Name="AfterDistribute" />
 
-  <Target Name="CoreDistribute" >
-
-  </Target>
+  <Target Name="CoreDistribute" />
   
 </Project>

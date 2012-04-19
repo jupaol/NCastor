@@ -13,6 +13,12 @@
 
   <Target Name='CreateMSpecOpenCoverWithRGArtefacts'>
 
+    <Message Text="$(LoggingMessagePrefix) Creating all the MSpec artifact directories..." Importance="high" />
+
+    <Message
+      Text="$(LoggingMessagePrefix) Creating directory: ($(ReportGeneratorMSpecReportPath))..."
+      Importance="normal" 
+      Condition="!Exists($(ReportGeneratorMSpecReportPath))" />
     <MakeDir ContinueOnError="false" Directories="$(ReportGeneratorMSpecReportPath)" Condition="!Exists($(ReportGeneratorMSpecReportPath))" />
 
   </Target>

@@ -34,18 +34,23 @@
 
   <Target Name="CoreRunMSpecWithOpenCover" >
 
+    <Message Text="$(LoggingMessagePrefix) Running all the MSpec unit tests specified in the (MSpecAssemblies) item using OpenCover..." Importance="high" />
+    
     <Error ContinueOnError="false" Text="The OpenCover MSpec results file was not specified" Condition="$(OpenCoverMSpec_ReportFilePath) == ''" />
 
+    <Message Text="$(LoggingMessagePrefix) Parsing all the assemblies to instrument specified in the (AssembliesToInstrument) item and the MSPec assemblies to test specified in the (MSpecAssemblies) item..." Importance="normal" />
     <ItemGroup>
       <_AssembliesToInstrumentWithOpenCoverMSpec Include="@(AssembliesToInstrument->'+[%(FileName)]*')" />
       <_MSpecAssembliesToRunCodeCoverage Include="@(MSpecAssemblies->'\&quot;%(Identity)\&quot;')" />
     </ItemGroup>
 
+    <Message Text="$(LoggingMessagePrefix) Setting up OpenCover and MSpec arguments..." Importance="normal" />
     <PropertyGroup>
       <_MSpecCommand>-target:"$(MSPecRunner)" -targetargs:"--xml \&quot;$(MSpecXmlReportFilePath)\&quot; --html \&quot;$(MSpecHtmlReporthFilePath)\&quot; @(_MSpecAssembliesToRunCodeCoverage, ' ') $(MSpecRunnerWithOpenCoverArguments)"</_MSpecCommand>
       <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; $(OpenCoverRunnerArgumentsForMSpec) -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSpec, ' ')&quot; -output:&quot;$(OpenCoverMSpec_ReportFilePath)&quot;</_CommonOpenCoverArgs>
     </PropertyGroup>
 
+    <Message Text="$(LoggingMessagePrefix) Running the MSpec unit tests with OpenCover..." Importance="normal" />
     <Exec ContinueOnError="true" Command="$(_CommonOpenCoverArgs) $(_MSpecCommand)">
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningMSpecTests"/>
     </Exec>

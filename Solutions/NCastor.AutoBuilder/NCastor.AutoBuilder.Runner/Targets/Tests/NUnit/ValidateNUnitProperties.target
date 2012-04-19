@@ -27,6 +27,8 @@
 
   <Target Name="CoreValidateNUnitProperties" >
 
+    <Message Text="$(LoggingMessagePrefix) Validating the NUnit properties required to run the unit tests..." Importance="high" />
+
     <Error ContinueOnError="false" Text="The NUnit results file was not specified" Condition="$(NUnitXmlReportFilePath) == ''" />
     <Error ContinueOnError="false" Text="The NUnit runner was not specified" Condition="$(NUnitRunner) == ''" />
     <Error ContinueOnError="false" Text="The NUnit runner was not found" Condition="!Exists($(NUnitRunner))" />

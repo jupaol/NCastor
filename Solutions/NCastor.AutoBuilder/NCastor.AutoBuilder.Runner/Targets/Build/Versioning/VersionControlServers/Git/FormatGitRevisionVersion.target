@@ -28,10 +28,14 @@
 
   <Target Name="CoreFormatGitRevisionVersion" >
 
+    <Message Text="$(LoggingMessagePrefix) Formatting the Git revision version, this version will be appended to the (InformationalVersion) property..." Importance="high" />
+
+    <Message Text="$(LoggingMessagePrefix) Replacing the (-) from the (GitRevisionVersion) property for (.)..." Importance="normal" />
     <MSBuild.ExtensionPack.Framework.TextString TaskAction="Replace" OldString="$(GitRevisionVersion)" OldValue="-" NewValue=".">
       <Output PropertyName="_FormattedGitRevisionVersion" TaskParameter="NewString"/>
     </MSBuild.ExtensionPack.Framework.TextString>
 
+    <Message Text="$(LoggingMessagePrefix) Formatting the Git revision version..." Importance="normal" />
     <PropertyGroup>
       <AdditionalVersionInformation>.build.$(BuildVersion).git$(_FormattedGitRevisionVersion)</AdditionalVersionInformation>
     </PropertyGroup>

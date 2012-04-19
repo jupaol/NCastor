@@ -27,10 +27,14 @@
 
   <Target Name="CoreGetBuildVersionFromCCNET" >
 
-    <Warning Text="The 'CCNetLabel' property was not injected by CCNET, the build version will be set to '0'" Condition="$(CCNetLabel) == ''" />
+    <Message Text="$(LoggingMessagePrefix) Getting the Build Number from CCNET..." Importance="high" />
+      
+    <Warning 
+      Text="The 'CCNetLabel' property was not injected by CCNET, the build version will be set to '0'" 
+      Condition="$(CCNetLabel) == ''" />
     
     <PropertyGroup>
-      <!-- To be injected by Hudson -->
+      <!-- To be injected by CCNET -->
       <BuildVersion Condition="$(CCNetLabel) != ''">$(CCNetLabel.Split('.')[2])</BuildVersion>
       <BuildVersion Condition="$(CCNetLabel) == ''"></BuildVersion>
     </PropertyGroup>

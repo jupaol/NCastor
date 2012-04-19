@@ -21,28 +21,30 @@
   </PropertyGroup>
 
   <Target Name="CreateSvnTag" DependsOnTargets="$(CreateSvnTagDependsOn)" Condition="$(CreateLabel) == 'true'"/>
-
+  
   <!-- To be overriden by the user -->
   <Target Name="BeforeCreateSvnTag" />
   <Target Name="AfterCreateSvnTag" />
 
   <Target Name="CoreCreateSvnTag" >
 
+    <Message Text="$(LoggingMessagePrefix) Creating the SVN tag. This task should be the last process called in your build process..." Importance="high" />
+
     <Error Text="The Svn runners path was not specified" Condition="$(SvnRunnersPath) == ''" />
     <Error Text="The Svn runners path was not found" Condition="!Exists($(SvnRunnersPath))" />
     <Error Text="The 'LabelName' is required to create the Svn tag" Condition="$(LabelName) == ''" />
     <Error Text="The Svn tags Url was not specified" Condition="$(SvnTagsUrl) == ''" />
 
-    <Message Text="Getting the current SVN URL:" />
+    <Message Text="$(LoggingMessagePrefix) Getting the current SVN URL..." Importance="normal" />
     <MSBuild.Community.Tasks.Subversion.SvnInfo
       LocalPath="$(GlobalRootPath)" 
       ToolPath="$(SvnRunnersPath)"
       Timeout="$(SvnConnectionTimeout)">
       <Output TaskParameter="RepositoryPath" PropertyName="_Current_SVN_Repo_URL" />
     </MSBuild.Community.Tasks.Subversion.SvnInfo>
-    <Message Text="Repo URL: $(_Current_SVN_Repo_URL)" />
+    <Message Text="$(LoggingMessagePrefix) Using this SVN repository URL: ($(_Current_SVN_Repo_URL))..." Importance="normal"/>
 
-    <Message Text="Checking connectivity..."/>
+    <Message Text="$(LoggingMessagePrefix) Checking connectivity with SVN..." Importance="normal" />
     <MSBuild.Community.Tasks.Subversion.SvnClient
       Username="$(SvnUserName)"
       Password="$(SvnPassword)"
@@ -53,7 +55,7 @@
     </MSBuild.Community.Tasks.Subversion.SvnClient>
     <Error Text="Couldn't establish a connection to SVN ($(_Current_SVN_Repo_URL)). Check your credentials" Condition="$(_SVN_Connection_Exit_Code) != '0'" />
 
-    <Message Text="Checking to see if the tag already exists"/>
+    <Message Text="$(LoggingMessagePrefix) Trying to find the following tag ($(SvnTagsUrl)/$(LabelName)) in the current SVN repository..." Importance="normal" />
     <!-- this task will look up the tag supplied.  
     If it exists it will return a code of 0 
     Technically this is a success but for this instance, 
@@ -66,15 +68,18 @@
       Timeout="$(SvnConnectionTimeout)">
       <Output TaskParameter="ExitCode" PropertyName="_SVN_Tag_Exists_Exit_Code"/>
     </MSBuild.Community.Tasks.Subversion.SvnClient>
-    <Message Text="ExitCode = $(_SVN_Tag_Exists_Exit_Code)"/>
     <Warning 
       Condition="$(_SVN_Tag_Exists_Exit_Code) == '0'" 
       Text="The Tag: $(LabelName) already exists! The new tag will be: $(LabelName)$(LabelNameSufixWhenLabelExists)"/>
+    <Message
+      Text="$(LoggingMessagePrefix) The tag: ($(LabelName)) was found. For consistency, this tag WON'T BE OVERRIDDEN; instead, a new tag will be created with the following name: ($(LabelName)$(LabelNameSufixWhenLabelExists))..."
+      Importance="high"
+      Condition="$(_SVN_Tag_Exists_Exit_Code) == '0'"/>
     <PropertyGroup Condition="$(_SVN_Tag_Exists_Exit_Code) == '0'">
       <LabelName>$(LabelName)$(LabelNameSufixWhenLabelExists)</LabelName>
     </PropertyGroup>
 
-    <Message Text="Creating the tag: $(LabelName)" />
+    <Message Text="$(LoggingMessagePrefix) Creating the tag: ($(LabelName))..." Importance="normal" />
     <MSBuild.Community.Tasks.Subversion.SvnCopy 
       Username="$(SvnUserName)"
       Password="$(SvnPassword)"

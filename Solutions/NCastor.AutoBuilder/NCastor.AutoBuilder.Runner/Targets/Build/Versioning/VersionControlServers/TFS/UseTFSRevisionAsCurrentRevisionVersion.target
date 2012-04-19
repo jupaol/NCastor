@@ -28,6 +28,8 @@
 
   <Target Name="CoreUseTFSRevisionAsCurrentRevisionVersion" >
 
+    <Message Text="$(LoggingMessagePrefix) Using the TFS revision of the current TFS repository as part of the (SemanticVersion) property..." Importance="high" />
+    
     <PropertyGroup>
       <RevisionVersion>$(TFSRevisionVersion)</RevisionVersion>
     </PropertyGroup>

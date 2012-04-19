@@ -32,16 +32,21 @@
 
   <Target Name="CoreRunMSTests" >
 
+    <Message Text="$(LoggingMessagePrefix) Running all the MSTest unit tests specified in the (MSTestContainers) item..." Importance="high" />
+
+    <Message Text="$(LoggingMessagePrefix) Parsing all the MSTest assemblies to test specified in the (MSTestContainers) item..." Importance="normal" />
     <ItemGroup>
       <_MSTestContainers Include="@(MSTestContainers->'/testcontainer:&quot;%(Identity)&quot;')" />
     </ItemGroup>
 
+    <Message Text="$(LoggingMessagePrefix) Setting up MSTest arguments..." Importance="normal" />
     <PropertyGroup>
       <_MSTestCommand>"$(MSTestRunner)" @(_MSTestContainers, ' ') $(MSTestRunnerArguments) /resultsfile:"$(MSTestReportFilePath)"</_MSTestCommand>
     </PropertyGroup>
 
     <Delete Files="$(MSTestReportFilePath)" Condition="Exists($(MSTestReportFilePath))" />
 
+    <Message Text="$(LoggingMessagePrefix) Running the MSTest unit tests..." Importance="normal" />
     <Exec ContinueOnError="true" Command='$(_MSTestCommand)'>
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningMSTestTests"/>
     </Exec>

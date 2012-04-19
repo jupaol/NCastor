@@ -27,9 +27,14 @@
 
   <Target Name="CoreFormatLabelNameSufixWhenLabelExists" >
 
+    <Message Text="$(LoggingMessagePrefix) Formatting the label name sufix. This sufix is ONLY used when the label already exists in the current VCS..." Importance="high" />
+
+    <Message Text="$(LoggingMessagePrefix) Getting and formatting the current date..." Importance="normal" />
     <MSBuild.Community.Tasks.Time Format="MM.dd.yyyy.HH.mm">
       <Output TaskParameter="FormattedTime" PropertyName="_Label_Sufix_Date" />
     </MSBuild.Community.Tasks.Time>
+
+    <Message Text="$(LoggingMessagePrefix) Formatting the label name sufix with the current date..." Importance="normal" />
     <PropertyGroup>
       <LabelNameSufixWhenLabelExists>_date_$(_Label_Sufix_Date)</LabelNameSufixWhenLabelExists>
     </PropertyGroup>

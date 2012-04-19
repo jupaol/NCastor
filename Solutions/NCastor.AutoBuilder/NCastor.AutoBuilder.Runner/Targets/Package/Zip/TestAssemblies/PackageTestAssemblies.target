@@ -27,6 +27,8 @@
 
   <Target Name="CorePackageTestAssemblies" >
 
+    <Message Text="$(LoggingMessagePrefix) Packing as a Zip file all the testing assembly files from the path: ($(TestAssembliesPath))..." Importance="high" />
+    
     <PropertyGroup>
       <TestAssembliesPackageFilePath Condition="$(TestAssembliesPackageFilePath) == ''">$(DropsPath)\$(PackageName).TestAssemblies.$(Configuration).$(Platform).v$(SemanticVersion).zip</TestAssembliesPackageFilePath>
     </PropertyGroup>

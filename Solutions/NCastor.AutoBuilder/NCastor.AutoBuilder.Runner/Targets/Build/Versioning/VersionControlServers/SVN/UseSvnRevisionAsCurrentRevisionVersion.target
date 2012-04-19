@@ -28,6 +28,8 @@
 
   <Target Name="CoreUseSvnRevisionAsCurrentRevisionVersion" >
 
+    <Message Text="$(LoggingMessagePrefix) Using the SVN revision of the current SVN repository as part of the (SemanticVersion) property..." Importance="high" />
+
     <PropertyGroup>
       <RevisionVersion>$(SvnRevisionVersion)</RevisionVersion>
     </PropertyGroup>
