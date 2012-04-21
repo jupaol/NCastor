@@ -2,8 +2,29 @@
 
 ## Build properties ##
 
-- [Configuration][Build.Properties.Configuration]
-- Platform
+-	Configuration
+
+	The configuration used to build your solution.
+
+	Examples:
+
+	```
+	<Configuration>Debug</Configuration>
+	<Configuration>Release</Configuration>
+	```
+
+-	Platform
+
+	The platform used to build your solution
+
+	Examples:
+
+	```
+	<Platform>Any CPU</Platform>
+	<Platform>Mixed Platforms</Platform>
+	<Platform>x86</Platform>
+	```
+
 - BuildingPath
 - BuildProperties
 - SpecialProjectsBuildProperties
@@ -43,7 +64,3 @@
 
 ----------
 
-## Build properties ##
-
-[Build.Properties.Configuration]: BuildPropertiesConfiguration
-### Configuration ###
