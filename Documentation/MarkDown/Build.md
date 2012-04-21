@@ -45,5 +45,5 @@
 
 ## Build properties ##
 
-[Build.Properties.Configuration]: BuildProperties
+[Build.Properties.Configuration]: BuildPropertiesConfiguration
 ### Configuration ###
