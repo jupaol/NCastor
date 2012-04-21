@@ -32,9 +32,9 @@
     <Message Text="$(LoggingMessagePrefix) Setting assembly information..." Importance="high" />
     
     <Error ContinueOnError="false" Text="The assembly title was not specified (AssemblyTitle)" Condition="$(AssemblyTitle) == ''" />
-    <Error ContinueOnError="false" Text="The assembly to store the common info was not specified" Condition="$(AssemblyCommonInfo) == ''" />
+    <Error ContinueOnError="false" Text="The assembly to store the common info was not specified" Condition="$(AssemblyCommonInfoFilePath) == ''" />
 
-    <MSBuild.Community.tasks.AssemblyInfo OutputFile="$(AssemblyCommonInfo)"
+    <MSBuild.Community.tasks.AssemblyInfo OutputFile="$(AssemblyCommonInfoFilePath)"
                                           CodeLanguage="C#"
                                           AssemblyTitle="$(AssemblyTitle)"
                                           AssemblyDescription="$(AssemblyDescription)"
