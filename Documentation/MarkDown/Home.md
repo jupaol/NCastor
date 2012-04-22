@@ -8,7 +8,7 @@ The result: when you use NCastor AutoBuilder you can integrate quickly your proj
 
 NCastor AutoBuilder contains pre-built tasks that are common to most of the projects like: create version information, build, run tests, run tests with code coverage, generate tests reports and code coverage reports, create labels in your VCS, packing the generated artifacts in zip files or Nuget files and build your installers
 
-## [Documentation](Documentation) ##
+## [Documentation](wiki/Documentation) ##
 
 
 

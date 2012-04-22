@@ -6,19 +6,23 @@
 
 ### [Quick Start](QuickStart "Quick Start") ###
 
-## Walkthrough and Help topics ##
+## Help topics ##
 
-- **[Build](Build "Build")**. Covers the Versioning, the assembly meta-data modification and the build process. The versioning process can be configured to use the following Continuous Integration Servers: **Hudson, CCNET, TeamCity, TFS** and the following Version Control Systems: **Git, SVN, TFS**. The default version format is: the [Semantic Version](http://semver.org/ "Semantic Version") `(major.minor.revision)`, but you can change the format to use `major.minor.build.revision`
+-	[Build](BuildHelp). Contains information about the build properties, build items and the build targets.
 
-- **[Run tests](RunTests "RunTests")**. Covers the process to run tests with **MSpec**, **MSTest** and **NUnit**. It also covers the process to run the tests with code coverage using **OpenCover**.
+## Walkthroughs ##
 
-- **[Report test results](ReportTestResults "Report Test Results")**. Covers the process to generate reports from the test runs and the reports from **OpenCover** indicating the code coverage results (The **OpenCover** reports are generated using **ReportGenerator**).
+-	[Build walkthroughs](BuildWalkthroughs). Covers the Versioning, the assembly meta-data modification and the build process. The versioning process can be configured to use the following Continuous Integration Servers: **Hudson, CCNET, TeamCity, TFS** and the following Version Control Systems: **Git, SVN, TFS**. The default version format is: the [Semantic Version](http://semver.org/ "Semantic Version") `(major.minor.revision)`, but you can change the format to use `major.minor.build.revision`
 
-- **[Package](Package "Package")**. Covers the process to package the generated artifacts. The package formats supported are: **Zip** files and **Nuget** packages.
+-	[Run tests](RunTests "RunTests"). Covers the process to run tests with **MSpec**, **MSTest** and **NUnit**. It also covers the process to run the tests with code coverage using **OpenCover**.
 
-- **[Installers](Installers "Installers")**. Covers the process to generate **ClickOnce** installers
+-	[Report test results](ReportTestResults "Report Test Results"). Covers the process to generate reports from the test runs and the reports from **OpenCover** indicating the code coverage results (The **OpenCover** reports are generated using **ReportGenerator**).
 
-- **[Labels](Labels "Labels")**. Covers the process to create labels in the current VCS (**Git**, **SVN** or **TFS**)
+-	[Package](Package "Package"). Covers the process to package the generated artifacts. The package formats supported are: **Zip** files and **Nuget** packages.
 
-- **[Distribute](Distribute "Distribute")**. Covers the process to distribute (backup) your artifacts.
+-	[Installers](Installers "Installers"). Covers the process to generate **ClickOnce** installers
+
+-	[Labels](Labels "Labels"). Covers the process to create labels in the current VCS (**Git**, **SVN** or **TFS**)
+
+-	[Distribute](Distribute "Distribute"). Covers the process to distribute (backup) your artifacts.
 
