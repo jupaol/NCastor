@@ -31,7 +31,13 @@ namespace NCastor.AutoBuilder.Console
         /// <param name="container">The container.</param>
         public void Register(IKernel container)
         {
-            container.Bind<ICommandLineParser>().ToConstant(new CommandLineParser(new CommandLineParserSettings { MutuallyExclusive = true, CaseSensitive = false }));
+            container.Bind<CommandLineOptions>()
+                .ToSelf()
+                .InSingletonScope();
+
+            container.Bind<ICommandLineParser>()
+                .ToConstant(new CommandLineParser(new CommandLineParserSettings { MutuallyExclusive = true, CaseSensitive = false }))
+                .InSingletonScope();
         }
     }
 }

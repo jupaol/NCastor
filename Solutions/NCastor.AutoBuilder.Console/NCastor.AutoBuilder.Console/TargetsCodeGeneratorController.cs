@@ -55,16 +55,17 @@ namespace NCastor.AutoBuilder.Console
         /// <summary>
         /// Creates the default versioning targets code.
         /// </summary>
-        /// <param name="processingTemplate">The processing template.</param>
         /// <returns>
         /// Returns the template body
         /// </returns>
-        public string CreateDefaultVersioningTargetsCode(Action<Template, CommandLineOptions, string> processingTemplate)
+        public string CreateDefaultVersioningTargetsCode()
         {
             return this.ProcessTemplate(
                 CodeGeneratorTemplateConstants.CommonVersioningCode,
                 "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Build.Versioning",
-                processingTemplate);
+                (x, y, z) =>
+                {
+                });
         }
 
         /// <summary>
@@ -75,7 +76,23 @@ namespace NCastor.AutoBuilder.Console
         /// </returns>
         public override string GenerateCode()
         {
-            throw new NotImplementedException();
+            return this.JoinTargetsCode();
+        }
+
+        /// <summary>
+        /// Joins the targets code.
+        /// </summary>
+        /// <returns>
+        /// Returns the template bndy
+        /// </returns>
+        private string JoinTargetsCode()
+        {
+            StringBuilder finalTargetsCode = new StringBuilder();
+
+            finalTargetsCode.Append(this.CreateDefaultVersioningTargetsCode());
+            finalTargetsCode.AppendLine();
+
+            return finalTargetsCode.ToString();
         }
     }
 }

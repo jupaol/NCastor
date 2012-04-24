@@ -323,6 +323,7 @@ namespace NCastor.AutoBuilder.Console
                 "NCastor.AutoBuilder.Console.Templates",
                 (x, y, z) =>
                 {
+                    x.Set(CodeGeneratorTemplateTokenConstants.TargetsGeneratedCode, this.targetsCodeGeneratorController.GenerateCode());
                 });
         }
     }

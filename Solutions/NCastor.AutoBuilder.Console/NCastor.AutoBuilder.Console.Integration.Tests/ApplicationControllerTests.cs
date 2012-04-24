@@ -277,6 +277,14 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             var templateRes = this.GetContentFromPersistedTemplate(config);
 
             config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.targets");
+            templateRes.Should()
+                .NotBeNullOrEmpty()
+                .And.NotBeBlank()
+                .And.Contain("CoreFormatSemanticVersion")
+                .And.Contain("CoreFormatFileVersion")
+                .And.Contain("CoreFormatInformationalVersion")
+                .And.Contain("<!--**********Common versioning targets-->")
+                .And.Contain("<!--**********End common versioning targets-->");
         }
 
         private string GetContentFromPersistedTemplate(TemplateConfigurator config)

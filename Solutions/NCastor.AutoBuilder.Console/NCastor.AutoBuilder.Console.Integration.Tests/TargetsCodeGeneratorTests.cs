@@ -37,8 +37,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         {
             TargetsCodeGeneratorController sut = new TargetsCodeGeneratorBuilder();
 
-            sut.CreateDefaultVersioningTargetsCode(
-                (x, y, z) => { }).Should()
+            sut.CreateDefaultVersioningTargetsCode().Should()
                     .NotBeNullOrEmpty()
                     .And.NotBeBlank()
                     .And.Contain("CoreFormatSemanticVersion")

@@ -32,6 +32,7 @@ namespace NCastor.AutoBuilder.Console
         /// Initializes a new instance of the <see cref="ArgumentsValidator"/> class.
         /// </summary>
         /// <param name="parser">The parser.</param>
+        /// <param name="options">The options.</param>
         public ArgumentsValidator(ICommandLineParser parser)
         {
             this.parser = parser;
