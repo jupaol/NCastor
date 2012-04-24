@@ -30,7 +30,6 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
         public GetBuildNumberFromTfsTargetsGenerator(CommandLineOptions options)
             : base(options)
         {
-            this.Options = options;
         }
 
         /// <summary>

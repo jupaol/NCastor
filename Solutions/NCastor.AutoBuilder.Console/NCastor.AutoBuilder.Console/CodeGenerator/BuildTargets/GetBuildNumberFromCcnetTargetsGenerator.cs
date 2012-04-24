@@ -30,7 +30,6 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
         public GetBuildNumberFromCcnetTargetsGenerator(CommandLineOptions options)
             : base(options)
         {
-            this.Options = options;
         }
 
         /// <summary>
