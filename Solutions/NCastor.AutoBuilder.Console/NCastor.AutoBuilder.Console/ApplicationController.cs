@@ -33,14 +33,51 @@ namespace NCastor.AutoBuilder.Console
         private CommandLineOptions options;
 
         /// <summary>
+        /// Member used to store the current targets code generator controller
+        /// </summary>
+        private TargetsCodeGeneratorController targetsCodeGeneratorController;
+
+        /// <summary>
+        /// Member used to store the current command line parser
+        /// </summary>
+        private ICommandLineParser parser;
+
+        /// <summary>
+        /// Member used to store the current arguments validator
+        /// </summary>
+        private ArgumentsValidator argumentsValidator;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationController"/> class.
         /// </summary>
+        /// <param name="options">The options.</param>
+        /// <param name="targetsCodeGeneratorController">The targets code generator controller.</param>
+        /// <param name="parser">The parser.</param>
+        /// <param name="argumentsValidator">The arguments validator.</param>
+        public ApplicationController(
+            CommandLineOptions options, 
+            TargetsCodeGeneratorController targetsCodeGeneratorController,
+            ICommandLineParser parser,
+            ArgumentsValidator argumentsValidator)
+        {
+            this.options = options;
+            this.targetsCodeGeneratorController = targetsCodeGeneratorController;
+            this.parser = parser;
+            this.argumentsValidator = argumentsValidator;
+        }
+
+        /// <summary>
+        /// Sets command line arguments
+        /// </summary>
         /// <param name="arguments">The arguments.</param>
-        public ApplicationController(string[] arguments)
+        /// <returns>
+        /// A instance of the current <see cref="ApplicationController"/> object
+        /// </returns>
+        public ApplicationController WithArguments(string[] arguments)
         {
             this.arguments = arguments;
 
-            this.options = new CommandLineOptions();
+            return this;
         }
 
         /// <summary>
@@ -105,9 +142,7 @@ namespace NCastor.AutoBuilder.Console
         {
             Condition.Requires(this.arguments).IsNotNull("The arguments specified must not be null");
             
-            ICommandLineParser parser = new CommandLineParser(new CommandLineParserSettings { MutuallyExclusive = true, CaseSensitive = false });
-
-            return new ArgumentsValidator(parser).AreArgumentsValid(this.options, this.arguments);
+            return this.argumentsValidator.AreArgumentsValid(this.options, this.arguments);
         }
 
         /// <summary>

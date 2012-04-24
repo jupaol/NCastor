@@ -16,7 +16,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void can_create_new_ApplicationController()
         {
-            var cont = new ApplicationController(null);
+            var cont = new ApplicationControllerBuilder().BuildWithNulls();
 
             cont.Should().NotBeNull();
         }
@@ -26,7 +26,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_AreArgumentsValid_when_the_arguments_specified_are_null_it_should_throw_an_ArgumentException()
         {
-            var cont = new ApplicationController(null);
+            var cont = new ApplicationControllerBuilder().BuildWithNulls();
 
             cont.Invoking(x => x.AreArgumentsValid())
                 .ShouldThrow<ArgumentNullException>()
@@ -37,7 +37,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         public void when_calling_AreArgumentsValid_with_invalid_arguments_it_should_return_false()
         {
             var args = new[] { "-p" };
-            var cont = new ApplicationController(args);
+            var cont = new ApplicationControllerBuilder().WithArguments(args).Build();
 
             cont.AreArgumentsValid().Should().BeFalse();
         }
@@ -46,7 +46,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         public void when_calling_AreArgumentsValid_with_valid_arguments_it_should_return_true()
         {
             var args = new[] { "-p", "my app", "-o", "." };
-            var cont = new ApplicationController(args);
+            var cont = new ApplicationControllerBuilder().WithArguments(args).Build();
 
             cont.AreArgumentsValid().Should().BeTrue();
         }
@@ -58,7 +58,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void when_calling_GetCommandHelp_it_should_return_the_help_specifying_how_to_use_the_application()
         {
-            var cont = new ApplicationController(new[] { "-p" });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p" }).Build();
 
             cont.GetCommandLineHelp().Should().NotBeNullOrEmpty().And.NotBeBlank();
         }
@@ -70,7 +70,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessTemplate_with_a_null_resource_name_argument_it_should_throw_an_ArgumentException()
         {
-            var cont = new ApplicationController(null);
+            var cont = new ApplicationControllerBuilder().BuildWithNulls();
 
             cont.Invoking(x => x.ProcessTemplate(null, null, null))
                 .ShouldThrow<ArgumentException>()
@@ -80,7 +80,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessTemplate_with_a_null_delegate_body_it_should_throw_an_ArgumentNullException()
         {
-            var cont = new ApplicationController(null);
+            var cont = new ApplicationControllerBuilder().BuildWithNulls();
 
             cont.Invoking(x => x.ProcessTemplate("ded", null, null))
                 .ShouldThrow<ArgumentNullException>()
@@ -90,7 +90,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessTemplate_with_invalid_argument_line_options_it_should_throw_an_ArgumentException()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o" });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o" }).Build();
 
             cont.Invoking(x => x.ProcessTemplate("my res", "my namespace", (w, y, z) => { }))
                 .ShouldThrow<ArgumentException>()
@@ -102,7 +102,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessSolutionTemplate_should_save_the_Solution_template()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessSolutionTemplate();
 
@@ -119,7 +119,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessPropertiesCustomPropertiesTemplate_should_save_the_template()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessPropertiesCustomPropertiesTemplate();
 
@@ -134,7 +134,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessPropertiesInitPropertiesTemplate_should_save_the_template()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", ".", "-s", this.GetType().Assembly.Location });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", ".", "-s", this.GetType().Assembly.Location }).Build();
 
             var config = cont.ProcessPropertiesInitPropertiesTemplate();
 
@@ -154,7 +154,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessTasksCustomTasksTemplate_should_save_the_template()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessTasksCustomTasksTemplate();
 
@@ -169,7 +169,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessTargetsCustomTargetsTemplate_should_save_the_template_on_disk()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessTargetsCustomTargetsTemplate();
 
@@ -186,7 +186,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessTargetsBuildTargetsTemplate_should_save_the_template_on_disk()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessTargetsBuildTargetsTemplate();
 
@@ -201,7 +201,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessTargetsRunTestsTargetsTemplate_should_save_the_template_on_disk()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessTargetsRunTestsTargetsTemplate();
 
@@ -217,7 +217,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessTargetsVersioningTargetsTemplate_should_save_the_template_on_disk()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessTargetsVersioningTargetsTemplate();
 
@@ -233,7 +233,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessTargetsCustomBuildTargetsTemplate_should_save_the_template_on_disk()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessTargetsCustomBuildTargetsTemplate();
 
@@ -249,7 +249,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessCustomSolutionPropertiesTemplate_should_save_the_template_on_disk()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessCustomSolutionPropertiesTemplate();
 
@@ -266,7 +266,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         [TestMethod]
         public void calling_ProcessCustomSolutionTargetsTemplate_should_save_the_template_on_disk()
         {
-            var cont = new ApplicationController(new[] { "-p", "My App", "-o", "." });
+            var cont = new ApplicationControllerBuilder().WithArguments(new[] { "-p", "My App", "-o", "." }).Build();
 
             var config = cont.ProcessCustomSolutionTargetsTemplate();
 

@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="CodeGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
+// <copyright file="CodeGeneratorBase.cs" company="Juan Pablo Olmos Lara (Jupaol)">
 //
 // jupaol@hotmail.com
 // http://jupaol.blogspot.com/

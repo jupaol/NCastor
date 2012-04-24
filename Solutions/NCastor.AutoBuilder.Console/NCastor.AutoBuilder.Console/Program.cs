@@ -11,6 +11,7 @@ namespace NCastor.AutoBuilder.Console
 {
     using System;
     using System.IO;
+    using Microsoft.Practices.ServiceLocation;
     using NCastor.AutoBuilder.Console.Constants;
     using NCastor.AutoBuilder.Console.FluentConfiguration;
 
@@ -25,7 +26,9 @@ namespace NCastor.AutoBuilder.Console
         /// <param name="args">The arguments</param>
         public static void Main(string[] args)
         {
-            var controller = new ApplicationController(args);
+            new BootstrapperInitialization().Start();
+
+            var controller = ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(args);
 
             if (!controller.AreArgumentsValid())
             {
