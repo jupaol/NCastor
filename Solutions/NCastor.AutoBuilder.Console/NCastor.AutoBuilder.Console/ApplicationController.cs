@@ -104,8 +104,10 @@ namespace NCastor.AutoBuilder.Console
         public bool AreArgumentsValid()
         {
             Condition.Requires(this.arguments).IsNotNull("The arguments specified must not be null");
+            
+            ICommandLineParser parser = new CommandLineParser(new CommandLineParserSettings { MutuallyExclusive = true, CaseSensitive = false });
 
-            return new CommandLineParser().ParseArguments(this.arguments, this.options);
+            return new ArgumentsValidator(parser).AreArgumentsValid(this.options, this.arguments);
         }
 
         /// <summary>

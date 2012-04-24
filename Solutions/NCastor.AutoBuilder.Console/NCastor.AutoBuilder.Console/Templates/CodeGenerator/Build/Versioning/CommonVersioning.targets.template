@@ -1,0 +1,23 @@
+﻿<!--**********Common versioning targets-->
+<Target Name="CoreFormatSemanticVersion">
+  <Message Text="$(LoggingMessagePrefix) Formatting the (SemanticVersion) property. This version is used as the Assembly version of all your assemblies. This version is the only one that the .Net framework actually cares when reading assembly version..." Importance="high" />
+  <PropertyGroup>
+    <SemanticVersion>$(MajorVersion).$(MinorVersion).$(RevisionVersion)</SemanticVersion>
+  </PropertyGroup>
+</Target>
+
+<Target Name="CoreFormatFileVersion" >
+  <Message Text="$(LoggingMessagePrefix) Formatting the (FileVersion) property. This version is used as the file version of the assemblies..." Importance="high" />
+  <PropertyGroup>
+    <FileVersion>$(MajorVersion).$(MinorVersion).$(RevisionVersion)</FileVersion>
+  </PropertyGroup>
+</Target>
+
+<Target Name="CoreFormatInformationalVersion" >
+  <Message Text="$(LoggingMessagePrefix) Formatting the (InformationalVersion) property. This version is used as the detailed version of your product combining a public semantic version with a technical version..." Importance="high" />
+  <PropertyGroup>
+    <InformationalVersion>$(MajorVersion).$(MinorVersion).$(RevisionVersion)</InformationalVersion>
+    <InformationalVersion Condition="$(AdditionalVersionInformation) != ''">$(InformationalVersion)$(AdditionalVersionInformation)</InformationalVersion>
+  </PropertyGroup>
+</Target>
+<!--**********End common versioning targets-->

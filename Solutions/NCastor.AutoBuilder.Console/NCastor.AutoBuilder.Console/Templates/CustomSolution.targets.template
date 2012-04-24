@@ -11,5 +11,7 @@ For more help visit: https://github.com/jupaol/NCastor
 <Project DefaultTargets="BuildSolution" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <!--TODO: Place in this file your custom targets-->
+  
+{{ TargetsGeneratedCode }}
 
 </Project>

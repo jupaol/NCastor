@@ -92,7 +92,18 @@
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
     <Compile Include="ApplicationController.cs" />
+    <Compile Include="ArgumentsValidator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromCcnetTargetsGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromHudsonTargetGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromTeamCityTargetsGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromTfsTargetsGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberTargetGenerator.cs" />
+    <Compile Include="CodeGenerator\CodeGeneratorBase.cs" />
+    <Compile Include="TargetsCodeGeneratorController.cs" />
     <Compile Include="CommandLineOptions.cs" />
+    <Compile Include="Constants\CodeGeneratorTemplateConstants.cs" />
+    <Compile Include="Constants\CodeGeneratorTemplateTokenConstants.cs" />
+    <Compile Include="ContinuousIntegrationServers.cs" />
     <Compile Include="FluentConfiguration\ExtensionMethods\TemplateFactoryExtensions.cs" />
     <Compile Include="FluentConfiguration\ITemplateConfigurator.cs" />
     <Compile Include="FluentConfiguration\ITemplateContext.cs" />
@@ -112,6 +123,7 @@
     <Compile Include="StaticReflectionUtils.cs" />
     <Compile Include="Constants\TemplateConstants.cs" />
     <Compile Include="Constants\TemplateTokenConstants.cs" />
+    <Compile Include="VersionControlSystems.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\..\Licence.md">
@@ -139,6 +151,11 @@
     <EmbeddedResource Include="Templates\BuildSolution.proj.template" />
     <EmbeddedResource Include="Templates\CustomSolution.targets.template" />
     <EmbeddedResource Include="Templates\CustomSolution.properties.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\CommonVersioning.targets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetBuildNumberFromHudsonTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetBuildNumberFromTeamCityTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetBuildNumberFromCcnetTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetBuildNumberFromTfsTargets.template" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

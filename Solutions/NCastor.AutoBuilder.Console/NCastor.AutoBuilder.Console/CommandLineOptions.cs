@@ -45,6 +45,26 @@ namespace NCastor.AutoBuilder.Console
         public string SolutionName;
 
         /// <summary>
+        /// Specifies the source to get the build number
+        /// </summary>
+        /// <remarks>
+        /// This option is used to generate custom targets to get the build number from the CIS specified
+        /// </remarks>
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = JustificationForTheFieldsMustBePrivate)]
+        [Option(null, "GetBuildNumberFrom", HelpText = "[--GetBuildNumberFrom <Hudson | TeamCity | CCNET | TFS>] the CIS source to get the build number. This option is used to generate custom targets to get the build number", Required = false)]
+        public ContinuousIntegrationServers? GetBuildNumberFrom;
+
+        /// <summary>
+        /// Specifies the version control system used
+        /// </summary>
+        /// <remarks>
+        /// This option is used to generate custom targets to use the version control system specified
+        /// </remarks>
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = JustificationForTheFieldsMustBePrivate)]
+        [Option(null, "VCS", HelpText = "[--VCS <Git | SVN | TFS>] the VCS used in the application. This option is used to generate custom targets using this VCS", Required = false)]
+        public VersionControlSystems? VersionControlSystem;
+
+        /// <summary>
         /// Justification for the supress message attributes
         /// </summary>
         private const string JustificationForTheFieldsMustBePrivate = "Required by the Command Line Parser framework";
