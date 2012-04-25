@@ -179,6 +179,7 @@
     <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetBuildNumberFromTeamCityTargets.template" />
     <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetBuildNumberFromCcnetTargets.template" />
     <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetBuildNumberFromTfsTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GenericGetBuildNumberTargets.template" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

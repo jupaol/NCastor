@@ -12,6 +12,12 @@ namespace NCastor.AutoBuilder.Console.Tests
     [TestClass]
     public class ApplicationControllerFactoryTests
     {
+        [ClassInitialize]
+        public static void Initialize(TestContext context)
+        {
+            new BootstrapperInitialization().Start();
+        }
+
         [TestMethod]
         public void can_create_a_new_instance()
         {
@@ -23,12 +29,6 @@ namespace NCastor.AutoBuilder.Console.Tests
         [TestClass]
         public class TheCreateMethod
         {
-            [ClassInitialize]
-            public static void Initialize(TestContext context)
-            {
-                new BootstrapperInitialization().Start();
-            }
-
             [TestMethod]
             public void it_should_return_an_ApplicationController_object_with_a_reference_to_GetBuildNumberTargetGenerator_when_the_GetBuildNumberFrom_option_is_not_set()
             {

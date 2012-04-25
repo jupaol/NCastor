@@ -47,6 +47,7 @@ namespace NCastor.AutoBuilder.Console
             GetBuildNumberTargetGenerator getBuildNumberTargetGenerator)
         {
             Condition.Requires(options).IsNotNull();
+            Condition.Requires(getBuildNumberTargetGenerator).IsNotNull();
 
             this.Options = options;
             this.getBuildNumberTargetGenerator = getBuildNumberTargetGenerator;
@@ -91,6 +92,8 @@ namespace NCastor.AutoBuilder.Console
 
             finalTargetsCode.Append(this.CreateDefaultVersioningTargetsCode());
             finalTargetsCode.AppendLine();
+            finalTargetsCode.AppendLine();
+            finalTargetsCode.Append(this.getBuildNumberTargetGenerator.GenerateCode());
 
             return finalTargetsCode.ToString();
         }

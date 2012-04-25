@@ -16,6 +16,7 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using NCastor.AutoBuilder.Console.Constants;
     using TemplateEngine;
 
     /// <summary>
@@ -40,7 +41,12 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
         /// </returns>
         public override string GenerateCode()
         {
-            throw new NotImplementedException();
+            return this.ProcessTemplate(
+                CodeGeneratorTemplateConstants.GenericGetBuildNumberTargetsTemplate,
+                "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Build.Versioning",
+                (x, y, z) =>
+                {
+                });
         }
     }
 }

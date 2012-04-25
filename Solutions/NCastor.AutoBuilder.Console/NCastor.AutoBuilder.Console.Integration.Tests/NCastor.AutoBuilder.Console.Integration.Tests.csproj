@@ -94,7 +94,7 @@
     <Compile Include="BootstrapperInitializationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocatorTests.cs" />
-    <Compile Include="TargetsCodeGeneratorTests.cs" />
+    <Compile Include="TargetsCodeGeneratorControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NCastor.AutoBuilder.Console\NCastor.AutoBuilder.Console.csproj">

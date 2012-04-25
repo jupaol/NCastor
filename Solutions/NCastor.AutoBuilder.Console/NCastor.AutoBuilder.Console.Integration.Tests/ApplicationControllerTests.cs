@@ -14,7 +14,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
     [TestClass]
     public class ApplicationControllerTests
     {
-        [ClassInitialize]
+        [AssemblyInitialize]
         public static void Initialize(TestContext context)
         {
             new BootstrapperInitialization().Start();
@@ -28,267 +28,431 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             cont.Should().NotBeNull();
         }
 
-        #region Tests for the AreArgumentsValid method
-
-        [TestMethod]
-        public void calling_AreArgumentsValid_when_the_arguments_specified_are_null_it_should_throw_an_ArgumentException()
+        [TestClass]
+        public class TheAreArgumentsValidMethod
         {
-            var cont = new ApplicationControllerBuilder().BuildWithNulls();
+            [TestMethod]
+            public void when_the_arguments_specified_are_null_it_should_throw_an_ArgumentException()
+            {
+                var cont = new ApplicationControllerBuilder().BuildWithNulls();
 
-            cont.Invoking(x => x.AreArgumentsValid())
-                .ShouldThrow<ArgumentNullException>()
-                .WithMessage("The arguments specified must not be null", FluentAssertions.Assertions.ComparisonMode.Substring);
+                cont.Invoking(x => x.AreArgumentsValid())
+                    .ShouldThrow<ArgumentNullException>()
+                    .WithMessage("The arguments specified must not be null", FluentAssertions.Assertions.ComparisonMode.Substring);
+            }
+
+            [TestMethod]
+            public void when_the_arguments_are_invalid_it_should_return_false()
+            {
+                var cont = GetApplicationController(null, "-p");
+
+                cont.AreArgumentsValid().Should().BeFalse();
+            }
+
+            [TestMethod]
+            public void when_calling_with_valid_arguments_it_should_return_true()
+            {
+                var cont = GetApplicationController(null, "-p", "my app", "-o", ".");
+
+                cont.AreArgumentsValid().Should().BeTrue();
+            }
         }
 
-        [TestMethod]
-        public void when_calling_AreArgumentsValid_with_invalid_arguments_it_should_return_false()
+        [TestClass]
+        public class TheGetCommandHelpMethod
         {
-            var cont = this.GetApplicationController("-p");
+            [TestMethod]
+            public void it_should_return_the_help_specifying_how_to_use_the_application()
+            {
+                var cont = GetApplicationController(null, "-p");
 
-            cont.AreArgumentsValid().Should().BeFalse();
+                cont.GetCommandLineHelp().Should().NotBeNullOrEmpty().And.NotBeBlank();
+            }
         }
 
-        [TestMethod]
-        public void when_calling_AreArgumentsValid_with_valid_arguments_it_should_return_true()
+        [TestClass]
+        public class TheProcessTemplateMethod
         {
-            var cont = this.GetApplicationController("-p", "my app", "-o", ".");
+            [TestMethod]
+            public void calling_with_a_null_resource_name_argument_it_should_throw_an_ArgumentException()
+            {
+                var cont = new ApplicationControllerBuilder().BuildWithNulls();
 
-            cont.AreArgumentsValid().Should().BeTrue();
+                cont.Invoking(x => x.ProcessTemplate(null, null, null))
+                    .ShouldThrow<ArgumentException>()
+                    .WithMessage("embeddedResourceName", FluentAssertions.Assertions.ComparisonMode.Substring);
+            }
+
+            [TestMethod]
+            public void calling_with_a_null_delegate_body_it_should_throw_an_ArgumentNullException()
+            {
+                var cont = new ApplicationControllerBuilder().BuildWithNulls();
+
+                cont.Invoking(x => x.ProcessTemplate("ded", null, null))
+                    .ShouldThrow<ArgumentNullException>()
+                    .WithMessage("processingTemplate", FluentAssertions.Assertions.ComparisonMode.Substring);
+            }
+
+            [TestMethod]
+            public void calling_with_invalid_argument_line_options_it_should_throw_an_ArgumentException()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o");
+
+                cont.Invoking(x => x.ProcessTemplate("my res", "my namespace", (w, y, z) => { }))
+                    .ShouldThrow<ArgumentException>()
+                    .WithMessage("The command line arguments must be valid before calling the ProcessTemplate method", FluentAssertions.Assertions.ComparisonMode.Substring);
+            }
         }
 
-        #endregion
-
-        #region Tests for the GetCommandHelp method
-
-        [TestMethod]
-        public void when_calling_GetCommandHelp_it_should_return_the_help_specifying_how_to_use_the_application()
+        [TestClass]
+        public class TheProcessSolutionTemplateMethod
         {
-            var cont = this.GetApplicationController("-p");
+            [TestMethod]
+            public void it_should_save_the_Solution_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
 
-            cont.GetCommandLineHelp().Should().NotBeNullOrEmpty().And.NotBeBlank();
+                var config = cont.ProcessSolutionTemplate();
+
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+                config.Persistence.OutputTemplatePath.Should().Be(@".\My App.BuildSolution.proj");
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
+            }
         }
 
-        #endregion
-
-        #region tests for the method ProcessTemplate
-
-        [TestMethod]
-        public void calling_ProcessTemplate_with_a_null_resource_name_argument_it_should_throw_an_ArgumentException()
+        [TestClass]
+        public class TheProcessPropertiesCustomPropertiesTemplateMethod
         {
-            var cont = new ApplicationControllerBuilder().BuildWithNulls();
+            [TestMethod]
+            public void it_should_save_the_CustomProperties_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
 
-            cont.Invoking(x => x.ProcessTemplate(null, null, null))
-                .ShouldThrow<ArgumentException>()
-                .WithMessage("embeddedResourceName", FluentAssertions.Assertions.ComparisonMode.Substring);
+                var config = cont.ProcessPropertiesCustomPropertiesTemplate();
+
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+                config.Persistence.OutputTemplatePath.Should().Be(@".\Properties\My App.Properties.import");
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+            }
         }
 
-        [TestMethod]
-        public void calling_ProcessTemplate_with_a_null_delegate_body_it_should_throw_an_ArgumentNullException()
+        [TestClass]
+        public class TheProcessPropertiesInitPropertiesTemplateMethod
         {
-            var cont = new ApplicationControllerBuilder().BuildWithNulls();
+            [TestMethod]
+            public void it_should_save_the_InitProperties_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".", "-s", this.GetType().Assembly.Location);
+                var config = cont.ProcessPropertiesInitPropertiesTemplate();
 
-            cont.Invoking(x => x.ProcessTemplate("ded", null, null))
-                .ShouldThrow<ArgumentNullException>()
-                .WithMessage("processingTemplate", FluentAssertions.Assertions.ComparisonMode.Substring);
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+                config.Persistence.OutputTemplatePath.Should().Be(@".\Properties\My App.InitProperties.import");
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
+                templateRes.CountOcurrences(config.Context.CurrentOptions.SolutionName).Should().Be(1);
+
+                templateRes.Should().NotContain("{{ SolutionName }}");
+            }
         }
 
-        [TestMethod]
-        public void calling_ProcessTemplate_with_invalid_argument_line_options_it_should_throw_an_ArgumentException()
+        [TestClass]
+        public class TheProcessTasksCustomTasksTemplateMethod
         {
-            var cont = this.GetApplicationController("-p", "My App", "-o");
+            [TestMethod]
+            public void it_should_save_the_CustomTasks_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var config = cont.ProcessTasksCustomTasksTemplate();
 
-            cont.Invoking(x => x.ProcessTemplate("my res", "my namespace", (w, y, z) => { }))
-                .ShouldThrow<ArgumentException>()
-                .WithMessage("The command line arguments must be valid before calling the ProcessTemplate method", FluentAssertions.Assertions.ComparisonMode.Substring);
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+                config.Persistence.OutputTemplatePath.Should().Be(@".\Tasks\My App.Tasks.import");
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+            }
         }
 
-        #endregion
-
-        [TestMethod]
-        public void calling_ProcessSolutionTemplate_should_save_the_Solution_template()
+        [TestClass]
+        public class TheProcessTargetsCustomTargetsTemplateMethod
         {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
+            [TestMethod]
+            public void it_should_save_the_CustomTargets_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var config = cont.ProcessTargetsCustomTargetsTemplate();
 
-            var config = cont.ProcessSolutionTemplate();
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+                config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\My App.Targets.import");
 
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
-            config.Persistence.OutputTemplatePath.Should().Be(@".\My App.BuildSolution.proj");
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
 
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
-
-            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
+                templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(4);
+            }
         }
 
-        [TestMethod]
-        public void calling_ProcessPropertiesCustomPropertiesTemplate_should_save_the_template()
+        [TestClass]
+        public class TheProcessTargetsBuildTargetsTemplateMethod
         {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
+            [TestMethod]
+            public void it_should_save_the_BuildTargets_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var config = cont.ProcessTargetsBuildTargetsTemplate();
 
-            var config = cont.ProcessPropertiesCustomPropertiesTemplate();
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+                config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.BuildTargets.import");
 
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
-            config.Persistence.OutputTemplatePath.Should().Be(@".\Properties\My App.Properties.import");
-
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+            }
         }
 
-        [TestMethod]
-        public void calling_ProcessPropertiesInitPropertiesTemplate_should_save_the_template()
+        [TestClass]
+        public class TheProcessTargetsRunTestsTargetsTemplateMethod
         {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".", "-s", this.GetType().Assembly.Location);
-            var config = cont.ProcessPropertiesInitPropertiesTemplate();
+            [TestMethod]
+            public void it_should_save_the_RunTestsTargets_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var config = cont.ProcessTargetsRunTestsTargetsTemplate();
 
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
-            config.Persistence.OutputTemplatePath.Should().Be(@".\Properties\My App.InitProperties.import");
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
 
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
 
-            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
-            templateRes.CountOcurrences(config.Context.CurrentOptions.SolutionName).Should().Be(1);
-
-            templateRes.Should().NotContain("{{ SolutionName }}");
+                config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Tests\My App.RunTestsTargets.import");
+            }
         }
 
-        [TestMethod]
-        public void calling_ProcessTasksCustomTasksTemplate_should_save_the_template()
+        [TestClass]
+        public class TheProcessTargetsVersioningTargetsTemplateMethod
         {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
-            var config = cont.ProcessTasksCustomTasksTemplate();
+            [TestMethod]
+            public void it_should_save_the_VersioningTargets_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var config = cont.ProcessTargetsVersioningTargetsTemplate();
 
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
-            config.Persistence.OutputTemplatePath.Should().Be(@".\Tasks\My App.Tasks.import");
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
 
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.VersioningTargets.import");
+            }
         }
 
-        [TestMethod]
-        public void calling_ProcessTargetsCustomTargetsTemplate_should_save_the_template_on_disk()
+        [TestClass]
+        public class TheProcessTargetsCustomBuildTargetsTemplateMethod
         {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
-            var config = cont.ProcessTargetsCustomTargetsTemplate();
+            [TestMethod]
+            public void it_should_save_the_CustomBuildTargets_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var config = cont.ProcessTargetsCustomBuildTargetsTemplate();
 
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
-            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\My App.Targets.import");
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
 
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
 
-            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(4);
+                config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.CustomBuildTargets.import");
+            }
         }
 
-        [TestMethod]
-        public void calling_ProcessTargetsBuildTargetsTemplate_should_save_the_template_on_disk()
+        [TestClass]
+        public class TheProcessCustomSolutionPropertiesTemplateMethod
         {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
-            var config = cont.ProcessTargetsBuildTargetsTemplate();
+            [TestMethod]
+            public void it_should_save_the_CustomSolutionProperties_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var config = cont.ProcessCustomSolutionPropertiesTemplate();
 
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
-            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.BuildTargets.import");
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
 
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.properties");
+                templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
+            }
         }
 
-        [TestMethod]
-        public void calling_ProcessTargetsRunTestsTargetsTemplate_should_save_the_template_on_disk()
+        [TestClass]
+        public class TheProcessCustomSolutionTargetsTemplateMethod
         {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
-            var config = cont.ProcessTargetsRunTestsTargetsTemplate();
+            [TestMethod]
+            public void it_should_save_the_CustomsolutionTargets_template()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var config = cont.ProcessCustomSolutionTargetsTemplate();
 
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
 
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
 
-            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Tests\My App.RunTestsTargets.import");
+                config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.targets");
+                templateRes.Should()
+                    .NotBeNullOrEmpty()
+                    .And.NotBeBlank()
+                    .And.Contain("CoreFormatSemanticVersion")
+                    .And.Contain("CoreFormatFileVersion")
+                    .And.Contain("CoreFormatInformationalVersion")
+                    .And.Contain("<!--**********Common versioning targets-->")
+                    .And.Contain("<!--**********End common versioning targets-->");
+            }
+
+            [TestMethod]
+            public void when_not_specifying_a_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_default_targets_code()
+            {
+                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var config = cont.ProcessCustomSolutionTargetsTemplate();
+
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.targets");
+                templateRes.Should()
+                    .NotBeNullOrEmpty()
+                    .And.NotBeBlank()
+                    .And.Contain("CoreGetBuildVersion");
+
+                templateRes.CountOcurrences("CoreGetBuildVersion").Should().Be(2);
+            }
+
+            [TestMethod]
+            public void when_specifying_Hudson_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_Hudson_targets_code()
+            {
+                var cont = GetApplicationController(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.Hudson, "-p", "My App", "-o", ".");
+                var config = cont.ProcessCustomSolutionTargetsTemplate();
+
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.targets");
+                templateRes.Should()
+                    .NotBeNullOrEmpty()
+                    .And.NotBeBlank()
+                    .And.Contain("CoreGetBuildVersion")
+                    .And.Contain("GetBuildVersionFromHudson");
+                
+                templateRes.CountOcurrences("CoreGetBuildVersion").Should().Be(1);
+                templateRes.CountOcurrences("GetBuildVersionFromHudson").Should().Be(1);
+            }
+
+            [TestMethod]
+            public void when_specifying_TeamCity_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_TeamCity_targets_code()
+            {
+                var cont = GetApplicationController(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.TeamCity, "-p", "My App", "-o", ".");
+                var config = cont.ProcessCustomSolutionTargetsTemplate();
+
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.targets");
+                templateRes.Should()
+                    .NotBeNullOrEmpty()
+                    .And.NotBeBlank()
+                    .And.Contain("CoreGetBuildVersion")
+                    .And.Contain("GetBuildVersionFromTeamCity");
+
+                templateRes.CountOcurrences("CoreGetBuildVersion").Should().Be(1);
+                templateRes.CountOcurrences("GetBuildVersionFromTeamCity").Should().Be(1);
+            }
+
+            [TestMethod]
+            public void when_specifying_CCNET_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_CCNET_targets_code()
+            {
+                var cont = GetApplicationController(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.CCNET, "-p", "My App", "-o", ".");
+                var config = cont.ProcessCustomSolutionTargetsTemplate();
+
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.targets");
+                templateRes.Should()
+                    .NotBeNullOrEmpty()
+                    .And.NotBeBlank()
+                    .And.Contain("CoreGetBuildVersion")
+                    .And.Contain("GetBuildVersionFromCCNET");
+
+                templateRes.CountOcurrences("CoreGetBuildVersion").Should().Be(1);
+                templateRes.CountOcurrences("GetBuildVersionFromCCNET").Should().Be(1);
+            }
+
+            [TestMethod]
+            public void when_specifying_TFS_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_TFS_targets_code()
+            {
+                var cont = GetApplicationController(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.TFS, "-p", "My App", "-o", ".");
+                var config = cont.ProcessCustomSolutionTargetsTemplate();
+
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.targets");
+                templateRes.Should()
+                    .NotBeNullOrEmpty()
+                    .And.NotBeBlank()
+                    .And.Contain("CoreGetBuildVersion")
+                    .And.Contain("GetBuildVersionFromTFS");
+
+                templateRes.CountOcurrences("CoreGetBuildVersion").Should().Be(1);
+                templateRes.CountOcurrences("GetBuildVersionFromTFS").Should().Be(1);
+            }
         }
 
-        [TestMethod]
-        public void calling_ProcessTargetsVersioningTargetsTemplate_should_save_the_template_on_disk()
+        private static ApplicationController GetApplicationController(Action<CommandLineOptions> updatingOptions = null, params string[] arguments)
         {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
-            var config = cont.ProcessTargetsVersioningTargetsTemplate();
+            var options = new CommandLineOptions();
 
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+            if (updatingOptions != null)
+            {
+                updatingOptions(options);
+            }
 
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
-
-            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.VersioningTargets.import");
+            return ServiceLocator.Current.GetInstance<ApplicationControllerFactory>().Create(arguments, options);
         }
 
-        [TestMethod]
-        public void calling_ProcessTargetsCustomBuildTargetsTemplate_should_save_the_template_on_disk()
-        {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
-            var config = cont.ProcessTargetsCustomBuildTargetsTemplate();
-
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
-
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
-
-            config.Persistence.OutputTemplatePath.Should().Be(@".\Targets\Build\My App.CustomBuildTargets.import");
-        }
-
-        [TestMethod]
-        public void calling_ProcessCustomSolutionPropertiesTemplate_should_save_the_template_on_disk()
-        {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
-            var config = cont.ProcessCustomSolutionPropertiesTemplate();
-
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
-
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
-
-            config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.properties");
-            templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
-        }
-
-        [TestMethod]
-        public void calling_ProcessCustomSolutionTargetsTemplate_should_save_the_template_on_disk()
-        {
-            var cont = this.GetApplicationController("-p", "My App", "-o", ".");
-            var config = cont.ProcessCustomSolutionTargetsTemplate();
-
-            config.Should().NotBeNull();
-            File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
-
-            //testing that the template tokens were substituted correctly
-            var templateRes = this.GetContentFromPersistedTemplate(config);
-
-            config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.targets");
-            templateRes.Should()
-                .NotBeNullOrEmpty()
-                .And.NotBeBlank()
-                .And.Contain("CoreFormatSemanticVersion")
-                .And.Contain("CoreFormatFileVersion")
-                .And.Contain("CoreFormatInformationalVersion")
-                .And.Contain("<!--**********Common versioning targets-->")
-                .And.Contain("<!--**********End common versioning targets-->");
-        }
-
-        private ApplicationController GetApplicationController(params string[] arguments)
-        {
-            return ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(arguments);
-        }
-
-        private string GetContentFromPersistedTemplate(TemplateConfigurator config)
+        private static string GetContentFromPersistedTemplate(TemplateConfigurator config)
         {
             var templateRes = string.Empty;
 
