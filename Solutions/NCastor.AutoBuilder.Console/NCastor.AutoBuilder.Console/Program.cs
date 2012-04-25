@@ -26,35 +26,7 @@ namespace NCastor.AutoBuilder.Console
         /// <param name="args">The arguments</param>
         public static void Main(string[] args)
         {
-            new BootstrapperInitialization().Start();
-
-            var controller = ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(args);
-
-            if (!controller.AreArgumentsValid())
-            {
-                Console.WriteLine(controller.GetCommandLineHelp());
-                Environment.Exit(1);
-            }
-
-            try
-            {
-                controller.ProcessSolutionTemplate();
-                ////controller.ProcessPropertiesCustomPropertiesTemplate();
-                ////controller.ProcessPropertiesInitPropertiesTemplate();
-                ////controller.ProcessTasksCustomTasksTemplate();
-                ////controller.ProcessTargetsCustomTargetsTemplate();
-                ////controller.ProcessTargetsBuildTargetsTemplate();
-                ////controller.ProcessTargetsRunTestsTargetsTemplate();
-                controller.ProcessCustomSolutionPropertiesTemplate();
-                controller.ProcessCustomSolutionTargetsTemplate();
-            }
-            catch (Exception exc)
-            {
-                Console.Error.WriteLine(exc.Message);
-                Environment.Exit(1);
-            }
-
-            Environment.Exit(0);
+            new ApplicationRunner().Run(args);
         }
     }
 }

@@ -110,6 +110,7 @@
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
     <Compile Include="ApplicationController.cs" />
+    <Compile Include="ApplicationRunner.cs" />
     <Compile Include="ArgumentsValidator.cs" />
     <Compile Include="BootstrapperInitialization.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromCcnetTargetsGenerator.cs" />
