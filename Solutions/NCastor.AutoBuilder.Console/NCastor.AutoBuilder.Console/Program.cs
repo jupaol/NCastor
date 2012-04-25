@@ -26,8 +26,7 @@ namespace NCastor.AutoBuilder.Console
         /// <param name="args">The arguments</param>
         public static void Main(string[] args)
         {
-            new BootstrapperInitialization().Start();
-            var runner = ServiceLocator.Current.GetInstance<ApplicationRunner>();
+            var runner = new ApplicationRunner();
 
             runner.ArgumentsValidationFailed += (x) => 
             {

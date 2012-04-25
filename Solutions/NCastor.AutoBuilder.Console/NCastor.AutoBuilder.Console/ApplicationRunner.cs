@@ -24,29 +24,6 @@ namespace NCastor.AutoBuilder.Console
     public class ApplicationRunner
     {
         /// <summary>
-        /// Member to store the current arguments validator
-        /// </summary>
-        private ArgumentsValidator argumentsValidator;
-
-        /// <summary>
-        /// Member to store the current application controller factory
-        /// </summary>
-        private IApplicationControllerFactory applicationControllerFactory;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationRunner"/> class.
-        /// </summary>
-        /// <param name="applicationControllerFactory">The application controller factory.</param>
-        /// <param name="argumentsValidator">The arguments validator.</param>
-        public ApplicationRunner(
-            IApplicationControllerFactory applicationControllerFactory,
-            ArgumentsValidator argumentsValidator)
-        {
-            this.argumentsValidator = argumentsValidator;
-            this.applicationControllerFactory = applicationControllerFactory;
-        }
-
-        /// <summary>
         /// Occurs when the arguments validation failed.
         /// </summary>
         public event Action<string> ArgumentsValidationFailed = delegate { };
@@ -62,15 +39,19 @@ namespace NCastor.AutoBuilder.Console
         /// <param name="arguments">The arguments.</param>
         public void Run(string[] arguments)
         {
+            new BootstrapperInitialization().Start();
+            var applicationControllerFactory = ServiceLocator.Current.GetInstance<IApplicationControllerFactory>();
+            var argumentsValidator = ServiceLocator.Current.GetInstance<ArgumentsValidator>();
+
             try
             {
-                if (!this.argumentsValidator.AreArgumentsValid(arguments))
+                if (!argumentsValidator.AreArgumentsValid(arguments))
                 {
-                    this.ArgumentsValidationFailed(this.argumentsValidator.GetCommandLineHelp());
+                    this.ArgumentsValidationFailed(argumentsValidator.GetCommandLineHelp());
                 }
                 else
                 {
-                    var applicationController = this.applicationControllerFactory.Create(this.argumentsValidator.GetParsedOptions());
+                    var applicationController = applicationControllerFactory.Create(arguments, argumentsValidator.GetParsedOptions());
 
                     applicationController.ProcessSolutionTemplate();
                     ////controller.ProcessPropertiesCustomPropertiesTemplate();

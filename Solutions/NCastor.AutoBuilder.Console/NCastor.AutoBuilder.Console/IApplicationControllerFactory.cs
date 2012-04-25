@@ -25,10 +25,11 @@ namespace NCastor.AutoBuilder.Console
         /// <summary>
         /// Creates the specified arguments.
         /// </summary>
+        /// <param name="arguments">The arguments.</param>
         /// <param name="options">The options.</param>
         /// <returns>
         /// A full initialized application controller
         /// </returns>
-        ApplicationController Create(CommandLineOptions options);
+        ApplicationController Create(string[] arguments, CommandLineOptions options);
     }
 }

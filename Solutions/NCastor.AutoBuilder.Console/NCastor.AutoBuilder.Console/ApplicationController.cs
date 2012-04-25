@@ -81,6 +81,20 @@ namespace NCastor.AutoBuilder.Console
         }
 
         /// <summary>
+        /// Withes the custom targets code generator controller.
+        /// </summary>
+        /// <param name="targetsController">The targets controller.</param>
+        /// <returns>
+        /// A instance of the current <see cref="ApplicationController"/> object
+        /// </returns>
+        public ApplicationController WithCustomTargetsCodeGeneratorController(TargetsCodeGeneratorController targetsController)
+        {
+            this.targetsCodeGeneratorController = targetsController;
+
+            return this;
+        }
+
+        /// <summary>
         /// Processes the template.
         /// </summary>
         /// <param name="embeddedResourceName">Name of the embedded resource.</param>

@@ -12,8 +12,6 @@
         private List<string> arguments;
         private CommandLineOptions options;
         private TargetsCodeGeneratorController targetsController;
-        private bool wereOptionsSetted;
-        private bool wasTargetControllerSetted;
 
         public ApplicationControllerBuilder()
         {
@@ -23,14 +21,12 @@
         public ApplicationControllerBuilder WithOptions(CommandLineOptions options)
         {
             this.options = options;
-            this.wereOptionsSetted = true;
             return this;
         }
 
         public ApplicationControllerBuilder WithTargetsController(TargetsCodeGeneratorController targetsController)
         {
             this.targetsController = targetsController;
-            this.wasTargetControllerSetted = true;
             return this;
         }
 

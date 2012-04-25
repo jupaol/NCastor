@@ -16,6 +16,9 @@ namespace NCastor.AutoBuilder.Console
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using CommandLine;
+    using Microsoft.Practices.ServiceLocation;
+    using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
 
     /// <summary>
     /// Application controller factory
@@ -25,13 +28,50 @@ namespace NCastor.AutoBuilder.Console
         /// <summary>
         /// Creates the specified arguments.
         /// </summary>
+        /// <param name="arguments">The arguments.</param>
         /// <param name="options">The options.</param>
         /// <returns>
         /// A full initialized application controller
         /// </returns>
-        public ApplicationController Create(CommandLineOptions options)
+        public ApplicationController Create(string[] arguments, CommandLineOptions options)
         {
-            throw new NotImplementedException();
+            var controller = ServiceLocator.Current.GetInstance<ApplicationController>();
+
+            controller.WithArguments(arguments);
+            this.AddCustomTargetscontroller(controller, options);
+
+            return controller;
+        }
+
+        /// <summary>
+        /// Adds the custom targetscontroller.
+        /// </summary>
+        /// <param name="applicationController">The application controller.</param>
+        /// <param name="options">The options.</param>
+        private void AddCustomTargetscontroller(ApplicationController applicationController, CommandLineOptions options)
+        {
+            if (options.GetBuildNumberFrom.HasValue)
+            {
+                switch (options.GetBuildNumberFrom.Value)
+                {
+                    case ContinuousIntegrationServers.Hudson:
+                        applicationController.WithCustomTargetsCodeGeneratorController(
+                            new TargetsCodeGeneratorController(options, new GetBuildNumberFromHudsonTargetGenerator(options)));
+                        break;
+                    case ContinuousIntegrationServers.TeamCity:
+                        applicationController.WithCustomTargetsCodeGeneratorController(
+                            new TargetsCodeGeneratorController(options, new GetBuildNumberFromTeamCityTargetsGenerator(options)));
+                        break;
+                    case ContinuousIntegrationServers.CCNET:
+                        applicationController.WithCustomTargetsCodeGeneratorController(
+                            new TargetsCodeGeneratorController(options, new GetBuildNumberFromCcnetTargetsGenerator(options)));
+                        break;
+                    case ContinuousIntegrationServers.TFS:
+                        applicationController.WithCustomTargetsCodeGeneratorController(
+                            new TargetsCodeGeneratorController(options, new GetBuildNumberFromTfsTargetsGenerator(options)));
+                        break;
+                }
+            }
         }
     }
 }

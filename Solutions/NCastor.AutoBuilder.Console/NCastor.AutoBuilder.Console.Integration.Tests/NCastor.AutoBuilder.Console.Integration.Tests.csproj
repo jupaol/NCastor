@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="ApplicationControllerBuilder.cs" />
     <Compile Include="ApplicationControllerTests.cs" />
+    <Compile Include="ApplicationRunnerTests.cs" />
     <Compile Include="AutoFixtureHelper.cs" />
     <Compile Include="BootstrapperInitializationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
