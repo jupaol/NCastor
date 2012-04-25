@@ -27,12 +27,11 @@ namespace NCastor.AutoBuilder.Console
         /// Runs the application
         /// </summary>
         /// <param name="arguments">The arguments.</param>
-        public void Run(string[] arguments)
+        /// <param name="controller">The controller.</param>
+        public void Run(
+            string[] arguments, 
+            ApplicationController controller)
         {
-            new BootstrapperInitialization().Start();
-
-            var controller = ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(arguments);
-
             if (!controller.AreArgumentsValid())
             {
                 Console.WriteLine(controller.GetCommandLineHelp());

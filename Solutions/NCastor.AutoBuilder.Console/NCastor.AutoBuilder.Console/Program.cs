@@ -26,7 +26,10 @@ namespace NCastor.AutoBuilder.Console
         /// <param name="args">The arguments</param>
         public static void Main(string[] args)
         {
-            new ApplicationRunner().Run(args);
+            new BootstrapperInitialization().Start();
+            var controller = ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(args);
+
+            new ApplicationRunner().Run(args, controller);
         }
     }
 }
