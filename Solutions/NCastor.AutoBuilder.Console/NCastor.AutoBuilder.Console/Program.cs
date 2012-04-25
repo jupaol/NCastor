@@ -27,8 +27,7 @@ namespace NCastor.AutoBuilder.Console
         public static void Main(string[] args)
         {
             new BootstrapperInitialization().Start();
-            var applicationController = ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(args);
-            var runner = new ApplicationRunner();
+            var runner = ServiceLocator.Current.GetInstance<ApplicationRunner>();
 
             runner.ArgumentsValidationFailed += (x) => 
             {
@@ -42,7 +41,7 @@ namespace NCastor.AutoBuilder.Console
                 Environment.Exit(1);
             };
 
-            runner.Run(args, applicationController);
+            runner.Run(args);
         }
     }
 }

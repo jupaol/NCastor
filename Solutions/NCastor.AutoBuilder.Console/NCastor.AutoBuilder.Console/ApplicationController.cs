@@ -142,7 +142,7 @@ namespace NCastor.AutoBuilder.Console
         {
             Condition.Requires(this.arguments).IsNotNull("The arguments specified must not be null");
             
-            return this.argumentsValidator.AreArgumentsValid(this.options, this.arguments);
+            return this.argumentsValidator.AreArgumentsValid(this.arguments);
         }
 
         /// <summary>

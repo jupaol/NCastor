@@ -29,32 +29,38 @@ namespace NCastor.AutoBuilder.Console
         private ICommandLineParser parser;
 
         /// <summary>
+        /// Member to hold the current command line options
+        /// </summary>
+        private CommandLineOptions options;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ArgumentsValidator"/> class.
         /// </summary>
+        /// <param name="options">The options.</param>
         /// <param name="parser">The parser.</param>
-        public ArgumentsValidator(ICommandLineParser parser)
+        public ArgumentsValidator(CommandLineOptions options, ICommandLineParser parser)
         {
             this.parser = parser;
+            this.options = options;
         }
 
         /// <summary>
         /// Indicates if the arguments valid.
         /// </summary>
-        /// <param name="options">The options.</param>
         /// <param name="arguments">The arguments to validate</param>
         /// <returns>
         ///   <c>True</c> if the arguments are valid; otherwise <c>false</c>
         /// </returns>
-        public bool AreArgumentsValid(CommandLineOptions options, params string[] arguments)
+        public bool AreArgumentsValid(params string[] arguments)
         {
-            bool canParseArguments = this.parser.ParseArguments(arguments, options);
+            bool canParseArguments = this.parser.ParseArguments(arguments, this.options);
 
             if (!canParseArguments)
             {
                 return false;
             }
 
-            return this.ValidateArguments(options, arguments);
+            return this.ValidateArguments(this.options, arguments);
         }
 
         /// <summary>

@@ -24,6 +24,29 @@ namespace NCastor.AutoBuilder.Console
     public class ApplicationRunner
     {
         /// <summary>
+        /// Member to store the current application controller
+        /// </summary>
+        private ApplicationController applicationController;
+
+        /// <summary>
+        /// Member to store the current arguments validator
+        /// </summary>
+        private ArgumentsValidator argumentsValidator;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApplicationRunner"/> class.
+        /// </summary>
+        /// <param name="applicationController">The application controller.</param>
+        /// <param name="argumentsValidator">The arguments validator.</param>
+        public ApplicationRunner(
+            ApplicationController applicationController,
+            ArgumentsValidator argumentsValidator)
+        {
+            this.applicationController = applicationController;
+            this.argumentsValidator = argumentsValidator;
+        }
+
+        /// <summary>
         /// Occurs when the arguments validation failed.
         /// </summary>
         public event Action<ApplicationController> ArgumentsValidationFailed = delegate { };
@@ -37,33 +60,32 @@ namespace NCastor.AutoBuilder.Console
         /// Runs the application
         /// </summary>
         /// <param name="arguments">The arguments.</param>
-        /// <param name="controller">The controller.</param>
-        public void Run(
-            string[] arguments, 
-            ApplicationController controller)
+        public void Run(string[] arguments)
         {
-            if (!controller.AreArgumentsValid())
+            try
             {
-                this.ArgumentsValidationFailed(controller);
-            }
-            else
-            {
-                try
+                if (!this.argumentsValidator.AreArgumentsValid(arguments))
                 {
-                    controller.ProcessSolutionTemplate();
+                    this.ArgumentsValidationFailed(this.applicationController);
+                }
+                else
+                {
+                    this.applicationController.WithArguments(arguments);
+
+                    this.applicationController.ProcessSolutionTemplate();
                     ////controller.ProcessPropertiesCustomPropertiesTemplate();
                     ////controller.ProcessPropertiesInitPropertiesTemplate();
                     ////controller.ProcessTasksCustomTasksTemplate();
                     ////controller.ProcessTargetsCustomTargetsTemplate();
                     ////controller.ProcessTargetsBuildTargetsTemplate();
                     ////controller.ProcessTargetsRunTestsTargetsTemplate();
-                    controller.ProcessCustomSolutionPropertiesTemplate();
-                    controller.ProcessCustomSolutionTargetsTemplate();
+                    this.applicationController.ProcessCustomSolutionPropertiesTemplate();
+                    this.applicationController.ProcessCustomSolutionTargetsTemplate();
                 }
-                catch (Exception exc)
-                {
-                    this.ErrorOcurred(exc);
-                }
+            }
+            catch (Exception exc)
+            {
+                this.ErrorOcurred(exc);
             }
         }
     }

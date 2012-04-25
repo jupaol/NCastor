@@ -14,7 +14,7 @@ namespace NCastor.AutoBuilder.Console.Tests
         [TestMethod]
         public void can_create_a_new_instance_of_the_ArgumentsValidator_object()
         {
-            var sut = new ArgumentsValidator(null);
+            var sut = new ArgumentsValidator(null, null);
 
             sut.Should().NotBeNull();
         }
@@ -79,7 +79,7 @@ namespace NCastor.AutoBuilder.Console.Tests
 
             this.arguments.AddRange(arguments);
 
-            return new ArgumentsValidator(parser).AreArgumentsValid(options, this.arguments.ToArray());
+            return new ArgumentsValidator(options, parser).AreArgumentsValid(this.arguments.ToArray());
         }
     }
 }
