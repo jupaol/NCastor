@@ -24,6 +24,16 @@ namespace NCastor.AutoBuilder.Console
     public class ApplicationRunner
     {
         /// <summary>
+        /// Occurs when the arguments validation failed.
+        /// </summary>
+        public event Action<ApplicationController> ArgumentsValidationFailed = delegate { };
+
+        /// <summary>
+        /// Occurs when error ocurred.
+        /// </summary>
+        public event Action<Exception> ErrorOcurred = delegate { };
+
+        /// <summary>
         /// Runs the application
         /// </summary>
         /// <param name="arguments">The arguments.</param>
@@ -34,29 +44,27 @@ namespace NCastor.AutoBuilder.Console
         {
             if (!controller.AreArgumentsValid())
             {
-                Console.WriteLine(controller.GetCommandLineHelp());
-                Environment.Exit(1);
+                this.ArgumentsValidationFailed(controller);
             }
-
-            try
+            else
             {
-                controller.ProcessSolutionTemplate();
-                ////controller.ProcessPropertiesCustomPropertiesTemplate();
-                ////controller.ProcessPropertiesInitPropertiesTemplate();
-                ////controller.ProcessTasksCustomTasksTemplate();
-                ////controller.ProcessTargetsCustomTargetsTemplate();
-                ////controller.ProcessTargetsBuildTargetsTemplate();
-                ////controller.ProcessTargetsRunTestsTargetsTemplate();
-                controller.ProcessCustomSolutionPropertiesTemplate();
-                controller.ProcessCustomSolutionTargetsTemplate();
+                try
+                {
+                    controller.ProcessSolutionTemplate();
+                    ////controller.ProcessPropertiesCustomPropertiesTemplate();
+                    ////controller.ProcessPropertiesInitPropertiesTemplate();
+                    ////controller.ProcessTasksCustomTasksTemplate();
+                    ////controller.ProcessTargetsCustomTargetsTemplate();
+                    ////controller.ProcessTargetsBuildTargetsTemplate();
+                    ////controller.ProcessTargetsRunTestsTargetsTemplate();
+                    controller.ProcessCustomSolutionPropertiesTemplate();
+                    controller.ProcessCustomSolutionTargetsTemplate();
+                }
+                catch (Exception exc)
+                {
+                    this.ErrorOcurred(exc);
+                }
             }
-            catch (Exception exc)
-            {
-                Console.Error.WriteLine(exc.Message);
-                Environment.Exit(1);
-            }
-
-            Environment.Exit(0);
         }
     }
 }

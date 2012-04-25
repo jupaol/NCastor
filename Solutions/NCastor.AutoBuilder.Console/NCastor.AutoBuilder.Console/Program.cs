@@ -27,9 +27,22 @@ namespace NCastor.AutoBuilder.Console
         public static void Main(string[] args)
         {
             new BootstrapperInitialization().Start();
-            var controller = ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(args);
+            var applicationController = ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(args);
+            var runner = new ApplicationRunner();
 
-            new ApplicationRunner().Run(args, controller);
+            runner.ArgumentsValidationFailed += (x) => 
+            {
+                Console.WriteLine(x.GetCommandLineHelp());
+                Environment.Exit(1);
+            };
+
+            runner.ErrorOcurred += (exc) =>
+            {
+                Console.Error.WriteLine(exc.Message);
+                Environment.Exit(1);
+            };
+
+            runner.Run(args, applicationController);
         }
     }
 }
