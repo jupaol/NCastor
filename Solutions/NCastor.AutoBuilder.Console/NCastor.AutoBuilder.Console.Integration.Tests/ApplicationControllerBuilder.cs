@@ -45,21 +45,21 @@
             return new ApplicationController(null, null, null, null);
         }
 
-        public ApplicationController Build()
-        {
-            return new AutoFixtureHelper().CustomizeFixture(x =>
-            {
-                ICommandLineParser parser = new CommandLineParser(new CommandLineParserSettings { MutuallyExclusive = true, CaseSensitive = false });
+        //public ApplicationController Build()
+        //{
+        //    return new AutoFixtureHelper().CustomizeFixture(x =>
+        //    {
+        //        ICommandLineParser parser = new CommandLineParser(new CommandLineParserSettings { MutuallyExclusive = true, CaseSensitive = false });
 
-                if (this.wereOptionsSetted)
-                    x.Register<CommandLineOptions>(() => this.options);
+        //        if (this.wereOptionsSetted)
+        //            x.Register<CommandLineOptions>(() => this.options);
 
-                if (this.wasTargetControllerSetted)
-                    x.Register<TargetsCodeGeneratorController>(() => this.targetsController);
+        //        if (this.wasTargetControllerSetted)
+        //            x.Register<TargetsCodeGeneratorController>(() => this.targetsController);
 
-                x.Register<ICommandLineParser>(() => parser);
+        //        x.Register<ICommandLineParser>(() => parser);
 
-            }).Fixture.CreateAnonymous<ApplicationController>().WithArguments(this.arguments.ToArray());
-        }
+        //    }).Fixture.CreateAnonymous<ApplicationController>().WithArguments(this.arguments.ToArray());
+        //}
     }
 }
