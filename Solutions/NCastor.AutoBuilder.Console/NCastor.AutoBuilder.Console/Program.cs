@@ -31,7 +31,7 @@ namespace NCastor.AutoBuilder.Console
 
             runner.ArgumentsValidationFailed += (x) => 
             {
-                Console.WriteLine(x.GetCommandLineHelp());
+                Console.WriteLine(x);
                 Environment.Exit(1);
             };
 

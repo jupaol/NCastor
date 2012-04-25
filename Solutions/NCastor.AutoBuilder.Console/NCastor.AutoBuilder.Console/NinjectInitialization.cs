@@ -38,6 +38,9 @@ namespace NCastor.AutoBuilder.Console
             container.Bind<ICommandLineParser>()
                 .ToConstant(new CommandLineParser(new CommandLineParserSettings { MutuallyExclusive = true, CaseSensitive = false }))
                 .InSingletonScope();
+
+            container.Bind<IApplicationControllerFactory>()
+                .To<ApplicationControllerFactory>();
         }
     }
 }

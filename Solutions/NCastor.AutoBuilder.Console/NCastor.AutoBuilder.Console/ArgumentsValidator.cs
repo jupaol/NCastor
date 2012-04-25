@@ -64,6 +64,28 @@ namespace NCastor.AutoBuilder.Console
         }
 
         /// <summary>
+        /// Gets the command line help.
+        /// </summary>
+        /// <returns>
+        /// The command line help
+        /// </returns>
+        public string GetCommandLineHelp()
+        {
+            return this.options.GetHelp();
+        }
+
+        /// <summary>
+        /// Gets the parsed options.
+        /// </summary>
+        /// <returns>
+        /// Returns the parsed command line options
+        /// </returns>
+        public CommandLineOptions GetParsedOptions()
+        {
+            return this.options;
+        }
+
+        /// <summary>
         /// Validates the arguments.
         /// </summary>
         /// <param name="options">The options.</param>

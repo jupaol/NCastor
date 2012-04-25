@@ -24,32 +24,32 @@ namespace NCastor.AutoBuilder.Console
     public class ApplicationRunner
     {
         /// <summary>
-        /// Member to store the current application controller
-        /// </summary>
-        private ApplicationController applicationController;
-
-        /// <summary>
         /// Member to store the current arguments validator
         /// </summary>
         private ArgumentsValidator argumentsValidator;
 
         /// <summary>
+        /// Member to store the current application controller factory
+        /// </summary>
+        private IApplicationControllerFactory applicationControllerFactory;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationRunner"/> class.
         /// </summary>
-        /// <param name="applicationController">The application controller.</param>
+        /// <param name="applicationControllerFactory">The application controller factory.</param>
         /// <param name="argumentsValidator">The arguments validator.</param>
         public ApplicationRunner(
-            ApplicationController applicationController,
+            IApplicationControllerFactory applicationControllerFactory,
             ArgumentsValidator argumentsValidator)
         {
-            this.applicationController = applicationController;
             this.argumentsValidator = argumentsValidator;
+            this.applicationControllerFactory = applicationControllerFactory;
         }
 
         /// <summary>
         /// Occurs when the arguments validation failed.
         /// </summary>
-        public event Action<ApplicationController> ArgumentsValidationFailed = delegate { };
+        public event Action<string> ArgumentsValidationFailed = delegate { };
 
         /// <summary>
         /// Occurs when error ocurred.
@@ -66,21 +66,21 @@ namespace NCastor.AutoBuilder.Console
             {
                 if (!this.argumentsValidator.AreArgumentsValid(arguments))
                 {
-                    this.ArgumentsValidationFailed(this.applicationController);
+                    this.ArgumentsValidationFailed(this.argumentsValidator.GetCommandLineHelp());
                 }
                 else
                 {
-                    this.applicationController.WithArguments(arguments);
+                    var applicationController = this.applicationControllerFactory.Create(this.argumentsValidator.GetParsedOptions());
 
-                    this.applicationController.ProcessSolutionTemplate();
+                    applicationController.ProcessSolutionTemplate();
                     ////controller.ProcessPropertiesCustomPropertiesTemplate();
                     ////controller.ProcessPropertiesInitPropertiesTemplate();
                     ////controller.ProcessTasksCustomTasksTemplate();
                     ////controller.ProcessTargetsCustomTargetsTemplate();
                     ////controller.ProcessTargetsBuildTargetsTemplate();
                     ////controller.ProcessTargetsRunTestsTargetsTemplate();
-                    this.applicationController.ProcessCustomSolutionPropertiesTemplate();
-                    this.applicationController.ProcessCustomSolutionTargetsTemplate();
+                    applicationController.ProcessCustomSolutionPropertiesTemplate();
+                    applicationController.ProcessCustomSolutionTargetsTemplate();
                 }
             }
             catch (Exception exc)

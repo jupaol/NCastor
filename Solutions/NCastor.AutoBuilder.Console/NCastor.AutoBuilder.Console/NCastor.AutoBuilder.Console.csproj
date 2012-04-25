@@ -110,6 +110,7 @@
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
     <Compile Include="ApplicationController.cs" />
+    <Compile Include="ApplicationControllerFactory.cs" />
     <Compile Include="ApplicationRunner.cs" />
     <Compile Include="ArgumentsValidator.cs" />
     <Compile Include="BootstrapperInitialization.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromTfsTargetsGenerator.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberTargetGenerator.cs" />
     <Compile Include="CodeGenerator\CodeGeneratorBase.cs" />
+    <Compile Include="IApplicationControllerFactory.cs" />
     <Compile Include="NinjectInitialization.cs" />
     <Compile Include="TargetsCodeGeneratorController.cs" />
     <Compile Include="CommandLineOptions.cs" />
