@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Practices.ServiceLocation;
 using FluentAssertions;
 using CommandLine;
+using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
 
 namespace NCastor.AutoBuilder.Console.Integration.Tests
 {
@@ -51,6 +52,57 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             public void it_should_return_a_valid_object_when_the_type_is_ApplicationController()
             {
                 ServiceLocator.Current.GetInstance<ApplicationController>().Should().NotBeNull();
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetBuildNumberTargetGenerator_type_it_should_return_a_valid_GetBuildNumberTargetGenerator_when_the_CIS_option_is_not_set()
+            {
+                this.CheckConditionalBinding<GetBuildNumberTargetGenerator, GetBuildNumberTargetGenerator>();
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetBuildNumberTargetGenerator_type_it_should_return_a_valid_GetBuildNumberFromCcnetTargetsGenerator_when_the_CIS_option_is_CCNET()
+            {
+                this.CheckConditionalBinding<GetBuildNumberFromCcnetTargetsGenerator, GetBuildNumberTargetGenerator>("--cis", "ccnet");
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetBuildNumberTargetGenerator_type_it_should_return_a_valid_GetBuildNumberFromHudsonTargetGenerator_when_the_CIS_option_is_Hudson()
+            {
+                this.CheckConditionalBinding<GetBuildNumberFromHudsonTargetGenerator, GetBuildNumberTargetGenerator>("--cis", "hudson");
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetBuildNumberTargetGenerator_type_it_should_return_a_valid_GetBuildNumberFromTeamCityTargetsGenerator_when_the_CIS_option_is_Teamcity()
+            {
+                this.CheckConditionalBinding<GetBuildNumberFromTeamCityTargetsGenerator, GetBuildNumberTargetGenerator>("--cis", "teamcity");
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetBuildNumberTargetGenerator_type_it_should_return_a_valid_GetBuildNumberFromTfsTargetsGenerator_when_the_CIS_option_is_TFS()
+            {
+                this.CheckConditionalBinding<GetBuildNumberFromTfsTargetsGenerator, GetBuildNumberTargetGenerator>("--cis", "tfs");
+            }
+
+            private void CheckConditionalBinding<TExpected, TSource>(params string[] arguments)
+                where TExpected : class
+                where TSource : class
+            {
+                List<string> args = new List<string> { "-p", "MyApp", "-o", "." };
+
+                if (arguments != null)
+                {
+                    args.AddRange(arguments);
+                }
+
+                new BootstrapperInitialization().Start();
+                var validator = ServiceLocator.Current.GetInstance<ArgumentsValidator>().AreArgumentsValid(args.ToArray());
+                var expected = ServiceLocator.Current.GetInstance<TSource>();
+
+                expected.Should()
+                    .NotBeNull()
+                    .And.BeAssignableTo<TSource>()
+                    .And.BeOfType<TExpected>();
             }
         }
     }

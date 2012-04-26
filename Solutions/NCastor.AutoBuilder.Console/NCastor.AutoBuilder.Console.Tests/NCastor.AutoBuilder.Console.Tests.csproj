@@ -90,7 +90,7 @@
     <Compile Include="..\..\..\CommonAssemblyProperties\NCastor.AutoBuilder.Console\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
-    <Compile Include="ApplicationControllerFactoryTests.cs" />
+    <None Include="ApplicationControllerFactoryTests.cs" />
     <Compile Include="ArgumentsValidatorTests.cs" />
     <Compile Include="AutoFixtureHelper.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetAdditionalInformationalVersionFromGitTargetGeneratorTests.cs" />

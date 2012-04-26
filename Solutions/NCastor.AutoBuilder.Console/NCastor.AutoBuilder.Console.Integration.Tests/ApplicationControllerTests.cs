@@ -44,7 +44,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_the_arguments_are_invalid_it_should_return_false()
             {
-                var cont = GetApplicationController(null, "-p");
+                var cont = GetApplicationController("-p");
 
                 cont.AreArgumentsValid().Should().BeFalse();
             }
@@ -52,7 +52,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_calling_with_valid_arguments_it_should_return_true()
             {
-                var cont = GetApplicationController(null, "-p", "my app", "-o", ".");
+                var cont = GetApplicationController("-p", "my app", "-o", ".");
 
                 cont.AreArgumentsValid().Should().BeTrue();
             }
@@ -64,7 +64,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_return_the_help_specifying_how_to_use_the_application()
             {
-                var cont = GetApplicationController(null, "-p");
+                var cont = GetApplicationController("-p");
 
                 cont.GetCommandLineHelp().Should().NotBeNullOrEmpty().And.NotBeBlank();
             }
@@ -96,7 +96,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void calling_with_invalid_argument_line_options_it_should_throw_an_ArgumentException()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o");
+                var cont = GetApplicationController("-p", "My App", "-o");
 
                 cont.Invoking(x => x.ProcessTemplate("my res", "my namespace", (w, y, z) => { }))
                     .ShouldThrow<ArgumentException>()
@@ -110,7 +110,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_Solution_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
 
                 var config = cont.ProcessSolutionTemplate();
 
@@ -131,7 +131,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_CustomProperties_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
 
                 var config = cont.ProcessPropertiesCustomPropertiesTemplate();
 
@@ -150,7 +150,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_InitProperties_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".", "-s", this.GetType().Assembly.Location);
+                var cont = GetApplicationController("-p", "My App", "-o", ".", "-s", this.GetType().Assembly.Location);
                 var config = cont.ProcessPropertiesInitPropertiesTemplate();
 
                 config.Should().NotBeNull();
@@ -173,7 +173,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_CustomTasks_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
                 var config = cont.ProcessTasksCustomTasksTemplate();
 
                 config.Should().NotBeNull();
@@ -191,7 +191,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_CustomTargets_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
                 var config = cont.ProcessTargetsCustomTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -211,7 +211,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_BuildTargets_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
                 var config = cont.ProcessTargetsBuildTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -229,7 +229,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_RunTestsTargets_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
                 var config = cont.ProcessTargetsRunTestsTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -248,7 +248,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_VersioningTargets_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
                 var config = cont.ProcessTargetsVersioningTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -267,7 +267,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_CustomBuildTargets_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
                 var config = cont.ProcessTargetsCustomBuildTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -286,7 +286,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_CustomSolutionProperties_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
                 var config = cont.ProcessCustomSolutionPropertiesTemplate();
 
                 config.Should().NotBeNull();
@@ -306,7 +306,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void it_should_save_the_CustomsolutionTargets_template()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -329,7 +329,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_not_specifying_a_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_default_targets_code()
             {
-                var cont = GetApplicationController(null, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -350,7 +350,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_specifying_Hudson_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_Hudson_targets_code()
             {
-                var cont = GetApplicationController(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.Hudson, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".", "--cis", "hudson");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -373,7 +373,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_specifying_TeamCity_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_TeamCity_targets_code()
             {
-                var cont = GetApplicationController(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.TeamCity, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".", "--cis", "teamcity");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -396,7 +396,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_specifying_CCNET_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_CCNET_targets_code()
             {
-                var cont = GetApplicationController(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.CCNET, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".", "--cis", "ccnet");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -419,7 +419,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_specifying_TFS_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_TFS_targets_code()
             {
-                var cont = GetApplicationController(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.TFS, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController("-p", "My App", "-o", ".", "--cis", "tfs");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -440,16 +440,12 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             }
         }
 
-        private static ApplicationController GetApplicationController(Action<CommandLineOptions> updatingOptions = null, params string[] arguments)
+        private static ApplicationController GetApplicationController(params string[] arguments)
         {
-            var options = new CommandLineOptions();
+            var argumentsValidator = ServiceLocator.Current.GetInstance<ArgumentsValidator>();
+            argumentsValidator.AreArgumentsValid(arguments);
 
-            if (updatingOptions != null)
-            {
-                updatingOptions(options);
-            }
-
-            return ServiceLocator.Current.GetInstance<ApplicationControllerFactory>().Create(arguments, options);
+            return ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(arguments);
         }
 
         private static string GetContentFromPersistedTemplate(TemplateConfigurator config)

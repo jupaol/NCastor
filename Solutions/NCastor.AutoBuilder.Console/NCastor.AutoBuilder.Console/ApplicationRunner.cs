@@ -40,7 +40,6 @@ namespace NCastor.AutoBuilder.Console
         public void Run(string[] arguments)
         {
             new BootstrapperInitialization().Start();
-            var applicationControllerFactory = ServiceLocator.Current.GetInstance<IApplicationControllerFactory>();
             var argumentsValidator = ServiceLocator.Current.GetInstance<ArgumentsValidator>();
 
             try
@@ -51,7 +50,7 @@ namespace NCastor.AutoBuilder.Console
                 }
                 else
                 {
-                    var applicationController = applicationControllerFactory.Create(arguments, argumentsValidator.GetParsedOptions());
+                    var applicationController = ServiceLocator.Current.GetInstance<ApplicationController>().WithArguments(arguments);
 
                     applicationController.ProcessSolutionTemplate();
                     ////controller.ProcessPropertiesCustomPropertiesTemplate();

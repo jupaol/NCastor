@@ -40,8 +40,8 @@ namespace NCastor.AutoBuilder.Console
                 .ToConstant(new CommandLineParser(new CommandLineParserSettings { MutuallyExclusive = true, CaseSensitive = false }))
                 .InSingletonScope();
 
-            container.Bind<IApplicationControllerFactory>()
-                .To<ApplicationControllerFactory>();
+            //container.Bind<IApplicationControllerFactory>()
+            //    .To<ApplicationControllerFactory>();
 
             container.Bind<GetBuildNumberTargetGenerator>()
                 .ToProvider<GetBuildNumberTargetGeneratorProvider>();
