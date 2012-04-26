@@ -173,6 +173,7 @@ namespace NCastor.AutoBuilder.Console
                 (x, y, z) =>
                 {
                     x.Set(TemplateTokenConstants.ProductName, y.ProductName);
+                    x.Set(TemplateTokenConstants.SolutionName, y.SolutionName);
                 });
         }
 

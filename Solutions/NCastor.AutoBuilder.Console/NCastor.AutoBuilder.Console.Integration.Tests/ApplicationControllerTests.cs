@@ -123,6 +123,25 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
 
                 templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
             }
+
+            [TestMethod]
+            public void it_should_save_the_Solution_template_replacing_the_SolutionName_token()
+            {
+                var cont = GetApplicationController("-p", "My App", "-o", ".", "-s", "MySolution");
+
+                var config = cont.ProcessSolutionTemplate();
+
+                config.Should().NotBeNull();
+                File.Exists(config.Persistence.OutputTemplatePath).Should().BeTrue();
+                config.Persistence.OutputTemplatePath.Should().Be(@".\My App.BuildSolution.proj");
+
+                //testing that the template tokens were substituted correctly
+                var templateRes = GetContentFromPersistedTemplate(config);
+
+                templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
+                templateRes.Should().Contain("MySolution");
+                templateRes.CountOcurrences("MySolution").Should().Be(1);
+            }
         }
 
         [TestClass]
