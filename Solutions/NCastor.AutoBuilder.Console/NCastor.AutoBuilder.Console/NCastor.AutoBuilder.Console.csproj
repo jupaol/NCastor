@@ -131,7 +131,6 @@
     <Compile Include="GetAdditionalInformationalVersionTargetGeneratorProvider.cs" />
     <Compile Include="GetBuildNumberTargetGeneratorProvider.cs" />
     <Compile Include="GetRevisionVersionTargetGeneratorProvider.cs" />
-    <Compile Include="IApplicationControllerFactory.cs" />
     <Compile Include="NinjectInitialization.cs" />
     <Compile Include="TargetsCodeGeneratorController.cs" />
     <Compile Include="CommandLineOptions.cs" />
