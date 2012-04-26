@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="GetRevisionVersionTargetGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
+// <copyright file="GetRevisionVersionFromSvnTargetGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
 //
 // jupaol@hotmail.com
 // http://jupaol.blogspot.com/
@@ -10,7 +10,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
+namespace NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning
 {
     using System;
     using System.Collections.Generic;
@@ -19,15 +19,15 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
     using NCastor.AutoBuilder.Console.Constants;
 
     /// <summary>
-    /// Base class to generate MSBuild targets code to get the revision version
+    /// Generates the targets code to get the revision version from svn
     /// </summary>
-    public class GetRevisionVersionTargetGenerator : CodeGeneratorBase
+    public class GetRevisionVersionFromSvnTargetGenerator : GetRevisionVersionTargetGenerator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetRevisionVersionTargetGenerator"/> class.
+        /// Initializes a new instance of the <see cref="GetRevisionVersionFromSvnTargetGenerator"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        public GetRevisionVersionTargetGenerator(CommandLineOptions options)
+        public GetRevisionVersionFromSvnTargetGenerator(CommandLineOptions options)
             : base(options)
         {
         }
@@ -41,8 +41,8 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
         public override string GenerateCode()
         {
             return this.ProcessTemplate(
-                CodeGeneratorTemplateConstants.GenericGetRevisionVersionTargets,
-                "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Build.Versioning",
+                CodeGeneratorTemplateConstants.GetRevisionVersionFromSvnTargetsTemplate,
+                "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Targets.Build.Versioning",
                 (x, y, z) =>
                 {
                 });

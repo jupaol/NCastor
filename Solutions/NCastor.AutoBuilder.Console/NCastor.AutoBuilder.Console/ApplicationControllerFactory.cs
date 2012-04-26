@@ -18,7 +18,7 @@ namespace NCastor.AutoBuilder.Console
     using System.Text;
     using CommandLine;
     using Microsoft.Practices.ServiceLocation;
-    using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
+    using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
 
     /// <summary>
     /// Application controller factory

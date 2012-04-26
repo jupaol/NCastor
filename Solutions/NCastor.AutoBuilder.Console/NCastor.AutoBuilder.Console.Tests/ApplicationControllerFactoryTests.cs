@@ -5,7 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
 using System.Reflection;
-using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
+using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
 using Microsoft.Practices.ServiceLocation;
 
 namespace NCastor.AutoBuilder.Console.Tests

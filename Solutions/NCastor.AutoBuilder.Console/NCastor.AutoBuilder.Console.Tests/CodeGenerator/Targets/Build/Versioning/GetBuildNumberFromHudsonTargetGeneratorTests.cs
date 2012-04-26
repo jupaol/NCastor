@@ -5,10 +5,10 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.AutoMoq;
-using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
+using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
 using FluentAssertions;
 
-namespace NCastor.AutoBuilder.Console.Tests.CodeGenerator.BuildTargets
+namespace NCastor.AutoBuilder.Console.Tests.CodeGenerator.Targets.Build.Versioning
 {
     [TestClass]
     public class GetBuildNumberFromHudsonTargetGeneratorTests

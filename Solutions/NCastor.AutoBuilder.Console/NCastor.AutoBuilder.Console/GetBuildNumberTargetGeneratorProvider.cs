@@ -16,7 +16,7 @@ namespace NCastor.AutoBuilder.Console
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
+    using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
     using Ninject;
     using Ninject.Activation;
 

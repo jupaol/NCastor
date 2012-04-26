@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="GetRevisionVersionFromGitTargetGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
+// <copyright file="GetBuildNumberFromCcnetTargetsGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
 //
 // jupaol@hotmail.com
 // http://jupaol.blogspot.com/
@@ -10,7 +10,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
+namespace NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning
 {
     using System;
     using System.Collections.Generic;
@@ -19,15 +19,15 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
     using NCastor.AutoBuilder.Console.Constants;
 
     /// <summary>
-    /// Generates the targets code to get the revision version from Git
+    /// Generates the targets code to get the build number from CCNET CIS
     /// </summary>
-    public class GetRevisionVersionFromGitTargetGenerator : GetRevisionVersionTargetGenerator
+    public class GetBuildNumberFromCcnetTargetsGenerator : GetBuildNumberTargetGenerator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetRevisionVersionFromGitTargetGenerator"/> class.
+        /// Initializes a new instance of the <see cref="GetBuildNumberFromCcnetTargetsGenerator"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        public GetRevisionVersionFromGitTargetGenerator(CommandLineOptions options)
+        public GetBuildNumberFromCcnetTargetsGenerator(CommandLineOptions options)
             : base(options)
         {
         }
@@ -41,8 +41,8 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
         public override string GenerateCode()
         {
             return this.ProcessTemplate(
-                CodeGeneratorTemplateConstants.GetRevisionVersionFromGitTargetsTemplate,
-                "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Build.Versioning",
+                CodeGeneratorTemplateConstants.GetBuildNumberFromCcnetTargetsTemplate,
+                "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Targets.Build.Versioning",
                 (x, y, z) =>
                 {
                 });

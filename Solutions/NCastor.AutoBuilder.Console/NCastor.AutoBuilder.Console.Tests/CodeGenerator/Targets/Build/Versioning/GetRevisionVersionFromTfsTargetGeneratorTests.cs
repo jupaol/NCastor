@@ -3,11 +3,11 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
+using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
 using FluentAssertions;
 using Ploeh.AutoFixture;
 
-namespace NCastor.AutoBuilder.Console.Tests.CodeGenerator.BuildTargets
+namespace NCastor.AutoBuilder.Console.Tests.CodeGenerator.Targets.Build.Versioning
 {
     [TestClass]
     public class GetRevisionVersionFromTfsTargetGeneratorTests

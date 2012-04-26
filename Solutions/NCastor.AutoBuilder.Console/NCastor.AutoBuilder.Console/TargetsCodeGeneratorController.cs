@@ -18,7 +18,7 @@ namespace NCastor.AutoBuilder.Console
     using System.Text;
     using CuttingEdge.Conditions;
     using NCastor.AutoBuilder.Console.CodeGenerator;
-    using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
+    using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
     using NCastor.AutoBuilder.Console.Constants;
     using NCastor.AutoBuilder.Console.FluentConfiguration;
     using NCastor.AutoBuilder.Console.FluentConfiguration.ExtensionMethods;
@@ -79,7 +79,7 @@ namespace NCastor.AutoBuilder.Console
         {
             return this.ProcessTemplate(
                 CodeGeneratorTemplateConstants.CommonVersioningCode,
-                "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Build.Versioning",
+                "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Targets.Build.Versioning",
                 (x, y, z) =>
                 {
                 });

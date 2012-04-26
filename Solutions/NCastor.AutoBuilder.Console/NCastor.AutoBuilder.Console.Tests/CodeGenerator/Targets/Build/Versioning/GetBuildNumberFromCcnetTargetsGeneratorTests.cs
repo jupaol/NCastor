@@ -5,9 +5,9 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
 using Ploeh.AutoFixture;
-using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
+using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
 
-namespace NCastor.AutoBuilder.Console.Tests.CodeGenerator.BuildTargets
+namespace NCastor.AutoBuilder.Console.Tests.CodeGenerator.Targets.Build.Versioning
 {
     [TestClass]
     public class GetBuildNumberFromCcnetTargetsGeneratorTests

@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="GetBuildNumberFromTeamCityTargetsGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
+// <copyright file="GetBuildNumberFromTfsTargetsGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
 //
 // jupaol@hotmail.com
 // http://jupaol.blogspot.com/
@@ -10,7 +10,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
+namespace NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning
 {
     using System;
     using System.Collections.Generic;
@@ -19,15 +19,15 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
     using NCastor.AutoBuilder.Console.Constants;
 
     /// <summary>
-    /// Generates the targets code to get the build number from TeamCity CIS
+    /// Generates the targets code to get the build number from TFS CIS
     /// </summary>
-    public class GetBuildNumberFromTeamCityTargetsGenerator : GetBuildNumberTargetGenerator
+    public class GetBuildNumberFromTfsTargetsGenerator : GetBuildNumberTargetGenerator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetBuildNumberFromTeamCityTargetsGenerator"/> class.
+        /// Initializes a new instance of the <see cref="GetBuildNumberFromTfsTargetsGenerator"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        public GetBuildNumberFromTeamCityTargetsGenerator(CommandLineOptions options)
+        public GetBuildNumberFromTfsTargetsGenerator(CommandLineOptions options)
             : base(options)
         {
         }
@@ -41,8 +41,8 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
         public override string GenerateCode()
         {
             return this.ProcessTemplate(
-                CodeGeneratorTemplateConstants.GetBuildNumberFromTeamCityTargetsTemplate,
-                "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Build.Versioning",
+                CodeGeneratorTemplateConstants.GetBuildNumberFromTfsTargetsTemplate,
+                "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Targets.Build.Versioning",
                 (x, y, z) =>
                 {
                 });

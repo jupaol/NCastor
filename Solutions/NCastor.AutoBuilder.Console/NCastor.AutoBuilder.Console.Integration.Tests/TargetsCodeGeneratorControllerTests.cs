@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
 using NCastor.AutoBuilder.Console.CodeGenerator;
 using NCastor.AutoBuilder.Console.Constants;
-using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
+using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.AutoMoq;
 using NCastor.AutoBuilder.Console;
