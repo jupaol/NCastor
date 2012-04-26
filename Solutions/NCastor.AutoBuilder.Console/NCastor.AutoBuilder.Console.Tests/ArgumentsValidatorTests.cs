@@ -28,14 +28,14 @@ namespace NCastor.AutoBuilder.Console.Tests
         [TestMethod]
         public void calling_AreArgumentsValid_with_the_argument_GetBuildNumberFrom_with_an_invalid_parameter_it_should_return_false()
         {
-            new ArgumentsValidatorHelper().AreArgumentsValid("--GetBuildNumberFrom", "212121").Should().BeFalse();
-            new ArgumentsValidatorHelper().AreArgumentsValid("--GetBuildNumberFrom", "Hudson2").Should().BeFalse();
+            new ArgumentsValidatorHelper().AreArgumentsValid("--CIS", "212121").Should().BeFalse();
+            new ArgumentsValidatorHelper().AreArgumentsValid("--CIS", "Hudson2").Should().BeFalse();
         }
 
         [TestMethod]
         public void calling_AreArgumentsValid_with_the_argument_GetBuildNumberFrom_with_a_valid_parameter_it_should_return_true()
         {
-            new ArgumentsValidatorHelper().AreArgumentsValid("--GetBuildNumberFrom", "hudSON").Should().BeTrue();
+            new ArgumentsValidatorHelper().AreArgumentsValid("--CIS", "hudSON").Should().BeTrue();
         }
 
         [TestMethod]

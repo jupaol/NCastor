@@ -66,13 +66,13 @@ namespace NCastor.AutoBuilder.Console.Tests
         [TestMethod]
         public void calling_ParseArguments_when_specifying_the_GetBuildNumberFrom_option_with_a_valid_parameter_it_should_return_true()
         {
-            new ParserHelper().Parse("--GetBuildNumberFrom", "Hudson").Should().BeTrue();
+            new ParserHelper().Parse("--CIS", "Hudson").Should().BeTrue();
         }
 
         [TestMethod]
         public void calling_ParseArguments_when_specifying_the_GetBuildNumberFrom_option_without_a_parameter_it_should_return_false()
         {
-            new ParserHelper().Parse("--GetBuildNumberFrom").Should().BeFalse();
+            new ParserHelper().Parse("--CIS").Should().BeFalse();
         }
 
         [TestMethod]

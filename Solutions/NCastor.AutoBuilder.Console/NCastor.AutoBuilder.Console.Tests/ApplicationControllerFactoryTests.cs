@@ -41,7 +41,7 @@ namespace NCastor.AutoBuilder.Console.Tests
             [TestMethod]
             public void it_should_return_an_ApplicationController_object_with_a_reference_to_GetBuildNumberFromHudsonTargetGenerator_when_the_GetBuildNumberFrom_option_is_set_to_Hudson()
             {
-                var controller = new ApplicationControllerFactoryHelper().Create(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.Hudson, "-p", "MyApp", "-o", ".");
+                var controller = new ApplicationControllerFactoryHelper().Create(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.Hudson, "-p", "MyApp", "-o", ".");
 
                 var currentBuildNumberTargetsGenerator = this.CheckPrivateType<TargetsCodeGeneratorController, ApplicationController>("targetsCodeGeneratorController", controller);
                 this.CheckPrivateType<GetBuildNumberFromHudsonTargetGenerator, TargetsCodeGeneratorController>("getBuildNumberTargetGenerator", currentBuildNumberTargetsGenerator);
@@ -50,7 +50,7 @@ namespace NCastor.AutoBuilder.Console.Tests
             [TestMethod]
             public void it_should_return_an_ApplicationController_object_with_a_reference_to_GetBuildNumberFromTeamCityTargetGenerator_when_the_GetBuildNumberFrom_option_is_set_to_TeamCity()
             {
-                var controller = new ApplicationControllerFactoryHelper().Create(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.TeamCity, "-p", "MyApp", "-o", ".");
+                var controller = new ApplicationControllerFactoryHelper().Create(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.TeamCity, "-p", "MyApp", "-o", ".");
 
                 var currentBuildNumberTargetsGenerator = this.CheckPrivateType<TargetsCodeGeneratorController, ApplicationController>("targetsCodeGeneratorController", controller);
                 this.CheckPrivateType<GetBuildNumberFromTeamCityTargetsGenerator, TargetsCodeGeneratorController>("getBuildNumberTargetGenerator", currentBuildNumberTargetsGenerator);
@@ -59,7 +59,7 @@ namespace NCastor.AutoBuilder.Console.Tests
             [TestMethod]
             public void it_should_return_an_ApplicationController_object_with_a_reference_to_GetBuildNumberFromCcnetTargetGenerator_when_the_GetBuildNumberFrom_option_is_set_to_CCNET()
             {
-                var controller = new ApplicationControllerFactoryHelper().Create(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.CCNET, "-p", "MyApp", "-o", ".");
+                var controller = new ApplicationControllerFactoryHelper().Create(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.CCNET, "-p", "MyApp", "-o", ".");
 
                 var currentBuildNumberTargetsGenerator = this.CheckPrivateType<TargetsCodeGeneratorController, ApplicationController>("targetsCodeGeneratorController", controller);
                 this.CheckPrivateType<GetBuildNumberFromCcnetTargetsGenerator, TargetsCodeGeneratorController>("getBuildNumberTargetGenerator", currentBuildNumberTargetsGenerator);
@@ -68,7 +68,7 @@ namespace NCastor.AutoBuilder.Console.Tests
             [TestMethod]
             public void it_should_return_an_ApplicationController_object_with_a_reference_to_GetBuildNumberFromTfsTargetGenerator_when_the_GetBuildNumberFrom_option_is_set_to_TFS()
             {
-                var controller = new ApplicationControllerFactoryHelper().Create(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.TFS, "-p", "MyApp", "-o", ".");
+                var controller = new ApplicationControllerFactoryHelper().Create(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.TFS, "-p", "MyApp", "-o", ".");
 
                 var currentBuildNumberTargetsGenerator = this.CheckPrivateType<TargetsCodeGeneratorController, ApplicationController>("targetsCodeGeneratorController", controller);
                 this.CheckPrivateType<GetBuildNumberFromTfsTargetsGenerator, TargetsCodeGeneratorController>("getBuildNumberTargetGenerator", currentBuildNumberTargetsGenerator);

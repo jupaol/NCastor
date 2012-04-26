@@ -95,9 +95,9 @@ namespace NCastor.AutoBuilder.Console
         /// </returns>
         private bool ValidateArguments(CommandLineOptions options, string[] arguments)
         {
-            if (options.GetBuildNumberFrom.HasValue)
+            if (options.ContinuousIntegrationServer.HasValue)
             {
-                string currentEnumValue = options.GetBuildNumberFrom.Value.ToString();
+                string currentEnumValue = options.ContinuousIntegrationServer.Value.ToString();
 
                 return Enum.IsDefined(typeof(ContinuousIntegrationServers), currentEnumValue);
             }

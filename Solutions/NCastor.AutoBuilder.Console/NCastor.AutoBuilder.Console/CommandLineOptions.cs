@@ -51,8 +51,8 @@ namespace NCastor.AutoBuilder.Console
         /// This option is used to generate custom targets to get the build number from the CIS specified
         /// </remarks>
         [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1401:FieldsMustBePrivate", Justification = JustificationForTheFieldsMustBePrivate)]
-        [Option(null, "GetBuildNumberFrom", HelpText = "[--GetBuildNumberFrom <Hudson | TeamCity | CCNET | TFS>] the CIS source to get the build number. This option is used to generate custom targets to get the build number", Required = false)]
-        public ContinuousIntegrationServers? GetBuildNumberFrom;
+        [Option(null, "CIS", HelpText = "[--CIS <Hudson | TeamCity | CCNET | TFS>] the CIS source to get the build number. This option is used to generate custom targets to get the build number", Required = false)]
+        public ContinuousIntegrationServers? ContinuousIntegrationServer;
 
         /// <summary>
         /// Specifies the version control system used

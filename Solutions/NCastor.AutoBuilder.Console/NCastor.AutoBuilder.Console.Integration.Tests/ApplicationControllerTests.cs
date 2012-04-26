@@ -350,7 +350,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_specifying_Hudson_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_Hudson_targets_code()
             {
-                var cont = GetApplicationController(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.Hudson, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.Hudson, "-p", "My App", "-o", ".");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -373,7 +373,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_specifying_TeamCity_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_TeamCity_targets_code()
             {
-                var cont = GetApplicationController(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.TeamCity, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.TeamCity, "-p", "My App", "-o", ".");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -396,7 +396,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_specifying_CCNET_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_CCNET_targets_code()
             {
-                var cont = GetApplicationController(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.CCNET, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.CCNET, "-p", "My App", "-o", ".");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();
@@ -419,7 +419,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             [TestMethod]
             public void when_specifying_TFS_as_the_current_CIS_it_should_save_the_CustomsolutionTargets_template_with_the_TFS_targets_code()
             {
-                var cont = GetApplicationController(x => x.GetBuildNumberFrom = ContinuousIntegrationServers.TFS, "-p", "My App", "-o", ".");
+                var cont = GetApplicationController(x => x.ContinuousIntegrationServer = ContinuousIntegrationServers.TFS, "-p", "My App", "-o", ".");
                 var config = cont.ProcessCustomSolutionTargetsTemplate();
 
                 config.Should().NotBeNull();

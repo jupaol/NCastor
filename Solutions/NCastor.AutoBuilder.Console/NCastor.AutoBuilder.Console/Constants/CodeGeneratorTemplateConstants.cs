@@ -48,7 +48,7 @@ namespace NCastor.AutoBuilder.Console.Constants
         public const string GetBuildNumberFromTfsTargetsTemplate = "GetBuildNumberFromTfsTargets.template";
 
         /// <summary>
-        /// Represents the 'GenericGetBuildNumberTargets.template' template used to generate the targets when the GetBuildNumberFrom options is not set
+        /// Represents the 'GenericGetBuildNumberTargets.template' template used to generate the targets when the CIS options is not set
         /// </summary>
         public const string GenericGetBuildNumberTargetsTemplate = "GenericGetBuildNumberTargets.template";
     }

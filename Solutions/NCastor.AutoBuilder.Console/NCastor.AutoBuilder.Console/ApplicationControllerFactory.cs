@@ -50,9 +50,9 @@ namespace NCastor.AutoBuilder.Console
         /// <param name="options">The options.</param>
         private void AddCustomTargetscontroller(ApplicationController applicationController, CommandLineOptions options)
         {
-            if (options.GetBuildNumberFrom.HasValue)
+            if (options.ContinuousIntegrationServer.HasValue)
             {
-                switch (options.GetBuildNumberFrom.Value)
+                switch (options.ContinuousIntegrationServer.Value)
                 {
                     case ContinuousIntegrationServers.Hudson:
                         applicationController.WithCustomTargetsCodeGeneratorController(
