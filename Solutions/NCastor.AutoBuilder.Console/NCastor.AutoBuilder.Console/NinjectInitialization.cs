@@ -48,6 +48,9 @@ namespace NCastor.AutoBuilder.Console
 
             container.Bind<GetRevisionVersionTargetGenerator>()
                 .ToProvider<GetRevisionVersionTargetGeneratorProvider>();
+
+            container.Bind<GetAdditionalInformationalVersionTargetGenerator>()
+                .ToProvider<GetAdditionalInformationalVersionTargetGeneratorProvider>();
         }
     }
 }

@@ -108,6 +108,30 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
                 this.CheckConditionalBinding<GetRevisionVersionFromTfsTargetGenerator, GetRevisionVersionTargetGenerator>("--vcs", "tfs");
             }
 
+            [TestMethod]
+            public void when_asking_the_GetAdditionalInformationalVersionTargetGenerator_type_it_should_return_a_valid_GetAdditionalInformationalVersionTargetGenerator_when_the_VCS_options_is_not_set()
+            {
+                this.CheckConditionalBinding<GetAdditionalInformationalVersionTargetGenerator, GetAdditionalInformationalVersionTargetGenerator>();
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetAdditionalInformationalVersionTargetGenerator_type_it_should_return_a_valid_GetAdditionalInformationalVersionFromGitTargetGenerator_when_the_VCS_options_is_Git()
+            {
+                this.CheckConditionalBinding<GetAdditionalInformationalVersionFromGitTargetGenerator, GetAdditionalInformationalVersionTargetGenerator>("--vcs", "git");
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetAdditionalInformationalVersionTargetGenerator_type_it_should_return_a_valid_GetAdditionalInformationalVersionFromSvnTargetGenerator_when_the_VCS_options_is_SVN()
+            {
+                this.CheckConditionalBinding<GetAdditionalInformationalVersionFromSvnTargetGenerator, GetAdditionalInformationalVersionTargetGenerator>("--vcs", "svn");
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetAdditionalInformationalVersionTargetGenerator_type_it_should_return_a_valid_GetAdditionalInformationalVersionFromTfsTargetGenerator_when_the_VCS_options_is_TFS()
+            {
+                this.CheckConditionalBinding<GetAdditionalInformationalVersionFromTfsTargetGenerator, GetAdditionalInformationalVersionTargetGenerator>("--vcs", "tfs");
+            }
+
             private void CheckConditionalBinding<TExpected, TSource>(params string[] arguments)
                 where TExpected : class
                 where TSource : class

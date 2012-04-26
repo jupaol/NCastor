@@ -28,7 +28,7 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
         public void trying_to_create_a_new_instance_of_TargetsCodeGenerator_with_null_options_should_throw_an_ArgumentNullException()
         {
             TargetsCodeGeneratorController sut = null;
-            Action invoking = () => sut = new TargetsCodeGeneratorController(null, null, null);
+            Action invoking = () => sut = new TargetsCodeGeneratorController(null, null, null, null);
 
             invoking.ShouldThrow<ArgumentNullException>();
         }

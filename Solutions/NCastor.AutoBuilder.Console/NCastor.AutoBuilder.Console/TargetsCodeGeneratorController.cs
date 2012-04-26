@@ -43,6 +43,11 @@ namespace NCastor.AutoBuilder.Console
         private GetRevisionVersionTargetGenerator getRevisionVersionTargetGenerator;
 
         /// <summary>
+        /// Represents the <see cref="GetAdditionalInformationalVersionTargetGenerator"/> instance used in this class to generate the targets code to get additional information version based on the VCS option
+        /// </summary>
+        private GetAdditionalInformationalVersionTargetGenerator getAdditionalInformationalVersionTargetGenerator;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TargetsCodeGeneratorController"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
@@ -51,14 +56,17 @@ namespace NCastor.AutoBuilder.Console
         public TargetsCodeGeneratorController(
             CommandLineOptions options,
             GetBuildNumberTargetGenerator getBuildNumberTargetGenerator,
-            GetRevisionVersionTargetGenerator getRevisionVersionTargetGenerator)
+            GetRevisionVersionTargetGenerator getRevisionVersionTargetGenerator,
+            GetAdditionalInformationalVersionTargetGenerator getAdditionalInformationalVersionTargetGenerator)
             : base(options)
         {
             Condition.Requires(getBuildNumberTargetGenerator).IsNotNull();
             Condition.Requires(getRevisionVersionTargetGenerator).IsNotNull();
+            Condition.Requires(getAdditionalInformationalVersionTargetGenerator).IsNotNull();
 
             this.getBuildNumberTargetGenerator = getBuildNumberTargetGenerator;
             this.getRevisionVersionTargetGenerator = getRevisionVersionTargetGenerator;
+            this.getAdditionalInformationalVersionTargetGenerator = getAdditionalInformationalVersionTargetGenerator;
         }
 
         /// <summary>
@@ -102,6 +110,12 @@ namespace NCastor.AutoBuilder.Console
             finalTargetsCode.AppendLine();
             finalTargetsCode.AppendLine();
             finalTargetsCode.Append(this.getBuildNumberTargetGenerator.GenerateCode());
+            finalTargetsCode.AppendLine();
+            finalTargetsCode.AppendLine();
+            finalTargetsCode.Append(this.getRevisionVersionTargetGenerator.GenerateCode());
+            finalTargetsCode.AppendLine();
+            finalTargetsCode.AppendLine();
+            finalTargetsCode.Append(this.getAdditionalInformationalVersionTargetGenerator.GenerateCode());
 
             return finalTargetsCode.ToString();
         }
