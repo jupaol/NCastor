@@ -33,23 +33,27 @@ namespace NCastor.AutoBuilder.Console
     public class TargetsCodeGeneratorController : CodeGeneratorBase
     {
         /// <summary>
-        /// Represents the <see cref="GetBuildNumberTargetGenerator"/> instance used in this class
+        /// Represents the <see cref="GetBuildNumberTargetGenerator"/> instance used in this class to generate the targets code to get the build number
         /// </summary>
         private GetBuildNumberTargetGenerator getBuildNumberTargetGenerator;
+
+        /// <summary>
+        /// Represents the <see cref="GetRevisionVersionTargetGenerator"/> instance used in this class to generate the targets code to get the revision version number
+        /// </summary>
+        private GetRevisionVersionTargetGenerator getRevisionVersionTargetGenerator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TargetsCodeGeneratorController"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        /// <param name="getBuildNumberTargetGenerator">The get build number target generator.</param>
+        /// <param name="getBuildNumberTargetGenerator">The build number target generator.</param>
         public TargetsCodeGeneratorController(
             CommandLineOptions options,
             GetBuildNumberTargetGenerator getBuildNumberTargetGenerator)
+            : base(options)
         {
-            Condition.Requires(options).IsNotNull();
             Condition.Requires(getBuildNumberTargetGenerator).IsNotNull();
 
-            this.Options = options;
             this.getBuildNumberTargetGenerator = getBuildNumberTargetGenerator;
         }
 

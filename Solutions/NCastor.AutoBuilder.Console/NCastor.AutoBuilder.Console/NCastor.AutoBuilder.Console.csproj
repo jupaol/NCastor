@@ -114,12 +114,21 @@
     <Compile Include="ApplicationRunner.cs" />
     <Compile Include="ArgumentsValidator.cs" />
     <Compile Include="BootstrapperInitialization.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetAdditionalInformationalVersionFromGitTargetGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetAdditionalInformationalVersionFromSvnTargetGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetAdditionalInformationalVersionFromTfsTargetGenerator.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromCcnetTargetsGenerator.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromHudsonTargetGenerator.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromTeamCityTargetsGenerator.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromTfsTargetsGenerator.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberTargetGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetAdditionalInformationalVersionTargetGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetRevisionVersionFromGitTargetGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetRevisionVersionFromSvnTargetGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetRevisionVersionFromTfsTargetGenerator.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetRevisionVersionTargetGenerator.cs" />
     <Compile Include="CodeGenerator\CodeGeneratorBase.cs" />
+    <Compile Include="GetBuildNumberTargetGeneratorProvider.cs" />
     <Compile Include="IApplicationControllerFactory.cs" />
     <Compile Include="NinjectInitialization.cs" />
     <Compile Include="TargetsCodeGeneratorController.cs" />
@@ -180,6 +189,14 @@
     <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetBuildNumberFromCcnetTargets.template" />
     <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetBuildNumberFromTfsTargets.template" />
     <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GenericGetBuildNumberTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GenericGetRevisionVersionTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetRevisionVersionFromGitTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetRevisionVersionFromSvnTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetRevisionVersionFromTfsTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GenericGetAdditionalInformationalVersionTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetAdditionalInformationalVersionFromGitTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetAdditionalInformationalVersionFromSvnTargets.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Build\Versioning\GetAdditionalInformationalVersionFromTfsTargets.template" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,2 @@
+﻿  <!--TODO: If you want to use the revision number from TFSs part of your version, uncomment the following code-->
+  <!--<Target Name="CoreGetRevisionVersion" DependsOnTargets="UseTFSRevisionAsCurrentRevisionVersion" />-->

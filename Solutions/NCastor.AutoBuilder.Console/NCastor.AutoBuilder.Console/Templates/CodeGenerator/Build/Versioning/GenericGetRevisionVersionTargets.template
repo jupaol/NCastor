@@ -1,0 +1,11 @@
+﻿  <!--TODO: Change the 'DependsOnTargets' attribute to specify the target to generate the revision version-->
+  <!--<Target Name="CoreGetRevisionVersion" DependsOnTargets="" />-->
+
+  <!--Or simply add your custom logic to get the revision version-->
+  <!--<Target Name="CoreGetRevisionVersion">
+    <Message Text="$(LoggingMessagePrefix) Getting the Revision version Number..." Importance="high" />
+    <Warning Text="TODO: Add your custom logic to get the revision version number" />
+    <PropertyGroup>
+      <RevisionVersion>$(Your_Custom_Revision_Version_Number)</RevisionVersion>
+    </PropertyGroup>
+  </Target>-->

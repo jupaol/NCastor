@@ -1,0 +1,1 @@
+﻿  <Target Name="CoreGetExtraInformationalVersion" DependsOnTargets="FormatGitRevisionVersion" />

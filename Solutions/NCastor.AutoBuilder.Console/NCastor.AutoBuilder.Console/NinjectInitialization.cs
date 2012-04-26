@@ -18,6 +18,7 @@ namespace NCastor.AutoBuilder.Console
     using System.Text;
     using Bootstrap.Ninject;
     using CommandLine;
+    using NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets;
     using Ninject;
 
     /// <summary>
@@ -41,6 +42,9 @@ namespace NCastor.AutoBuilder.Console
 
             container.Bind<IApplicationControllerFactory>()
                 .To<ApplicationControllerFactory>();
+
+            container.Bind<GetBuildNumberTargetGenerator>()
+                .ToProvider<GetBuildNumberTargetGeneratorProvider>();
         }
     }
 }

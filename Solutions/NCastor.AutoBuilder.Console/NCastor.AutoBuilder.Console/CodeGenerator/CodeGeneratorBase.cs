@@ -27,6 +27,17 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator
     public abstract class CodeGeneratorBase
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="CodeGeneratorBase"/> class.
+        /// </summary>
+        /// <param name="options">The options.</param>
+        public CodeGeneratorBase(CommandLineOptions options)
+        {
+            Condition.Requires(options).IsNotNull();
+
+            this.Options = options;
+        }
+
+        /// <summary>
         /// Gets or sets the options.
         /// </summary>
         /// <value>

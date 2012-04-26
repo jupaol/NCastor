@@ -47,6 +47,9 @@
       <HintPath>..\..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq">
       <HintPath>..\..\packages\Moq.Contrib.0.3\lib\Moq.dll</HintPath>
@@ -90,10 +93,18 @@
     <Compile Include="ApplicationControllerFactoryTests.cs" />
     <Compile Include="ArgumentsValidatorTests.cs" />
     <Compile Include="AutoFixtureHelper.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetAdditionalInformationalVersionFromGitTargetGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetAdditionalInformationalVersionFromSvnTargetGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetAdditionalInformationalVersionFromTfsTargetGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetAdditionalInformationalVersionTargetGeneratorTests.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromCcnetTargetsGeneratorTests.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromHudsonTargetGeneratorTests.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromTeamCityTargetsGeneratorTests.cs" />
     <Compile Include="CodeGenerator\BuildTargets\GetBuildNumberFromTfsTargetsGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetRevisionVersionFromGitTargetGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetRevisionVersionFromSvnTargetGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetRevisionVersionFromTfsTargetGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\BuildTargets\GetRevisionVersionTargetsGeneratorTests.cs" />
     <Compile Include="CommandLineOptionsTests.cs" />
     <Compile Include="FluentConfiguration\TemplateContexTests.cs" />
     <Compile Include="FluentConfiguration\TemplatePersistenceTests.cs" />

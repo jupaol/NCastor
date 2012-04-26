@@ -51,5 +51,45 @@ namespace NCastor.AutoBuilder.Console.Constants
         /// Represents the 'GenericGetBuildNumberTargets.template' template used to generate the targets when the CIS options is not set
         /// </summary>
         public const string GenericGetBuildNumberTargetsTemplate = "GenericGetBuildNumberTargets.template";
+
+        /// <summary>
+        /// Represents the 'GenericGetRevisionVersionTargets.template' template used to generate the targets when the VCS options is not set
+        /// </summary>
+        public const string GenericGetRevisionVersionTargets = "GenericGetRevisionVersionTargets.template";
+
+        /// <summary>
+        /// Represents the 'GetRevisionVersionFromGitTargets.template' template used to generate the targets to get the revision version from Git
+        /// </summary>
+        public const string GetRevisionVersionFromGitTargetsTemplate = "GetRevisionVersionFromGitTargets.template";
+
+        /// <summary>
+        /// Represents the 'GetRevisionVersionFromSvnTargets.template' template used to generate the targets to get the revision version from SVN
+        /// </summary>
+        public const string GetRevisionVersionFromSvnTargetsTemplate = "GetRevisionVersionFromSvnTargets.template";
+
+        /// <summary>
+        /// Represents the 'GetRevisionVersionFromTfsTargets.template' template used to generate the targets to get the revision version from TFS
+        /// </summary>
+        public const string GetRevisionVersionFromTfsTargetsTemplate = "GetRevisionVersionFromTfsTargets.template";
+
+        /// <summary>
+        /// Represents the 'GenericGetAdditionalInformationalVersionTargets.template' template used to generate the extra informational version targets when the VCS options is not set
+        /// </summary>
+        public const string GenericGetAdditionalInformationalVersionTargetsTemplate = "GenericGetAdditionalInformationalVersionTargets.template";
+
+        /// <summary>
+        /// Represents the 'GetAdditionalInformationalVersionFromGitTargets.template' template used to generate the extra informational version targets from Git
+        /// </summary>
+        public const string GetAdditionalInformationalVersionFromGitTargetsTemplate = "GetAdditionalInformationalVersionFromGitTargets.template";
+
+        /// <summary>
+        /// Represents the 'GetAdditionalInformationalVersionFromSvnTargets.template' template used to generate the extra informational version targets from SVN
+        /// </summary>
+        public const string GetAdditionalInformationalVersionFromSvnTargetsTemplate = "GetAdditionalInformationalVersionFromSvnTargets.template";
+
+        /// <summary>
+        /// Represents the 'GetAdditionalInformationalVersionFromTfsTargets.template' template used to generate the extra informational version targets from TFS
+        /// </summary>
+        public const string GetAdditionalInformationalVersionFromTfsTargetsTemplate = "GetAdditionalInformationalVersionFromTfsTargets.template";
     }
 }

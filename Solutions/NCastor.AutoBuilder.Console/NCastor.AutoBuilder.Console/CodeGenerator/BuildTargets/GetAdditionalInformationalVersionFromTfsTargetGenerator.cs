@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="GetBuildNumberTargetGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
+// <copyright file="GetAdditionalInformationalVersionFromTfsTargetGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
 //
 // jupaol@hotmail.com
 // http://jupaol.blogspot.com/
@@ -17,18 +17,17 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
     using System.Linq;
     using System.Text;
     using NCastor.AutoBuilder.Console.Constants;
-    using TemplateEngine;
 
     /// <summary>
-    /// Base class to generate the targets needed to get the build number
+    /// Generates targets code to get additional informational version from TFS
     /// </summary>
-    public class GetBuildNumberTargetGenerator : CodeGeneratorBase
+    public class GetAdditionalInformationalVersionFromTfsTargetGenerator : GetAdditionalInformationalVersionTargetGenerator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetBuildNumberTargetGenerator"/> class.
+        /// Initializes a new instance of the <see cref="GetAdditionalInformationalVersionFromTfsTargetGenerator"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        public GetBuildNumberTargetGenerator(CommandLineOptions options)
+        public GetAdditionalInformationalVersionFromTfsTargetGenerator(CommandLineOptions options)
             : base(options)
         {
         }
@@ -42,7 +41,7 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
         public override string GenerateCode()
         {
             return this.ProcessTemplate(
-                CodeGeneratorTemplateConstants.GenericGetBuildNumberTargetsTemplate,
+                CodeGeneratorTemplateConstants.GetAdditionalInformationalVersionFromTfsTargetsTemplate,
                 "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Build.Versioning",
                 (x, y, z) =>
                 {

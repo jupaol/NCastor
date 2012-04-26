@@ -1,8 +1,10 @@
 ﻿  <!--TODO: Change the 'DependsOnTargets' property to specify the custom targets to generate the BuildVersion-->
   <!--<Target Name="CoreGetBuildVersion" DependsOnTargets="" />-->
 
-  <!--Or ismply write your custom logic to get the build number-->
+  <!--Or simply write your custom logic to get the build number-->
   <!--<Target Name="CoreGetBuildVersion" >
+    <Message Text="$(LoggingMessagePrefix) Getting the Build Number..." Importance="high" />
+    <Warning Text="TODO: Add your custom logic to get the build number" />
     <PropertyGroup>
       <BuildVersion>$(Your_Custom_Build_Number)</BuildVersion>
     </PropertyGroup>

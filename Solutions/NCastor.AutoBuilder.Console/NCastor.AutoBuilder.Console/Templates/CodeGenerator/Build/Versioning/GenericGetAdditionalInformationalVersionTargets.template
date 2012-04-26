@@ -1,0 +1,11 @@
+﻿  <!--TODO: Update the 'DependsOnTargets' attribute to specify a base target to get the extra informational version-->
+  <!--<Target Name="CoreGetExtraInformationalVersion" DependsOnTargets="" />-->
+
+  <!--Or simply add your custom logic to get the extra informational version-->
+  <!--<Target Name="CoreGetExtraInformationalVersion" >
+    <Message Text="$(LoggingMessagePrefix) Getting Additional version information..." Importance="high" />
+    <Warning Text="TODO: Add your custom logic to get additional version information" />
+    <PropertyGroup>
+      <AdditionalVersionInformation>Your custom information</AdditionalVersionInformation>
+    </PropertyGroup>
+  </Target>-->

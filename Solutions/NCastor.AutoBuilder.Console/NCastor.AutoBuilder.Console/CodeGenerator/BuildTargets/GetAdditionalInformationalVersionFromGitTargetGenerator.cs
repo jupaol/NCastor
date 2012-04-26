@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="GetBuildNumberTargetGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
+// <copyright file="GetAdditionalInformationalVersionFromGitTargetGenerator.cs" company="Juan Pablo Olmos Lara (Jupaol)">
 //
 // jupaol@hotmail.com
 // http://jupaol.blogspot.com/
@@ -17,18 +17,17 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
     using System.Linq;
     using System.Text;
     using NCastor.AutoBuilder.Console.Constants;
-    using TemplateEngine;
 
     /// <summary>
-    /// Base class to generate the targets needed to get the build number
+    /// Generates the targets code to get additional informational version from Git
     /// </summary>
-    public class GetBuildNumberTargetGenerator : CodeGeneratorBase
+    public class GetAdditionalInformationalVersionFromGitTargetGenerator : GetAdditionalInformationalVersionTargetGenerator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetBuildNumberTargetGenerator"/> class.
+        /// Initializes a new instance of the <see cref="GetAdditionalInformationalVersionFromGitTargetGenerator"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        public GetBuildNumberTargetGenerator(CommandLineOptions options)
+        public GetAdditionalInformationalVersionFromGitTargetGenerator(CommandLineOptions options)
             : base(options)
         {
         }
@@ -42,7 +41,7 @@ namespace NCastor.AutoBuilder.Console.CodeGenerator.BuildTargets
         public override string GenerateCode()
         {
             return this.ProcessTemplate(
-                CodeGeneratorTemplateConstants.GenericGetBuildNumberTargetsTemplate,
+                CodeGeneratorTemplateConstants.GetAdditionalInformationalVersionFromGitTargetsTemplate,
                 "NCastor.AutoBuilder.Console.Templates.CodeGenerator.Build.Versioning",
                 (x, y, z) =>
                 {
