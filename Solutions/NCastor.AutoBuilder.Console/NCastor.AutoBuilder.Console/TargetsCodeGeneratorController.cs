@@ -47,14 +47,18 @@ namespace NCastor.AutoBuilder.Console
         /// </summary>
         /// <param name="options">The options.</param>
         /// <param name="getBuildNumberTargetGenerator">The build number target generator.</param>
+        /// <param name="getRevisionVersionTargetGenerator">The get revision version target generator.</param>
         public TargetsCodeGeneratorController(
             CommandLineOptions options,
-            GetBuildNumberTargetGenerator getBuildNumberTargetGenerator)
+            GetBuildNumberTargetGenerator getBuildNumberTargetGenerator,
+            GetRevisionVersionTargetGenerator getRevisionVersionTargetGenerator)
             : base(options)
         {
             Condition.Requires(getBuildNumberTargetGenerator).IsNotNull();
+            Condition.Requires(getRevisionVersionTargetGenerator).IsNotNull();
 
             this.getBuildNumberTargetGenerator = getBuildNumberTargetGenerator;
+            this.getRevisionVersionTargetGenerator = getRevisionVersionTargetGenerator;
         }
 
         /// <summary>

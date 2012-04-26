@@ -84,6 +84,30 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
                 this.CheckConditionalBinding<GetBuildNumberFromTfsTargetsGenerator, GetBuildNumberTargetGenerator>("--cis", "tfs");
             }
 
+            [TestMethod]
+            public void when_asking_the_GetRevisionVersionTargetGenerator_type_it_should_return_a_valid_GetRevisionVersionTargetGenerator_when_the_VCS_options_is_not_set()
+            {
+                this.CheckConditionalBinding<GetRevisionVersionTargetGenerator, GetRevisionVersionTargetGenerator>();
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetRevisionVersionTargetGenerator_type_it_should_return_a_valid_GetRevisionVersionFromGitTargetGenerator_when_the_VCS_options_is_Git()
+            {
+                this.CheckConditionalBinding<GetRevisionVersionFromGitTargetGenerator, GetRevisionVersionTargetGenerator>("--vcs", "git");
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetRevisionVersionTargetGenerator_type_it_should_return_a_valid_GetRevisionVersionFromSvnTargetGenerator_when_the_VCS_options_is_SVN()
+            {
+                this.CheckConditionalBinding<GetRevisionVersionFromSvnTargetGenerator, GetRevisionVersionTargetGenerator>("--vcs", "svn");
+            }
+
+            [TestMethod]
+            public void when_asking_the_GetRevisionVersionTargetGenerator_type_it_should_return_a_valid_GetRevisionVersionFromTfsTargetGenerator_when_the_VCS_options_is_TFS()
+            {
+                this.CheckConditionalBinding<GetRevisionVersionFromTfsTargetGenerator, GetRevisionVersionTargetGenerator>("--vcs", "tfs");
+            }
+
             private void CheckConditionalBinding<TExpected, TSource>(params string[] arguments)
                 where TExpected : class
                 where TSource : class

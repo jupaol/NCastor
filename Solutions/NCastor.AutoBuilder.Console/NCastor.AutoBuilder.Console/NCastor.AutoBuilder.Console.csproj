@@ -129,6 +129,7 @@
     <Compile Include="CodeGenerator\BuildTargets\GetRevisionVersionTargetGenerator.cs" />
     <Compile Include="CodeGenerator\CodeGeneratorBase.cs" />
     <Compile Include="GetBuildNumberTargetGeneratorProvider.cs" />
+    <Compile Include="GetRevisionVersionTargetGeneratorProvider.cs" />
     <Compile Include="IApplicationControllerFactory.cs" />
     <Compile Include="NinjectInitialization.cs" />
     <Compile Include="TargetsCodeGeneratorController.cs" />
