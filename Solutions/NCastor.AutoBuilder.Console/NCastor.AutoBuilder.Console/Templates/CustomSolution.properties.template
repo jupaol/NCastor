@@ -27,35 +27,43 @@ For more help visit: https://github.com/jupaol/NCastor
     <AssemblyCompany></AssemblyCompany>
     <AssemblyCopyright></AssemblyCopyright>
     <AssemblyTrademark></AssemblyTrademark>
-
-    <!--Uncoment according to the tools you want to use-->
-    <!--Internal runners (inside your product files usually from the Nuget packagees path, 
-    this runners are considered to be stored in your source control)-->
-
-    <!--<NUnitRunner>$(NugetPackagesPath)\NUnit.Runners.2.6.0.12051\tools\nunit-console.exe</NUnitRunner>-->
-    <!--<MSPecRunner>$(NugetPackagesPath)\Machine.Specifications.0.5.6.0\tools\mspec-clr4.exe</MSPecRunner>-->
-    <!--<OpenCoverRunner>$(NugetPackagesPath)\OpenCover.4.0.301\OpenCover.Console.exe</OpenCoverRunner>-->
-    <!--<ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.7.0\ReportGenerator.exe</ReportGeneratorRunner>-->
-    <!--<NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>-->
     
   </PropertyGroup>
 
   <!--Uncoment according to the tools you want to use-->
-  <!--External runners (tools installed at a PC level)-->
+  <!--Thews are the runner paths used by the application-->
   <Choose>
     <When Condition="$(IsDesktopBuild) == 'false'">
-      <!--Externaal runner location when it is not a desktop build (in the CI server)-->
+      <!--Runners location when it is not a desktop build (in the CI server)-->
       <PropertyGroup>
+        <!--<NUnitRunner>$(NugetPackagesPath)\NUnit.Runners.2.6.0.12051\tools\nunit-console.exe</NUnitRunner>-->
+        <!--<MSPecRunner>$(NugetPackagesPath)\Machine.Specifications.0.5.6.0\tools\mspec-clr4.exe</MSPecRunner>-->
         <!--<MSTestRunner>C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>-->
+        
+        <!--<OpenCoverRunner>$(NugetPackagesPath)\OpenCover.4.0.301\OpenCover.Console.exe</OpenCoverRunner>-->
+        
+        <!--<ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.7.0\ReportGenerator.exe</ReportGeneratorRunner>-->
+        
+        <!--<NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>-->
+
         <!--<GitRunner>C:\Program Files\Git\bin\git.exe</GitRunner>-->
         <!--<SvnRunnersPath>C:\Program Files\TortoiseSVN\bin</SvnRunnersPath>-->
         <!--<TFSRunner>C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\tf.exe</TFSRunner>-->
       </PropertyGroup>
     </When>
     <When  Condition="$(IsDesktopBuild) == 'true'">
-      <!--Externaal runner location when it is a desktop build (from a developer sandbox)-->
+      <!--Runners location when it is a desktop build (from a developer sandbox)-->
       <PropertyGroup>
+        <!--<NUnitRunner>$(NugetPackagesPath)\NUnit.Runners.2.6.0.12051\tools\nunit-console.exe</NUnitRunner>-->
+        <!--<MSPecRunner>$(NugetPackagesPath)\Machine.Specifications.0.5.6.0\tools\mspec-clr4.exe</MSPecRunner>-->
         <!--<MSTestRunner>C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\MSTest.exe</MSTestRunner>-->
+
+        <!--<OpenCoverRunner>$(NugetPackagesPath)\OpenCover.4.0.301\OpenCover.Console.exe</OpenCoverRunner>-->
+
+        <!--<ReportGeneratorRunner>$(NugetPackagesPath)\ReportGenerator.1.2.7.0\ReportGenerator.exe</ReportGeneratorRunner>-->
+
+        <!--<NugetRunner>$(NugetPackagesPath)\NuGet.CommandLine.1.7.0\tools\NuGet.exe</NugetRunner>-->
+
         <!--<GitRunner>C:\Program Files\Git\bin\git.exe</GitRunner>-->
         <!--<SvnRunnersPath>C:\Program Files\TortoiseSVN\bin</SvnRunnersPath>-->
         <!--<TFSRunner>C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\tf.exe</TFSRunner>-->
