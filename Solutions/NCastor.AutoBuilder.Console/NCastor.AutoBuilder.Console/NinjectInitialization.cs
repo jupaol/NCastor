@@ -18,6 +18,7 @@ namespace NCastor.AutoBuilder.Console
     using System.Text;
     using Bootstrap.Ninject;
     using CommandLine;
+    using NCastor.AutoBuilder.Console.CodeGenerator.Properties.Runners;
     using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
     using Ninject;
 
@@ -40,9 +41,6 @@ namespace NCastor.AutoBuilder.Console
                 .ToConstant(new CommandLineParser(new CommandLineParserSettings { MutuallyExclusive = true, CaseSensitive = false }))
                 .InSingletonScope();
 
-            //container.Bind<IApplicationControllerFactory>()
-            //    .To<ApplicationControllerFactory>();
-
             container.Bind<GetBuildNumberTargetGenerator>()
                 .ToProvider<GetBuildNumberTargetGeneratorProvider>();
 
@@ -51,6 +49,9 @@ namespace NCastor.AutoBuilder.Console
 
             container.Bind<GetAdditionalInformationalVersionTargetGenerator>()
                 .ToProvider<GetAdditionalInformationalVersionTargetGeneratorProvider>();
+
+            container.Bind<VcsRunnerPropertiesGenerator>()
+                .ToProvider<VcsRunnerPropertiesGeneratorProvider>();
         }
     }
 }

@@ -26,5 +26,10 @@ namespace NCastor.AutoBuilder.Console.Constants
         /// Represents the token to be replaced with the targets generated code
         /// </summary>
         public const string TargetsGeneratedCode = "TargetsGeneratedCode";
+
+        /// <summary>
+        /// Represents the token to be replaced with the runner properties code
+        /// </summary>
+        public const string RunnerProperties = "RunnerProperties";
     }
 }

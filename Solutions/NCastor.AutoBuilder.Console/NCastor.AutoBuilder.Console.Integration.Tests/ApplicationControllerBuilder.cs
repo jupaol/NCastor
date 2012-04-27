@@ -38,7 +38,7 @@
 
         public ApplicationController BuildWithNulls()
         {
-            return new ApplicationController(null, null, null, null);
+            return new ApplicationController(null, null, null, null, null);
         }
 
         //public ApplicationController Build()

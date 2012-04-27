@@ -91,5 +91,30 @@ namespace NCastor.AutoBuilder.Console.Constants
         /// Represents the 'GetAdditionalInformationalVersionFromTfsTargets.template' template used to generate the extra informational version targets from TFS
         /// </summary>
         public const string GetAdditionalInformationalVersionFromTfsTargetsTemplate = "GetAdditionalInformationalVersionFromTfsTargets.template";
+
+        /// <summary>
+        /// Represents the 'GenericRunnerProperties.template' template used to generate the generic runner properties
+        /// </summary>
+        public const string GenericRunnerPropertiesTemplate = "GenericRunnerProperties.template";
+
+        /// <summary>
+        /// Represents the 'VcsRunnerProperties.template' template used to generate the version control system runner properties
+        /// </summary>
+        public const string VcsRunnerPropertiesTemplate = "VcsRunnerProperties.template";
+
+        /// <summary>
+        /// Represents the 'GitRunnerProperties.template' template used to generate the Git runner properties
+        /// </summary>
+        public const string GitRunnerPropertiesTemplate = "GitRunnerProperties.template";
+
+        /// <summary>
+        /// Represents the 'SvnRunnerProperties.template' template used to generate the SVN runner properties
+        /// </summary>
+        public const string SvnRunnerPropertiesTemplate = "SvnRunnerProperties.template";
+
+        /// <summary>
+        /// Represents the 'TfsRunnerProperties.template' template used to generate the TFS runner properties
+        /// </summary>
+        public const string TfsRunnerPropertiesTemplate = "TfsRunnerProperties.template";
     }
 }

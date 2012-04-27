@@ -114,6 +114,11 @@
     <Compile Include="ApplicationRunner.cs" />
     <Compile Include="ArgumentsValidator.cs" />
     <Compile Include="BootstrapperInitialization.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\GitRunnerPropertiesGenerator.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\RunnerPropertiesGeneratorController.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\SvnRunnerPropertiesGenerator.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\TfsRunnerPropertiesGenerator.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\VcsRunnerPropertiesGenerator.cs" />
     <Compile Include="CodeGenerator\Targets\Build\Versioning\GetAdditionalInformationalVersionFromGitTargetGenerator.cs" />
     <Compile Include="CodeGenerator\Targets\Build\Versioning\GetAdditionalInformationalVersionFromSvnTargetGenerator.cs" />
     <Compile Include="CodeGenerator\Targets\Build\Versioning\GetAdditionalInformationalVersionFromTfsTargetGenerator.cs" />
@@ -156,7 +161,13 @@
     <Compile Include="StaticReflectionUtils.cs" />
     <Compile Include="Constants\TemplateConstants.cs" />
     <Compile Include="Constants\TemplateTokenConstants.cs" />
+    <Compile Include="VcsRunnerPropertiesGeneratorProvider.cs" />
     <Compile Include="VersionControlSystems.cs" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\GenericRunnerProperties.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\VcsRunnerProperties.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\GitRunnerProperties.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\SvnRunnerProperties.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\TfsRunnerProperties.template" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\..\Licence.md">

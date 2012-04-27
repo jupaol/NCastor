@@ -7,6 +7,7 @@ using Microsoft.Practices.ServiceLocation;
 using FluentAssertions;
 using CommandLine;
 using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
+using NCastor.AutoBuilder.Console.CodeGenerator.Properties.Runners;
 
 namespace NCastor.AutoBuilder.Console.Integration.Tests
 {
@@ -130,6 +131,30 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
             public void when_asking_the_GetAdditionalInformationalVersionTargetGenerator_type_it_should_return_a_valid_GetAdditionalInformationalVersionFromTfsTargetGenerator_when_the_VCS_options_is_TFS()
             {
                 this.CheckConditionalBinding<GetAdditionalInformationalVersionFromTfsTargetGenerator, GetAdditionalInformationalVersionTargetGenerator>("--vcs", "tfs");
+            }
+
+            [TestMethod]
+            public void when_asking_the_VcsRunnerPropertiesGeneratorProvider_type_it_should_return_a_valid_VcsRunnerPropertiesGenerator_when_the_VCS_options_is_not_set()
+            {
+                this.CheckConditionalBinding<VcsRunnerPropertiesGenerator, VcsRunnerPropertiesGenerator>();
+            }
+
+            [TestMethod]
+            public void when_asking_the_VcsRunnerPropertiesGeneratorProvider_type_it_should_return_a_valid_GitRunnerPropertiesGenerator_when_the_VCS_options_is_Git()
+            {
+                this.CheckConditionalBinding<GitRunnerPropertiesGenerator, VcsRunnerPropertiesGenerator>("--vcs", "git");
+            }
+
+            [TestMethod]
+            public void when_asking_the_VcsRunnerPropertiesGeneratorProvider_type_it_should_return_a_valid_SvnRunnerPropertiesGenerator_when_the_VCS_options_is_SVN()
+            {
+                this.CheckConditionalBinding<SvnRunnerPropertiesGenerator, VcsRunnerPropertiesGenerator>("--vcs", "svn");
+            }
+
+            [TestMethod]
+            public void when_asking_the_VcsRunnerPropertiesGeneratorProvider_type_it_should_return_a_valid_TfsRunnerPropertiesGenerator_when_the_VCS_options_is_TFS()
+            {
+                this.CheckConditionalBinding<TfsRunnerPropertiesGenerator, VcsRunnerPropertiesGenerator>("--vcs", "tfs");
             }
 
             private void CheckConditionalBinding<TExpected, TSource>(params string[] arguments)

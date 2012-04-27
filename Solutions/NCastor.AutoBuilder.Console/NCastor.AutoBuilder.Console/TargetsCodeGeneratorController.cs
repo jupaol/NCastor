@@ -52,7 +52,8 @@ namespace NCastor.AutoBuilder.Console
         /// </summary>
         /// <param name="options">The options.</param>
         /// <param name="getBuildNumberTargetGenerator">The build number target generator.</param>
-        /// <param name="getRevisionVersionTargetGenerator">The get revision version target generator.</param>
+        /// <param name="getRevisionVersionTargetGenerator">The revision version target generator.</param>
+        /// <param name="getAdditionalInformationalVersionTargetGenerator">The additional informational version target generator.</param>
         public TargetsCodeGeneratorController(
             CommandLineOptions options,
             GetBuildNumberTargetGenerator getBuildNumberTargetGenerator,

@@ -93,6 +93,11 @@
     <None Include="ApplicationControllerFactoryTests.cs" />
     <Compile Include="ArgumentsValidatorTests.cs" />
     <Compile Include="AutoFixtureHelper.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\GitRunnerPropertiesGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\RunnerPropertiesGeneratorControllerTests.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\SvnRunnerPropertiesGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\TfsRunnerPropertiesGeneratorTests.cs" />
+    <Compile Include="CodeGenerator\Properties\Runners\VcsRunnerPropertiesGeneratorTests.cs" />
     <Compile Include="CodeGenerator\Targets\Build\Versioning\GetAdditionalInformationalVersionFromGitTargetGeneratorTests.cs" />
     <Compile Include="CodeGenerator\Targets\Build\Versioning\GetAdditionalInformationalVersionFromSvnTargetGeneratorTests.cs" />
     <Compile Include="CodeGenerator\Targets\Build\Versioning\GetAdditionalInformationalVersionFromTfsTargetGeneratorTests.cs" />
@@ -109,6 +114,7 @@
     <Compile Include="FluentConfiguration\TemplateContexTests.cs" />
     <Compile Include="FluentConfiguration\TemplatePersistenceTests.cs" />
     <Compile Include="FluentConfiguration\TemplateProcessorTests.cs" />
+    <Compile Include="NestedCodeGeneratorsExecutedHelper.cs" />
     <Compile Include="Services\AssemblyResourceFinderTest.cs" />
     <Compile Include="FluentConfiguration\FluentConfigurationNavigationTests.cs" />
     <Compile Include="ParserServiceTests.cs" />

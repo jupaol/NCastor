@@ -10,12 +10,13 @@
 namespace NCastor.AutoBuilder.Console
 {
     using System;
-    using CommandLine;
-    using CuttingEdge.Conditions;
-    using NCastor.AutoBuilder.Console.Constants;
-    using NCastor.AutoBuilder.Console.FluentConfiguration;
-    using NCastor.AutoBuilder.Console.FluentConfiguration.ExtensionMethods;
-    using TemplateEngine;
+using CommandLine;
+using CuttingEdge.Conditions;
+using NCastor.AutoBuilder.Console.CodeGenerator.Properties.Runners;
+using NCastor.AutoBuilder.Console.Constants;
+using NCastor.AutoBuilder.Console.FluentConfiguration;
+using NCastor.AutoBuilder.Console.FluentConfiguration.ExtensionMethods;
+using TemplateEngine;
 
     /// <summary>
     /// Application controller, used to manage the application flow
@@ -48,22 +49,30 @@ namespace NCastor.AutoBuilder.Console
         private ArgumentsValidator argumentsValidator;
 
         /// <summary>
+        /// The current controller used to generate the runner properties
+        /// </summary>
+        private RunnerPropertiesGeneratorController runnerPropertiesGeneratorController;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationController"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
         /// <param name="targetsCodeGeneratorController">The targets code generator controller.</param>
         /// <param name="parser">The parser.</param>
         /// <param name="argumentsValidator">The arguments validator.</param>
+        /// <param name="runnerPropertiesGeneratorController">The runner properties generator controller.</param>
         public ApplicationController(
             CommandLineOptions options, 
             TargetsCodeGeneratorController targetsCodeGeneratorController,
             ICommandLineParser parser,
-            ArgumentsValidator argumentsValidator)
+            ArgumentsValidator argumentsValidator,
+            RunnerPropertiesGeneratorController runnerPropertiesGeneratorController)
         {
             this.options = options;
             this.targetsCodeGeneratorController = targetsCodeGeneratorController;
             this.parser = parser;
             this.argumentsValidator = argumentsValidator;
+            this.runnerPropertiesGeneratorController = runnerPropertiesGeneratorController;
         }
 
         /// <summary>
@@ -322,6 +331,7 @@ namespace NCastor.AutoBuilder.Console
                 (x, y, z) =>
                 {
                     x.Set(TemplateTokenConstants.ProductName, y.ProductName);
+                    x.Set(CodeGeneratorTemplateTokenConstants.RunnerProperties, this.runnerPropertiesGeneratorController.GenerateCode());
                 });
         }
 

@@ -8,6 +8,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NCastor.AutoBuilder.Console.Constants;
 using NCastor.AutoBuilder.Console.FluentConfiguration;
 using Microsoft.Practices.ServiceLocation;
+using NCastor.AutoBuilder.Console.CodeGenerator.Properties.Runners;
+using NCastor.AutoBuilder.Console.CodeGenerator;
+using Ploeh.AutoFixture;
+using CommandLine;
 
 namespace NCastor.AutoBuilder.Console.Integration.Tests
 {
@@ -317,6 +321,16 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
                 config.Persistence.OutputTemplatePath.Should().Be(@".\My App.CustomSolution.properties");
                 templateRes.CountOcurrences(config.Context.CurrentOptions.ProductName).Should().Be(2);
             }
+
+            [TestMethod]
+            public void it_should_call_GenerateCode_from_RunnerPropertiesGeneratorController()
+            {
+                CheckNestedCodeGeneratorsExecuted<RunnerPropertiesGeneratorController>(x =>
+                {
+                    x.WithArguments(new[] { "-p", "My App", "-o", "." });
+                    x.ProcessCustomSolutionPropertiesTemplate();
+                });
+            }
         }
 
         [TestClass]
@@ -457,6 +471,19 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
                 templateRes.CountOcurrences("CoreGetBuildVersion").Should().Be(1);
                 templateRes.CountOcurrences("GetBuildVersionFromTFS").Should().Be(1);
             }
+        }
+
+        private static void CheckNestedCodeGeneratorsExecuted<TExpected>(
+            Action<ApplicationController> callingSutMethod, 
+            params string[] arguments)
+            where TExpected : CodeGeneratorBase
+        {
+            new NestedCodeGeneratorsExecutedHelper()
+                .CustomizeFixture(x =>
+                {
+                    x.Inject<ICommandLineParser>(ServiceLocator.Current.GetInstance<ICommandLineParser>());
+                })
+                .CheckMethodCalled<TExpected, ApplicationController>(callingSutMethod);
         }
 
         private static ApplicationController GetApplicationController(params string[] arguments)

@@ -72,6 +72,27 @@ namespace NCastor.AutoBuilder.Console.Integration.Tests
                     .And.Subject.CountOcurrences("CoreGetBuildVersion").Should()
                         .Be(2);
             }
+
+            [TestMethod]
+            public void it_should_call_GenerateCode_from_GetBuildNumberTargetGenerator()
+            {
+                new NestedCodeGeneratorsExecutedHelper()
+                    .CheckMethodCalled<GetBuildNumberTargetGenerator, TargetsCodeGeneratorController>(x => x.GenerateCode());
+            }
+
+            [TestMethod]
+            public void it_should_call_GenerateCode_from_GetRevisionVersionTargetGenerator()
+            {
+                new NestedCodeGeneratorsExecutedHelper()
+                    .CheckMethodCalled<GetRevisionVersionTargetGenerator, TargetsCodeGeneratorController>(x => x.GenerateCode());
+            }
+
+            [TestMethod]
+            public void it_should_call_GenerateCode_from_GetAdditionalInformationalVersionTargetGenerator()
+            {
+                new NestedCodeGeneratorsExecutedHelper()
+                    .CheckMethodCalled<GetAdditionalInformationalVersionTargetGenerator, TargetsCodeGeneratorController>(x => x.GenerateCode());
+            }
         }
     }
 

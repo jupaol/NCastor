@@ -92,6 +92,7 @@
     <Compile Include="ApplicationRunnerTests.cs" />
     <Compile Include="AutoFixtureHelper.cs" />
     <Compile Include="BootstrapperInitializationTests.cs" />
+    <Compile Include="NestedCodeGeneratorsExecutedHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocatorTests.cs" />
     <Compile Include="TargetsCodeGeneratorControllerTests.cs" />
