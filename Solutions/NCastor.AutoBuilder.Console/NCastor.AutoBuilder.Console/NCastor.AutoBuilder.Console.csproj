@@ -163,7 +163,9 @@
     <Compile Include="Constants\TemplateTokenConstants.cs" />
     <Compile Include="VcsRunnerPropertiesGeneratorProvider.cs" />
     <Compile Include="VersionControlSystems.cs" />
-    <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\GenericRunnerProperties.template" />
+    <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\GenericRunnerProperties.template">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\VcsRunnerProperties.template" />
     <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\GitRunnerProperties.template" />
     <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\SvnRunnerProperties.template" />
