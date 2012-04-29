@@ -35,6 +35,7 @@
   <Import Project="Versioning\FormatInformationalVersion.target"/>
 
   <Import Project="CleanArtifactDirectories.target"/>
+  <Import Project="CustomizeBuildProperties.target"/>
   <Import Project="Clean.target"/>
 
   <Import Project="CreateArtifactDirectories.target"/>
@@ -45,6 +46,7 @@
   <Import Project="Versioning\SetAssemblyInfo.target" />
 
   <Import Project="Build.target"/>
+  <Import Project="CustomizeSpecialProjectsBuildProperties.target"/>
   <Import Project="CleanSpecialProjectArtifacts.target"/>
   <Import Project="CreateSpecialProjectArtifacts.target"/>
   <Import Project="PrepareSpecialProjects.target"/>

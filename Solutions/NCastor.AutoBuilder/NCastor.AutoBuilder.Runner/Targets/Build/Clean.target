@@ -13,6 +13,7 @@
 
   <PropertyGroup>
     <CleanDependsOn>
+      CustomizeBuildProperties;
       BeforeClean;
       CoreClean;
       AfterClean;

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CustomizeSpecialProjectsBuildProperties.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CustomizeSpecialProjectsBuildPropertiesDependsOn>
+      BeforeCustomizeSpecialProjectsBuildProperties;
+      CoreCustomizeSpecialProjectsBuildProperties;
+      AfterCustomizeSpecialProjectsBuildProperties;
+    </CustomizeSpecialProjectsBuildPropertiesDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CustomizeSpecialProjectsBuildProperties" DependsOnTargets="$(CustomizeSpecialProjectsBuildPropertiesDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCustomizeSpecialProjectsBuildProperties" />
+  <Target Name="AfterCustomizeSpecialProjectsBuildProperties" />
+
+  <Target Name="CoreCustomizeSpecialProjectsBuildProperties" >
+
+    <PropertyGroup>
+      <SpecialProjectsBuildProperties>
+        Configuration=$(Configuration);
+        Platform=$(Platform);
+      </SpecialProjectsBuildProperties>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>

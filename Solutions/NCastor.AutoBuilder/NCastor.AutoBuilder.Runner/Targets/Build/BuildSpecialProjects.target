@@ -16,6 +16,7 @@
       PrepareSpecialProjects;
       CleanSpecialProjectArtifacts;
       CreateSpecialProjectArtifacts;
+      CustomizeSpecialProjectsBuildProperties;
       BeforeBuildSpecialProjects;
       CoreBuildSpecialProjects;
       AfterBuildSpecialProjects;
