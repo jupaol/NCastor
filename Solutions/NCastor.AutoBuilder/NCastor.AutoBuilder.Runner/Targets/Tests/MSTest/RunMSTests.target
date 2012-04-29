@@ -36,6 +36,8 @@
 
     <Message Text="$(LoggingMessagePrefix) Running all the MSTest unit tests specified in the (MSTestContainers) item..." Importance="high" />
 
+    <Error Text="The MSTest runner arguments are required" Condition="$(MSTestRunnerArguments) == ''" />
+    
     <Delete Files="$(MSTestReportFilePath)" Condition="Exists($(MSTestReportFilePath))" />
 
     <Message Text="$(LoggingMessagePrefix) Running the MSTest unit tests..." Importance="normal" />
