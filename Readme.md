@@ -16,9 +16,27 @@ The build process in every project is a boring task, and usually takes more time
 
 ## This is where NCastor AutoBuilder appears to the rescue ##
 
-**NCastor AutoBuilder contains a set of pre-defined MSBuild scripts to allow you quickly INTEGRATE your application with practically any Continuous Integration server that supports MSBuild.**
+### So... What is it? ###
 
-**NCastor AutoBuilder integrates popular free third party tools** by wrapping them in MSBuild scripts exposing a simple configuration for you. If you follow the established convention, the configuration required is minimal and intuitive and there is a tool to auto generate the scripts with default values for you depending on the tools of your choice, and since NCastor AutoBuilder is composed of MSBuild scripts, you will be able to update them to fit your specific needs. 
+**NCastor AutoBuilder contains a set of predefined MSBuild scripts to allow you quickly INTEGRATE your application with practically any Continuous Integration server that supports MSBuild.**
+
+**NCastor AutoBuilder integrates popular third party tools** by wrapping them in MSBuild scripts exposing a simple configuration for you and hiding the complexity to integrate them in a MSBuild script. If you follow the established convention, the configuration required is minimal and intuitive and there is a tool to auto generate the base scripts with default values for you depending on the tools of your choice, and since NCastor AutoBuilder is composed of MSBuild scripts, you will be able to customize them to fit your specific needs. 
+
+### What can NCastor do for me? ###
+
+With NCastor AutoBuilder you can do the most common tasks required by almost any project **using the CI server of your choice** like:
+
+-	Build your solution
+-	Generate and set the version of your assemblies (using information from your VCS)
+-	Run your tests
+-	Run your tests with code coverage
+-	Generate html reports with the tests results
+-	Generate html reports with the code coverage results
+-	Create packages in Zip format
+-	Create Packages in Nuget format
+-	Create ClickOnce packages
+-	Backup your generated artifacts to a safe location
+-	Create labels in your current VCS when the build is success
 
 ### [For more information please go to the documentation site](https://github.com/jupaol/NCastor/wiki) ###
 
