@@ -14,11 +14,11 @@ The build process in every project is a boring task, and usually takes more time
 
 [Martin Fowler full article](http://martinfowler.com/articles/continuousIntegration.html)
 
-## This is where NCastor appears to the rescue ##
+## This is where NCastor AutoBuilder appears to the rescue ##
 
-**NCastor contains a set of pre-defined MSBuild scripts to allow you quickly INTEGRATE your application with practically any Continuous Integration server that supports MSBuild.**
+**NCastor AutoBuilder contains a set of pre-defined MSBuild scripts to allow you quickly INTEGRATE your application with practically any Continuous Integration server that supports MSBuild.**
 
-**NCastor integrates popular free third party tools** by wrapping them in MSBuild scripts exposing a simple configuration for you. If you follow the established convention, the configuration required is minimal and intuitive and there is a tool to auto generate the scripts with default values for you depending on the tools of your choice, and since NCastor is composed of MSBuild scripts, you will be able to update them to fit your specific needs. 
+**NCastor AutoBuilder integrates popular free third party tools** by wrapping them in MSBuild scripts exposing a simple configuration for you. If you follow the established convention, the configuration required is minimal and intuitive and there is a tool to auto generate the scripts with default values for you depending on the tools of your choice, and since NCastor AutoBuilder is composed of MSBuild scripts, you will be able to update them to fit your specific needs. 
 
 You can actually use tools like [MSBuild Explorer](http://www.msbuildexplorer.com/download.htm) to see the whole targets graph used.
 
