@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CustomizeNUnitArguments.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CustomizeNUnitArgumentsDependsOn>
+      BeforeCustomizeNUnitArguments;
+      CoreCustomizeNUnitArguments;
+      AfterCustomizeNUnitArguments;
+    </CustomizeNUnitArgumentsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CustomizeNUnitArguments" DependsOnTargets="$(CustomizeNUnitArgumentsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCustomizeNUnitArguments" />
+  <Target Name="AfterCustomizeNUnitArguments" />
+
+  <Target Name="CoreCustomizeNUnitArguments" >
+
+    <Message Text="$(LoggingMessagePrefix) Setting up NUnit arguments..." Importance="high" />
+
+    <Error Text="The NUnit assemblies were not parsed or they were not specified" Condition="@(_NUnitAssemblies) == ''"/>
+    
+    <PropertyGroup>
+      <NUnitRunnerArguments>@(_NUnitAssemblies, ' ') /result="$(NUnitXmlReportFilePath)" /noshadow</NUnitRunnerArguments>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>

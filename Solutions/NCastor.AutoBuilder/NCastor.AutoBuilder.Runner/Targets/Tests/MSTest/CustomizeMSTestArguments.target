@@ -29,7 +29,7 @@
 
     <Message Text="$(LoggingMessagePrefix) Setting up MSTest arguments..." Importance="high" />
 
-    <Error Text="The MSTest assemblies were not parsed or were not specified" Condition="@(_MSTestContainers) == ''"/>
+    <Error Text="The MSTest assemblies were not parsed or they were not specified" Condition="@(_MSTestContainers) == ''"/>
     
     <PropertyGroup>
       <MSTestRunnerArguments>@(_MSTestContainers, ' ') /detail:errormessage /detail:errorstacktrace /detail:stderr /resultsfile:"$(MSTestReportFilePath)"</MSTestRunnerArguments>

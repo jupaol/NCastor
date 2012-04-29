@@ -15,8 +15,12 @@
   <Import Project="SettingNUnitTestingAssemblies.target"/>
   <Import Project="CleanNUnitArtifactDirectories.target"/>
   <Import Project="CreateNUnitArtifactDirectories.target"/>
+  <Import Project="SetNUnitArguments.target"/>
+  <Import Project="CustomizeNUnitArguments.target"/>
   <Import Project="RunNUnitTests.target"/>
-  
+
+  <Import Project="Cover\SetNUnitWithOpenCoverArguments.target"/>
+  <Import Project="Cover\CustomizeNUnitWithOpenCoverArguments.target"/>
   <Import Project="Cover\RunNUnitWithOpenCover.target"/>
 
 </Project>

@@ -131,6 +131,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="packages.config" />
     <None Include="Targets\Build\CleanArtifactDirectories.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -404,9 +405,21 @@
     <Content Include="Targets\Tests\MSpec\Cover\SetMSpecWithOpenCoverArguments.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
+    <Content Include="Targets\Tests\NUnit\SetNUnitArguments.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="Targets\Tests\NUnit\CustomizeNUnitArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\NUnit\Cover\CustomizeNUnitWithOpenCoverArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\NUnit\Cover\SetNUnitWithOpenCoverArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tasks\SDC Tasks\Microsoft.Sdc.Common.tasks">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -416,28 +429,34 @@
     <Content Include="Tasks\MSBuild.Community\License.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Content Include="Tools\ConsoleRunner\CommandLine.dll">
+    <Content Include="Tools\ConsoleRunner\Bootstrapper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\ConsoleRunner\CommandLine.xml">
+    <Content Include="Tools\ConsoleRunner\Bootstrapper.Ninject.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\ConsoleRunner\Bootstrapper.ServiceLocator.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\ConsoleRunner\CommandLine.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tools\ConsoleRunner\CuttingEdge.Conditions.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\ConsoleRunner\CuttingEdge.Conditions.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Tools\ConsoleRunner\log4net.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tools\ConsoleRunner\log4net.xml">
+    <Content Include="Tools\ConsoleRunner\Microsoft.Practices.ServiceLocation.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tools\ConsoleRunner\NCastor.AutoBuilder.Console.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\ConsoleRunner\Ninject.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\ConsoleRunner\NinjectAdapter.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Tools\ConsoleRunner\Template.dll">
@@ -595,10 +614,12 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="packages.config" />
-    <Content Include="Tools\ConsoleRunner\NCastor.AutoBuilder.Console.exe.config">
+    <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
+    <None Include="Tools\ConsoleRunner\NCastor.AutoBuilder.Console.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Tools\publish.template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

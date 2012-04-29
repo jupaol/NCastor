@@ -36,7 +36,7 @@
 
     <Message Text="$(LoggingMessagePrefix) Running all the MSpec unit tests specified in the (MSpecAssemblies) item..." Importance="high" />
 
-    <Error Text="The MSpec runner arguments are required" Condition="$(MSpecRunnerArguments) == ''"/>
+    <Error Text="The MSpec runner arguments were not specified" Condition="$(MSpecRunnerArguments) == ''"/>
 
     <Message Text="$(LoggingMessagePrefix) Running the MSpec unit tests..." Importance="normal" />
     <Exec ContinueOnError="true" Command='"$(MSPecRunner)" $(MSpecRunnerArguments) '>

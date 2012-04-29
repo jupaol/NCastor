@@ -29,7 +29,7 @@
 
     <Message Text="$(LoggingMessagePrefix) Setting up MSpec arguments..." Importance="high" />
 
-    <Error Text="The MSpec assemblies were not parsed or were not specified" Condition="@(_MSpecAssemblies) == ''"/>
+    <Error Text="The MSpec assemblies were not parsed or they were not specified" Condition="@(_MSpecAssemblies) == ''"/>
     
     <PropertyGroup>
       <MSpecRunnerArguments>--xml "$(MSpecXmlReportFilePath)" --html "$(MSpecHtmlReporthFilePath)" @(_MSpecAssemblies, ' ')</MSpecRunnerArguments>

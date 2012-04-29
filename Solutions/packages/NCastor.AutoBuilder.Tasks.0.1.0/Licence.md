@@ -1,10 +1,10 @@
-﻿[jupaol@hotmail.com](jupaol@hotmail.com)
+[jupaol@hotmail.com](jupaol@hotmail.com)
 
 [jupaoljpol@gmail.com](jupaoljpol@gmail.com)
 
 [http://jupaol.blogspot.com/](http://jupaol.blogspot.com/)
 
-# NCastor Licence #
+# NCastor AutoBuilder Licence #
 
 Copyright (c) 2012, Juan Pablo Olmos Lara (Jupaol)
 All rights reserved.

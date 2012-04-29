@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CustomizeNUnitWithOpenCoverArguments.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CustomizeNUnitWithOpenCoverArgumentsDependsOn>
+      BeforeCustomizeNUnitWithOpenCoverArguments;
+      CoreCustomizeNUnitWithOpenCoverArguments;
+      AfterCustomizeNUnitWithOpenCoverArguments;
+    </CustomizeNUnitWithOpenCoverArgumentsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CustomizeNUnitWithOpenCoverArguments" DependsOnTargets="$(CustomizeNUnitWithOpenCoverArgumentsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCustomizeNUnitWithOpenCoverArguments" />
+  <Target Name="AfterCustomizeNUnitWithOpenCoverArguments" />
+
+  <Target Name="CoreCustomizeNUnitWithOpenCoverArguments" >
+
+    <Message Text="$(LoggingMessagePrefix) Setting up NUnit and OpenCover arguments..." Importance="high" />
+
+    <Error Text="The NUnit assemblies were not parsed or they were not specified" Condition="@(_NUnitAssembliesToRunWithOpenCover) == ''"/>
+    <Error Text="The instrumentation assemblies were not parsed or they were not specified" Condition="@(_AssembliesToInstrumentWithOpenCoverNUnit) == ''"/>
+
+    <PropertyGroup>
+      <NUnitRunnerWithOpenCoverArguments>@(_NUnitAssembliesToRunWithOpenCover, ' ') /noshadow /result=\"$(NUnitXmlReportFilePath)\"</NUnitRunnerWithOpenCoverArguments>
+      <_OpenCoverNUnitArgs>-target:"$(NUnitRunner)" -targetargs:"$(NUnitRunnerWithOpenCoverArguments)"</_OpenCoverNUnitArgs>
+      <OpenCoverRunnerArgumentsForNUnit>-targetdir:"$(TestAssembliesPath)" -mergebyhash -register -returntargetcode -filter:"@(_AssembliesToInstrumentWithOpenCoverNUnit, ' ')" -output:"$(OpenCoverNUnit_ReportFilePath)" $(_OpenCoverNUnitArgs)</OpenCoverRunnerArgumentsForNUnit>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>

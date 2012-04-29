@@ -32,7 +32,10 @@
 
   <Target Name="CorePrepareNugetPackages">
 
-    <Delete Files="$(NCastorAutoBuilderConsole)\NCastor.AutoBuilder.Console.pdb" />
+    <ItemGroup>
+      <_UnnecessaryNugetFiles Include="$(NCastorAutoBuilderConsole)\*.pdb;$(NCastorAutoBuilderConsole)\*.xml" />
+    </ItemGroup>
+    <Delete Files="@(_UnnecessaryNugetFiles)" />
 
     <ItemGroup>
       <_NCastorAutoBuilderConsoleNugetFiles

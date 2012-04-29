@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="SetNUnitWithOpenCoverArguments.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <SetNUnitWithOpenCoverArgumentsDependsOn>
+      BeforeSetNUnitWithOpenCoverArguments;
+      CoreSetNUnitWithOpenCoverArguments;
+      AfterSetNUnitWithOpenCoverArguments;
+    </SetNUnitWithOpenCoverArgumentsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="SetNUnitWithOpenCoverArguments" DependsOnTargets="$(SetNUnitWithOpenCoverArgumentsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeSetNUnitWithOpenCoverArguments" />
+  <Target Name="AfterSetNUnitWithOpenCoverArguments" />
+
+  <Target Name="CoreSetNUnitWithOpenCoverArguments" >
+
+    <Message Text="$(LoggingMessagePrefix) Preparing NUnit and OpenCover arguments..." Importance="high" />
+
+    <Message Text="$(LoggingMessagePrefix) Parsing all the assemblies to instrument specified in the (AssembliesToInstrument) item..." Importance="normal" />
+    <ItemGroup>
+      <_AssembliesToInstrumentWithOpenCoverNUnit Include="@(AssembliesToInstrument->'+[%(FileName)]*')"></_AssembliesToInstrumentWithOpenCoverNUnit>
+    </ItemGroup>
+
+    <Message Text="$(LoggingMessagePrefix) Parsing all the NUnit assemblies to test specified in the (NUnitAssemblies) item..." Importance="normal" />
+    <ItemGroup>
+      <_NUnitAssembliesToRunWithOpenCover Include="@(NUnitAssemblies->'\&quot;%(Identity)\&quot;')" />
+    </ItemGroup>
+
+  </Target>
+  
+</Project>
