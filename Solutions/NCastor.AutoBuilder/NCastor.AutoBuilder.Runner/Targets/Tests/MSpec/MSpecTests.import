@@ -15,8 +15,12 @@
   <Import Project="SettingMSpecTestingAssemblies.target"/>
   <Import Project="CleanMSpecArtifactDirectories.target"/>
   <Import Project="CreateMSpecArtifactDirectories.target"/>
+  <Import Project="SetMSpecArguments.target"/>
+  <Import Project="CustomizeMSpecArguments.target"/>
   <Import Project="RunMSpecTests.target"/>
 
+  <Import Project="Cover\SetMSpecWithOpenCoverArguments.target"/>
+  <Import Project="Cover\CustomizeMSpecWithOpenCoverArguments.target"/>
   <Import Project="Cover\RunMSpecWithOpenCover.target"/>
 
 </Project>

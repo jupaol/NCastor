@@ -392,6 +392,18 @@
     <Content Include="Targets\Tests\MSTest\Cover\SetMSTestsWithOpenCoverArguments.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Tests\MSpec\SetMSpecArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\MSpec\CustomizeMSpecArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\MSpec\Cover\CustomizeMSpecWithOpenCoverArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\MSpec\Cover\SetMSpecWithOpenCoverArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

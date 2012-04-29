@@ -28,6 +28,10 @@
   <Target Name="CoreCustomizeMSTestWithOpenCoverArguments" >
 
     <Message Text="$(LoggingMessagePrefix) Setting up MSTest and OpenCover arguments..." Importance="high" />
+
+    <Error Text="The MSTest assemblies were not parsed or were not specified" Condition="@(_MSTestContainersToRunCodeCoverage) == ''"/>
+    <Error Text="The instrumentation assemblies were not parsed or were not specified" Condition="@(_AssembliesToInstrumentWithOpenCoverMSTest) == ''"/>
+
     <PropertyGroup>
       <MSTestRunnerWithOpenCoverArguments>@(_MSTestContainersToRunCodeCoverage, ' ') /detail:errormessage /detail:errorstacktrace /detail:stderr /resultsfile:\"$(MSTestReportFilePath)\"</MSTestRunnerWithOpenCoverArguments>
       <_OpenCoverMSTestCommand>-target:"$(MSTestRunner)"  -targetargs:"$(MSTestRunnerWithOpenCoverArguments)"</_OpenCoverMSTestCommand>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CustomizeMSpecArguments.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CustomizeMSpecArgumentsDependsOn>
+      BeforeCustomizeMSpecArguments;
+      CoreCustomizeMSpecArguments;
+      AfterCustomizeMSpecArguments;
+    </CustomizeMSpecArgumentsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CustomizeMSpecArguments" DependsOnTargets="$(CustomizeMSpecArgumentsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCustomizeMSpecArguments" />
+  <Target Name="AfterCustomizeMSpecArguments" />
+
+  <Target Name="CoreCustomizeMSpecArguments" >
+
+    <Message Text="$(LoggingMessagePrefix) Setting up MSpec arguments..." Importance="high" />
+
+    <Error Text="The MSpec assemblies were not parsed or were not specified" Condition="@(_MSpecAssemblies) == ''"/>
+    
+    <PropertyGroup>
+      <MSpecRunnerArguments>--xml "$(MSpecXmlReportFilePath)" --html "$(MSpecHtmlReporthFilePath)" @(_MSpecAssemblies, ' ')</MSpecRunnerArguments>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>

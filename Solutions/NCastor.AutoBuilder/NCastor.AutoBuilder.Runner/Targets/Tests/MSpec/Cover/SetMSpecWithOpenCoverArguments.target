@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="SetMSpecWithOpenCoverArguments.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <SetMSpecWithOpenCoverArgumentsDependsOn>
+      BeforeSetMSpecWithOpenCoverArguments;
+      CoreSetMSpecWithOpenCoverArguments;
+      AfterSetMSpecWithOpenCoverArguments;
+    </SetMSpecWithOpenCoverArgumentsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="SetMSpecWithOpenCoverArguments" DependsOnTargets="$(SetMSpecWithOpenCoverArgumentsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeSetMSpecWithOpenCoverArguments" />
+  <Target Name="AfterSetMSpecWithOpenCoverArguments" />
+
+  <Target Name="CoreSetMSpecWithOpenCoverArguments" >
+
+    <Message Text="$(LoggingMessagePrefix) Preparing MSpec and OpenCover arguments..." Importance="high" />
+
+    <Message Text="$(LoggingMessagePrefix) Parsing all the assemblies to instrument specified in the (AssembliesToInstrument)..." Importance="normal" />
+    <ItemGroup>
+      <_AssembliesToInstrumentWithOpenCoverMSpec Include="@(AssembliesToInstrument->'+[%(FileName)]*')" />
+    </ItemGroup>
+
+    <Message Text="$(LoggingMessagePrefix) Parsing all the MSpec assemblies to test specified in the (MSpecAssemblies) item..." Importance="normal" />
+    <ItemGroup>
+      <_MSpecAssembliesToRunCodeCoverage Include="@(MSpecAssemblies->'\&quot;%(Identity)\&quot;')" />
+    </ItemGroup>
+
+  </Target>
+  
+</Project>

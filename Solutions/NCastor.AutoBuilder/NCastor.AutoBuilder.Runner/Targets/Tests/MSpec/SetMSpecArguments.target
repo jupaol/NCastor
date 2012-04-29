@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="SetMSpecArguments.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <SetMSpecArgumentsDependsOn>
+      BeforeSetMSpecArguments;
+      CoreSetMSpecArguments;
+      AfterSetMSpecArguments;
+    </SetMSpecArgumentsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="SetMSpecArguments" DependsOnTargets="$(SetMSpecArgumentsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeSetMSpecArguments" />
+  <Target Name="AfterSetMSpecArguments" />
+
+  <Target Name="CoreSetMSpecArguments" >
+
+    <Message Text="$(LoggingMessagePrefix) Parsing all the MSPec assemblies to test specified in the (MSpecAssemblies) item..." Importance="high" />
+    <ItemGroup>
+      <_MSpecAssemblies Include="@(MSpecAssemblies->'&quot;%(Identity)&quot;')" />
+    </ItemGroup>
+
+  </Target>
+  
+</Project>

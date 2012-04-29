@@ -17,6 +17,8 @@
       ValidateMSpecProperties;
       CleanMSpecArtifactDirectories;
       CreateMSpecArtifactDirectories;
+      SetMSpecArguments;
+      CustomizeMSpecArguments;
       BeforeRunMSpecTests;
       CoreRunMSpecTests;
       AfterRunMSpecTests;
@@ -34,19 +36,10 @@
 
     <Message Text="$(LoggingMessagePrefix) Running all the MSpec unit tests specified in the (MSpecAssemblies) item..." Importance="high" />
 
-    <Message Text="$(LoggingMessagePrefix) Parsing all the MSPec assemblies to test specified in the (MSpecAssemblies) item..." Importance="normal" />
-    <ItemGroup>
-      <_MSpecAssemblies Include="@(MSpecAssemblies->'&quot;%(Identity)&quot;')" />
-    </ItemGroup>
-
-    <Message Text="$(LoggingMessagePrefix) Setting up MSpec arguments..." Importance="normal" />
-    <PropertyGroup>
-      <_MSpecOptions> --xml "$(MSpecXmlReportFilePath)" --html "$(MSpecHtmlReporthFilePath)" $(MSpecRunnerArguments)</_MSpecOptions>
-      <_MSpecCommand>"$(MSPecRunner)" $(_MSpecOptions) @(_MSpecAssemblies, ' ')</_MSpecCommand>
-    </PropertyGroup>
+    <Error Text="The MSpec runner arguments are required" Condition="$(MSpecRunnerArguments) == ''"/>
 
     <Message Text="$(LoggingMessagePrefix) Running the MSpec unit tests..." Importance="normal" />
-    <Exec ContinueOnError="true" Command="$(_MSpecCommand)">
+    <Exec ContinueOnError="true" Command='"$(MSPecRunner)" $(MSpecRunnerArguments) '>
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningMSpecTests"/>
     </Exec>
     
