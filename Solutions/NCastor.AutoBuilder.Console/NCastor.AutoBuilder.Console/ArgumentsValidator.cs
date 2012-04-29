@@ -75,17 +75,6 @@ namespace NCastor.AutoBuilder.Console
         }
 
         /// <summary>
-        /// Gets the parsed options.
-        /// </summary>
-        /// <returns>
-        /// Returns the parsed command line options
-        /// </returns>
-        public CommandLineOptions GetParsedOptions()
-        {
-            return this.options;
-        }
-
-        /// <summary>
         /// Validates the arguments.
         /// </summary>
         /// <param name="options">The options.</param>

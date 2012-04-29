@@ -10,13 +10,13 @@
 namespace NCastor.AutoBuilder.Console
 {
     using System;
-using CommandLine;
-using CuttingEdge.Conditions;
-using NCastor.AutoBuilder.Console.CodeGenerator.Properties.Runners;
-using NCastor.AutoBuilder.Console.Constants;
-using NCastor.AutoBuilder.Console.FluentConfiguration;
-using NCastor.AutoBuilder.Console.FluentConfiguration.ExtensionMethods;
-using TemplateEngine;
+    using CommandLine;
+    using CuttingEdge.Conditions;
+    using NCastor.AutoBuilder.Console.CodeGenerator.Properties.Runners;
+    using NCastor.AutoBuilder.Console.Constants;
+    using NCastor.AutoBuilder.Console.FluentConfiguration;
+    using NCastor.AutoBuilder.Console.FluentConfiguration.ExtensionMethods;
+    using TemplateEngine;
 
     /// <summary>
     /// Application controller, used to manage the application flow
@@ -85,20 +85,6 @@ using TemplateEngine;
         public ApplicationController WithArguments(string[] arguments)
         {
             this.arguments = arguments;
-
-            return this;
-        }
-
-        /// <summary>
-        /// Withes the custom targets code generator controller.
-        /// </summary>
-        /// <param name="targetsController">The targets controller.</param>
-        /// <returns>
-        /// A instance of the current <see cref="ApplicationController"/> object
-        /// </returns>
-        public ApplicationController WithCustomTargetsCodeGeneratorController(TargetsCodeGeneratorController targetsController)
-        {
-            this.targetsCodeGeneratorController = targetsController;
 
             return this;
         }
