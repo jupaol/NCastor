@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="GetAdditionalInformationalVersionTargetGeneratorProvider.cs" company="Juan Pablo Olmos Lara (Jupaol)">
+// <copyright file="VcsRunnerPropertiesGeneratorProvider.cs" company="Juan Pablo Olmos Lara (Jupaol)">
 //
 // jupaol@hotmail.com
 // http://jupaol.blogspot.com/
@@ -10,27 +10,27 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace NCastor.AutoBuilder.Console
+namespace NCastor.AutoBuilder.Console.NinjectProviders
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
+    using NCastor.AutoBuilder.Console.CodeGenerator.Properties.Runners;
     using Ninject;
     using Ninject.Activation;
 
     /// <summary>
-    /// Custom Ninject provider to inject the <see cref="GetAdditionalInformationalVersionTargetGenerator"/> object
+    /// Ninject provider to create the <see cref="VcsRunnerPropertiesGenerator"/> object
     /// </summary>
-    public class GetAdditionalInformationalVersionTargetGeneratorProvider : IProvider<GetAdditionalInformationalVersionTargetGenerator>
+    public class VcsRunnerPropertiesGeneratorProvider : IProvider<VcsRunnerPropertiesGenerator>
     {
         /// <summary>
         /// Gets the type (or prototype) of instances the provider creates.
         /// </summary>
         public Type Type
         {
-            get { return typeof(GetAdditionalInformationalVersionTargetGenerator); }
+            get { return typeof(VcsRunnerPropertiesGenerator); }
         }
 
         /// <summary>
@@ -49,19 +49,15 @@ namespace NCastor.AutoBuilder.Console
                 switch (options.VersionControlSystem.Value)
                 {
                     case VersionControlSystems.Git:
-                        return new GetAdditionalInformationalVersionFromGitTargetGenerator(options);
+                        return new GitRunnerPropertiesGenerator(options);
                     case VersionControlSystems.SVN:
-                        return new GetAdditionalInformationalVersionFromSvnTargetGenerator(options);
+                        return new SvnRunnerPropertiesGenerator(options);
                     case VersionControlSystems.TFS:
-                        return new GetAdditionalInformationalVersionFromTfsTargetGenerator(options);
-                    default:
-                        return new GetAdditionalInformationalVersionTargetGenerator(options);
+                        return new TfsRunnerPropertiesGenerator(options);
                 }
             }
-            else
-            {
-                return new GetAdditionalInformationalVersionTargetGenerator(options);
-            }
+
+            return new VcsRunnerPropertiesGenerator(options);
         }
     }
 }

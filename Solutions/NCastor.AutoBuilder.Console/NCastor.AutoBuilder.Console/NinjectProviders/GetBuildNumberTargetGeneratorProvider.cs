@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="GetRevisionVersionTargetGeneratorProvider.cs" company="Juan Pablo Olmos Lara (Jupaol)">
+// <copyright file="GetBuildNumberTargetGeneratorProvider.cs" company="Juan Pablo Olmos Lara (Jupaol)">
 //
 // jupaol@hotmail.com
 // http://jupaol.blogspot.com/
@@ -10,7 +10,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace NCastor.AutoBuilder.Console
+namespace NCastor.AutoBuilder.Console.NinjectProviders
 {
     using System;
     using System.Collections.Generic;
@@ -21,16 +21,16 @@ namespace NCastor.AutoBuilder.Console
     using Ninject.Activation;
 
     /// <summary>
-    /// Custom provider to inject the <see cref="GetRevisionVersionTargetGenerator"/> type
+    /// Used to set a custom provider to inject the GetBuildNumberTargetGenerator object
     /// </summary>
-    public class GetRevisionVersionTargetGeneratorProvider : IProvider<GetRevisionVersionTargetGenerator>
+    public class GetBuildNumberTargetGeneratorProvider : IProvider<GetBuildNumberTargetGenerator>
     {
         /// <summary>
         /// Gets the type (or prototype) of instances the provider creates.
         /// </summary>
         public Type Type
         {
-            get { return typeof(GetRevisionVersionTargetGenerator); }
+            get { return typeof(GetBuildNumberTargetGenerator); }
         }
 
         /// <summary>
@@ -44,24 +44,22 @@ namespace NCastor.AutoBuilder.Console
         {
             var options = context.Kernel.Get<CommandLineOptions>();
 
-            if (options.VersionControlSystem.HasValue)
+            if (options.ContinuousIntegrationServer.HasValue)
             {
-                switch (options.VersionControlSystem.Value)
+                switch (options.ContinuousIntegrationServer.Value)
                 {
-                    case VersionControlSystems.Git:
-                        return new GetRevisionVersionFromGitTargetGenerator(options);
-                    case VersionControlSystems.SVN:
-                        return new GetRevisionVersionFromSvnTargetGenerator(options);
-                    case VersionControlSystems.TFS:
-                        return new GetRevisionVersionFromTfsTargetGenerator(options);
-                    default:
-                        return new GetRevisionVersionTargetGenerator(options);
+                    case ContinuousIntegrationServers.Hudson:
+                        return new GetBuildNumberFromHudsonTargetGenerator(options);
+                    case ContinuousIntegrationServers.TeamCity:
+                        return new GetBuildNumberFromTeamCityTargetsGenerator(options);
+                    case ContinuousIntegrationServers.CCNET:
+                        return new GetBuildNumberFromCcnetTargetsGenerator(options);
+                    case ContinuousIntegrationServers.TFS:
+                        return new GetBuildNumberFromTfsTargetsGenerator(options);
                 }
             }
-            else
-            {
-                return new GetRevisionVersionTargetGenerator(options);
-            }
+
+            return new GetBuildNumberTargetGenerator(options);
         }
     }
 }

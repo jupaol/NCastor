@@ -133,10 +133,10 @@
     <Compile Include="CodeGenerator\Targets\Build\Versioning\GetRevisionVersionFromTfsTargetGenerator.cs" />
     <Compile Include="CodeGenerator\Targets\Build\Versioning\GetRevisionVersionTargetGenerator.cs" />
     <Compile Include="CodeGenerator\CodeGeneratorBase.cs" />
-    <Compile Include="GetAdditionalInformationalVersionTargetGeneratorProvider.cs" />
-    <Compile Include="GetBuildNumberTargetGeneratorProvider.cs" />
-    <Compile Include="GetRevisionVersionTargetGeneratorProvider.cs" />
-    <Compile Include="NinjectInitialization.cs" />
+    <Compile Include="NinjectProviders\GetAdditionalInformationalVersionTargetGeneratorProvider.cs" />
+    <Compile Include="NinjectProviders\GetBuildNumberTargetGeneratorProvider.cs" />
+    <Compile Include="NinjectProviders\GetRevisionVersionTargetGeneratorProvider.cs" />
+    <Compile Include="NinjectProviders\NinjectInitialization.cs" />
     <Compile Include="TargetsCodeGeneratorController.cs" />
     <Compile Include="CommandLineOptions.cs" />
     <Compile Include="Constants\CodeGeneratorTemplateConstants.cs" />
@@ -161,7 +161,7 @@
     <Compile Include="StaticReflectionUtils.cs" />
     <Compile Include="Constants\TemplateConstants.cs" />
     <Compile Include="Constants\TemplateTokenConstants.cs" />
-    <Compile Include="VcsRunnerPropertiesGeneratorProvider.cs" />
+    <Compile Include="NinjectProviders\VcsRunnerPropertiesGeneratorProvider.cs" />
     <Compile Include="VersionControlSystems.cs" />
     <EmbeddedResource Include="Templates\CodeGenerator\Properties\Runners\GenericRunnerProperties.template">
       <SubType>Designer</SubType>

@@ -10,7 +10,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace NCastor.AutoBuilder.Console
+namespace NCastor.AutoBuilder.Console.NinjectProviders
 {
     using System;
     using System.Collections.Generic;
@@ -20,6 +20,7 @@ namespace NCastor.AutoBuilder.Console
     using CommandLine;
     using NCastor.AutoBuilder.Console.CodeGenerator.Properties.Runners;
     using NCastor.AutoBuilder.Console.CodeGenerator.Targets.Build.Versioning;
+    using NCastor.AutoBuilder.Console.NinjectProviders;
     using Ninject;
 
     /// <summary>
