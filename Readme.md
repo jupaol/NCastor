@@ -20,6 +20,54 @@ The build process in every project is a boring task, and usually takes more time
 
 **NCastor AutoBuilder integrates popular free third party tools** by wrapping them in MSBuild scripts exposing a simple configuration for you. If you follow the established convention, the configuration required is minimal and intuitive and there is a tool to auto generate the scripts with default values for you depending on the tools of your choice, and since NCastor AutoBuilder is composed of MSBuild scripts, you will be able to update them to fit your specific needs. 
 
+### [For more information please go to the documentation site](https://github.com/jupaol/NCastor/wiki) ###
+
 You can actually use tools like [MSBuild Explorer](http://www.msbuildexplorer.com/download.htm) to see the whole targets graph used.
 
-[For more information please go to the documentation site](https://github.com/jupaol/NCastor/wiki)
+---
+
+# Supported third party tools: #
+
+-	Continuous Integration Servers
+	-	Jenkins
+	-	Hudson
+	-	TeamCity
+	-	CCNET
+	-	TFS
+-	Version Control systems
+	-	Git
+	-	SVN
+	-	TFS
+-	Test runners
+	-	MSTest
+	-	MSpec
+	-	NUnit
+-	Code Coverage
+	-	OpenCover
+-	Reporting
+	-	ReportGenerator
+- 	Packaging
+	-	ClickOnce
+	-	Nuget format
+	-	Zip format
+
+---
+
+# In process: #
+
+-	Version Control Systems
+	-	Mercurial
+-	Test runners
+	-	NBehave
+	-	xUnit
+-	Code Coverage
+	-	PartialCover
+	-	NCover
+-	Packaging
+	-	Create web configs per environment
+	-	WIX installer
+	-	Web Deploy
+	-	Using Nuget restoring packages (no more packages committed to the VCS)
+-	Documentation
+	-	Sandcastle
+	-	NDoc
