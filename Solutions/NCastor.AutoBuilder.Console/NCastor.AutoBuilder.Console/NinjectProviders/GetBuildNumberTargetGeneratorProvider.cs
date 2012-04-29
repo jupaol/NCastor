@@ -43,23 +43,28 @@ namespace NCastor.AutoBuilder.Console.NinjectProviders
         public object Create(IContext context)
         {
             var options = context.Kernel.Get<CommandLineOptions>();
+            var result = new GetBuildNumberTargetGenerator(options);
 
             if (options.ContinuousIntegrationServer.HasValue)
             {
                 switch (options.ContinuousIntegrationServer.Value)
                 {
                     case ContinuousIntegrationServers.Hudson:
-                        return new GetBuildNumberFromHudsonTargetGenerator(options);
+                        result = new GetBuildNumberFromHudsonTargetGenerator(options);
+                        break;
                     case ContinuousIntegrationServers.TeamCity:
-                        return new GetBuildNumberFromTeamCityTargetsGenerator(options);
+                        result = new GetBuildNumberFromTeamCityTargetsGenerator(options);
+                        break;
                     case ContinuousIntegrationServers.CCNET:
-                        return new GetBuildNumberFromCcnetTargetsGenerator(options);
+                        result = new GetBuildNumberFromCcnetTargetsGenerator(options);
+                        break;
                     case ContinuousIntegrationServers.TFS:
-                        return new GetBuildNumberFromTfsTargetsGenerator(options);
+                        result = new GetBuildNumberFromTfsTargetsGenerator(options);
+                        break;
                 }
             }
 
-            return new GetBuildNumberTargetGenerator(options);
+            return result;
         }
     }
 }

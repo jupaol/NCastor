@@ -43,21 +43,25 @@ namespace NCastor.AutoBuilder.Console.NinjectProviders
         public object Create(IContext context)
         {
             var options = context.Kernel.Get<CommandLineOptions>();
+            var result = new GetRevisionVersionTargetGenerator(options);
 
             if (options.VersionControlSystem.HasValue)
             {
                 switch (options.VersionControlSystem.Value)
                 {
                     case VersionControlSystems.Git:
-                        return new GetRevisionVersionFromGitTargetGenerator(options);
+                        result = new GetRevisionVersionFromGitTargetGenerator(options);
+                        break;
                     case VersionControlSystems.SVN:
-                        return new GetRevisionVersionFromSvnTargetGenerator(options);
+                        result = new GetRevisionVersionFromSvnTargetGenerator(options);
+                        break;
                     case VersionControlSystems.TFS:
-                        return new GetRevisionVersionFromTfsTargetGenerator(options);
+                        result = new GetRevisionVersionFromTfsTargetGenerator(options);
+                        break;
                 }
             }
 
-            return new GetRevisionVersionTargetGenerator(options);
+            return result;
         }
     }
 }
