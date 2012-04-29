@@ -380,6 +380,18 @@
     <None Include="Targets\Labels\TFS\CreateTfsLabel.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Targets\Tests\MSTest\SetMSTestsArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\MSTest\CustomizeMSTestArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\MSTest\Cover\CustomizeMSTestWithOpenCoverArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Targets\Tests\MSTest\Cover\SetMSTestsWithOpenCoverArguments.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Tasks\NCastor\NCastor.AutoBuilder.Tasks.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

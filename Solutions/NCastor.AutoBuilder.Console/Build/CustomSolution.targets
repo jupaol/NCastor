@@ -21,6 +21,15 @@
     </ItemGroup>
   </Target>
 
+  <Target Name="CoreCustomizeMSTestWithOpenCoverArguments" >
+    <Message Text="$(LoggingMessagePrefix) Setting up MSTest and OpenCover arguments..." Importance="high" />
+    <PropertyGroup>
+      <MSTestRunnerWithOpenCoverArguments>@(_MSTestContainersToRunCodeCoverage, ' ') /detail:errormessage /detail:errorstacktrace /detail:stderr /resultsfile:\"$(MSTestReportFilePath)\"</MSTestRunnerWithOpenCoverArguments>
+      <_OpenCoverMSTestCommand>-target:"$(MSTestRunner)"  -targetargs:"$(MSTestRunnerWithOpenCoverArguments)"</_OpenCoverMSTestCommand>
+      <OpenCoverRunnerArgumentsForMSTest>-targetdir:&quot;$(TestAssembliesPath)&quot; -mergebyhash -register -returntargetcode -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSTest, ' ') -[NCastor.AutoBuilder.Console]*Constants&quot; -output:&quot;$(OpenCoverMSTest_ReportFilePath)&quot; $(_OpenCoverMSTestCommand)</OpenCoverRunnerArgumentsForMSTest>
+    </PropertyGroup>
+  </Target>
+
   <Target Name="CorePrepareNugetPackages">
 
     <Delete Files="$(NCastorAutoBuilderConsole)\NCastor.AutoBuilder.Console.pdb" />

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="CustomizeMSTestArguments.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CustomizeMSTestArgumentsDependsOn>
+      BeforeCustomizeMSTestArguments;
+      CoreCustomizeMSTestArguments;
+      AfterCustomizeMSTestArguments;
+    </CustomizeMSTestArgumentsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CustomizeMSTestArguments" DependsOnTargets="$(CustomizeMSTestArgumentsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeCustomizeMSTestArguments" />
+  <Target Name="AfterCustomizeMSTestArguments" />
+
+  <Target Name="CoreCustomizeMSTestArguments" >
+
+    <Message Text="$(LoggingMessagePrefix) Setting up MSTest arguments..." Importance="high" />
+    <PropertyGroup>
+      <MSTestRunnerArguments>@(_MSTestContainers, ' ') /detail:errormessage /detail:errorstacktrace /detail:stderr /resultsfile:"$(MSTestReportFilePath)"</MSTestRunnerArguments>
+    </PropertyGroup>
+
+  </Target>
+  
+</Project>

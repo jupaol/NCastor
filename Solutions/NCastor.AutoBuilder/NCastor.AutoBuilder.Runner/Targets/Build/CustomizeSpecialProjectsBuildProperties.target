@@ -27,6 +27,7 @@
 
   <Target Name="CoreCustomizeSpecialProjectsBuildProperties" >
 
+    <Message Text="$(LoggingMessagePrefix) Setting up Special Projects Build properties..." Importance="high" />
     <PropertyGroup>
       <SpecialProjectsBuildProperties>
         Configuration=$(Configuration);

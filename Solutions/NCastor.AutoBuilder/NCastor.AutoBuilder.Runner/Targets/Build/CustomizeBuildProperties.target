@@ -27,6 +27,7 @@
 
   <Target Name="CoreCustomizeBuildProperties" >
 
+    <Message Text="$(LoggingMessagePrefix) Setting up Build properties..." Importance="high" />
     <PropertyGroup>
       <BuildProperties>
         Configuration=$(Configuration);

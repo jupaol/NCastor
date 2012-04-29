@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="SetMSTestsWithOpenCoverArguments.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <SetMSTestsWithOpenCoverArgumentsDependsOn>
+      BeforeSetMSTestsWithOpenCoverArguments;
+      CoreSetMSTestsWithOpenCoverArguments;
+      AfterSetMSTestsWithOpenCoverArguments;
+    </SetMSTestsWithOpenCoverArgumentsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="SetMSTestsWithOpenCoverArguments" DependsOnTargets="$(SetMSTestsWithOpenCoverArgumentsDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforeSetMSTestsWithOpenCoverArguments" />
+  <Target Name="AfterSetMSTestsWithOpenCoverArguments" />
+
+  <Target Name="CoreSetMSTestsWithOpenCoverArguments" >
+
+    <Message Text="$(LoggingMessagePrefix) Preparing MSTest and OpenCover arguments..." Importance="high" />
+    
+    <Message Text="$(LoggingMessagePrefix) Parsing all the assemblies to instrument specified in the (AssembliesToInstrument) item..." Importance="normal" />
+    <ItemGroup>
+      <_AssembliesToInstrumentWithOpenCoverMSTest Include="@(AssembliesToInstrument->'+[%(FileName)]*')" />
+    </ItemGroup>
+
+    <Message Text="$(LoggingMessagePrefix) Parsing all the MSTest assemblies to test specified in the (MSTestContainers) item..." Importance="normal" />
+    <ItemGroup>
+      <_MSTestContainersToRunCodeCoverage Include="@(MSTestContainers->'/testcontainer:\&quot;%(Identity)\&quot;')" />
+    </ItemGroup>
+
+  </Target>
+  
+</Project>

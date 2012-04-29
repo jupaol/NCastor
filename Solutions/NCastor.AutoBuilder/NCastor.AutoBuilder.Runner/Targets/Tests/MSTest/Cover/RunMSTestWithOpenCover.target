@@ -19,6 +19,8 @@
       ValidateOpenCoverProperties;
       CleanMSTestArtifactDirectories;
       CreateMSTestArtifactDirectories;
+      SetMSTestsWithOpenCoverArguments;
+      CustomizeMSTestWithOpenCoverArguments;
       BeforeRunMSTestWithOpenCover;
       CoreRunMSTestWithOpenCover;
       AfterRunMSTestWithOpenCover;
@@ -37,24 +39,12 @@
     <Message Text="$(LoggingMessagePrefix) Running all the MSTest unit tests specified in the (MSTestContainers) item using OpenCover..." Importance="high" />
 
     <Error ContinueOnError="false" Text="The OpenCover MSTest results file path was not specified" Condition="$(OpenCoverMSTest_ReportFilePath) == ''" />
-
-    <Message Text="$(LoggingMessagePrefix) Parsing all the assemblies to instrument specified in the (AssembliesToInstrument) item and the MSTest assemblies to test specified in the (MSTestContainers) item..." Importance="normal" />
-    <ItemGroup>
-      <_MSTestContainersToRunCodeCoverage Include="@(MSTestContainers->'/testcontainer:\&quot;%(Identity)\&quot;')" />
-      <_AssembliesToInstrumentWithOpenCoverMSTest Include="@(AssembliesToInstrument->'+[%(FileName)]*')" />
-    </ItemGroup>
-
-    <Message Text="$(LoggingMessagePrefix) Setting up OpenCover and MSTest arguments..." Importance="normal" />
-    <PropertyGroup>
-      <_OpenCoverMSTestCommand>-target:"$(MSTestRunner)"  -targetargs:"@(_MSTestContainersToRunCodeCoverage, ' ') $(MSTestRunnerWithOpenCoverArguments) /resultsfile:\"$(MSTestReportFilePath)\""</_OpenCoverMSTestCommand>
-
-      <_CommonOpenCoverArgs>&quot;$(OpenCoverRunner)&quot; -targetdir:&quot;$(TestAssembliesPath)&quot; $(OpenCoverRunnerArgumentsForMSTest) -filter:&quot;@(_AssembliesToInstrumentWithOpenCoverMSTest, ' ')&quot; -output:&quot;$(OpenCoverMSTest_ReportFilePath)&quot;</_CommonOpenCoverArgs>
-    </PropertyGroup>
+    <Error Text="The open cover arguments to be used with MSTest are required" Condition="$(OpenCoverRunnerArgumentsForMSTest) == ''" />
 
     <Delete Files="$(MSTestReportFilePath)" Condition="Exists($(MSTestReportFilePath))" />
 
     <Message Text="$(LoggingMessagePrefix) Running the MSTest unit tests with OpenCover..." Importance="normal" />
-    <Exec ContinueOnError="true" Command="$(_CommonOpenCoverArgs) $(_OpenCoverMSTestCommand)">
+    <Exec ContinueOnError="true" Command='"$(OpenCoverRunner)" $(OpenCoverRunnerArgumentsForMSTest)'>
       <Output TaskParameter="exitcode" ItemName="ErrorsOcurredWhenRunningMSTestTests"/>
     </Exec>
 

@@ -15,8 +15,12 @@
   <Import Project="SettingMSTestTestingAssemblies.target"/>
   <Import Project="CleanMSTestArtifactDirectories.target"/>
   <Import Project="CreateMSTestArtifactDirectories.target"/>
+  <Import Project="SetMSTestsArguments.target"/>
+  <Import Project="CustomizeMSTestArguments.target"/>
   <Import Project="RunMSTests.target"/>
 
+  <Import Project="Cover\SetMSTestsWithOpenCoverArguments.target"/>
+  <Import Project="Cover\CustomizeMSTestWithOpenCoverArguments.target"/>
   <Import Project="Cover\RunMSTestWithOpenCover.target"/>
 
 </Project>
