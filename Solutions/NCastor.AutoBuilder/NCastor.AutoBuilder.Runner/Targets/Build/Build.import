@@ -23,6 +23,7 @@
   <Import Project="Versioning\VersionControlServers\Svn\FormatSvnRevisionVersion.target"/>
   <Import Project="Versioning\VersionControlServers\Svn\UseSvnRevisionAsCurrentRevisionVersion.target"/>
   <Import Project="Versioning\VersionControlServers\Git\GetGitRevisionVersion.target"/>
+  <Import Project="Versioning\VersionControlServers\Git\PreFormatGitRevisionVersion.target"/>
   <Import Project="Versioning\VersionControlServers\Git\FormatGitRevisionVersion.target"/>
   <Import Project="Versioning\VersionControlServers\TFS\FormatTFSRevisionVersion.target"/>
   <Import Project="Versioning\VersionControlServers\TFS\GetTFSRevisionVersion.target"/>

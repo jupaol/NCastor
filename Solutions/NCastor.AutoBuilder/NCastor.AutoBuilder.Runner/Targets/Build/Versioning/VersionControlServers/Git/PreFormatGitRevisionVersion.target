@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<copyright file="PreFormatGitRevisionVersion.target" company="Juan Pablo Olmos Lara (Jupaol)">
+
+  jupaol@hotmail.com
+  http://jupaol.blogspot.com/
+
+</copyright>
+-->
+
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <PreFormatGitRevisionVersionDependsOn>
+      BeforePreFormatGitRevisionVersion;
+      CorePreFormatGitRevisionVersion;
+      AfterPreFormatGitRevisionVersion;
+    </PreFormatGitRevisionVersionDependsOn>
+  </PropertyGroup>
+
+  <Target Name="PreFormatGitRevisionVersion" DependsOnTargets="$(PreFormatGitRevisionVersionDependsOn)"/>
+
+  <!-- To be overriden by the user -->
+  <Target Name="BeforePreFormatGitRevisionVersion" />
+  <Target Name="AfterPreFormatGitRevisionVersion" />
+
+  <Target Name="CorePreFormatGitRevisionVersion" >
+
+    <Message Text="$(LoggingMessagePrefix) Replacing the (-) from the (GitRevisionVersion) property for (.)..." Importance="high" />
+    <MSBuild.ExtensionPack.Framework.TextString TaskAction="Replace" OldString="$(GitRevisionVersion)" OldValue="-" NewValue=".">
+      <Output PropertyName="_FormattedGitRevisionVersion" TaskParameter="NewString"/>
+    </MSBuild.ExtensionPack.Framework.TextString>
+
+  </Target>
+  
+</Project>

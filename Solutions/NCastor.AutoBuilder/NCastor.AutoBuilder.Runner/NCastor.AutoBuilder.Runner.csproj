@@ -360,6 +360,9 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Targets\Build\Versioning\VersionControlServers\Git\PreFormatGitRevisionVersion.target">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Targets\Labels\FormatLabelNameSufixWhenLabelExists.target">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
