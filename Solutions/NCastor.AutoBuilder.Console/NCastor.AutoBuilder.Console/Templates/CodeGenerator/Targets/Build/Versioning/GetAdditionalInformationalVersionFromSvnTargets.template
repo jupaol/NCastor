@@ -1,1 +1,7 @@
 ﻿  <Target Name="CoreGetExtraInformationalVersion" DependsOnTargets="FormatSvnRevisionVersion" />
+  <Target Name="CoreFormatSvnRevisionVersion" >
+    <Message Text="$(LoggingMessagePrefix) Formatting the SVN revision version, this version will be appended to the (InformationalVersion) property..." Importance="high" />
+    <PropertyGroup>
+      <AdditionalVersionInformation>.build.$(BuildVersion).svn.$(SvnRevisionVersion)</AdditionalVersionInformation>
+    </PropertyGroup>
+  </Target>

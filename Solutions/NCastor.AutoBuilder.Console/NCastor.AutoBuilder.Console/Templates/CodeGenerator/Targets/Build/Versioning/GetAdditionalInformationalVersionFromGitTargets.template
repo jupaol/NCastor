@@ -1,1 +1,7 @@
 ﻿  <Target Name="CoreGetExtraInformationalVersion" DependsOnTargets="FormatGitRevisionVersion" />
+  <Target Name="CoreFormatGitRevisionVersion" >
+    <Message Text="$(LoggingMessagePrefix) Formatting the Git revision version, this version will be appended to the (InformationalVersion) property..." Importance="high" />
+    <PropertyGroup>
+      <AdditionalVersionInformation>.build.$(BuildVersion).git$(_FormattedGitRevisionVersion)</AdditionalVersionInformation>
+    </PropertyGroup>
+  </Target>

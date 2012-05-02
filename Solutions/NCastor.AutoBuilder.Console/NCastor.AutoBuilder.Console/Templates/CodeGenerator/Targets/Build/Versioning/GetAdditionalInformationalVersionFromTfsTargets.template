@@ -1,1 +1,7 @@
 ﻿  <Target Name="CoreGetExtraInformationalVersion" DependsOnTargets="FormatTFSRevisionVersion" />
+  <Target Name="CoreFormatTFSRevisionVersion" >
+    <Message Text="$(LoggingMessagePrefix) Formatting the TFS revision version, this version will be appended to the (InformationalVersion) property..." Importance="high" />
+    <PropertyGroup>
+      <AdditionalVersionInformation>.build.$(BuildVersion).tfs.$(TFSRevisionVersion)</AdditionalVersionInformation>
+    </PropertyGroup>
+  </Target>
