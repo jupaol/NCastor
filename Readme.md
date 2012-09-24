@@ -73,6 +73,10 @@ You can actually use tools like [MSBuild Explorer](http://www.msbuildexplorer.co
 
 # In process: #
 
+-   Localization
+    -    Automatically create *.resources files using resgen.exe
+    -    Automatically create satellite assemblies using al.exe (optionally, delay-signing these assemblies)
+    -    Automatically sign delayed-sign assemblies
 -	Version Control Systems
 	-	Mercurial
 -	Test runners
