@@ -82,6 +82,10 @@ You can actually use tools like [MSBuild Explorer](http://www.msbuildexplorer.co
 -	Test runners
 	-	NBehave
 	-	xUnit
+-	Code Analysis
+	-	StyleCop
+	-	FxCop
+	-	Visual Studio Code Analysis
 -	Code Coverage
 	-	PartialCover
 	-	NCover
